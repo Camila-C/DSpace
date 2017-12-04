@@ -4,18 +4,34 @@
 # {1}  Name of collection
 # {2}  handle 
 #
-Subject: DSpace: Submission Approved and Archived 
+#Subject: DSpace: Submission Approved and Archived 
 
-You submitted: {0}
+#You submitted: {0}
 
-To collection: {1}
+#To collection: {1}
 
-Your submission has been accepted and archived in DSpace,
-and it has been assigned the following identifier:
+#Your submission has been accepted and archived in DSpace,
+#and it has been assigned the following identifier:
+#{2}
+
+#Please use this identifier when citing your submission.
+
+#Many thanks!
+
+#DSpace
+
+Subject: RID-UNRN: Envío Aprobado y Archivado
+
+Usted envió: {0}
+
+A la colección: {1}
+
+Su envío ha sido aceptado y archivado en RID-UNRN, 
+y se le ha asignado el siguiente identificador:
 {2}
 
-Please use this identifier when citing your submission.
+Por favor utilice este identificador al citar su envío.
 
-Many thanks!
+¡Muchas gracias!
 
-DSpace
+RID-UNRN

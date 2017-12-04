@@ -8,10 +8,20 @@
 #
 # See org.dspace.core.Email for information on the format of this file.
 #
-Subject: DSpace: Registration Notification
+#Subject: DSpace: Registration Notification
 
-A new user has registered on {0} at {1}:
+#A new user has registered on {0} at {1}:
 
-Name:                   {2}
-Email:                  {3}
-Date:                   {4}
+#Name:                   {2}
+#Email:                  {3}
+#Date:                   {4}
+
+Subject: RID-UNRN: Notificación de Registro
+
+Un nuevo usuario se ha registrado en {0} en {1}:
+
+Nombre: 	{2}
+Email:		{3}
+Fecha:		{4}
+
+RID-UNRN

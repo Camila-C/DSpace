@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+vocabulario de tipos IANA (anexo II directrices SNRD)
+-->
+
+<node id="iana" label="Tipos IANA">
+	<isComposedBy>
+		<node id="a" label="text">
+			<isComposedBy>
+				<node id="aa" label="plain"></node>
+				<node id="ab" label="richtext"></node>
+				<node id="ac" label="enriched"></node>
+				<node id="ad" label="tab-separated-values"></node>
+				<node id="ae" label="html"></node>
+				<node id="af" label="sgml"></node>
+				<node id="ag" label="xml"></node>
+			</isComposedBy>		
+		</node>
+		
+		<node id="b" label="application">
+			<isComposedBy>
+				<node id="ba" label="octet-stream"></node>
+				<node id="bb" label="postscript"></node>
+				<node id="bc" label="rtf"></node>
+				<node id="bd" label="applefile"></node>
+				<node id="be" label="mac-binhex40"></node>
+				<node id="bf" label="wordperfect5.1"></node>
+				<node id="bg" label="vnd.oasis.opendocument.text"></node>
+				<node id="bh" label="zip"></node>
+				<node id="bi" label="macwriteii"></node>
+				<node id="bj" label="msword"></node>
+				<node id="bk" label="sgml"></node>
+				<node id="bl" label="ms-excel"></node>
+				<node id="bm" label="ms-powerpoint"></node>
+				<node id="bn" label="ms-project"></node>
+				<node id="bo" label="ms-works"></node>
+				<node id="bp" label="xhtml+xml"></node>
+				<node id="bq" label="xml"></node>
+			</isComposedBy>
+		</node>	
+		<node id="c" label="image">
+			<isComposedBy>
+				<node id="ca" label="jpeg"></node>
+				<node id="cb" label="gif"></node>
+				<node id="cc" label="tiff"></node>
+				<node id="cd" label="png"></node>
+				<node id="ce" label="jpeg2000"></node>
+				<node id="cf" label="sid"></node>			
+			</isComposedBy>
+		</node>
+		<node id="d" label="audio">
+			<isComposedBy>
+				<node id="da" label="wav"></node>
+				<node id="db" label="mp3"></node>
+				<node id="dc" label="quicktime"></node>
+			</isComposedBy>
+		</node>
+		<node id="e" label="video">
+			<isComposedBy>
+				<node id="ea" label="mpeg1"></node>
+				<node id="eb" label="mpeg2"></node>
+				<node id="ec" label="mpeg3"></node>
+				<node id="ed" label="avi"></node>
+			</isComposedBy>
+		</node>
+	</isComposedBy>
+</node>
