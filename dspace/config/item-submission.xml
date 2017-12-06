@@ -17,7 +17,106 @@
  <!-- which does not appear in this map will be associated with the mapping-->
  <!-- for handle "default".                                                -->
  <submission-map>
-   <name-map collection-handle="default" submission-name="traditional" />
+ 
+ <name-map collection-handle="default" submission-name="traditional" />
+ 
+ <!-- ************************ digesto ****************************** -->
+		<!-- normativa institucional -->
+	   <name-map collection-handle="20.500.12049/277" submission-name="digesto" /> <!-- estatuto -->
+	   <name-map collection-handle="20.500.12049/278" submission-name="digesto" /> <!-- reglamento -->
+	   
+	   <!-- Resoluciones -->
+	   <name-map collection-handle="20.500.12049/286" submission-name="digesto" /> <!-- asamblea -->
+	   <name-map collection-handle="20.500.12049/287" submission-name="digesto" /> <!-- CDEYVE -->
+	   <name-map collection-handle="20.500.12049/241" submission-name="digesto" /> <!-- CICADYTT -->
+	   <name-map collection-handle="20.500.12049/288" submission-name="digesto" /> <!-- CPYGE -->
+	   <name-map collection-handle="20.500.12049/285" submission-name="digesto" /> <!-- rectorales -->
+     <name-map collection-handle="20.500.12049/315" submission-name="digesto" /> <!-- UNRN -->
+	   
+	   <!-- Disposiciones -->
+			<!-- de secretarias -->
+			<name-map collection-handle="20.500.12049/294" submission-name="digesto" /> <!-- SDEYVE -->
+			<name-map collection-handle="20.500.12049/296" submission-name="digesto" /> <!-- SICADYTT -->
+			<name-map collection-handle="20.500.12049/295" submission-name="digesto" /> <!-- SPYGE -->
+			
+			<!-- de sedes -->
+				<!-- alto valle -->
+				<name-map collection-handle="20.500.12049/309" submission-name="digesto" /> <!-- SDEYVE -->
+				<name-map collection-handle="20.500.12049/311" submission-name="digesto" /> <!-- SICADYTT -->
+				<name-map collection-handle="20.500.12049/310" submission-name="digesto" /> <!-- SPYGE -->
+				<name-map collection-handle="20.500.12049/308" submission-name="digesto" /> <!-- vicerrectorales -->
+				<!-- andina -->
+				<name-map collection-handle="20.500.12049/304" submission-name="digesto" /> <!-- SDEYVE -->
+				<name-map collection-handle="20.500.12049/306" submission-name="digesto" /> <!-- SICADYTT -->
+				<name-map collection-handle="20.500.12049/305" submission-name="digesto" /> <!-- SPYGE -->
+				<name-map collection-handle="20.500.12049/307" submission-name="digesto" /> <!-- vicerrectorales -->
+				<!-- atlantica -->
+				<name-map collection-handle="20.500.12049/301" submission-name="digesto" /> <!-- SDEYVE -->
+				<name-map collection-handle="20.500.12049/302" submission-name="digesto" /> <!-- SICADYTT -->
+				<name-map collection-handle="20.500.12049/303" submission-name="digesto" /> <!-- SPYGE -->
+				<name-map collection-handle="20.500.12049/300" submission-name="digesto" /> <!-- vicerrectorales -->
+	 
+	 <!-- *****************************  tesis ***************************** -->
+		<!-- Sede Alto Valle --> 
+	   <name-map collection-handle="20.500.12049/207" submission-name="tesis" /> <!-- diseño industrial -->
+	   <name-map collection-handle="20.500.12049/208" submission-name="tesis" /> <!-- diseño de interiores y mobiliario -->
+	   <name-map collection-handle="20.500.12049/210" submission-name="tesis" /> <!-- ingenieria en alimentos -->
+	   <name-map collection-handle="20.500.12049/211" submission-name="tesis" /> <!-- ingenieria en biotecnologia -->
+	   <name-map collection-handle="20.500.12049/213" submission-name="tesis" /> <!-- licenciatura en administracion de empresas -->
+	   <name-map collection-handle="20.500.12049/201" submission-name="tesis" /> <!-- licenciatura en artes visuales -->
+	   <name-map collection-handle="20.500.12049/212" submission-name="tesis" /> <!-- licenciatura en comercio exterior -->
+	   <name-map collection-handle="20.500.12049/200" submission-name="tesis" /> <!-- licenciatura en Criminología y Ciencias Forenses -->
+	   <name-map collection-handle="20.500.12049/206" submission-name="tesis" /> <!-- licenciatura en diseño visual -->
+	   <name-map collection-handle="20.500.12049/204" submission-name="tesis" /> <!-- licenciatura en geología -->
+	   <name-map collection-handle="20.500.12049/205" submission-name="tesis" /> <!-- licenciatura en paleontología -->
+	   <name-map collection-handle="20.500.12049/216" submission-name="tesis" /> <!-- medicina veterinaria -->
+	   <name-map collection-handle="20.500.12049/202" submission-name="tesis" /> <!-- odontologia -->
+	   <name-map collection-handle="20.500.12049/209" submission-name="tesis" /> <!-- profesorado biologia -->
+	   <name-map collection-handle="20.500.12049/215" submission-name="tesis" /> <!-- Tecnicatura Superior en Control de Sanidad y Calidad Agroalimentaria -->
+	   <name-map collection-handle="20.500.12049/203" submission-name="tesis" /> <!-- Tecnicatura Superior en Mantenimiento Industrial -->
+	   <name-map collection-handle="20.500.12049/220" submission-name="tesis" /> <!-- Tecnicatura Universitaria en Administración y Gestión de Pymes -->
+	   <name-map collection-handle="20.500.12049/214" submission-name="tesis" /> <!-- Tecnicatura Universitaria en Enología -->
+	   <name-map collection-handle="20.500.12049/221" submission-name="tesis" /> <!-- Tecnicatura Universitaria en Hidrocarburos -->
+	   <name-map collection-handle="20.500.12049/219" submission-name="tesis" /> <!-- Tecnicatura Universitaria en Procesos Agroindustriales -->
+	   
+	   <!-- Sede Andina -->
+	   <name-map collection-handle="20.500.12049/189" submission-name="tesis" /> <!-- Ingeniería en Telecomunicaciones -->
+	   <name-map collection-handle="20.500.12049/187" submission-name="tesis" /> <!-- Licenciatura en Administración -->
+	   <name-map collection-handle="20.500.12049/197" submission-name="tesis" /> <!-- Licenciatura en Agroecologia -->
+	   <name-map collection-handle="20.500.12049/184" submission-name="tesis" /> <!-- Licenciatura en arte dramatico -->
+	   <name-map collection-handle="20.500.12049/185" submission-name="tesis" /> <!-- Licenciatura en ciencias antropologicas -->
+	   <name-map collection-handle="20.500.12049/198" submission-name="tesis" /> <!-- Licenciatura en diseño artistico audiovisual -->
+	   <name-map collection-handle="20.500.12049/188" submission-name="tesis" /> <!-- Licenciatura en hoteleria -->
+	   <name-map collection-handle="20.500.12049/186" submission-name="tesis" /> <!-- Licenciatura en letras -->
+	   <name-map collection-handle="20.500.12049/190" submission-name="tesis" /> <!-- Licenciatura en turismo -->
+	   <name-map collection-handle="20.500.12049/199" submission-name="tesis" /> <!-- Tecnicatura en Producción Vegetal Orgánica -->
+	   <name-map collection-handle="20.500.12049/414" submission-name="tesis" /> <!-- Licenciatura en Economía -->
+	   <name-map collection-handle="20.500.12049/415" submission-name="tesis" /> <!-- Tecnicatura en Viveros -->
+	   <name-map collection-handle="20.500.12049/423" submission-name="tesis" /> <!-- Ingeniería Ambiental -->
+	   <name-map collection-handle="20.500.12049/424" submission-name="tesis" /> <!-- Ingeniería Electrónica -->
+		   
+		   <!-- Ciclos de posgrado -->
+		   <name-map collection-handle="20.500.12049/196" submission-name="tesis" /> <!-- Especialización en Divulgación de la Ciencia, la Tecnología y la Innovación -->
+		   <name-map collection-handle="20.500.12049/193" submission-name="tesis" /> <!-- Especialización en Management Tecnológico -->
+		   <name-map collection-handle="20.500.12049/192" submission-name="tesis" /> <!-- Especialización en Tratamiento de Efluentes y Residuos Orgánicos -->
+		   <name-map collection-handle="20.500.12049/194" submission-name="tesis" /> <!-- Maestría en Ciencias, Tecnología e Innovación -->
+		   <name-map collection-handle="20.500.12049/195" submission-name="tesis" /> <!-- Maestría en Magistratura -->
+		
+		<!-- Sede Atlántica -->
+	   <name-map collection-handle="20.500.12049/224" submission-name="tesis" /> <!-- abogacia -->
+	   <name-map collection-handle="20.500.12049/223" submission-name="tesis" /> <!-- contador publico -->
+	   <name-map collection-handle="20.500.12049/226" submission-name="tesis" /> <!-- ingenieria agronomica -->
+	   <name-map collection-handle="20.500.12049/228" submission-name="tesis" /> <!-- Licenciatura en Ciencias del Ambiente -->  
+	   <name-map collection-handle="20.500.12049/227" submission-name="tesis" /> <!-- Comunicación social -->
+	   <name-map collection-handle="20.500.12049/222" submission-name="tesis" /> <!-- Kinesiologia -->
+	   <name-map collection-handle="20.500.12049/225" submission-name="tesis" /> <!-- Licenciatura en Sistemas -->
+	   <name-map collection-handle="20.500.12049/411" submission-name="tesis" /> <!-- Licenciatura en Trabajo Social -->
+	   
+			<!-- Ciclos de posgrado -->
+			<name-map collection-handle="20.500.12049/234" submission-name="tesis" /> <!-- Esp. Derecho Administrativo -->
+			<name-map collection-handle="20.500.12049/231" submission-name="tesis" /> <!-- Esp. Frutos Secos -->
+			<name-map collection-handle="20.500.12049/232" submission-name="tesis" /> <!-- Maestría en Derecho Administrativo Global -->
+			<name-map collection-handle="20.500.12049/233" submission-name="tesis" /> <!-- Maestría en Políticas Públicas y Gobierno -->
  </submission-map>
 
 
@@ -228,7 +327,7 @@
       
 
        <!-- Step 4 Upload Item with Embargo Features
-            to enable this step, please make sure to comment-out the previous step "UploadStep"  
+            to enable this step, please make sure to comment-out (comentar) the previous step "UploadStep"  
        <step>
            <heading>submit.progressbar.upload</heading>
            <processing-class>org.dspace.submit.step.UploadWithEmbargoStep</processing-class>
@@ -237,6 +336,199 @@
            <workflow-editable>true</workflow-editable>
        </step>
        -->
+
+ 	  <!--Step 5 will be to Verify/Review everything -->
+ 	  <step>
+        <heading>submit.progressbar.verify</heading>
+        <processing-class>org.dspace.submit.step.VerifyStep</processing-class>
+ 	    <jspui-binding>org.dspace.app.webui.submit.step.JSPVerifyStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.ReviewStep</xmlui-binding>
+		<workflow-editable>true</workflow-editable>
+      </step>
+
+      <!--Step 6 will be to select a Creative Commons License-->
+      <!-- Uncomment this step to allow the user to select a Creative Commons license -->
+       <!--
+      <step>
+        <heading>submit.progressbar.CClicense</heading>
+        <processing-class>org.dspace.submit.step.CCLicenseStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPCCLicenseStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.CCLicenseStep</xmlui-binding>
+		<workflow-editable>false</workflow-editable>
+      </step>
+      -->
+
+      <!--Step 7 will be to Sign off on the License-->
+      <step>
+        <heading>submit.progressbar.license</heading>
+        <processing-class>org.dspace.submit.step.LicenseStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPLicenseStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.LicenseStep</xmlui-binding>
+		<workflow-editable>false</workflow-editable>
+      </step>
+
+
+     
+   </submission-process>
+   
+   
+   <!--DIGESTO-->
+   <submission-process name="digesto">
+     
+     <!--Uncommment to display the SAMPLE step as your first step-->
+     <!--<step id="sample"/>-->
+
+	 <!-- Step 1. Since DSpace 4.0, the initial questions has been disabled. Metadata are shown exactly as 
+	 	  required in input-forms and items are assumed to have always multiple-files attached.
+	      If re-enable the initial questions step you should comment out this step-->
+	 <step>
+		<processing-class>org.dspace.submit.step.SkipInitialQuestionsStep</processing-class>
+	 </step>
+          
+     <!--Disabled by default Since DSpace 4.0: Step 1 will be to gather initial information
+	  <step>
+	    <heading>submit.progressbar.initial-questions</heading>
+		<processing-class>org.dspace.submit.step.InitialQuestionsStep</processing-class>
+		<jspui-binding>org.dspace.app.webui.submit.step.JSPInitialQuestionsStep</jspui-binding>   	    
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.InitialQuestionsStep</xmlui-binding>
+	    <workflow-editable>true</workflow-editable>
+	  </step> -->
+      
+      <!--Step 2 will be to Describe the item.-->
+      <step>
+        <heading>submit.progressbar.describe</heading>
+        <processing-class>org.dspace.submit.step.DescribeStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPDescribeStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.DescribeStep</xmlui-binding>
+        <workflow-editable>true</workflow-editable>
+      </step>
+
+       <!--Step 3 will be to Manage Item access.
+       <step>
+           <heading>submit.progressbar.access</heading>
+           <processing-class>org.dspace.submit.step.AccessStep</processing-class>
+           <jspui-binding>org.dspace.app.webui.submit.step.JSPAccessStep</jspui-binding>
+           <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.AccessStep</xmlui-binding>
+           <workflow-editable>true</workflow-editable>
+       </step>
+       -->
+
+      <!--Step 4 will be to Upload the item -->
+      <step>
+        <heading>submit.progressbar.upload</heading>
+        <processing-class>org.dspace.submit.step.UploadStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPUploadStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadStep</xmlui-binding>
+        <workflow-editable>true</workflow-editable>
+      </step>
+      
+
+       <!-- Step 4 Upload Item with Embargo Features
+            to enable this step, please make sure to comment-out (comentar) the previous step "UploadStep"  
+       <step>
+           <heading>submit.progressbar.upload</heading>
+           <processing-class>org.dspace.submit.step.UploadWithEmbargoStep</processing-class>
+           <jspui-binding>org.dspace.app.webui.submit.step.JSPUploadWithEmbargoStep</jspui-binding>
+           <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadWithEmbargoStep</xmlui-binding>
+           <workflow-editable>true</workflow-editable>
+       </step>
+       -->
+
+ 	  <!--Step 5 will be to Verify/Review everything -->
+ 	  <step>
+        <heading>submit.progressbar.verify</heading>
+        <processing-class>org.dspace.submit.step.VerifyStep</processing-class>
+ 	    <jspui-binding>org.dspace.app.webui.submit.step.JSPVerifyStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.ReviewStep</xmlui-binding>
+		<workflow-editable>true</workflow-editable>
+      </step>
+
+      <!--Step 6 will be to select a Creative Commons License-->
+      <!-- Uncomment this step to allow the user to select a Creative Commons license -->
+       <!--
+      <step>
+        <heading>submit.progressbar.CClicense</heading>
+        <processing-class>org.dspace.submit.step.CCLicenseStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPCCLicenseStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.CCLicenseStep</xmlui-binding>
+		<workflow-editable>false</workflow-editable>
+      </step>
+      -->
+
+      <!--Step 7 will be to Sign off on the License
+      <step>
+        <heading>submit.progressbar.license</heading>
+        <processing-class>org.dspace.submit.step.LicenseStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPLicenseStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.LicenseStep</xmlui-binding>
+		<workflow-editable>false</workflow-editable>
+      </step>-->
+
+
+     
+   </submission-process>
+
+   <!--TESIS-->
+   <submission-process name="tesis">
+     
+     <!--Uncommment to display the SAMPLE step as your first step-->
+     <!--<step id="sample"/>-->
+
+	 <!-- Step 1. Since DSpace 4.0, the initial questions has been disabled. Metadata are shown exactly as 
+	 	  required in input-forms and items are assumed to have always multiple-files attached.
+	      If re-enable the initial questions step you should comment out this step-->
+	 <step>
+		<processing-class>org.dspace.submit.step.SkipInitialQuestionsStep</processing-class>
+	 </step>
+          
+     <!--Disabled by default Since DSpace 4.0: Step 1 will be to gather initial information
+	  <step>
+	    <heading>submit.progressbar.initial-questions</heading>
+		<processing-class>org.dspace.submit.step.InitialQuestionsStep</processing-class>
+		<jspui-binding>org.dspace.app.webui.submit.step.JSPInitialQuestionsStep</jspui-binding>   	    
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.InitialQuestionsStep</xmlui-binding>
+	    <workflow-editable>true</workflow-editable>
+	  </step> -->
+      
+      <!--Step 2 will be to Describe the item.-->
+      <step>
+        <heading>submit.progressbar.describe</heading>
+        <processing-class>org.dspace.submit.step.DescribeStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPDescribeStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.DescribeStep</xmlui-binding>
+        <workflow-editable>true</workflow-editable>
+      </step>
+
+       <!--Step 3 will be to Manage Item access.
+       <step>
+           <heading>submit.progressbar.access</heading>
+           <processing-class>org.dspace.submit.step.AccessStep</processing-class>
+           <jspui-binding>org.dspace.app.webui.submit.step.JSPAccessStep</jspui-binding>
+           <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.AccessStep</xmlui-binding>
+           <workflow-editable>true</workflow-editable>
+       </step>
+       -->
+
+      <!--Step 4 will be to Upload the item 
+      <step>
+        <heading>submit.progressbar.upload</heading>
+        <processing-class>org.dspace.submit.step.UploadStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPUploadStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadStep</xmlui-binding>
+        <workflow-editable>true</workflow-editable>
+      </step>-->
+      
+
+       <!-- Step 4 Upload Item with Embargo Features
+            to enable this step, please make sure to comment-out (comentar) the previous step "UploadStep"  -->
+       <step>
+           <heading>submit.progressbar.upload</heading>
+           <processing-class>org.dspace.submit.step.UploadWithEmbargoStep</processing-class>
+           <jspui-binding>org.dspace.app.webui.submit.step.JSPUploadWithEmbargoStep</jspui-binding>
+           <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadWithEmbargoStep</xmlui-binding>
+           <workflow-editable>true</workflow-editable>
+       </step>
+       
 
  	  <!--Step 5 will be to Verify/Review everything -->
  	  <step>
