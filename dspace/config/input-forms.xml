@@ -120,6 +120,9 @@
 			<name-map collection-handle="20.500.12049/231" form-name="tesis" /> <!-- Esp. Frutos Secos -->
 			<name-map collection-handle="20.500.12049/232" form-name="tesis" /> <!-- Maestría en Derecho Administrativo Global -->
 			<name-map collection-handle="20.500.12049/233" form-name="tesis" /> <!-- Maestría en Políticas Públicas y Gobierno -->
+	 
+	  <!-- Posgrados de Filiacion Compartida -->
+	 <name-map collection-handle="20.500.12049/526" form-name="tesis" />
 			
 	<!-- *****************************  revistas cientificas ***************************** -->
 		
