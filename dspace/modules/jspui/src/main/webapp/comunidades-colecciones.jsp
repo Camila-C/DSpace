@@ -160,9 +160,9 @@
 <br>
 <p dir="ltr">
 	<img
-		src="<%= request.getContextPath() %>/image/Mapa de Comunidades.jpg"
+		src="<%= request.getContextPath() %>/image/mapa-comunidades.jpg"
 		alt="Mapa de comunidades del Repositorio Institucional Digital (RID-UNRN)"
-		height="1000"
+		class="img-responsive"
 	/>
 </p>
 <br>
@@ -173,9 +173,9 @@
 <br>
 <p dir="ltr">
 	<img
-		src="<%= request.getContextPath() %>/image/Estructura Comunidad Digesto.jpg"
+		src="<%= request.getContextPath() %>/image/estructura-digesto.jpg"
 		alt="Mapa de la comunidad Digesto"
-		height="1000"
+		class="img-responsive"
 	/>
 </p>
 <br>
@@ -185,10 +185,9 @@
 </p>
 <p dir="ltr">
 	<img
-		src="<%= request.getContextPath() %>/image/Estructura Comunidad Tesis.jpg"
+		src="<%= request.getContextPath() %>/image/estructura-tesis.jpg"
 		alt="Mapa de la comunidad Tesis y Trabajos Finales"
-		width="1200"
-		height="700"
+		class="img-responsive"
 	/>
 </p>
 

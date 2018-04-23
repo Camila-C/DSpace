@@ -59,12 +59,12 @@
 <ul>
 	<li>
 		<p lang="es-ES" align="justify">
-			<a href="<%= request.getContextPath() %>/F086-01 Cesion no exclusiva de derechos final.pdf">Formulario F086-01 (Formulario de Cesi&oacute;n no exclusiva de derechos para dep&oacute;sito en el RID-UNRN)</a>
+			<a href="<%= request.getContextPath() %>/F086-01.pdf">Formulario F086-01 (Formulario de Cesi&oacute;n no exclusiva de derechos para dep&oacute;sito en el RID-UNRN)</a>
 		</p>
 	</li>
 	<li>
 		<p lang="es-ES" align="justify">
-			<a href="<%= request.getContextPath() %>/F087-01 Registro de datos RID-UNRN.pdf">Formulario F087-01 (Formulario de Registro de Datos)</a>
+			<a href="<%= request.getContextPath() %>/F087-01.pdf">Formulario F087-01 (Formulario de Registro de Datos)</a>
 		</p>
 	</li>
 </ul>
@@ -140,8 +140,9 @@
 </p>
 <p dir="ltr">
 	<img
-		src="<%= request.getContextPath() %>/image/ingesta - documental.jpg"
+		src="<%= request.getContextPath() %>/image/ingesta-documental.jpg"
 		alt="Proceso documental del circuito de ingesta"
+		class="img-responsive"
 	/>
 </p>
 <br/>
@@ -153,8 +154,9 @@
 <br/>
 <p dir="ltr">
 	<img
-		src="<%= request.getContextPath() %>/image/ingesta - administrativo.png"
+		src="<%= request.getContextPath() %>/image/ingesta-administrativo.png"
 		alt="Proceso administrativo del circuito de ingesta"
+		class="img-responsive"
 	/>
 </p>
 

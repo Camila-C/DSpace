@@ -32,8 +32,9 @@
 
 <p dir="ltr">
 	<img
-		src="https://i2.wp.com/www.caicyt-conicet.gov.ar/wp-content/uploads/2016/10/image7-e1498842841582.jpeg?fit=500%2C216"
+		src="<%= request.getContextPath() %>/image/logo-acceso-abierto.jpeg"
 		alt="Logo de Acceso Abierto"
+		class="img-responsive"
 	/>
 </p>
 

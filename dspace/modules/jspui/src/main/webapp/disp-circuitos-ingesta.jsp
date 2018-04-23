@@ -256,8 +256,9 @@
 </p>
 <p dir="ltr">
 	<img
-		src="<%= request.getContextPath() %>/image/ingesta - documental.jpg"
+		src="<%= request.getContextPath() %>/image/ingesta-documental.jpg"
 		alt="Proceso documental del circuito de ingesta"
+		class="img-responsive"
 	/>
 </p>
 <br/>
@@ -269,8 +270,9 @@
 <br/>
 <p dir="ltr">
 	<img
-		src="<%= request.getContextPath() %>/image/ingesta - administrativo.png"
+		src="<%= request.getContextPath() %>/image/ingesta-administrativo.png"
 		alt="Proceso administrativo del circuito de ingesta"
+		class="img-responsive"
 	/>
 </p>
 <br/>

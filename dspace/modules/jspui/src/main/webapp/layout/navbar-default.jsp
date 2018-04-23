@@ -121,9 +121,9 @@
           <li class="dropdown">
              <a class="dropdown-toggle" data-toggle="dropdown">Preguntas Frecuentes <span class="caret"></span></a>
              <ul class="dropdown-menu">
-             <li><a href="<%= request.getContextPath() %>/que-es.jsp">&iquest;Qu&eacute; es el RID-UNRN?</a></li>
-             <li><a href="<%= request.getContextPath() %>/comunidades-colecciones.jsp">&iquest;C&oacute;mo est&aacute; organizado?</a></li>
-			 <li><a href="<%= request.getContextPath() %>/como subir.jsp">&iquest;C&oacute;mo subir un documento?</a></li>
+             		<li><a href="<%= request.getContextPath() %>/que-es.jsp">&iquest;Qu&eacute; es el RID-UNRN?</a></li>
+             		<li><a href="<%= request.getContextPath() %>/comunidades-colecciones.jsp">&iquest;C&oacute;mo est&aacute; organizado?</a></li>
+			 <li><a href="<%= request.getContextPath() %>/como-subir.jsp">&iquest;C&oacute;mo subir un documento?</a></li>
             </ul>
           </li>
           
@@ -132,11 +132,11 @@
              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pol&iacute;ticas del RID-UNRN<span class="caret"></span></a>
              <ul class="dropdown-menu">
 			 <li><a href="<%= request.getContextPath() %>/politicas.jsp">Res. CICADYTT Pol&iacute;ticas del RID-UNRN</b></a></li>
-             <li><a href="<%= request.getContextPath() %>/ley-26899.jsp">Ley Nacional de Repositorios Digitales</a></li>
+             		<li><a href="<%= request.getContextPath() %>/ley-26899.jsp">Ley Nacional de Repositorios Digitales</a></li>
 			 <li><a href="<%= request.getContextPath() %>/reglamentacion-ley.jsp">Reglamentaci&oacute;n de la Ley de Repositorios Digitales</a></li>
-             <li><a href="<%= request.getContextPath() %>/cicadytt.jsp">Res. CICADYTT Creaci&oacute;n del RID-UNRN</a></li>
-			 <li><a href="<%= request.getContextPath() %>/disp formularios.jsp">Disp. SICADYTT Formularios</a></li>
-			 <li><a href="<%= request.getContextPath() %>/disp circuitos ingesta.jsp"> Disp. SICADYTT Circuitos de Ingesta</a></li>
+             		<li><a href="<%= request.getContextPath() %>/cicadytt.jsp">Res. CICADYTT Creaci&oacute;n del RID-UNRN</a></li>
+			 <li><a href="<%= request.getContextPath() %>/disp-formularios.jsp">Disp. SICADYTT Formularios</a></li>
+			 <li><a href="<%= request.getContextPath() %>/disp-circuitos-ingesta.jsp"> Disp. SICADYTT Circuitos de Ingesta</a></li>
              <!-- <li class="divider"></li> -->
              
            </ul>
