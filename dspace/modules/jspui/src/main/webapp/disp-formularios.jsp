@@ -44,5 +44,4 @@
     <a href="<%= request.getContextPath() %>/F087-01.pdf">Formulario F087-01 (Formulario de Registro de Datos)</a>
 </p>
 
-
 </dspace:layout>

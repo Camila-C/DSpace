@@ -49,9 +49,9 @@
                                 <a href="<%= request.getContextPath() %>/htmlmap"></a></p>
                                 </div> --%>
                                 <center>
-                                <p class="text-muted"> RID-UNRN- Universidad Nacional de Río Negro
-                                <p class="text-muted"> Departamento de Biblioteca, Repositorio y Contenidos Digitales
-                                <p class="text-muted"> Telefono: +54 (02920) 422045 | <a href="mailto:rid@unrn.edu.ar" class="link_p">rid@unrn.edu.ar</a>
+                                <p class="text-muted"> RID-UNRN | Universidad Nacional de Río Negro
+                                <p class="text-muted"> Departamento de Biblioteca Electrónica, Repositorio y Contenidos Digitales
+                                <p class="text-muted"> Teléfono: +54 (02920) 442006 | <a href="mailto:rid@unrn.edu.ar" class="link_p">rid@unrn.edu.ar</a>
                                 <p class="text-muted"> <a class="dspace_link" href="http://www.dspace.org">Supported by Dspace </a>
 </a>
                                 </center>
