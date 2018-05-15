@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+BEMINCYT - COBERTURA TEMÁTICA
+-->
+
+<node id="areas" label="COBERTURA TEMATICA BEMINCYT">
+	<isComposedBy>
+		<node id="A" label="Ciencias Agrarias">
+			<isComposedBy>
+				<node id="A1" label="Agricultura, Ciencias Forestales y Pesca">
+					<isComposedBy>
+						<node id="A11" label="Agricultura (General)"></node>
+						<node id="A12" label="Agronomía, Cultivo y Protección de Plantas"></node>
+						<node id="A13" label="Ciencia del Suelo"></node>
+						<node id="A14" label="Ciencias y Recursos Forestales"></node>
+						<node id="A15" label="Horticultura y Vitivinicultura"></node>
+						<node id="A16" label="Recursos Pesqueros"></node>
+					</isComposedBy>
+				</node>
+				<node id="A2" label="Biotecnología Agraria">
+					<isComposedBy>
+						<node id="A21" label="Biotecnología Agraria (General)"></node>
+						<node id="A22" label="Ética Relacionada con la Biotecnología Agraria"></node>
+						<node id="A23" label="Ingeniería Genética (Cultivos y Ganado)"></node>
+					</isComposedBy>
+				</node>
+				<node id="A3" label="Ciencia Animal">
+					<isComposedBy>
+						<node id="A31" label="Ciencia Animal (General)"></node>
+						<node id="A32" label="Ganadería"></node>
+						<node id="A33" label="Industria Láctea"></node>
+						<node id="A34" label="Mascotas"></node>
+					</isComposedBy>				
+				</node>
+				<node id="A4" label="Ciencias Agrarias (general)"></node>
+				<node id="A5" label="Ciencias Veterinarias"></node>
+			</isComposedBy>		
+		</node>	
+		<node id="B" label="Ciencias Exactas y Naturales">
+			<isComposedBy>
+				<node id="B1" label="Ciencias Ambientales y de la Tierra">
+					<isComposedBy>
+						<node id="B11" label="Ciencias Ambientales (General)"></node>
+						<node id="B12" label="Ciencias de la Tierra (General)"></node>
+						<node id="B13" label="Climatología"></node>
+						<node id="B14" label="Geociencias (Multidisciplinar)"></node>
+						<node id="B15" label="Geofísica"></node>
+						<node id="B16" label="Geoquímica"></node>
+						<node id="B17" label="Gestión de los Recursos Hídricos"></node>
+						<node id="B18" label="Hidrología"></node>
+						<node id="B19" label="Meteorología y Ciencias Atmosféricas"></node>
+						<node id="B110" label="Mineralogía"></node>
+						<node id="B111" label="Oceanografía"></node>
+						<node id="B112" label="Paleontología"></node>
+						<node id="B113" label="Sedimentología"></node>
+						<node id="B114" label="Vulcanología"></node>
+					</isComposedBy>
+				</node>
+				<node id="B2" label="Ciencias Biológicas">
+					<isComposedBy>
+						<node id="B21" label="Biodiversidad y Conservación"></node>
+						<node id="B22" label="Biofísica"></node>
+						<node id="B23" label="Biología (General)"></node>
+						<node id="B24" label="Biología Celular y Molecular"></node>
+						<node id="B25" label="Biología de Agua Dulce"></node>
+						<node id="B26" label="Biología del Comportamiento"></node>
+						<node id="B27" label="Biología de Desarrollo"></node>
+						<node id="B28" label="Biología Evolutiva"></node>
+						<node id="B29" label="Biología Marina"></node>
+						<node id="B210" label="Biología Reproductiva"></node>
+						<node id="B211" label="Botánica y Ciencias de las Plantas"></node>
+						<node id="B212" label="Ecología"></node>
+						<node id="B213" label="Entomología"></node>
+						<node id="B214" label="Genética y Herencia"></node>
+						<node id="B215" label="Herpetología"></node>
+						<node id="B216" label="Ictiología"></node>
+						<node id="B217" label="Limnología"></node>
+						<node id="B218" label="Mastozoología"></node>
+						<node id="B219" label="Micología"></node>
+						<node id="B220" label="Microbiología"></node>
+						<node id="B221" label="Ornitología"></node>
+						<node id="B222" label="Virología"></node>
+						<node id="B223" label="Zoología"></node>
+					</isComposedBy>
+				</node>
+				<node id="B3" label="Ciencias de la Computación e Información">
+					<isComposedBy>
+						<node id="B31" label="Bioinformática"></node>
+						<node id="B32" label="Ciencias de la Computación (General)"></node>
+						<node id="B33" label="Ciencias de la Información (Aspectos Informáticos)"></node>
+					</isComposedBy>
+				</node>
+				<node id="B4" label="Ciencias Exactas y Naturales (General)"></node>
+				<node id="B5" label="Ciencias Físicas">
+					<isComposedBy>
+						<node id="B51" label="Acústica"></node>
+						<node id="B52" label="Astronomía"></node>
+						<node id="B53" label="Física (General)"></node>
+						<node id="B54" label="Física Atómica y Molecular"></node>
+						<node id="B55" label="Física de Campos y Partículas"></node>
+						<node id="B56" label="Física de Fluidos y Plasma"></node>
+						<node id="B57" label="Física de la Materia Condensada"></node>
+						<node id="B58" label="Física Nuclear"></node>
+						<node id="B59" label="Fisicoquímica"></node>
+						<node id="B510" label="Óptica, Fotones y Lásers"></node>
+					</isComposedBy>
+				</node>
+				<node id="B6" label="Ciencias Químicas">
+					<isComposedBy>
+						<node id="B61" label="Ciencias Químicas (General)"></node>
+						<node id="B62" label="Electroquímica"></node>
+						<node id="B63" label="Polímeros"></node>
+						<node id="B64" label="Química Analítica"></node>
+						<node id="B65" label="Química de Coloides"></node>
+						<node id="B66" label="Química Inorgánica"></node>
+						<node id="B67" label="Química Nuclear"></node>
+						<node id="B68" label="Química Orgánica"></node>
+						<node id="B69" label="Quimicofísica"></node>
+					</isComposedBy>
+				</node>
+				<node id="B7" label="Matemáticas">
+					<isComposedBy>
+						<node id="B71" label="Estadística y Probabilidad"></node>
+						<node id="B72" label="Matemática (General)"></node>
+						<node id="B73" label="Matemática Aplicada"></node>
+						<node id="B74" label="Matemática Pura"></node>
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>	
+		<node id="C" label="Ciencias Médicas y de la Salud">
+			<isComposedBy>
+				<node id="C1" label="Biotecnología de la Salud">
+					<isComposedBy>
+						<node id="C11" label="Biomateriales"></node>
+						<node id="C12" label="Biotecnología Médica (General)"></node>
+						<node id="C13" label="Ciencias Ómicas"></node>
+						<node id="C14" label="Ética Relacionada con la Biotecnología Médica"></node>
+						<node id="C15" label="Ingeniería Genética (Humana)"></node>
+						<node id="C16" label="Reproducción Asistida"></node>
+					</isComposedBy>
+				</node>
+				<node id="C2" label="Ciencias de la Salud">
+					<isComposedBy>
+						<node id="C21" label="Abuso de Sustancias"></node>
+						<node id="C22" label="Ciencias Biomédicas Sociales"></node>
+						<node id="C23" label="Ciencias de la Salud (General)"></node>
+						<node id="C24" label="Ciencias Forenses"></node>
+						<node id="C25" label="Enfermedades Infecciosas"></node>
+						<node id="C26" label="Enfermería"></node>
+						<node id="C27" label="Epidemiología"></node>
+						<node id="C28" label="Ética Médica"></node>
+						<node id="C29" label="Gestión de Servicios del Cuidado de la Salud"></node>
+						<node id="C210" label="Medicina del Deporte"></node>
+						<node id="C211" label="Medicina Tropical"></node>
+						<node id="C212" label="Nutrición y Dietética"></node>
+						<node id="C213" label="Parasitología"></node>
+						<node id="C214" label="Políticas y Servicios de la Salud"></node>
+						<node id="C215" label="Salud Ocupacional"></node>
+						<node id="C216" label="Salud Pública y Ambiental"></node>
+					</isComposedBy>
+				</node>
+				<node id="C3" label="Ciencias Médicas y de la Salud (General)"></node>
+				<node id="C4" label="Medicina Básica">
+					<isComposedBy>
+						<node id="C41" label="Anatomía y Morfología"></node>
+						<node id="C42" label="Farmacología y Farmacia"></node>
+						<node id="C43" label="Fisiología"></node>
+						<node id="C44" label="Genética Humana"></node>
+						<node id="C45" label="Inmunología"></node>
+						<node id="C46" label="Medicina Básica (General)"></node>
+						<node id="C47" label="Neurociencias"></node>
+						<node id="C48" label="Patología"></node>
+						<node id="C49" label="Toxicología"></node>
+					</isComposedBy>
+				</node>
+				<node id="C5" label="Medicina Clínica">
+					<isComposedBy>
+						<node id="C51" label="Alergología"></node>
+						<node id="C52" label="Andrología"></node>
+						<node id="C53" label="Anestesiología y Medicina del Dolor"></node>
+						<node id="C54" label="Cardiología"></node>
+						<node id="C55" label="Cirugía"></node>
+						<node id="C56" label="Dermatología"></node>
+						<node id="C57" label="Endocrinología y Metabolismo"></node>
+						<node id="C58" label="Enfermedades de Transmisión Sexual"></node>
+						<node id="C59" label="Gastroenterología"></node>
+						<node id="C510" label="Geriatría y Gerontología"></node>
+						<node id="C511" label="Hematología"></node>
+						<node id="C512" label="Hepatología"></node>
+						<node id="C513" label="Kinesiología y Rehabilitación"></node>
+						<node id="C514" label="Medicina Clínica (General)"></node>
+						<node id="C515" label="Medicina de Cuidados Críticos y de Emergencia"></node>
+						<node id="C516" label="Medicina General e Interna"></node>
+						<node id="C517" label="Medicina Integral y Complementaria"></node>
+						<node id="C518" label="Medicina Nuclear"></node>
+						<node id="C519" label="Medicina Oral"></node>
+						<node id="C520" label="Neumología"></node>
+						<node id="C521" label="Neurología Clínica"></node>
+						<node id="C522" label="Obstetricia y Ginecología"></node>
+						<node id="C523" label="Oftalmología"></node>
+						<node id="C524" label="Oncología"></node>
+						<node id="C525" label="Ortopedia y Traumatología"></node>
+						<node id="C526" label="Otorrinolaringología"></node>
+						<node id="C527" label="Pediatría"></node>
+						<node id="C528" label="Psiquiatría"></node>
+						<node id="C528" label="Reumatología"></node>
+						<node id="C530" label="Transplantes"></node>
+						<node id="C531" label="Urología y Nefrología"></node>
+					</isComposedBy>
+				</node>			
+			</isComposedBy>
+		</node>
+		<node id="D" label="Ciencias Sociales">
+			<isComposedBy>
+				<node id="D1" label="Ciencias de la Educación">
+					<isComposedBy>
+						<node id="D11" label="Educación (General)"></node>
+						<node id="D12" label="Educación Especial"></node>
+						<node id="D13" label="Pedagogía y Didáctica"></node>
+					</isComposedBy>
+				</node>
+				<node id="D2" label="Ciencias Políticas">
+					<isComposedBy>
+						<node id="D21" label="Administración Pública"></node>
+						<node id="D22" label="Ciencias Políticas"></node>
+						<node id="D23" label="Relaciones Internacionales"></node>
+						<node id="D24" label="Teoría de las Organizaciones"></node>
+					</isComposedBy>
+				</node>
+				<node id="D3" label="Ciencias Sociales (general)">
+					<isComposedBy>
+						<node id="D31" label="Ciencia Militar"></node>
+						<node id="D32" label="Ciencias Sociales (general)"></node>
+					</isComposedBy>
+				</node>
+				<node id="D4" label="Comunicación y Medios">
+					<isComposedBy>
+						<node id="D41" label="Bibliotecología"></node>
+						<node id="D42" label="Ciencias de la Información (aspectos sociales)"></node>
+						<node id="D43" label="Medios y Comunicación Sociocultural"></node>
+						<node id="D44" label="Periodismo"></node>
+					</isComposedBy>
+				</node>
+				<node id="D5" label="Derecho">
+					<isComposedBy>
+						<node id="D51" label="Criminología y Penalidad"></node>
+						<node id="D52" label="Derecho (general)"></node>
+					</isComposedBy>
+				</node>
+				<node id="D6" label="Economía y Gestión">
+					<isComposedBy>
+						<node id="D61" label="Economía y Contabilidad"></node>
+						<node id="D62" label="Gestión y Administración"></node>
+					</isComposedBy>
+				</node>
+				<node id="D7" label="Geografía y Economía Social">
+					<isComposedBy>
+						<node id="D71" label="Ciencias Ambientales (aspecto social)"></node>
+						<node id="D72" label="Geografía (cultural y económica)"></node>
+						<node id="D73" label="Transporte (aspecto social)"></node>
+						<node id="D74" label="Turismo y Hospitalidad"></node>
+						<node id="D75" label="Urbanismo"></node>
+					</isComposedBy>
+				</node>
+				<node id="D8" label="Psicología"></node>
+				<node id="D9" label="Sociología">
+					<isComposedBy>
+						<node id="D91" label="Antropología y Etnología"></node>
+						<node id="D92" label="Demografía"></node>
+						<node id="D93" label="Estudios de Familia"></node>
+						<node id="D94" label="Estudios de Género y Sexualidad"></node>
+						<node id="D95" label="Estudios Laborales"></node>
+						<node id="D96" label="Gestión Cultural"></node>
+						<node id="D97" label="Sociología (general)"></node>
+						<node id="D98" label="Trabajo Social"></node>
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="E" label="Humanidades">
+			<isComposedBy>
+				<node id="E1" label="Arte">
+					<isComposedBy>
+						<node id="E11" label="Arquitectura"></node>
+						<node id="E12" label="Artes (general)"></node>
+						<node id="E13" label="Cinematografía"></node>
+						<node id="E14" label="Danza"></node>
+						<node id="E15" label="Escultura"></node>
+						<node id="E16" label="Estudios Culturales"></node>
+						<node id="E17" label="Historia del Arte"></node>
+						<node id="E18" label="Música"></node>
+						<node id="E19" label="Pintura"></node>
+						<node id="E110" label="Radio y Televisión"></node>
+						<node id="E111" label="Teatro y Dramaturgia"></node>
+						<node id="E112" label="Teoría y Crítica del Arte"></node>
+					</isComposedBy>
+				</node>
+				<node id="E2" label="Filosofía, Ética y Religión">
+					<isComposedBy>
+						<node id="E21" label="Estudios Religiosos"></node>
+						<node id="E22" label="Ética"></node>
+						<node id="E23" label="Filosofía"></node>
+						<node id="E24" label="Historia y Filosofía de la Ciencia"></node>
+					</isComposedBy>
+				</node>
+				<node id="E3" label="Historia y Arqueología">
+					<isComposedBy>
+						<node id="E31" label="Arqueología"></node>
+						<node id="E32" label="Historia"></node>
+					</isComposedBy>
+				</node>
+				<node id="E4" label="Humanidades (general)">
+					<isComposedBy>
+						<node id="E41" label="Estudios de Ocio y Recreación"></node>
+						<node id="E42" label="HUmanidades (general)"></node>
+					</isComposedBy>
+				</node>
+				<node id="E5" label="Lengua y Literatura">
+					<isComposedBy>
+						<node id="E51" label="Filología"></node>
+						<node id="E52" label="Idiomas Específicos"></node>
+						<node id="E53" label="Lengua y Literatura (general)"></node>
+						<node id="E54" label="Lingüística"></node>
+						<node id="E55" label="Literatura Específica"></node>
+						<node id="E56" label="Teoría y Ciencia Literaria"></node>
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="F" label="Ingeniería, Ciencia y Tecnología">
+			<isComposedBy>
+				<node id="F1" label="Biotecnología Ambiental">
+					<isComposedBy>
+						<node id="F11" label="Biorremediación"></node>
+						<node id="F12" label="Biotecnología Ambiental (general)"></node>
+						<node id="F13" label="Ética Relacionada con la Biotecnología Ambiental"></node>
+					</isComposedBy>
+				</node>
+				<node id="F2" label="Biotecnología Industrial">
+					<isComposedBy>
+						<node id="F21" label="Bioproductos"></node>
+						<node id="F22" label="Biotecnología Industrial (general)"></node>
+						<node id="F23" label="Teconologías de Bioprocesamiento"></node>
+					</isComposedBy>
+				</node>
+				<node id="F3" label="Ingeniería Ambiental">
+					<isComposedBy>
+						<node id="F31" label="Desarrollo Sustentable"></node>
+						<node id="F32" label="Ingeniería Ambiental (general)"></node>
+						<node id="F33" label="Ingeniería del Mar y el Océano"></node>
+						<node id="F34" label="Ingeniería Geológica, Geotécnica"></node>
+						<node id="F35" label="Minería y Procesamiento Mineral"></node>
+						<node id="F36" label="Petróleo y Derivados"></node>
+						<node id="F37" label="Sensores Remotos"></node>
+					</isComposedBy>
+				</node>
+				<node id="F4" label="Ingeniería Civil">
+					<isComposedBy>
+						<node id="F41" label="Ingeniería Civil (general)"></node>
+						<node id="F42" label="Ingeniería del Transporte"></node>
+					</isComposedBy>
+				</node>
+				<node id="F5" label="Ingeniería Eléctrica, Electrónica y de la Información">
+					<isComposedBy>
+						<node id="F51" label="Automatización y Sistemas de Control"></node>
+						<node id="F52" label="Hardware y Arquitectura de Computadores"></node>
+						<node id="F53" label="Ingeniería Eléctrica, Electrónica y de la Información (general)"></node>
+						<node id="F54" label="Ingeniería Eléctrica y Electrónica"></node>
+						<node id="F55" label="Ingeniería y Sistemas de Comunicación"></node>
+						<node id="F56" label="Robótica"></node>
+					</isComposedBy>
+				</node>
+				<node id="F6" label="Ingeniería Mecánica">
+					<isComposedBy>
+						<node id="F61" label="Fiabilidad"></node>
+						<node id="F62" label="Ingeniería Aeroespacial"></node>
+						<node id="F63" label="Ingeniería del Audio"></node>
+						<node id="F64" label="Ingeniería Mecánica"></node>
+						<node id="F65" label="Ingeniería Nuclear"></node>
+						<node id="F66" label="Termodinámica"></node>
+					</isComposedBy>
+				</node>
+				<node id="F7" label="Ingeniería Médica">
+					<isComposedBy>
+						<node id="F71" label="Ingeniería Médica"></node>
+						<node id="F72" label="Tecnología de Laboratorio Médico"></node>
+					</isComposedBy>
+				</node>
+				<node id="F8" label="Ingeniería Química">
+					<isComposedBy>
+						<node id="F81" label="Alimentos (ingeniería, ciencia y tecnología)"></node>
+						<node id="F82" label="Ingeniería Química"></node>
+						<node id="F83" label="Plantas y Productos Químicos"></node>
+					</isComposedBy>
+				</node>
+				<node id="F9" label="Ingeniería y Ciencia de los Materiales">
+					<isComposedBy>
+						<node id="F91" label="Cerámicas y Vidrios"></node>
+						<node id="F92" label="Cintas y Revestimientos"></node>
+						<node id="F93" label="Materiales (ingeniería, ciencia y tecnología)"></node>
+						<node id="F94" label="Materiales Compuestos"></node>
+						<node id="F95" label="Metales"></node>
+						<node id="F96" label="Papel y Madera"></node>
+						<node id="F97" label="Textiles"></node>
+					</isComposedBy>
+				</node>
+				<node id="F10" label="Ingenierías, Ciencia y Teconologías (general)"></node>
+				<node id="F11" label="Nanotecnología">
+					<isComposedBy>
+						<node id="F111" label="Nanomateriales"></node>
+						<node id="F112" label="Nanotecnología (general)"></node>
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+	</isComposedBy>
+</node>
