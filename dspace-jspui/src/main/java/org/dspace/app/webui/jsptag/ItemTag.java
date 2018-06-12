@@ -1000,7 +1000,11 @@ public class ItemTag extends TagSupport
                                                             }
             						}
             					}
-
+								
+								if (!(showRequestCopy && !AuthorizeManager
+											.authorizeActionBoolean(context,
+													bitstreams[k],
+													Constants.READ))) { 
             					out.print("<a class=\"btn btn-primary\" ");
             					out
                                     .print(bsLink
@@ -1009,6 +1013,7 @@ public class ItemTag extends TagSupport
                                                             pageContext,
                                                             "org.dspace.app.webui.jsptag.ItemTag.view")
                                             + "</a>");
+								}
             					
 								try {
 									if (showRequestCopy && !AuthorizeManager
