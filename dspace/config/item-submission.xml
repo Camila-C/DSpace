@@ -125,8 +125,20 @@
 	  <!-- *****************************  INVESTIGACION ***************************** -->
 	 <name-map collection-handle="20.500.12049/139" submission-name="traditional" /> 
 	 
-	 <!-- *****************************  INVESTIGACION ***************************** -->
+	 <!-- *****************************  AUTOARCHIVO / FORM GENÉRICO ***************************** -->
 	 <name-map collection-handle="123456789/542" submission-name="autoarchivo" /> 
+	  <name-map collection-handle="20.500.12049/811" submission-name="autoarchivo" /> 
+	 
+	 <!-- *****************************  DATOS PRIMARIOS ***************************** -->
+	 <!-- IIDYPCA -->
+	 	<!-- PUE -->
+	 		<!-- Acceso a Tierras -->
+				<name-map collection-handle="20.500.12049/776" submission-name="autoarchivo" /> <!-- actas -->
+	 			<name-map collection-handle="20.500.12049/777" submission-name="autoarchivo" /> <!-- imágenes -->
+	 			<name-map collection-handle="20.500.12049/773" submission-name="autoarchivo" /> <!-- mapas -->
+	 			<name-map collection-handle="20.500.12049/774" submission-name="autoarchivo" /> <!-- notas periodisticas -->
+	 			<name-map collection-handle="20.500.12049/775" submission-name="autoarchivo" /> <!-- politicas publicas y demandas -->
+	 			<name-map collection-handle="20.500.12049/783" submission-name="autoarchivo" /> <!-- registros en diferentes formatos -->
 	 
  </submission-map>
 
