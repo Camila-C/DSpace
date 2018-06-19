@@ -326,7 +326,7 @@
          <repeatable>true</repeatable>
          <label>Materias</label>
          <input-type>onebox</input-type>
-         <hint>Haga clic en "Palabras Clave" para selecionar la/s materia/s asociadas al elemento</hint>
+         <hint>Haga clic en "Seleccionar" para ingresar la/s materia/s asociadas al elemento</hint>
          <required></required>
 		 <vocabulary closed="true">disciplinas</vocabulary>
        </field>
