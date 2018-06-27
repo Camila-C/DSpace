@@ -3,7 +3,7 @@
 BEMINCYT - COBERTURA TEMÁTICA
 -->
 
-<node id="areas" label="">
+<node id="areas" label=".">
 	<isComposedBy>
 		<node id="A" label="Ciencias Agrarias">
 			<isComposedBy>
