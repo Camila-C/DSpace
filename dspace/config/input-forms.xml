@@ -848,19 +848,31 @@
 		 <vocabulary closed="true">disciplinas</vocabulary>
        </field>-->
 		   
-		<!-- COLABORADOR -->
+		<!-- DIRECTOR TESIS-->
 		 <field>
          <dc-schema>dc</dc-schema>
-         <dc-element>creator</dc-element>
+         <dc-element>contributor</dc-element>
+		 <dc-qualifier>advisor</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Director de tesis</label>
+         <input-type>name</input-type>
+         <hint>Ingrese el nombre del director de tesis.</hint>
+         <required>Debe registrar el director de tesis</required>
+       </field>
+		
+		<!-- COLABORADOR TESIS-->
+		<field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
 		 <dc-qualifier></dc-qualifier>
          <repeatable>true</repeatable>
-         <label>Colaborador</label>
+         <label>Colaboradores de tesis</label>
          <input-type>name</input-type>
-         <hint>Ingrese el/los nombre/s de colaborador/es del elemento. El director de tesis deberá registrarse de manera obligatoria, y debe estar en la primera instancia.</hint>
-         <required>Debe registrar al menos al director de tesis como colaborador</required>
+         <hint>Ingrese el/los nombre/s de colaborador/es del elemento. Por ejemplo, codirector/a.</hint>
+         <required></required>
        </field>
-     </page>
 
+	   </page>
      <page number="2">
 	 
 		<!-- PALABRAS CLAVE -->
@@ -2305,22 +2317,34 @@
          <required></required>
 		 </field>
 		
-		<!-- COLABORADOR TESIS-->
+		<!-- DIRECTOR TESIS-->
 		<!-- TODO: EVALUAR USO DE METADATO -->
 		 <field>
          <dc-schema>dc</dc-schema>
          <dc-element>contributor</dc-element>
 		 <dc-qualifier>advisor</dc-qualifier>
          <repeatable>true</repeatable>
-         <label>Director y colaboradores de tesis</label>
+         <label>Director de tesis</label>
 		<type-bind>Tesis</type-bind>
          <input-type>name</input-type>
-         <hint>Ingrese el/los nombre/s de colaborador/es del elemento. El director de tesis deberá registrarse de manera obligatoria, y debe estar en la primera instancia.</hint>
-         <required>Debe registrar al menos al director de tesis como colaborador</required>
+         <hint>Ingrese el nombre del director de tesis.</hint>
+         <required>Debe registrar el director de tesis</required>
+       </field>
+		
+		<!-- COLABORADOR TESIS-->
+		<field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
+		 <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Colaboradores de tesis</label>
+		<type-bind>Tesis</type-bind>
+         <input-type>name</input-type>
+         <hint>Ingrese el/los nombre/s de colaborador/es del elemento. Por ejemplo, codirector/a.</hint>
+         <required></required>
        </field>
 			 
-		<!-- COLABORADOR TRABAJO FINAL-->
-		<!-- TODO: EVALUAR USO DE METADATO -->
+		<!-- DIRECTOR TRABAJO FINAL-->
 		 <field>
          <dc-schema>dc</dc-schema>
          <dc-element>contributor</dc-element>
@@ -2329,9 +2353,22 @@
          <label>Director y colaboradores de trabajo final </label>
 		<type-bind>Trabajo final</type-bind>
          <input-type>name</input-type>
-         <hint>Ingrese el/los nombre/s de colaborador/es del elemento. El director de tesis deberá registrarse de manera obligatoria, y debe estar en la primera instancia.</hint>
+         <hint>Ingrese el/los nombre/s del director del trabajo.</hint>
          <required></required>
-       </field>			
+       </field>
+		
+		<!-- COLABORADOR TRABAJO FINAL-->
+		 <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
+		 <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Director y colaboradores de trabajo final </label>
+		<type-bind>Trabajo final</type-bind>
+         <input-type>name</input-type>
+         <hint>Ingrese el/los nombre/s de colaborador/es del trabajo. Por ejemplo, codirectores o tutores.</hint>
+         <required></required>
+       </field>
 	   
 	  <!-- REFERATO -->
 		<field>
