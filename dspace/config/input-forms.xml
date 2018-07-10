@@ -543,8 +543,8 @@
 	   <!-- EMISOR -->
        <field>
          <dc-schema>dc</dc-schema>
-         <dc-element>creator</dc-element>
-		 <dc-qualifier></dc-qualifier>
+         <dc-element>contributor</dc-element>
+		 <dc-qualifier>author</dc-qualifier>
          <repeatable>false</repeatable>
          <label>Emisor</label>
          <input-type value-pairs-name="emisores">dropdown</input-type>
