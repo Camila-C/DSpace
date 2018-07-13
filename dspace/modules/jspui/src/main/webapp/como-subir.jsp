@@ -25,15 +25,32 @@
 </h4>
 <br>
 <p>
-	Para poder subir un documento al RID-UNRN, en primer lugar, deber&aacute;
+	Para poder subir un documento al RID-UNRN, deber&aacute;
 	tratarse de un documento que haya pasado por una instancia de
 	evaluaci&oacute;n por parte de la Universidad.
 </p>
 <p>
-	En segundo lugar, se deber&aacute; acudir a las Ventanillas Permanentes (VP),
-	es decir, las oficinas de recepci&oacute;n de los resultados de
+	Existen dos formas de depositar un documento. Estas son a trav&eacute;s de <strong>Autoarchivo</strong> y mediante <strong>Ventanilla Permanente</strong>.
+</p>	
+	<br>
+	<h5>
+	<strong>Autoarchivo</strong>
+	</h5>
+	
+</p>
+	Para depositar mediante Autoarchivo, deber&aacute; <a href="http://rid.unrn.edu.ar/jspui/register">crear una cuenta de usuario de RID-UNRN</a>. Una vez creada la cuenta, deber&aacute; <a href="http://rid.unrn.edu.ar/jspui/password-login">iniciar sesi&oacute;n</a> nuevamente desde "Mi DSpace". All&iacute; hacer clic en el bot&oacute;n "Comenzar un nuevo env&iacute;o" para enviar su documento. Una vez subido, el mismo atravesar&aacute; un proceso de curadur&iacute;a, luego del cual se le notificar&aacute; la puesta en acceso del documento, o, si fuera necesario, la solicitud de correcci&oacute;n de datos cargados.<br>
+	Para ver un tutorial detallado de este proceso, haga clic <a href="<%= request.getContextPath() %>/instructivo-autoarchivo.pdf">aqu&iacute;</a>.
+
+<p>
+<br>
+
+	<h5>
+	<strong>Ventanilla Permanente</strong>
+	</h5>
+<p>	
+	Las Ventanillas Permanentes (VP) son las oficinas de recepci&oacute;n de los resultados de
 	investigaci&oacute;n, docencia y creaci&oacute;n art&iacute;stica generados por
-	la comunidad de la Universidad. Funcionan como VP las siguientes oficinas:
+	la comunidad de la Universidad. Puede acudir a una VP para presentar su producci&oacute;n. Funcionan como VP las siguientes oficinas:
 </p>
 <ul>
 	<li>
