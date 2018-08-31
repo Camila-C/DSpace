@@ -2694,16 +2694,32 @@
        <stored-value>Asamblea (Z)</stored-value>
      </pair>
      <pair>
-       <displayed-value>Consejo de Docencia, Extensión y Vida Estudiantil (D)</displayed-value>
+       <displayed-value>Consejo Superior de Docencia, Extensión y Vida Estudiantil (D) (2018-actualidad)</displayed-value>
+       <stored-value>Consejo Superior de Docencia, Extensión y Vida Estudiantil (D)</stored-value>
+     </pair>
+	   <pair>
+       <displayed-value>Consejo de Docencia, Extensión y Vida Estudiantil (D) (2011-2017)</displayed-value>
        <stored-value>Consejo de Docencia, Extensión y Vida Estudiantil (D)</stored-value>
      </pair>
 	 <pair>
-       <displayed-value>Consejo de Programación y Gestión Estratégica (P)</displayed-value>
+       <displayed-value>Consejo Superior de Programación y Gestión Estratégica (P) (2018-actualidad)</displayed-value>
+       <stored-value>Consejo Superior de Programación y Gestión Estratégica (P)</stored-value>
+     </pair>
+	   <pair>
+       <displayed-value>Consejo de Programación y Gestión Estratégica (P) (2011-2017)</displayed-value>
        <stored-value>Consejo de Programación y Gestión Estratégica (P)</stored-value>
      </pair>
 	 <pair>
-       <displayed-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia Tecnología (I)</displayed-value>
+       <displayed-value>Consejo Superior de Investigación, Creación Artística, Desarrollo y Transferencia Tecnología (I) (2018-actualidad)</displayed-value>
+       <stored-value>Consejo Superior de Investigación, Creación Artística, Desarrollo y Transferencia Tecnología (I)</stored-value>
+     </pair>
+	   <pair>
+       <displayed-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia Tecnología (I) (2014-2017)</displayed-value>
        <stored-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia Tecnología (I)</stored-value>
+     </pair>
+	   <pair>
+       <displayed-value>Consejo de Investigación, Desarrollo y Transferencia Tecnología (I) (2011-2013)</displayed-value>
+       <stored-value>Consejo de Investigación, Desarrollo y Transferencia Tecnología (I)</stored-value>
      </pair>
 	 <pair>
        <displayed-value>Sede Atlántica (A)</displayed-value>
