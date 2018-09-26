@@ -49,6 +49,8 @@
                                 <a href="<%= request.getContextPath() %>/htmlmap"></a></p>
                                 </div> --%>
                                 <center>
+									<p class="text-muted"> 
+										<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /	>										</a>A menos que se indique lo contrario, todas las obras difundidas en RID-UNRN tienen una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">licencia de Creative Commons Reconocimiento 4.0 Internacional</a>.
                                 <p class="text-muted"> RID-UNRN | Universidad Nacional de Río Negro
                                 <p class="text-muted"> Departamento de Biblioteca Electrónica, Repositorio y Contenidos Digitales
                                 <p class="text-muted"> Teléfono: +54 (02920) 442006 | <a href="mailto:rid@unrn.edu.ar" class="link_p">rid@unrn.edu.ar</a>
