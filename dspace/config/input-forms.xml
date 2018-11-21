@@ -146,6 +146,17 @@
 		 Puede ignorar los campos de día y/o mes si no son aplicables.</hint>
          <required>Debe ingresar al menos el año de emisión</required>
        </field>	
+		 
+		 <!-- FIRMA DIGITAL -->
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>description</dc-element>
+		 <dc-qualifier></dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Firmado digitalmente</label>
+         <input-type value-pairs-name="boolean">dropdown</input-type>
+         <hint>Indique si el documento contiene firma digital</hint>
+       </field>
 	   
 	   <!-- EXPEDIENTE -->
 		<field>

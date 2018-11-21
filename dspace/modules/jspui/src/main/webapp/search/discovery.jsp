@@ -158,7 +158,7 @@
 
 <dspace:layout titlekey="jsp.search.title">
 
-
+<a href="<%= request.getContextPath() %>/como-buscar.jsp"><strong> > Para optimizar la búsqueda, ver tutorial de estrategias de b&uacute;squeda</strong></a>
 <% 
 
 DiscoverResult qResults = (DiscoverResult)request.getAttribute("queryresults");

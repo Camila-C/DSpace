@@ -123,7 +123,8 @@
              <ul class="dropdown-menu">
              		<li><a href="<%= request.getContextPath() %>/que-es.jsp">&iquest;Qu&eacute; es el RID-UNRN?</a></li>
              		<li><a href="<%= request.getContextPath() %>/comunidades-colecciones.jsp">&iquest;C&oacute;mo est&aacute; organizado?</a></li>
-			 <li><a href="<%= request.getContextPath() %>/como-subir.jsp">&iquest;C&oacute;mo subir un documento?</a></li>
+				 	<li><a href="<%= request.getContextPath() %>/como-buscar.jsp">&iquest;C&oacute;mo buscar en el RID-UNRN?</a></li>
+			 		<li><a href="<%= request.getContextPath() %>/como-subir.jsp">&iquest;C&oacute;mo subir un documento?</a></li>
             </ul>
           </li>
           
