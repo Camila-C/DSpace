@@ -151,7 +151,7 @@
        <field>
          <dc-schema>dc</dc-schema>
          <dc-element>description</dc-element>
-		 <dc-qualifier></dc-qualifier>
+		 <dc-qualifier>firmaDigital</dc-qualifier>
          <repeatable>false</repeatable>
          <label>Firmado digitalmente</label>
          <input-type value-pairs-name="boolean">dropdown</input-type>
@@ -194,7 +194,7 @@
          <required></required>
        </field>	
 
-		<!-- ACCIONES: DEROGAR, ABROGAR, SUSTITUIR -->
+		<!-- ACCIONES: DEROGAR, ABROGAR, SUSTITUIR, INCORPORAR -->
 		<field>
          <dc-schema>dc</dc-schema>
          <dc-element>relation</dc-element>
@@ -260,8 +260,29 @@
          <hint>Indicar el enlace permanente de la(s) normativa(s) que sustituye(n) a la presente.</hint>
          <required></required>
        </field>	
-	 </page> 
-	 
+		
+		<field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>relation</dc-element>
+         <dc-qualifier>incorpora</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Incorpora a </label>
+         <input-type>onebox</input-type>
+         <hint>Indicar el enlace permanente de la(s) normativa(s) ampliada(s) por la presente.</hint>
+         <required></required>
+       </field>	
+	   
+	   <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>relation</dc-element>
+         <dc-qualifier>incorporadapor</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Es incorporada por </label>
+         <input-type>onebox</input-type>
+         <hint>Indicar el enlace permanente de la(s) normativa(s) que amplía(n) a la presente.</hint>
+         <required></required>
+       </field>	
+	 </page>
    </form>
    
 <!-- ***************************************FORMULARIO DEFAULT POR TIPOLOGÍA DOCUMENTAL ***************************************   -->
@@ -1009,7 +1030,7 @@
      </pair>
  </value-pairs>
  
-  <value-pairs value-pairs-name="boolean" dc-term="">
+  <value-pairs value-pairs-name="boolean" dc-term="">	  
 	<pair>
        <displayed-value>SI</displayed-value>
        <stored-value>true</stored-value>

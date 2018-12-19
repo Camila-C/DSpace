@@ -14,6 +14,19 @@
                xmlns="http://www.lyncode.com/XOAIConfiguration">
 
     <Contexts>
+		
+		<Context baseurl="snrd" name="srnd context">
+    	  <!--  <Transformer ref="snrdTransformer"/>
+    		<Filter ref="snrdFilter"/> 
+    		<Set ref="snrdSet"/>
+    		<Format ref="oaidc"/>
+    		<Format ref="xoai"/> -->
+    		
+    		<Description>
+    			This context complies with SNRD rules.
+    		</Description>
+    	</Context>
+		
         <Context baseurl="request" name="Default Context">
             <!-- Restrict access to hidden items by default -->
             <Filter ref="defaultFilter" />
@@ -179,7 +192,21 @@
     </Transformers>
 
 
-    <Filters>
+     <Filters>
+    
+    	<Filter id="snrdFilter">
+    		<Definition>
+    			<And>
+    				<LeftCondition>
+						<Custom ref="snrdDocumentsubtypeFilter"/>
+    				</LeftCondition>
+    				<RightCondition>
+						<Custom ref="itemAccessCondition"/>
+    				</RightCondition>
+    			</And>
+    		</Definition>
+    	</Filter>
+		
         <!-- DRIVER filter for records returned by OAI-PMH.
              By default, return an Item record:
                * If a Title & Author field both exist
@@ -309,7 +336,7 @@
                 </Or>
             </Definition>
         </Filter>
-
+	
         <!-- This condition determines if an Item has a "dc.type" field
              which contains "Thesis". -->
         <CustomCondition id="thesisDocumentTypeCondition">
@@ -403,8 +430,41 @@
                 <string name="value">info:eu-repo/grantAgreement/EC/FP</string>
             </Configuration>
         </CustomCondition>
-    </Filters>
-
+		 
+		 <CustomCondition id="snrdDocumentsubtypeFilter">
+			<Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+			<Configuration>
+				<string name="field">dc.type</string>
+				<string name="operator">equal</string>
+				<list name="values">
+					<string>Articulo</string>
+					<string>Tesis</string>
+					<string>Tesis de doctorado</string>
+					<string>Tesis de maestria</string>
+					<string>Tesis de grado</string>
+					<string>Trabajo final</string>
+					<string>Trabajo final de grado</string>
+					<string>Trabajo final de pregrado</string>
+					<string>Trabajo final de posgrado</string>
+					<string>Libro</string>
+					<string>Parte de libro</string>	
+					<string>Objeto de conferencia</string>
+					<string>Acta</string>
+					<string>Resumen</string>
+					<string>Documento de ponencia</string>
+					<string>Presentacion de ponencia</string>
+					<string>Audio de ponencia</string>
+					<string>Video de ponencia</string>
+					<string>Poster de ponencia</string>
+					<string>Patente</string>
+					<string>Documento de trabajo</string>
+					<string>Informe tecnico</string>
+					<string>Datos primarios</string>
+					<string>Otro</string>
+				</list>
+			</Configuration>			
+		</CustomCondition>
+	</Filters>
     <Sets>
         <Set id="driverSet">
             <Spec>driver</Spec>
@@ -414,6 +474,11 @@
         <Set id="openaireSet">
             <Spec>ec_fundedresources</Spec>
             <Name>EC_fundedresources set</Name>
+            <!-- Just an alias -->
+        </Set>
+		<Set id="snrdSet">
+            <Spec>snrd</Spec>
+            <Name>Sistema Nacional de Repositorios Digitales</Name>
             <!-- Just an alias -->
         </Set>
     </Sets>
