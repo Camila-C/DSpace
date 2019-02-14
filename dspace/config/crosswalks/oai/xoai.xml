@@ -15,9 +15,9 @@
 
     <Contexts>
 		
-		<Context baseurl="snrd" name="srnd context">
-    	  <!--  <Transformer ref="snrdTransformer"/>
-    		<Filter ref="snrdFilter"/> -->
+		<Context baseurl="snrd" name="snrd context">
+    	  	<Transformer ref="snrdTransformer"/>
+    		<Filter ref="snrdFilter"/> 
     		<Set ref="snrdSet"/>
     		<Format ref="oaidc"/>
     		<Format ref="xoai"/> 

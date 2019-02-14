@@ -88,8 +88,8 @@
 	<!--  Removing dc.description.provenance --> 
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='provenance']" />
 	
-	<!--  Removing cic.isPeerReviewed --> 
-	<xsl:template match="/doc:metadata/doc:element[@name='cic']/doc:element[@name='isPeerReviewed']" />
+	<!--  Removing cic.isPeerReviewed  
+	<xsl:template match="/doc:metadata/doc:element[@name='cic']/doc:element[@name='isPeerReviewed']" />-->
 	
 	<!-- Formatting language to ISO 639-3--> 
 	<xsl:template  match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='language']/doc:element/doc:field[@name='value']/text()">	
