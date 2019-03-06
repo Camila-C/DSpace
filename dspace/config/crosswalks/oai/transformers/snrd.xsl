@@ -92,7 +92,7 @@
 	<xsl:template match="/doc:metadata/doc:element[@name='cic']/doc:element[@name='isPeerReviewed']" />-->
 	
 	<!-- Formatting language to ISO 639-3--> 
-	<xsl:template  match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='language']/doc:element/doc:field[@name='value']/text()">	
+	<xsl:template  match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='language']/doc:element[@name='iso']/doc:field[@name='value']/text()">	
 		<xsl:call-template name="snrd-language">
 			<xsl:with-param name="value" select="."/>
 		</xsl:call-template> 
@@ -102,9 +102,9 @@
 	<!-- Removing unwanted -->
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:element" />
 	<!-- Replacing -->
-<!-- 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:field/text()"> -->
-<!-- 		<xsl:text>info:eu-repo/semantics/openAccess</xsl:text> -->
-<!-- 	</xsl:template> -->
+ 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:field/text()"> 
+ 		<xsl:text>info:eu-repo/semantics/openAccess</xsl:text> 
+ 	</xsl:template> 
 	
 
 

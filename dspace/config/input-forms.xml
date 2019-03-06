@@ -382,7 +382,7 @@
 	</page>
 	<page number ="2">
 
-		<!-- TIPOS DOCUMENTALES: Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Datos primarios, Otro -->
+		<!-- TIPOS DOCUMENTALES: Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Datos primarios, Material educativo, Otro -->
 		
 		<!-- SUBTIPO TESIS -->
 		 <field>
@@ -421,6 +421,19 @@
 			 <type-bind>Objeto de conferencia</type-bind>
 			 <hint>Seleccione el tipo de objeto de conferencia a cargar</hint>
 			 <required>Por favor seleccione el tipo de objeto de conferencia</required>
+       	</field>	
+		
+		<!-- SUBTIPO MATERIAL EDUCATIVO -->
+		 <field>
+			 <dc-schema>dc</dc-schema>
+			 <dc-element>type</dc-element>
+			 <dc-qualifier>subtype</dc-qualifier>
+			 <repeatable>false</repeatable>
+			 <label>Tipo de material educativo</label>
+			 <input-type value-pairs-name="tipos_material_educativo">dropdown</input-type>
+			 <type-bind>Material educativo</type-bind>
+			 <hint>Seleccione el tipo de material educativo a a cargar</hint>
+			 <required>Por favor seleccione el tipo de material educativo</required>
        	</field>	
 			 
 		<!-- REVISTA -->
@@ -600,7 +613,7 @@
          <dc-qualifier>uri</dc-qualifier>
          <repeatable>true</repeatable>
          <label>Localización electrónica</label>
-		 <type-bind>Objeto de conferencia, Otro, Documento de trabajo, Informe tecnico</type-bind>
+		 <type-bind>Objeto de conferencia, Otro, Documento de trabajo, Informe tecnico, Material educativo</type-bind>
          <input-type>onebox</input-type>
 		 <hint>Dirección donde se encuentra disponible el recurso (opcional). Puede ser un sitio web, repositorio, revista, etc.</hint>
          <required></required>
@@ -824,7 +837,7 @@
          <dc-qualifier></dc-qualifier>
          <repeatable>false</repeatable>
          <label>Notas</label>
-		<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Otro</type-bind>
+		<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Material educativo, Otro</type-bind>
          <input-type>textarea</input-type>
          <hint>Ingrese toda otra aclaración que resulte pertinente para la mejor catalogación y recuperación de la obra. En este campo se puede indicar, por ejemplo, si la fecha de publicación indicada es aproximada, si el documento no fue publicado aún y está en etapa de revisión o pre-publicación, etc.
 .</hint>
@@ -864,7 +877,7 @@
          <repeatable>false</repeatable>
          <label>Condiciones de uso</label>
          <input-type value-pairs-name="licencia">dropdown</input-type>
-         <hint>Licencia del elemento. El RID-UNRN utilizará por defecto para todos sus contenidos la  Licencia Creative Commons Atribución-No Comercial-Sin Derivadas 2.5 Argentina (CC BY NC ND 2.5 AR), aunque los autores podrán elegir a los fines del acceso por parte de terceros otra modalidad de licencia. </hint>
+         <hint>Licencia del elemento. El RID-UNRN utilizará por defecto para todos sus contenidos la  Licencia Creative Commons Atribución-No Comercial-Sin Derivadas 4.0 Internacional (CC BY-NC-SA 4.0 Internacional), aunque los autores podrán elegir a los fines del acceso por parte de terceros otra modalidad de licencia. </hint>
        </field>
 	 
 	 </page>
@@ -933,6 +946,10 @@
 	<pair>
        <displayed-value>Datos Primarios</displayed-value>
        <stored-value>Datos primarios</stored-value>
+     </pair>
+	<pair>
+       <displayed-value>Material Educativo</displayed-value>
+       <stored-value>Material educativo</stored-value>
      </pair>
      <pair>
        <displayed-value>Otro</displayed-value>
@@ -1010,6 +1027,45 @@
      <pair>
        <displayed-value>Póster</displayed-value>
        <stored-value>Poster</stored-value>
+     </pair>
+	<pair>
+       <displayed-value>Otro</displayed-value>
+       <stored-value>Otro</stored-value>
+     </pair>
+</value-pairs>
+	 
+<value-pairs value-pairs-name="tipos_material_educativo" dc-term="subtype">
+	<pair>
+       <displayed-value>- Seleccione un subtipo -</displayed-value> 
+       <stored-value></stored-value>
+     </pair>
+	<pair>
+       <displayed-value>Apunte</displayed-value> 
+       <stored-value>Apunte</stored-value>
+     </pair>
+	<pair>
+       <displayed-value>Actividad o Trabajo Práctico</displayed-value> 
+       <stored-value>Actividad</stored-value>
+     </pair>
+	<pair>
+       <displayed-value>Programa de Materia</displayed-value> 
+       <stored-value>Programa</stored-value>
+     </pair>
+	 <pair>
+       <displayed-value>Multimedia</displayed-value> 
+       <stored-value>Multimedia</stored-value>
+     </pair>
+	<pair>
+       <displayed-value>Unidad de contenidos</displayed-value>
+       <stored-value>Unidad de contenidos</stored-value>
+     </pair>
+	<pair>
+       <displayed-value>Módulo o Clase</displayed-value> 
+       <stored-value>Modulo o clase</stored-value>
+     </pair>  
+     <pair>
+       <displayed-value>Producción de Estudiantes</displayed-value>
+       <stored-value>Produccion de estudiantes</stored-value>
      </pair>
 	<pair>
        <displayed-value>Otro</displayed-value>
@@ -1145,29 +1201,29 @@
    </value-pairs>
 	
    <value-pairs value-pairs-name="licencia" dc-term="rights">
-     <pair>
-       <displayed-value>CC BY 2.5 AR</displayed-value>
-       <stored-value>https://creativecommons.org/licenses/by/2.5/ar/</stored-value>
+	 <pair>
+       <displayed-value>CC BY-NC-SA 4.0 Internacional</displayed-value>
+       <stored-value>https://creativecommons.org/licenses/by-nc-sa/4.0/</stored-value>
      </pair>
      <pair>
-       <displayed-value>CC BY-SA 2.5 AR</displayed-value>
-       <stored-value>https://creativecommons.org/licenses/by-sa/2.5/ar/</stored-value>
+       <displayed-value>CC BY 4.0 Internacional</displayed-value>
+       <stored-value>https://creativecommons.org/licenses/by/4.0/</stored-value>
      </pair>
      <pair>
-       <displayed-value>CC BY-ND 2.5 AR</displayed-value>
-       <stored-value>https://creativecommons.org/licenses/by-nd/2.5/ar/</stored-value>
+       <displayed-value>CC BY-SA 4.0 Internacional</displayed-value>
+       <stored-value>https://creativecommons.org/licenses/by-sa/4.0/</stored-value>
      </pair>
      <pair>
-       <displayed-value>CC BY-NC 2.5 AR</displayed-value>
-       <stored-value>https://creativecommons.org/licenses/by-nc/2.5/ar/</stored-value>
+       <displayed-value>CC BY-ND 4.0 Internacional</displayed-value>
+       <stored-value>https://creativecommons.org/licenses/by-nd/4.0/</stored-value>
      </pair>
      <pair>
-       <displayed-value>CC BY-NC-SA 2.5 AR</displayed-value>
-       <stored-value>https://creativecommons.org/licenses/by-nc-sa/2.5/ar/</stored-value>
+       <displayed-value>CC BY-NC 4.0 Internacional</displayed-value>
+       <stored-value>https://creativecommons.org/licenses/by-nc/4.0/</stored-value>
      </pair>
      <pair>
-       <displayed-value>CC BY-NC-ND 2.5 AR</displayed-value>
-       <stored-value>https://creativecommons.org/licenses/by-nc-nd/2.5/ar/</stored-value>
+       <displayed-value>CC BY-NC-ND 4.0 Internacional</displayed-value>
+       <stored-value>https://creativecommons.org/licenses/by-nc-nd/4.0/</stored-value>
      </pair>
    </value-pairs>   
 	   
