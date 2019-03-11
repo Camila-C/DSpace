@@ -189,6 +189,9 @@
         <Transformer id="openaireTransformer">
             <XSLT>transformers/openaire.xsl</XSLT>
         </Transformer>
+        <Transformer id="snrdTransformer">
+            <XSLT>transformers/snrd.xsl</XSLT>
+        </Transformer>
     </Transformers>
 
 
