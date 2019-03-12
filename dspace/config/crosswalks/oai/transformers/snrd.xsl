@@ -28,7 +28,7 @@
 		<xsl:call-template name="type-snrd">
 			<xsl:with-param name="theValue" select="$type"/>
 		</xsl:call-template>
-		<xsl:variable name="version" select="../../doc:element[@name='cic']/doc:element[@name='version']/doc:element/doc:field/text()"/>
+		<xsl:variable name="version" select="./doc:element[@name='version']/doc:element/doc:field/text()"/>
 		<xsl:call-template name="type-driver-version">
 			<xsl:with-param name="theValue" select="$version"/>
 		</xsl:call-template>
