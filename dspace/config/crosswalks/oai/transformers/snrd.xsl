@@ -44,7 +44,8 @@
 	<!-- Removing dc.date.available -->
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='available']/doc:field/text()"/> 
 		
-	<!-- Formatting dc.identifier.uri--> 
+	<!-- Formatting dc.identifier.uri-->
+	<!--
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='uri']/doc:element/doc:field[@name='value']/text()">
 		<xsl:variable name="handle" select="/doc:metadata/doc:element[@name='others']/doc:field[@name='handle']"/>
 		<xsl:choose>
@@ -56,6 +57,7 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+	-->
 	
 	<!-- Formatting dc.identifier.isbn --> 			
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='isbn']/doc:field/text()">
@@ -112,7 +114,6 @@
 	
 	<xsl:template name="type-driver-version">
 		<xsl:param name="theValue" />
-		
 		<xsl:variable name="finalValue">
 			<xsl:choose>
 				<xsl:when test="$theValue='info:eu-repo/semantics/submittedVersion'">
@@ -138,62 +139,52 @@
 		<xsl:param name="theValue" />
 		<xsl:variable name="finalValue">
 			<xsl:choose>
-				<xsl:when test="$theValue ='Articulo'">
+				<xsl:when test="$theValue = 'Articulo'">
 					article
 				</xsl:when>
-				<xsl:when test="$theValue ='Artículo'">
-					article
-				</xsl:when>
-				<xsl:when test="$theValue ='Tesis de doctorado'">
+				<xsl:when test="$theValue = 'Tesis de doctorado'">
 					doctoralThesis
 				</xsl:when>
-				<xsl:when test="$theValue ='Tesis de maestria'">
+				<xsl:when test="$theValue = 'Tesis de maestria'">
 					masterThesis
 				</xsl:when>
-				<xsl:when test="$theValue ='Tesis de maestría'">
+				<xsl:when test="$theValue = 'Trabajo final de posgrado'">
 					masterThesis
 				</xsl:when>
-				<xsl:when test="$theValue ='Trabajo final de posgrado'">
-					masterThesis
-				</xsl:when>
-				<xsl:when test="$theValue='Tesis de grado'">
+				<xsl:when test="$theValue = 'Tesis de grado'">
 					bachelorThesis
 				</xsl:when>
-				<xsl:when test="$theValue='Trabajo final de Grado'">
+				<xsl:when test="$theValue = 'Trabajo final de grado'">
 					bachelorThesis
 				</xsl:when>
-				<xsl:when test="$theValue='Trabajo final de grado'">
-					bachelorThesis
-				</xsl:when>
-				<xsl:when test="$theValue ='Libro'">
+				<xsl:when test="$theValue = 'Libro'">
 					book
 				</xsl:when>
 				<xsl:when test="$theValue = 'Parte de libro'">
 					bookPart
 				</xsl:when>
-				<xsl:when test="$theValue ='Objeto de conferencia'">
+				<xsl:when test="$theValue = 'Objeto de conferencia'">
 					conferenceObject
 				</xsl:when>
-				<xsl:when test="$theValue='Patente'">
+				<xsl:when test="$theValue = 'Patente'">
 					patent
 				</xsl:when>
-				<xsl:when test="$theValue ='Documento de trabajo'">
+				<xsl:when test="$theValue = 'Documento de trabajo'">
 					workingPaper
 				</xsl:when>
-				<xsl:when test="$theValue='Informe tecnico'">
+				<xsl:when test="$theValue = 'Informe tecnico'">
 					report
 				</xsl:when>
-				<xsl:when test="$theValue='Informe técnico'">
-					report
-				</xsl:when>
-				<xsl:when test="$theValue ='Datos primarios'">
+				<xsl:when test="$theValue = 'Datos primarios'">
 					other
 				</xsl:when>	
 			</xsl:choose>
 		</xsl:variable>
+		<!-- Prefijo añadido desde las Directrices SNRD v.2015 -->
+		<xsl:variable name="openaireTypePrefix">info:eu-repo/semantics/</xsl:variable>
 		<doc:element name="type">
 			<doc:element name='driver'>
-				<doc:field name="value"><xsl:value-of select="normalize-space($finalValue)"/></doc:field>							
+				<doc:field name="value"><xsl:value-of select="concat($openaireTypePrefix, normalize-space($finalValue))"/></doc:field>						
 			</doc:element>
 		</doc:element>
 	</xsl:template>
@@ -204,62 +195,52 @@
 		
 		<xsl:variable name="finalValue">
 			<xsl:choose>
-				<xsl:when test="$theValue='Articulo'">
+				<xsl:when test="$theValue = 'Articulo'">
 					artículo
 				</xsl:when>
-				<xsl:when test="$theValue='Artículo'">
-					artículo
-				</xsl:when>				
-				<xsl:when test="$theValue='Tesis de doctorado'">
+				<xsl:when test="$theValue = 'Tesis de doctorado'">
 					tesis doctoral
 				</xsl:when>
-				<xsl:when test="$theValue='Tesis de maestria'">
+				<xsl:when test="$theValue = 'Tesis de maestria'">
 					tesis de maestría
-				</xsl:when>
-				<xsl:when test="$theValue='Tesis de maestría'">
-					tesis de maestría
-				</xsl:when>				
-				<xsl:when test="$theValue='Trabajo final de posgrado'">
+				</xsl:when>		
+				<xsl:when test="$theValue = 'Trabajo final de posgrado'">
 					tesis
 				</xsl:when>
-				<xsl:when test="$theValue='Tesis de grado'">
+				<xsl:when test="$theValue = 'Tesis de grado'">
 					tesis de grado
 				</xsl:when>
-				<xsl:when test="$theValue='Trabajo final de Grado'">
+				<xsl:when test="$theValue = 'Trabajo final de grado'">
 					trabajo final de grado
 				</xsl:when>
-				<xsl:when test="$theValue='Trabajo final de grado'">
-					trabajo final de grado
-				</xsl:when>
-				<xsl:when test="$theValue='Libro'">
+				<xsl:when test="$theValue = 'Libro'">
 					libro
 				</xsl:when>
-				<xsl:when test="$theValue='Parte de libro'">
+				<xsl:when test="$theValue = 'Parte de libro'">
 					parte de libro
 				</xsl:when>
-				<xsl:when test="$theValue='Objeto de conferencia'">
+				<xsl:when test="$theValue = 'Objeto de conferencia'">
 					documento de conferencia
 				</xsl:when>
-				<xsl:when test="$theValue='Patente'">
+				<xsl:when test="$theValue = 'Patente'">
 					patente
 				</xsl:when>
-				<xsl:when test="$theValue='Documento de trabajo'">
+				<xsl:when test="$theValue = 'Documento de trabajo'">
 					documento de trabajo
 				</xsl:when>
-				<xsl:when test="$theValue='Informe técnico'">
+				<xsl:when test="$theValue = 'Informe tecnico'">
 					informe técnico
 				</xsl:when>
-				<xsl:when test="$theValue='Informe tecnico'">
-					informe técnico
-				</xsl:when>
-				<xsl:when test="$theValue='Datos primarios'">
+				<xsl:when test="$theValue = 'Datos primarios'">
 					conjunto de datos
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
+		<!-- Prefijo añadido desde las Directrices SNRD v.2015 -->
+		<xsl:variable name="snrdTypePrefix">info:ar-repo/semantics/</xsl:variable>
 		<doc:element name="type">
 			<doc:element name='snrd'>
-				<doc:field name="value"><xsl:value-of select="normalize-space($finalValue)"/></doc:field>
+				<doc:field name="value"><xsl:value-of select="concat($snrdTypePrefix, normalize-space($finalValue))"/></doc:field>
 			</doc:element>
 		</doc:element>
 	</xsl:template>
