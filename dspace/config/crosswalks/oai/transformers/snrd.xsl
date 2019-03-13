@@ -28,7 +28,7 @@
 		<xsl:call-template name="type-snrd">
 			<xsl:with-param name="theValue" select="$type"/>
 		</xsl:call-template>
-		<xsl:variable name="version" select="./doc:element[@name='version']/doc:element/doc:field/text()"/>
+		<xsl:variable name="version" select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='version']/doc:element/doc:field/text()"/>
 		<xsl:call-template name="type-driver-version">
 			<xsl:with-param name="theValue" select="$version"/>
 		</xsl:call-template>
@@ -44,21 +44,6 @@
 	<!-- Removing dc.date.available -->
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='available']/doc:field/text()"/> 
 		
-	<!-- Formatting dc.identifier.uri-->
-	<!--
-	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='uri']/doc:element/doc:field[@name='value']/text()">
-		<xsl:variable name="handle" select="/doc:metadata/doc:element[@name='others']/doc:field[@name='handle']"/>
-		<xsl:choose>
-			<xsl:when test="not(contains(.,'http://digital.cic.gba.gob.ar/'))">
-				<xsl:value-of select="concat(.,$handle)"/>	
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="."/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:template>
-	-->
-	
 	<!-- Formatting dc.identifier.isbn --> 			
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='isbn']/doc:field/text()">
 		<xsl:call-template name="addPrefix">
@@ -116,10 +101,10 @@
 		<xsl:param name="theValue" />
 		<xsl:variable name="finalValue">
 			<xsl:choose>
-				<xsl:when test="$theValue='info:eu-repo/semantics/submittedVersion'">
+				<xsl:when test="$theValue = 'info:eu-repo/semantics/submittedVersion'">
 					info:eu-repo/semantics/submittedVersion
 				</xsl:when>
-				<xsl:when test="$theValue='info:eu-repo/semantics/acceptedVersion'">
+				<xsl:when test="$theValue = 'info:eu-repo/semantics/acceptedVersion'">
 					info:eu-repo/semantics/acceptedVersion
 				</xsl:when>
 				<xsl:otherwise>
