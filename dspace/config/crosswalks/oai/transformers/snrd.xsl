@@ -28,7 +28,7 @@
 		<xsl:call-template name="type-snrd">
 			<xsl:with-param name="theValue" select="$type"/>
 		</xsl:call-template>
-		<xsl:variable name="version" select="../../doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='version']/doc:element/doc:field[@name='value']/text()"/>
+		<xsl:variable name="version" select="../../doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='version']/doc:element/doc:field/text()"/>
 		<xsl:call-template name="type-driver-version">
 			<xsl:with-param name="theValue" select="$version"/>
 		</xsl:call-template>
@@ -89,10 +89,11 @@
 	<!-- Removing unwanted -->
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:element" />
 	<!-- Replacing -->
+	<!--
  	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:field/text()"> 
  		<xsl:text>info:eu-repo/semantics/openAccess</xsl:text> 
  	</xsl:template> 
-	
+	-->
 
 
 	<!-- AUXILIARY TEMPLATES -->
