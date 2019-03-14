@@ -21,14 +21,14 @@
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
 			<!-- dc.type -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='driver']/doc:field[@name='value']">
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='openaire']/doc:field[@name='value']">
 				<dc:type><xsl:value-of select="." /></dc:type>
 			</xsl:for-each>
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='snrd']/doc:field[@name='value']">
 				<dc:type><xsl:value-of select="." /></dc:type>
 			</xsl:for-each>
 			<!-- dc.type.version -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type-version']/doc:element[@name='driver']/doc:field[@name='value']">
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='version']/doc:field[@name='value']">
 				<dc:type><xsl:value-of select="." /></dc:type>
 			</xsl:for-each>
 			<!-- dc.title -->
@@ -48,10 +48,12 @@
 			<!-- dc.rights -->
 			<!--
                 Como solo mostramos items OPEN, esto se harcodea
+				Como todo debe tener la misma licencia (a menos que se exprese lo contrario), esto se harcodea
                 TODO: ver como solucionar
              -->
-			<dc:rights>info:eu-repo/semantics/openAccess</dc:rights>
-            <!-- dc.title -->
+			<dc:rights>info:eu-repo/semantics/openAccess</dc:rights>	
+			<dc:rights>https://creativecommons.org/licenses/by-nc-sa/4.0/</dc:rights>	   
+			<!-- dc.title -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:field[@name='value']">
 				<dc:title><xsl:value-of select="." /></dc:title>
 			</xsl:for-each>
