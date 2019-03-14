@@ -21,14 +21,14 @@
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
 			<!-- dc.type -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='openaire']/doc:field[@name='value']">
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='driver']/doc:field[@name='value']">
 				<dc:type><xsl:value-of select="." /></dc:type>
 			</xsl:for-each>
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='snrd']/doc:field[@name='value']">
 				<dc:type><xsl:value-of select="." /></dc:type>
 			</xsl:for-each>
 			<!-- dc.type.version -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='version']/doc:field[@name='value']">
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type-version']/doc:element[@name='driver']/doc:field[@name='value']">
 				<dc:type><xsl:value-of select="." /></dc:type>
 			</xsl:for-each>
 			<!-- dc.title -->
