@@ -101,7 +101,7 @@
     <Formats>
         <Format id="oaidc">
             <Prefix>oai_dc</Prefix>
-            <XSLT>metadataFormats/oai_dc.xsl</XSLT>
+            <XSLT>metadataFormats/unrn_oai_dc.xsl</XSLT>
             <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
             <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
         </Format>

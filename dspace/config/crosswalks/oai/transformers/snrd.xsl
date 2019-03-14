@@ -22,13 +22,13 @@
 	<!-- Formatting dc.type  -->
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type']">
 		<xsl:variable name="type" select="./doc:element/doc:field[@name='value']/text()"/>
-		<xsl:variable name="version" select="../../doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='version']/doc:element/doc:field/text()"/>
 		<xsl:call-template name="type-driver">
 			<xsl:with-param name="theValue" select="$type"/>				
 		</xsl:call-template>
 		<xsl:call-template name="type-snrd">
 			<xsl:with-param name="theValue" select="$type"/>
 		</xsl:call-template>
+		<xsl:variable name="version" select="./doc:element[@name='version']/doc:element/doc:field/text()"/>
 		<xsl:call-template name="type-driver-version">
 			<xsl:with-param name="theValue" select="$version"/>
 		</xsl:call-template>
@@ -87,7 +87,7 @@
 	
 	<!-- Prefixing and Modifying dc.rights -->
 	<!-- Removing unwanted -->
-	<!-- <xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:element" /> -->
+	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:element" />
 	<!-- Replacing -->
 	<!--
  	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:field/text()"> 
@@ -113,7 +113,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<doc:element name='type-version'>
+		<doc:element name='type'>
 			<doc:element name='driver'>				
 				<doc:field name="value"><xsl:value-of select="normalize-space($finalValue)"/></doc:field>				
 			</doc:element>
