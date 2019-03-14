@@ -22,14 +22,14 @@
 	<!-- Formatting dc.type  -->
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type']">
 		<xsl:variable name="type" select="./doc:element/doc:field[@name='value']/text()"/>
-		<xsl:call-template name="type-driver">
+		<xsl:call-template name="type-openaire">
 			<xsl:with-param name="theValue" select="$type"/>				
 		</xsl:call-template>
 		<xsl:call-template name="type-snrd">
 			<xsl:with-param name="theValue" select="$type"/>
 		</xsl:call-template>
 		<xsl:variable name="version" select="./doc:element[@name='version']/doc:element/doc:field/text()"/>
-		<xsl:call-template name="type-driver-version">
+		<xsl:call-template name="type-version">
 			<xsl:with-param name="theValue" select="$version"/>
 		</xsl:call-template>
 	</xsl:template>
@@ -98,7 +98,7 @@
 
 	<!-- AUXILIARY TEMPLATES -->
 	
-	<xsl:template name="type-driver-version">
+	<xsl:template name="type-version">
 		<xsl:param name="theValue" />
 		<xsl:variable name="finalValue">
 			<xsl:choose>
@@ -114,14 +114,14 @@
 			</xsl:choose>
 		</xsl:variable>
 		<doc:element name='type'>
-			<doc:element name='driver'>				
+			<doc:element name='version'>				
 				<doc:field name="value"><xsl:value-of select="normalize-space($finalValue)"/></doc:field>				
 			</doc:element>
 		</doc:element>
 	</xsl:template>
 	
 	<!-- Tipos según OpenAIRE -->
-	<xsl:template name="type-driver">
+	<xsl:template name="type-openaire">
 		<xsl:param name="theValue" />
 		<xsl:variable name="finalValue">
 			<xsl:choose>
@@ -169,7 +169,7 @@
 		<!-- Prefijo añadido desde las Directrices SNRD v.2015 -->
 		<xsl:variable name="openaireTypePrefix">info:eu-repo/semantics/</xsl:variable>
 		<doc:element name="type">
-			<doc:element name='driver'>
+			<doc:element name='openaire'>
 				<doc:field name="value"><xsl:value-of select="concat($openaireTypePrefix, normalize-space($finalValue))"/></doc:field>						
 			</doc:element>
 		</doc:element>
