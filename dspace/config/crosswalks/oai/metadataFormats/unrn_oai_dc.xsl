@@ -51,8 +51,39 @@
 				Como todo debe tener la misma licencia (a menos que se exprese lo contrario), esto se harcodea
                 TODO: ver como solucionar
              -->
-			<dc:rights>info:eu-repo/semantics/openAccess</dc:rights>	
+			 <!--dc.rights.* = rights -->
+			<xsl:variable name="bitstreams" select="doc:metadata/doc:element[@name='bundles']/doc:element[@name='bundle'][./doc:field/text()='ORIGINAL']/doc:element[@name='bitstreams']/doc:element[@name='bitstream']"/>
+			<xsl:variable name="embargoed" select="$bitstreams/doc:field[@name='embargo']"/>
+
+			<xsl:choose>
+				<xsl:when test="count($bitstreams) = 0 or count($embargoed[text() = 'forever']) = count($bitstreams) ">
+					<dc:rights>info:eu-repo/semantics/closedAccess</dc:rights>
+				</xsl:when>
+				<xsl:when test="count($embargoed) = 0">
+					<dc:rights>info:eu-repo/semantics/openAccess</dc:rights>
+				</xsl:when>
+				<xsl:when test="count($embargoed[text() = 'forever']) &gt; 0">
+					<dc:rights>info:eu-repo/semantics/restrictedAccess</dc:rights>
+				</xsl:when>
+				<xsl:otherwise>
+<!-- 			es un embargoedAccess si o si -->
+					<xsl:for-each select="$embargoed">
+						<xsl:sort select="text()" />
+						<xsl:if test="position() = 1">
+							<dc:date><xsl:value-of select="concat('info:eu-repo/date/embargoEnd/',text())"/></dc:date>
+							<dc:rigths>info:eu-repo/semantics/embargoedAccess</dc:rigths>
+						</xsl:if>
+					</xsl:for-each>
+				</xsl:otherwise>
+			</xsl:choose>	
 			<dc:rights>https://creativecommons.org/licenses/by-nc-sa/4.0/</dc:rights>	   
+			<!-- dc.date.issued -->
+            <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='issued']/doc:element/doc:field[@name='value']">
+                <dc:date><xsl:value-of select="." /></dc:date>
+            </xsl:for-each>
+			
+			
+			
 			<!-- dc.title -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:field[@name='value']">
 				<dc:title><xsl:value-of select="." /></dc:title>
@@ -93,14 +124,7 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name!='provenance']/doc:element/doc:field[@name='value']">
 				<dc:description><xsl:value-of select="." /></dc:description>
 			</xsl:for-each>
-			<!-- dc.date -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element/doc:field[@name='value']">
-				<dc:date><xsl:value-of select="." /></dc:date>
-			</xsl:for-each>
-			<!-- dc.date.* -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element/doc:element/doc:field[@name='value']">
-				<dc:date><xsl:value-of select="." /></dc:date>
-			</xsl:for-each>
+			
             <!-- dc.identifier -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element/doc:field[@name='value']">
 				<dc:identifier><xsl:value-of select="." /></dc:identifier>
