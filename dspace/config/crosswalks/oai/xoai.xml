@@ -14,7 +14,11 @@
                xmlns="http://www.lyncode.com/XOAIConfiguration">
 
     <Contexts>
-		
+        <!--
+            SNRD referencia acerca de los elementos que componen las directrices:
+
+            - http://repositoriosdigitales.mincyt.gob.ar/files/Directrices_SNRD_2015.pdf
+        -->
 		<Context baseurl="snrd" name="snrd context">
     	  	<Transformer ref="snrdTransformer"/>
     		<Filter ref="snrdFilter"/> 

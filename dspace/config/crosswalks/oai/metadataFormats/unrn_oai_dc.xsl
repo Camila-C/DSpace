@@ -20,6 +20,8 @@
 			xmlns:dc="http://purl.org/dc/elements/1.1/" 
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+            
+            <!-- INICIO: modificaciones UNRN -->
 			<!-- dc.type -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='openaire']/doc:field[@name='value']">
 				<dc:type><xsl:value-of select="." /></dc:type>
@@ -31,30 +33,13 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='version']/doc:field[@name='value']">
 				<dc:type><xsl:value-of select="." /></dc:type>
 			</xsl:for-each>
-			<!-- dc.title -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:field[@name='value']">
-				<dc:title><xsl:value-of select="." /></dc:title>
-			</xsl:for-each>
 			<!-- mimetype (format) De esta forma obtenemos el formato directo del archivo -->
             <xsl:for-each select="doc:metadata/doc:element[@name='bundles']/doc:element[@name='bundle' and doc:field[@name='name' and text()='ORIGINAL']]/doc:element[@name='bitstreams']/doc:element[@name='bitstream']/doc:field[@name='format']">
-                    <dc:format><xsl:value-of select="." /></dc:format>
+                <dc:format><xsl:value-of select="." /></dc:format>
             </xsl:for-each>
-			<!-- dc.rights.* -->
-            <!--
-                <xsl:for-each select="doc:metadata/doc:element[@name='others']/doc:field[@name='accessRights']">
-                    <dc:rights><xsl:value-of select="." /></dc:rights>
-                </xsl:for-each>
-            -->
-			<!-- dc.rights -->
-			<!--
-                Como solo mostramos items OPEN, esto se harcodea
-				Como todo debe tener la misma licencia (a menos que se exprese lo contrario), esto se harcodea
-                TODO: ver como solucionar
-             -->
-			 <!--dc.rights.* = rights -->
+			<!--dc.rights.* = rights -->
 			<xsl:variable name="bitstreams" select="doc:metadata/doc:element[@name='bundles']/doc:element[@name='bundle'][./doc:field/text()='ORIGINAL']/doc:element[@name='bitstreams']/doc:element[@name='bitstream']"/>
 			<xsl:variable name="embargoed" select="$bitstreams/doc:field[@name='embargo']"/>
-
 			<xsl:choose>
 				<xsl:when test="count($bitstreams) = 0 or count($embargoed[text() = 'forever']) = count($bitstreams) ">
 					<dc:rights>info:eu-repo/semantics/closedAccess</dc:rights>
@@ -66,24 +51,26 @@
 					<dc:rights>info:eu-repo/semantics/restrictedAccess</dc:rights>
 				</xsl:when>
 				<xsl:otherwise>
-<!-- 			es un embargoedAccess si o si -->
+				<!-- Es un embargoedAccess si o si -->
 					<xsl:for-each select="$embargoed">
 						<xsl:sort select="text()" />
 						<xsl:if test="position() = 1">
+							<!-- Guarda la fecha de embargo en dc.date -->
 							<dc:date><xsl:value-of select="concat('info:eu-repo/date/embargoEnd/',text())"/></dc:date>
 							<dc:rigths>info:eu-repo/semantics/embargoedAccess</dc:rigths>
 						</xsl:if>
 					</xsl:for-each>
 				</xsl:otherwise>
-			</xsl:choose>	
+			</xsl:choose>
+			<!-- dc.rights.license -->
+			<!-- Este item se harcodea con la ultima versión de la licencia Creative Commons -->
 			<dc:rights>https://creativecommons.org/licenses/by-nc-sa/4.0/</dc:rights>	   
 			<!-- dc.date.issued -->
             <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='issued']/doc:element/doc:field[@name='value']">
                 <dc:date><xsl:value-of select="." /></dc:date>
             </xsl:for-each>
-			
-			
-			
+            <!-- FIN: modificaciones UNRN -->
+
 			<!-- dc.title -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:field[@name='value']">
 				<dc:title><xsl:value-of select="." /></dc:title>
@@ -124,7 +111,6 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name!='provenance']/doc:element/doc:field[@name='value']">
 				<dc:description><xsl:value-of select="." /></dc:description>
 			</xsl:for-each>
-			
             <!-- dc.identifier -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element/doc:field[@name='value']">
 				<dc:identifier><xsl:value-of select="." /></dc:identifier>
