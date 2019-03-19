@@ -99,15 +99,6 @@
                         </xsl:choose>
                     </xsl:for-each>
                 </xsl:when>
-				<xsl:when test="$theValue = 'Tesis de doctorado'">
-					doctoralThesis
-				</xsl:when>
-				<xsl:when test="$theValue = 'Tesis de maestria'">
-					masterThesis
-				</xsl:when>
-				<xsl:when test="$theValue = 'Tesis de grado'">
-					bachelorThesis
-				</xsl:when>
 				<xsl:when test="$theValue = 'Trabajo final'">
 					<!-- Para cada tipo, busca los subtipos subtipo y los compara -->
                     <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
@@ -121,12 +112,6 @@
                         </xsl:choose>
                     </xsl:for-each>
                 </xsl:when>
-				<xsl:when test="$theValue = 'Trabajo final de grado'">
-					bachelorThesis
-				</xsl:when>
-				<xsl:when test="$theValue = 'Trabajo final de posgrado'">
-					masterThesis
-				</xsl:when>
 				<xsl:when test="$theValue = 'Libro'">
 					book
 				</xsl:when>
@@ -183,15 +168,6 @@
                         </xsl:choose>
                     </xsl:for-each>
                 </xsl:when>
-				<xsl:when test="$theValue = 'Tesis de doctorado'">
-					tesis doctoral
-				</xsl:when>
-				<xsl:when test="$theValue = 'Tesis de maestria'">
-					tesis de maestría
-				</xsl:when>		
-				<xsl:when test="$theValue = 'Tesis de grado'">
-					tesis de grado
-				</xsl:when>
 				<xsl:when test="$theValue = 'Trabajo final'">
 					<!-- Para cada tipo, busca los subtipos subtipo y los compara -->
                     <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
@@ -205,12 +181,6 @@
                         </xsl:choose>
                     </xsl:for-each>
                 </xsl:when>
-				<xsl:when test=". = 'Trabajo final de grado'">
-					trabajo final de grado
-				</xsl:when>
-				<xsl:when test=". = 'Trabajo final de posgrado'">
-					tesis de maestría
-				</xsl:when>
 				<xsl:when test="$theValue = 'Libro'">
 					libro
 				</xsl:when>

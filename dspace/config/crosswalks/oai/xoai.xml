@@ -9,9 +9,10 @@
 
 	Developed by DSpace @ Lyncode <dspace@lyncode.com>
  -->
-<Configuration indented="false" maxListIdentifiersSize="100" maxListRecordsSize="100"
-               maxListSetsSize="100" stylesheet="static/style.xsl"
-               xmlns="http://www.lyncode.com/XOAIConfiguration">
+<Configuration 
+    indented="false" maxListIdentifiersSize="100" maxListRecordsSize="100"
+    maxListSetsSize="100" stylesheet="static/style.xsl"
+    xmlns="http://www.lyncode.com/XOAIConfiguration">
 
     <Contexts>
         <!--
@@ -205,7 +206,14 @@
     		<Definition>
     			<And>
     				<LeftCondition>
-						<Custom ref="snrdDocumentsubtypeFilter"/>
+                        <Or>
+                            <LeftCondition>
+                                <Custom ref="snrdDocumentTypeFilter"/>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Custom ref="snrdDocumentSubtypeFilter"/>
+                            </RightCondition>
+                        </Or>
     				</LeftCondition>
     				<RightCondition>
 						<Custom ref="itemAccessCondition"/>
@@ -437,22 +445,15 @@
                 <string name="value">info:eu-repo/grantAgreement/EC/FP</string>
             </Configuration>
         </CustomCondition>
-		 
-		 <CustomCondition id="snrdDocumentsubtypeFilter">
+
+        <!-- Filtro para los dc.type de SNRD --> 
+		<CustomCondition id="snrdDocumentTypeFilter">
 			<Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
 			<Configuration>
 				<string name="field">dc.type</string>
 				<string name="operator">equal</string>
 				<list name="values">
 					<string>Articulo</string>
-					<string>Tesis</string>
-					<string>Tesis de doctorado</string>
-					<string>Tesis de maestria</string>
-					<string>Tesis de grado</string>
-					<string>Trabajo final</string>
-					<string>Trabajo final de grado</string>
-					<string>Trabajo final de pregrado</string>
-					<string>Trabajo final de posgrado</string>
 					<string>Libro</string>
 					<string>Parte de libro</string>	
 					<string>Objeto de conferencia</string>
@@ -469,7 +470,24 @@
 					<string>Datos primarios</string>
 					<string>Otro</string>
 				</list>
-			</Configuration>			
+			</Configuration>	
+		</CustomCondition>
+
+        <!-- Filtro para los dc.type.subtype de SNRD -->
+        <!-- En el caso de las Tesis y Trabajos finales, sólo se busca por subtipo -->
+        <CustomCondition id="snrdDocumentSubtypeFilter">
+            <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+			<Configuration>
+				<string name="field">dc.type.subtype</string>
+				<string name="operator">equal</string>
+				<list name="values">
+					<string>Tesis de grado</string>
+                    <string>Tesis de maestria</string>
+                    <string>Tesis de doctorado</string>
+					<string>Trabajo final de grado</string>
+                    <string>Trabajo final de posgrado</string>
+				</list>
+			</Configuration>	
 		</CustomCondition>
 	</Filters>
     <Sets>
