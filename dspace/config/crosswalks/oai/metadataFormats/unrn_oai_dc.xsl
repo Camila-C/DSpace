@@ -69,6 +69,15 @@
             <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='issued']/doc:element/doc:field[@name='value']">
                 <dc:date><xsl:value-of select="." /></dc:date>
             </xsl:for-each>
+			<!-- dc.contributor.author -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='author']/doc:element/doc:field[@name='value']">
+				<dc:creator><xsl:value-of select="." /></dc:creator>
+				<!-- dc.descriptor.filation -->
+				<xsl:if test="not(doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='filiation']/doc:element/doc:field[@name='value'])">
+					<dc:description><xsl:value-of select="concat('Fil: ', ., 'Universidad Nacional de Río Negro; Argentina')" /></dc:description>
+				</xsl:if>
+				<dc:description>
+			</xsl:for-each>
             <!-- FIN: modificaciones UNRN -->
 
 			<!-- dc.title -->
@@ -81,10 +90,6 @@
 			</xsl:for-each>
 			<!-- dc.creator -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='creator']/doc:element/doc:field[@name='value']">
-				<dc:creator><xsl:value-of select="." /></dc:creator>
-			</xsl:for-each>
-			<!-- dc.contributor.author -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='author']/doc:element/doc:field[@name='value']">
 				<dc:creator><xsl:value-of select="." /></dc:creator>
 			</xsl:for-each>
 			<!-- dc.contributor.* (!author) -->
