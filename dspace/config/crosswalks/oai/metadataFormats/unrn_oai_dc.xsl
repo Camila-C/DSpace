@@ -57,7 +57,7 @@
 						<xsl:if test="position() = 1">
 							<!-- Guarda la fecha de embargo en dc.date -->
 							<dc:date><xsl:value-of select="concat('info:eu-repo/date/embargoEnd/',text())"/></dc:date>
-							<dc:rigths>info:eu-repo/semantics/embargoedAccess</dc:rigths>
+							<dc:rights>info:eu-repo/semantics/embargoedAccess</dc:rights>
 						</xsl:if>
 					</xsl:for-each>
 				</xsl:otherwise>
