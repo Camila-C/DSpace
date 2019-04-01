@@ -48,6 +48,9 @@
 	<!-- Removing dc.description.provenance --> 
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='provenance']" />
 
+	<!-- Removing dc.description.review --> 
+	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='review']" />
+
 	<!-- Removing dc.rights -->
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:element" />
 	
