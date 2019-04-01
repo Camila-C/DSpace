@@ -103,24 +103,24 @@ mail.server = smtp.gmail.com
 # SMTP mail server authentication username and password (if required)
 # mail.server.username = myusername
 # mail.server.password = mypassword
-mail.server.username=msanhueza@unrn.edu.ar	
-mail.server.password=34221016
+mail.server.username=example@mail.com	
+mail.server.password=
 
 # SMTP mail server alternate port (defaults to 25)
 mail.server.port = 465
 
 # From address for mail
-mail.from.address = msanhueza@unrn.edu.ar	
+mail.from.address = example@mail.com	
 
 # Currently limited to one recipient!
-mail.feedback.recipient = msanhueza@unrn.edu.ar	
+mail.feedback.recipient = example@mail.com	
 
 # General site administration (Webmaster) e-mail
-mail.admin = msanhueza@unrn.edu.ar	
+mail.admin = example@mail.com	
 
 # Recipient for server errors and alerts
 #mail.alert.recipient = email-address-here
-mail.alert.recipient= msanhueza@unrn.edu.ar	
+mail.alert.recipient= example@mail.com	
 
 # Recipient for new user registration emails
 #mail.registration.notify = email-address-here
