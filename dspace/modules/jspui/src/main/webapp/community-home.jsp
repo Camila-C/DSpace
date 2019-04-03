@@ -142,7 +142,7 @@
 		    <h3>
           <!-- Cuando la colección es igual a Digesto, muestro como subcolección lo sig. -->
           <% if (name.equals("Digesto")) { %>
-            Organos colegiados de gobierno
+            Tipo de normativa
           <% } else { %>
             <fmt:message key="jsp.community-home.heading3"/>
           <% } %>
@@ -183,8 +183,14 @@
   <% } %>
   <% if (collections.length != 0) { %>
 	  <div class="col-md-6">
-      <%-- <h2>Collections in this community</h2> --%>
-		  <h3><fmt:message key="jsp.community-home.heading2"/></h3>
+      <h3>
+        <!-- Cuando la colección es igual a Digesto, muestro como subcolección lo sig. -->
+        <% if (name.equals("Digesto")) { %>
+          Órganos de Gobierno
+        <% } else { %>
+          <fmt:message key="jsp.community-home.heading2"/>
+        <% } %>
+      </h3>
 		  <div class="list-group">
       <% for (int i = 0; i < collections.length; i++) { %>
 			  <div class="list-group-item row">
