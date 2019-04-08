@@ -683,7 +683,7 @@
 		  <type-bind>Tesis, Trabajo final</type-bind>
          <input-type>onebox</input-type>
          <hint>Introduzca la cita recomendada para este documento, siguiendo el formato APA: 
-			Autor. (Año). Título. (Tesis de grado / Tesis de doctorado / Trabajo final de grado/ etc.). Universidad Nacional de Río Negro 
+			Autor. (Año). Título. Tesis de grado / Tesis de doctorado / Trabajo final de grado/ etc. Universidad Nacional de Río Negro 
 		 </hint>
          <required>Por favor complete el campo con la cita del elemento en el formato solicitado.</required>
        </field>
