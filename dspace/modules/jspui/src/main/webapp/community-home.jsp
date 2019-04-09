@@ -73,213 +73,214 @@
 
 <%@ page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
 <dspace:layout locbar="commLink" title="<%= name %>" feedData="<%= feedData %>">
-<div class="well">
-  <div class="row">
-    <% if (logo != null) { %>
-      <div class="col-md-1">
-     	  <img class="img-responsive" width="64px" height="64px" "Logo" src="<%= request.getContextPath() %>/retrieve/<%= logo.getID() %>" />
-      </div> 
+  <div class="well">
+    <div class="row">
+      <% if (logo != null) { %>
+        <div class="col-md-1">
+          <img class="img-responsive" width="64px" height="64px" "Logo" src="<%= request.getContextPath() %>/retrieve/<%= logo.getID() %>" />
+        </div> 
+      <% } %>
+      <div class="col-md-8">
+        <h2>
+          <%= name %>
+          <% if(ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
+            : [<%= ic.getCount(community) %>]
+          <% } %>
+          <small><fmt:message key="jsp.community-home.heading1"/></small>
+          <a class="statisticsLink btn btn-info" href="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/statistics">
+            <fmt:message key="jsp.community-home.display-statistics"/>
+          </a>
+        </h2>
+      </div>
+    </div>
+    <% if (StringUtils.isNotBlank(intro)) { %>
+      <%= intro %>
     <% } %>
-	  <div class="col-md-8">
-      <h2>
-        <%= name %>
-        <% if(ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
-          : [<%= ic.getCount(community) %>]
-        <% } %>
-		    <small><fmt:message key="jsp.community-home.heading1"/></small>
-        <a class="statisticsLink btn btn-info" href="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/statistics">
-          <fmt:message key="jsp.community-home.display-statistics"/>
-        </a>
-		  </h2>
-	  </div>
   </div>
-  <% if (StringUtils.isNotBlank(intro)) { %>
-    <%= intro %>
-  <% } %>
-</div>
-<p class="copyrightText"><%= copyright %></p>
-<div class="row">
-  <div class="col-md-4">
-   	<%= sidebar %>
-	</div>
-</div>	
+  <p class="copyrightText"><%= copyright %></p>
+  <div class="row">
+    <div class="col-md-4">
+      <%= sidebar %>
+    </div>
+  </div>	
 
-<%-- Browse --%>
-<div class="panel panel-primary">
-	<div class="panel-heading"><fmt:message key="jsp.general.browse"/></div>
-	<div class="panel-body">
-   	<%-- Insert the dynamic list of browse options --%>
-    <% for (int i = 0; i < bis.length; i++) {
-		    String key = "browse.menu." + bis[i].getName();
+  <%-- Browse --%>
+  <div class="panel panel-primary">
+    <div class="panel-heading"><fmt:message key="jsp.general.browse"/></div>
+    <div class="panel-body">
+      <%-- Insert the dynamic list of browse options --%>
+      <% for (int i = 0; i < bis.length; i++) {
+          String key = "browse.menu." + bis[i].getName();
+      %>
+          <form method="get" action="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/browse">
+            <input type="hidden" name="type" value="<%= bis[i].getName() %>"/>
+            <%-- <input type="hidden" name="community" value="<%= community.getHandle() %>" /> --%>
+            <input class="btn btn-default col-md-3" type="submit" name="submit_browse" value="<fmt:message key="<%= key %>"/>"/>
+          </form>
+      <% } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%
+      int discovery_panel_cols = 12;
+      int discovery_facet_cols = 4;
     %>
-	      <form method="get" action="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/browse">
-		      <input type="hidden" name="type" value="<%= bis[i].getName() %>"/>
-		      <%-- <input type="hidden" name="community" value="<%= community.getHandle() %>" /> --%>
-		      <input class="btn btn-default col-md-3" type="submit" name="submit_browse" value="<fmt:message key="<%= key %>"/>"/>
-	      </form>
+    <%@ include file="discovery/static-sidebar-facet.jsp" %>
+  </div>
+
+  <div class="row">
+    <%@ include file="discovery/static-tagcloud-facet.jsp" %>
+  </div>
+    
+  <div class="row">
+    <%
+      boolean showLogos = ConfigurationManager.getBooleanProperty("jspui.community-home.logos", true);
+      if (subcommunities.length != 0) {
+    %>
+        <div class="col-md-6">
+          <h3>
+            <!-- Cuando la colección es igual a Digesto, muestro como subcomunidad lo sig. -->
+            <% if (name.equals("Digesto")) { %>
+                Tipo de normativa
+            <% } else { %>
+                <fmt:message key="jsp.community-home.heading3"/>
+            <% } %>
+          </h3>
+          <div class="list-group">
+            <% for (int j = 0; j < subcommunities.length; j++) { %>
+                <div class="list-group-item row">  
+                  <%  
+                    Bitstream logoCom = subcommunities[j].getLogo();
+                    if (showLogos && logoCom != null) { %>
+                        <div class="col-md-3">
+                          <img alt="Logo" class="img-responsive" src="<%= request.getContextPath() %>/retrieve/<%= logoCom.getID() %>" /> 
+                        </div>
+                        <div class="col-md-9">
+                  <% } else { %>
+                        <div class="col-md-12">
+                  <% } %>
+                          <h4 class="list-group-item-heading"><a href="<%= request.getContextPath() %>/handle/<%= subcommunities[j].getHandle() %>">
+                          <%= subcommunities[j].getMetadata("name") %></a>
+                          <% if (ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
+                            [<%= ic.getCount(subcommunities[j]) %>]
+                          <% } %>
+                          <% if (remove_button) { %>
+                            <form class="btn-group" method="post" action="<%=request.getContextPath()%>/tools/edit-communities">
+                              <input type="hidden" name="parent_community_id" value="<%= community.getID() %>" />
+                              <input type="hidden" name="community_id" value="<%= subcommunities[j].getID() %>" />
+                              <input type="hidden" name="action" value="<%=EditCommunitiesServlet.START_DELETE_COMMUNITY%>" />
+                              <button type="submit" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                            </form>
+                          <% } %>
+                        </h4>
+                        <p class="collectionDescription"><%= subcommunities[j].getMetadata("short_description") %></p>
+                      </div>
+                </div> 
+            <% } %>
+          </div>
+        </div>
     <% } %>
-	</div>
-</div>
-
-<div class="row">
-  <%
-  	int discovery_panel_cols = 12;
-   	int discovery_facet_cols = 4;
-  %>
-	<%@ include file="discovery/static-sidebar-facet.jsp" %>
-</div>
-
-<div class="row">
-	<%@ include file="discovery/static-tagcloud-facet.jsp" %>
-</div>
-	
-<div class="row">
-  <%
-	   boolean showLogos = ConfigurationManager.getBooleanProperty("jspui.community-home.logos", true);
-	   if (subcommunities.length != 0) {
-  %>
-	    <div class="col-md-6">
-		    <h3>
-          <!-- Cuando la colección es igual a Digesto, muestro como subcolección lo sig. -->
-          <% if (name.equals("Digesto")) { %>
-            Tipo de normativa
+    <% if (collections.length != 0) { %>
+      <div class="col-md-6">
+        <h3>
+          <!-- Cuando la colección es igual a Resoluciones, muestro como subcolección lo sig. -->
+          <% if (name.equals("Resoluciones UNRN")) { %>
+            Órganos de Gobierno
           <% } else { %>
-            <fmt:message key="jsp.community-home.heading3"/>
+            <fmt:message key="jsp.community-home.heading2"/>
           <% } %>
         </h3>
         <div class="list-group">
-          <% for (int j = 0; j < subcommunities.length; j++) { %>
-			        <div class="list-group-item row">  
-                <%  
-		               Bitstream logoCom = subcommunities[j].getLogo();
-		               if (showLogos && logoCom != null) { %>
-			                <div class="col-md-3">
-		                    <img alt="Logo" class="img-responsive" src="<%= request.getContextPath() %>/retrieve/<%= logoCom.getID() %>" /> 
-			                </div>
-			                <div class="col-md-9">
-                <% } else { %>
-		                  <div class="col-md-12">
-                <% } %>
-          	            <h4 class="list-group-item-heading"><a href="<%= request.getContextPath() %>/handle/<%= subcommunities[j].getHandle() %>">
-                        <%= subcommunities[j].getMetadata("name") %></a>
-                        <% if (ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
-                          [<%= ic.getCount(subcommunities[j]) %>]
-                        <% } %>
-                        <% if (remove_button) { %>
-                          <form class="btn-group" method="post" action="<%=request.getContextPath()%>/tools/edit-communities">
-                            <input type="hidden" name="parent_community_id" value="<%= community.getID() %>" />
-                            <input type="hidden" name="community_id" value="<%= subcommunities[j].getID() %>" />
-                            <input type="hidden" name="action" value="<%=EditCommunitiesServlet.START_DELETE_COMMUNITY%>" />
-                            <button type="submit" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
-                          </form>
-                        <% } %>
-                      </h4>
-                      <p class="collectionDescription"><%= subcommunities[j].getMetadata("short_description") %></p>
-                    </div>
-              </div> 
-          <% } %>
-        </div>
-      </div>
-  <% } %>
-  <% if (collections.length != 0) { %>
-	  <div class="col-md-6">
-      <h3>
-        <!-- Cuando la colección es igual a Digesto, muestro como subcolección lo sig. -->
-        <% if (name.equals("Digesto")) { %>
-          Órganos de Gobierno
-        <% } else { %>
-          <fmt:message key="jsp.community-home.heading2"/>
+        <% for (int i = 0; i < collections.length; i++) { %>
+          <div class="list-group-item row">
+          <% Bitstream logoCol = collections[i].getLogo();
+            if (showLogos && logoCol != null) { 
+          %>
+              <div class="col-md-3">
+                <img alt="Logo" class="img-responsive" src="<%= request.getContextPath() %>/retrieve/<%= logoCol.getID() %>" /> 
+              </div>
+              <div class="col-md-9">
+          <% } else { %>
+              <div class="col-md-12">
+          <% } %>		
+                <h4 class="list-group-item-heading">
+                  <a href="<%= request.getContextPath() %>/handle/<%= collections[i].getHandle() %>">
+                    <%= collections[i].getMetadata("name") %>
+                  </a>
+                  <% if(ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
+                    [<%= ic.getCount(collections[i]) %>]
+                  <% } %>
+                  <% if (remove_button) { %>
+                    <form class="btn-group" method="post" action="<%=request.getContextPath()%>/tools/edit-communities">
+                      <input type="hidden" name="parent_community_id" value="<%= community.getID() %>" />
+                      <input type="hidden" name="community_id" value="<%= community.getID() %>" />
+                      <input type="hidden" name="collection_id" value="<%= collections[i].getID() %>" />
+                      <input type="hidden" name="action" value="<%=EditCommunitiesServlet.START_DELETE_COLLECTION%>" />
+                      <button type="submit" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                    </form>
+                  <% } %>
+                </h4>
+                <p class="collectionDescription"><%= collections[i].getMetadata("short_description") %></p>
+              </div>
+          </div>
         <% } %>
-      </h3>
-		  <div class="list-group">
-      <% for (int i = 0; i < collections.length; i++) { %>
-			  <div class="list-group-item row">
-        <% Bitstream logoCol = collections[i].getLogo();
-		       if (showLogos && logoCol != null) { 
-        %>
-			      <div class="col-md-3">
-		          <img alt="Logo" class="img-responsive" src="<%= request.getContextPath() %>/retrieve/<%= logoCol.getID() %>" /> 
-			      </div>
-			      <div class="col-md-9">
-        <% } else { %>
-			      <div class="col-md-12">
-        <% } %>		
-      	      <h4 class="list-group-item-heading">
-                <a href="<%= request.getContextPath() %>/handle/<%= collections[i].getHandle() %>">
-	                <%= collections[i].getMetadata("name") %>
-                </a>
-                <% if(ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
-                  [<%= ic.getCount(collections[i]) %>]
-                <% } %>
-	              <% if (remove_button) { %>
-                  <form class="btn-group" method="post" action="<%=request.getContextPath()%>/tools/edit-communities">
-                    <input type="hidden" name="parent_community_id" value="<%= community.getID() %>" />
-                    <input type="hidden" name="community_id" value="<%= community.getID() %>" />
-                    <input type="hidden" name="collection_id" value="<%= collections[i].getID() %>" />
-                    <input type="hidden" name="action" value="<%=EditCommunitiesServlet.START_DELETE_COLLECTION%>" />
-                    <button type="submit" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
-                  </form>
-	              <% } %>
-		          </h4>
-              <p class="collectionDescription"><%= collections[i].getMetadata("short_description") %></p>
-            </div>
         </div>
-      <% } %>
       </div>
-    </div>
-  <% } %>
-</div>
-    <% if(editor_button || add_button)  // edit button(s)
-    { %>
-    <dspace:sidebar>
-		 <div class="panel panel-warning">
-             <div class="panel-heading">
-             	<fmt:message key="jsp.admintools"/>
-             	<span class="pull-right">
-             		<dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.site-admin\")%>"><fmt:message key="jsp.adminhelp"/></dspace:popup>
-             	</span>
-             	</div>
-             <div class="panel-body">
-             <% if(editor_button) { %>
-	            <form method="post" action="<%=request.getContextPath()%>/tools/edit-communities">
-		          <input type="hidden" name="community_id" value="<%= community.getID() %>" />
-		          <input type="hidden" name="action" value="<%=EditCommunitiesServlet.START_EDIT_COMMUNITY%>" />
-                  <%--<input type="submit" value="Edit..." />--%>
-                  <input class="btn btn-default col-md-12" type="submit" value="<fmt:message key="jsp.general.edit.button"/>" />
-                </form>
-             <% } %>
-             <% if(add_button) { %>
+    <% } %>
+  </div>
 
-				<form method="post" action="<%=request.getContextPath()%>/tools/collection-wizard">
-		     		<input type="hidden" name="community_id" value="<%= community.getID() %>" />
-                    <input class="btn btn-default col-md-12" type="submit" value="<fmt:message key="jsp.community-home.create1.button"/>" />
-                </form>
-                
-                <form method="post" action="<%=request.getContextPath()%>/tools/edit-communities">
-                    <input type="hidden" name="action" value="<%= EditCommunitiesServlet.START_CREATE_COMMUNITY%>" />
-                    <input type="hidden" name="parent_community_id" value="<%= community.getID() %>" />
-                    <%--<input type="submit" name="submit" value="Create Sub-community" />--%>
-                    <input class="btn btn-default col-md-12" type="submit" name="submit" value="<fmt:message key="jsp.community-home.create2.button"/>" />
-                 </form>
-             <% } %>
-            <% if( editor_button ) { %>
-                <form method="post" action="<%=request.getContextPath()%>/mydspace">
-                  <input type="hidden" name="community_id" value="<%= community.getID() %>" />
-                  <input type="hidden" name="step" value="<%= MyDSpaceServlet.REQUEST_EXPORT_ARCHIVE %>" />
-                  <input class="btn btn-default col-md-12" type="submit" value="<fmt:message key="jsp.mydspace.request.export.community"/>" />
-                </form>
+  <% if(editor_button || add_button) { %>
+    <dspace:sidebar>
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <fmt:message key="jsp.admintools"/>
+          <span class="pull-right">
+            <dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.site-admin\")%>">
+              <fmt:message key="jsp.adminhelp"/>
+            </dspace:popup>
+          </span>
+        </div>
+        <div class="panel-body">
+          <% if(editor_button) { %>
+              <form method="post" action="<%=request.getContextPath()%>/tools/edit-communities">
+                <input type="hidden" name="community_id" value="<%= community.getID() %>" />
+                <input type="hidden" name="action" value="<%=EditCommunitiesServlet.START_EDIT_COMMUNITY%>" />
+                <%--<input type="submit" value="Edit..." />--%>
+                <input class="btn btn-default col-md-12" type="submit" value="<fmt:message key="jsp.general.edit.button"/>" />
+              </form>
+          <% } %>
+          <% if(add_button) { %>
+              <form method="post" action="<%=request.getContextPath()%>/tools/collection-wizard">
+                <input type="hidden" name="community_id" value="<%= community.getID() %>" />
+                <input class="btn btn-default col-md-12" type="submit" value="<fmt:message key="jsp.community-home.create1.button"/>" />
+              </form>
+                  
+              <form method="post" action="<%=request.getContextPath()%>/tools/edit-communities">
+                <input type="hidden" name="action" value="<%= EditCommunitiesServlet.START_CREATE_COMMUNITY%>" />
+                <input type="hidden" name="parent_community_id" value="<%= community.getID() %>" />
+                <%--<input type="submit" name="submit" value="Create Sub-community" />--%>
+                <input class="btn btn-default col-md-12" type="submit" name="submit" value="<fmt:message key="jsp.community-home.create2.button"/>" />
+              </form>
+          <% } %>
+          <% if( editor_button ) { %>
+              <form method="post" action="<%=request.getContextPath()%>/mydspace">
+                <input type="hidden" name="community_id" value="<%= community.getID() %>" />
+                <input type="hidden" name="step" value="<%= MyDSpaceServlet.REQUEST_EXPORT_ARCHIVE %>" />
+                <input class="btn btn-default col-md-12" type="submit" value="<fmt:message key="jsp.mydspace.request.export.community"/>" />
+              </form>
               <form method="post" action="<%=request.getContextPath()%>/mydspace">
                 <input type="hidden" name="community_id" value="<%= community.getID() %>" />
                 <input type="hidden" name="step" value="<%= MyDSpaceServlet.REQUEST_MIGRATE_ARCHIVE %>" />
                 <input class="btn btn-default col-md-12" type="submit" value="<fmt:message key="jsp.mydspace.request.export.migratecommunity"/>" />
               </form>
-               <form method="post" action="<%=request.getContextPath()%>/dspace-admin/metadataexport">
-                 <input type="hidden" name="handle" value="<%= community.getHandle() %>" />
-                 <input class="btn btn-default col-md-12" type="submit" value="<fmt:message key="jsp.general.metadataexport.button"/>" />
-               </form>
-			<% } %>
-			</div>
-		</div>
-  </dspace:sidebar>
-    <% } %>
+              <form method="post" action="<%=request.getContextPath()%>/dspace-admin/metadataexport">
+                <input type="hidden" name="handle" value="<%= community.getHandle() %>" />
+                <input class="btn btn-default col-md-12" type="submit" value="<fmt:message key="jsp.general.metadataexport.button"/>" />
+              </form>
+          <% } %>
+        </div>
+      </div>
+    </dspace:sidebar>
+  <% } %>
 </dspace:layout>
