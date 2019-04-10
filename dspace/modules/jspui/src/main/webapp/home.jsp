@@ -163,7 +163,7 @@
             boolean showLogos = ConfigurationManager.getBooleanProperty("jspui.home-page.logos", true);
             for (int i = 0; i < communities.length; i++) {
           %>
-            <%-- El ID de autoarchivo es el nro. 50. Por lo tanto, para no mostrarla, pregunto si el ID es dintinto a 50 --%>
+              <%-- El ID de autoarchivo es el nro. 50. Por lo tanto, para no mostrarla, pregunto si el ID es dintinto a 50 --%>
               <% if (communities[i].getID() != 50) { %>
                   <div class="list-group-item row">
                     <%  
