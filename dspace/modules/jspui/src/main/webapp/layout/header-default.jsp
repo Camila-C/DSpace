@@ -127,13 +127,9 @@
 						</a>
         	</div>
 					<div class="col-md-8 brand">
-						<h1> 
-							<!-- <fmt:message key="jsp.layout.header-default.brand.heading" /> -->
-							<center>RID-UNRN </center>
-						</h1>
-						<!-- <fmt:message key="jsp.layout.header-default.brand.description" /> -->
-						<center>
-							<h3>Repositorio Institucional Digital de la</br> Universidad Nacional de Río Negro </h3>
+						<center> 
+							<fmt:message key="jsp.layout.header-default.brand.heading" />
+							<fmt:message key="jsp.layout.header-default.brand.heading2" />
 						</center>
 					</div>
 				</div>

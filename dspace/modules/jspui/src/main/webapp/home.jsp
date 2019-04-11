@@ -65,18 +65,14 @@
     </div> 
   -->
 
-  <!--
-  <center> <h2>Ultimas entradas del Blog </h2>
-  <iframe src="http://rid.unrn.edu.ar:8080/feed/index.html" height="400" width="1000" style="border:none;"></iframe>
-  </center>
-  -->
-
+  <!-- Se oculta hasta que se resuelva lo del DIGESTO
   <div class="row">
     <% if (submissions != null && submissions.count() > 0) { %>
       <div class="col-md-10">
         <div class="panel panel-primary">        
           <div id="recent-submissions-carousel" class="panel-heading carousel slide">
-            <h3>Comunidades en RID-UNRN</h3>
+            <h3>
+              <fmt:message key="jsp.collection-home.recentsub"/>
               <% 
                 if(feedEnabled) {
                   String[] fmts = feedData.substring(feedData.indexOf(':')+1).split(",");
@@ -103,7 +99,7 @@
               %>
             </h3>
                 
-            <!-- Wrapper for slides -->
+            Wrapper for slides -- comentar
             <div class="carousel-inner">
               <%
                 boolean first = true;
@@ -131,7 +127,7 @@
               %>
             </div>
 
-            <!-- Controls -->
+            Controls -- comentar
             <a class="left carousel-control" href="#recent-submissions-carousel" data-slide="prev">
               <span class="icon-prev"></span>
             </a>
@@ -152,6 +148,7 @@
       <%= sideNews %>
     </div>
   </div>
+  -->
 
   <div class="container row">
     <% if (communities != null && communities.length != 0) { %>

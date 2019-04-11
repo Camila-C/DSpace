@@ -864,7 +864,11 @@
 					<repeatable>false</repeatable>
 					<label>Condiciones de uso</label>
 					<input-type value-pairs-name="licencia">dropdown</input-type>
-					<hint>Licencia del elemento. El RID-UNRN utilizará por defecto para todos sus contenidos la  Licencia Creative Commons Atribución-No Comercial-Sin Derivadas 4.0 Internacional (CC BY-NC-SA 4.0 Internacional), aunque los autores podrán elegir a los fines del acceso por parte de terceros otra modalidad de licencia.</hint>
+					<hint>Licencia del elemento. El RID-UNRN utilizará por defecto para todos sus contenidos la Licencia 
+						Creative Commons Atribución-No Comercial-Sin Derivadas 4.0 Internacional (CC BY-NC-SA 4.0 Internacional),
+						aunque los autores podrán elegir a los fines del acceso por parte de terceros otra modalidad de licencia.
+						Para más información ver https://creativecommons.org/choose/
+					</hint>
 				</field>
 			</page>
 		</form>
