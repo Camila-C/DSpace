@@ -426,6 +426,7 @@
 					<type-bind>Articulo</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Ingresar el título de la revista. En caso de que la misma esté digitalizada, incluir su URL en una ocurrencia separada.</hint>
+					<required>Debe ingresar el título de la revista</required>
 				</field>
 
 				<!-- ISSN -->
@@ -827,7 +828,7 @@
 					<hint>
 						Ingrese toda otra aclaración que resulte pertinente para la mejor catalogación y recuperación de la obra.
 						En este campo se puede indicar, por ejemplo, si la fecha de publicación indicada es aproximada, si el documento no fue publicado aún y está en etapa de revisión o pre-publicación, etc.
-	.				</hint>
+					</hint>
 				</field>
 
 				<!-- NOTAS - DATOS PRIMARIOS-->
@@ -867,7 +868,7 @@
 					<hint>Licencia del elemento. El RID-UNRN utilizará por defecto para todos sus contenidos la Licencia 
 						Creative Commons Atribución-No Comercial-Sin Derivadas 4.0 Internacional (CC BY-NC-SA 4.0 Internacional),
 						aunque los autores podrán elegir a los fines del acceso por parte de terceros otra modalidad de licencia.
-						Para más información ver https://creativecommons.org/choose/
+						Para más información ver https://creativecommons.org/choose
 					</hint>
 				</field>
 			</page>
