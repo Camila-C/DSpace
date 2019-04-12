@@ -68,7 +68,7 @@
   <!-- Se oculta hasta que se resuelva lo del DIGESTO
   <div class="row">
     <% if (submissions != null && submissions.count() > 0) { %>
-      <div class="col-md-10">
+      <div class="col-md-8">
         <div class="panel panel-primary">        
           <div id="recent-submissions-carousel" class="panel-heading carousel slide">
             <h3>
@@ -152,7 +152,7 @@
 
   <div class="container row">
     <% if (communities != null && communities.length != 0) { %>
-      <div class="col-md-10">		
+      <div class="col-md-9">		
         <h3><fmt:message key="jsp.home.com1"/></h3>
         <p><fmt:message key="jsp.home.com2"/></p>
         <div class="list-group">
@@ -185,16 +185,39 @@
                           <p><%= communities[i].getMetadata("short_description") %></p>
                         </div>
                   </div>
-              <% } %>                          
+              <% } %>
           <% } %>
         </div>
       </div>
     <% } %>
-    <%
-      int discovery_panel_cols = 8;
-      int discovery_facet_cols = 4;
-    %>
-      <%@ include file="discovery/static-sidebar-facet.jsp" %>
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <fmt:message key="jsp.layout.sidebar.uploadFile"/>
+              </div>
+              <div class="panel-body">
+                <p><fmt:message key="jsp.layout.sidebar.uploadFile.description"/></p>
+                <p>
+                  <a href="<%= request.getContextPath() %>/como-subir.jsp">
+                    <fmt:message key="jsp.layout.sidebar.uploadFile.moreInformation"/>
+                  </a>
+                </p>
+                <a href="<%= request.getContextPath() %>/mydspace" class="btn btn-block btn-info btn-lg">
+                  <span class="glyphicon glyphicon-cloud-upload"></span>
+                  Subir
+                </a>
+              </div>
+            </div>
+          </div>
+          <%
+              int discovery_panel_cols = 12;
+              int discovery_facet_cols = 12;
+          %>
+          <%@ include file="discovery/static-sidebar-facet.jsp" %>  
+        </div>
+      </div>
     </div>
 
     <div class="row">

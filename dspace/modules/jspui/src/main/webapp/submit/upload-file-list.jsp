@@ -238,7 +238,7 @@
             	<dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") + \"#checksum\"%>">
 								<fmt:message key="jsp.submit.upload-file-list.help2"/>
 							</dspace:popup> 
-            	<input class="btn btn-info" type="submit" name="submit_show_checksums" value="<fmt:message key="jsp.submit.upload-file-list.button3"/>" />
+            	<input type="submit" name="submit_show_checksums" value="<fmt:message key="jsp.submit.upload-file-list.button3"/>" />
 						</li>
 					<%	} %>
         </ul>
