@@ -25,157 +25,126 @@
 <%@ page import="javax.servlet.jsp.jstl.fmt.*" %>
 
 <%
-    String title = (String) request.getAttribute("dspace.layout.title");
-    String navbar = (String) request.getAttribute("dspace.layout.navbar");
-    boolean locbar = ((Boolean) request.getAttribute("dspace.layout.locbar")).booleanValue();
+	String title = (String) request.getAttribute("dspace.layout.title");
+	String navbar = (String) request.getAttribute("dspace.layout.navbar");
+	boolean locbar = ((Boolean) request.getAttribute("dspace.layout.locbar")).booleanValue();
 
-    String siteName = ConfigurationManager.getProperty("dspace.name");
-    String feedRef = (String)request.getAttribute("dspace.layout.feedref");
-    boolean osLink = ConfigurationManager.getBooleanProperty("websvc.opensearch.autolink");
-    String osCtx = ConfigurationManager.getProperty("websvc.opensearch.svccontext");
-    String osName = ConfigurationManager.getProperty("websvc.opensearch.shortname");
-    List parts = (List)request.getAttribute("dspace.layout.linkparts");
-    String extraHeadData = (String)request.getAttribute("dspace.layout.head");
-    String extraHeadDataLast = (String)request.getAttribute("dspace.layout.head.last");
-    String dsVersion = Util.getSourceVersion();
-    String generator = dsVersion == null ? "DSpace" : "DSpace "+dsVersion;
-    String analyticsKey = ConfigurationManager.getProperty("jspui.google.analytics.key");
+	String siteName = ConfigurationManager.getProperty("dspace.name");
+	String feedRef = (String)request.getAttribute("dspace.layout.feedref");
+	boolean osLink = ConfigurationManager.getBooleanProperty("websvc.opensearch.autolink");
+	String osCtx = ConfigurationManager.getProperty("websvc.opensearch.svccontext");
+	String osName = ConfigurationManager.getProperty("websvc.opensearch.shortname");
+	List parts = (List)request.getAttribute("dspace.layout.linkparts");
+	String extraHeadData = (String)request.getAttribute("dspace.layout.head");
+	String extraHeadDataLast = (String)request.getAttribute("dspace.layout.head.last");
+	String dsVersion = Util.getSourceVersion();
+	String generator = dsVersion == null ? "DSpace" : "DSpace "+dsVersion;
+	String analyticsKey = ConfigurationManager.getProperty("jspui.google.analytics.key");
 %>
 
 <!DOCTYPE html>
-<html lang="es">
+	<html lang="es">
     <head>
-        <title><%= siteName %>: <%= title %></title>
-        <meta charset="UTF-8">
-        <meta name="Generator" content="<%= generator %>" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="<%= request.getContextPath() %>/favicon.ico" type="image/x-icon"/>
+			<title><%= siteName %>: <%= title %></title>
+			<meta charset="UTF-8">
+			<meta name="Generator" content="<%= generator %>" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="shortcut icon" href="<%= request.getContextPath() %>/favicon.ico" type="image/x-icon"/>
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/jquery-ui-1.10.3.custom/redmond/jquery-ui-1.10.3.custom.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
-<%
-    if (!"NONE".equals(feedRef))
-    {
-        for (int i = 0; i < parts.size(); i+= 3)
-        {
-%>
+			<%	if (!"NONE".equals(feedRef)) {
+        		for (int i = 0; i < parts.size(); i+= 3) {
+			%>
         <link rel="alternate" type="application/<%= (String)parts.get(i) %>" title="<%= (String)parts.get(i+1) %>" href="<%= request.getContextPath() %>/feed/<%= (String)parts.get(i+2) %>/<%= feedRef %>"/>
-<%
-        }
-    }
-    
-    if (osLink)
-    {
-%>
+			<%
+        		}
+    			}
+     			if (osLink) {
+			%>
         <link rel="search" type="application/opensearchdescription+xml" href="<%= request.getContextPath() %>/<%= osCtx %>description.xml" title="<%= osName %>"/>
-<%
-    }
+			<%
+    			}
+					if (extraHeadData != null) { %>
+						<%= extraHeadData %>
+			<%  } %>
+			<script type='text/javascript' src="<%= request.getContextPath() %>/static/js/jquery/jquery-1.10.2.min.js"></script>
+			<script type='text/javascript' src='<%= request.getContextPath() %>/static/js/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+			<script type='text/javascript' src='<%= request.getContextPath() %>/static/js/bootstrap/bootstrap.min.js'></script>
+			<script type='text/javascript' src='<%= request.getContextPath() %>/static/js/holder.js'></script>
+			<script type="text/javascript" src="<%= request.getContextPath() %>/utils.js"></script>
+			<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
 
-    if (extraHeadData != null)
-        { %>
-<%= extraHeadData %>
-<%
-        }
-%>
-        
-	<script type='text/javascript' src="<%= request.getContextPath() %>/static/js/jquery/jquery-1.10.2.min.js"></script>
-	<script type='text/javascript' src='<%= request.getContextPath() %>/static/js/jquery/jquery-ui-1.10.3.custom.min.js'></script>
-	<script type='text/javascript' src='<%= request.getContextPath() %>/static/js/bootstrap/bootstrap.min.js'></script>
-	<script type='text/javascript' src='<%= request.getContextPath() %>/static/js/holder.js'></script>
-	<script type="text/javascript" src="<%= request.getContextPath() %>/utils.js"></script>
-    <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
-
-    <%--Gooogle Analytics recording.--%>
-    <%
-    if (analyticsKey != null && analyticsKey.length() > 0)
-    {
-    %>
+	    <%--Gooogle Analytics recording.--%>
+    	<% 	if (analyticsKey != null && analyticsKey.length() > 0) { %>
         <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', '<%= analyticsKey %>']);
-            _gaq.push(['_trackPageview']);
+					var _gaq = _gaq || [];
+					_gaq.push(['_setAccount', '<%= analyticsKey %>']);
+					_gaq.push(['_trackPageview']);
 
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
+					(function() {
+						var ga = document.createElement('script');
+						ga.type = 'text/javascript';
+						ga.async = true;
+						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+					})();
         </script>
-    <%
-    }
-    if (extraHeadDataLast != null)
-    { %>
-		<%= extraHeadDataLast %>
-		<%
-		    }
-    %>
-    
+    	<%	}
+					if (extraHeadDataLast != null) { %>
+						<%= extraHeadDataLast %>
+			<%  } %>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="<%= request.getContextPath() %>/static/js/html5shiv.js"></script>
+			<script src="<%= request.getContextPath() %>/static/js/respond.min.js"></script>
+		<![endif]-->
+  </head>
 
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="<%= request.getContextPath() %>/static/js/html5shiv.js"></script>
-  <script src="<%= request.getContextPath() %>/static/js/respond.min.js"></script>
-<![endif]-->
-    </head>
+  <%-- HACK: leftmargin, topmargin: for non-CSS compliant Microsoft IE browser --%>
+  <%-- HACK: marginwidth, marginheight: for non-CSS compliant Netscape browser --%>
+  <body class="undernavigation">
+		<a class="sr-only" href="#content">Skip navigation</a>
+		<header class="navbar navbar-inverse navbar-fixed-top">    
+    <%	if (!navbar.equals("off")) { %>
+      <div class="container">
+        <dspace:include page="<%= navbar %>" />
+      </div>
+		<%	} else { %>
+      <div class="container">
+        <dspace:include page="/layout/navbar-minimal.jsp" />
+      </div>
+		<%	} %>
+		</header>
 
-    <%-- HACK: leftmargin, topmargin: for non-CSS compliant Microsoft IE browser --%>
-    <%-- HACK: marginwidth, marginheight: for non-CSS compliant Netscape browser --%>
-    <body class="undernavigation">
-<a class="sr-only" href="#content">Skip navigation</a>
-<header class="navbar navbar-inverse navbar-fixed-top">    
-    <%
-    if (!navbar.equals("off"))
-    {
-%>
-            <div class="container">
-                <dspace:include page="<%= navbar %>" />
-            </div>
-<%
-    }
-    else
-    {
-    	%>
-        <div class="container">
-            <dspace:include page="/layout/navbar-minimal.jsp" />
-        </div>
-<%    	
-    }
-%>
-</header>
+		<main id="content" tabindex=-1>
+			<div class="container banner">
+				<div class="row">
+         	<div class="col-md-4">
+					 	<a href="http://rid.unrn.edu.ar/">
+							<img class="pull-right" src="<%= request.getContextPath() %>/image/Logo_UNRN_apaisado.png" alt="DSpace logo" />
+						</a>
+        	</div>
+					<div class="col-md-8 brand">
+						<center> 
+							<fmt:message key="jsp.layout.header-default.brand.heading" />
+							<fmt:message key="jsp.layout.header-default.brand.heading2" />
+						</center>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<%-- Location bar --%>
+			<%	if (locbar) { %>
+			<div class="container">
+				<dspace:include page="/layout/location-bar.jsp" />
+			</div>                
+			<%	}	%>
 
-<main id="content" tabindex=-1>
-<div class="container banner">
-	<div class="row">
-         <div class="col-md-4"> <a href="http://rid.unrn.edu.ar/jspui/"><img class="pull-right" src="<%= request.getContextPath() %>/image/Logo_UNRN_apaisado.png" alt="DSpace logo" /> </a>
-        </div>
-		<div class="col-md-8 brand">
-		<h1> 
-        <!-- <fmt:message key="jsp.layout.header-default.brand.heading" /> -->
-         <center>RID-UNRN </center> </h1>
-        <!-- <fmt:message key="jsp.layout.header-default.brand.description" /> -->
-        <center><h3>Repositorio Institucional Digital de la</br> Universidad Nacional de Rio Negro </h3></center>
-        </div>
-
-	</div>
-</div>	
-<br/>
-                <%-- Location bar --%>
-<%
-    if (locbar)
-    {
-%>
-<div class="container">
-                <dspace:include page="/layout/location-bar.jsp" />
-</div>                
-<%
-    }
-%>
-
-
-        <%-- Page contents --%>
-<div class="container">
- <% if (request.getAttribute("dspace.layout.sidebar") != null) { %>
-	<div class="row">
-		<div class="col-md-9">
-<% } %>		
+      <%-- Page contents --%>
+			<div class="container">
+ 			<% if (request.getAttribute("dspace.layout.sidebar") != null) { %>
+				<div class="row">
+					<div class="col-md-9">
+			<% } %>		

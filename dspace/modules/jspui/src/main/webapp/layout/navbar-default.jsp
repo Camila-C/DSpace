@@ -83,16 +83,15 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
-         <%--
-         <a class="navbar-brand" href="<%= request.getContextPath() %>/"><img height="25" src="<%= request.getContextPath() %>/image/dspace-logo-only.png" alt="DSpace logo" /></a>
-		 
-		 <fmt:message key="jsp.layout.navbar-default.home"/>
-         --%>
+         <!-- Habilitar cuando se saque el buscador del nav
+         <a class="navbar-brand" href="<%= request.getContextPath() %>/">
+          <img height="25" src="<%= request.getContextPath() %>/image/header_logo_unrn_blanco.svg" alt="DSpace logo" />
+         </a>
+         -->
        </div>
        <nav class="collapse navbar-collapse bs-navbar-collapse">
          <ul class="nav navbar-nav">
            <li class="<%= currentPage.endsWith("/home.jsp")? "active" : "" %>"><a href="<%= request.getContextPath() %>/"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
-                
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="jsp.layout.navbar-default.browse"/> <span class="caret"></span></a>
              <ul class="dropdown-menu">
