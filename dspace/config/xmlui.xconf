@@ -101,7 +101,7 @@
         <!-- <aspect name="Statistics - Elastic Search" path="resource://aspects/StatisticsElasticSearch/" /> -->
 
         <!-- Additionally you may choose to expose your Google Analytics statistics in DSpace -->
-        <!-- <aspect name="StatisticsGoogleAnalytics" path="resource://aspects/StatisticsGoogleAnalytics/" /> -->
+        <aspect name="StatisticsGoogleAnalytics" path="resource://aspects/StatisticsGoogleAnalytics/" />
 
         <!-- =========================
              Approval Workflow Systems
