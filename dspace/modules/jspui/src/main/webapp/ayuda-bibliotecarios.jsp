@@ -17,7 +17,6 @@
 	
 <dspace:layout title="Ayuda pra bibliotecarios">
   <h1><fmt:message key="jsp.dspace-admin.index.heading"/></h1>
-  <p><fmt:message key="jsp.dspace-admin.index.text"/></p>
 	<div class="panel panel-primary">
     <div class="panel-heading">Ventanillas Permanentes</div>
     <div class="panel-body">
@@ -38,12 +37,12 @@
 			<ul>
 				<li>
 					<p lang="es-ES" align="justify">
-						<a href="<%= request.getContextPath() %>/F086-01.pdf">Formulario F086-01 (Formulario de Cesi&oacute;n no exclusiva de derechos para dep&oacute;sito en el RID-UNRN)</a>
+						<a href="<%= request.getContextPath() %>/documents/F0114-01.pdf">Formulario F0114-01 (Formulario de Cesi&oacute;n no exclusiva de derechos para dep&oacute;sito en el RID-UNRN)</a>
 					</p>
 				</li>
 				<li>
 					<p lang="es-ES" align="justify">
-						<a href="<%= request.getContextPath() %>/F087-01.pdf">Formulario F087-01 (Formulario de Registro de Datos)</a>
+						<a href="<%= request.getContextPath() %>/documents/F0115-01.pdf">Formulario F0115-01 (Formulario de Registro de Datos RID-UNRN)</a>
 					</p>
 				</li>
 			</ul>
