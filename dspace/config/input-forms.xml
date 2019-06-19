@@ -1087,15 +1087,15 @@
 		<!--DIGESTO-->
 		<value-pairs value-pairs-name="emisores" dc-term="creator">
 			<pair>
-				<displayed-value>Rector (R) </displayed-value>
+				<displayed-value>Rector (R)</displayed-value>
 				<stored-value>Rector (R)</stored-value>
 			</pair>
 			<pair>
-				<displayed-value>Universidad Nacional de Río Negro (U) </displayed-value>
+				<displayed-value>Universidad Nacional de Río Negro (U)</displayed-value>
 				<stored-value>Universidad Nacional de Río Negro (U)</stored-value>
 			</pair>
 			<pair>
-				<displayed-value>Asamblea (Z) </displayed-value>
+				<displayed-value>Asamblea (Z)</displayed-value>
 				<stored-value>Asamblea (Z)</stored-value>
 			</pair>
 			<pair>
@@ -1115,16 +1115,20 @@
 				<stored-value>Consejo de Programación y Gestión Estratégica (P)</stored-value>
 			</pair>
 			<pair>
-				<displayed-value>Consejo Superior de Investigación, Creación Artística, Desarrollo y Transferencia Tecnología (I) (2018-actualidad)</displayed-value>
-				<stored-value>Consejo Superior de Investigación, Creación Artística, Desarrollo y Transferencia Tecnología (I)</stored-value>
+				<displayed-value>Consejo Superior de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología (I) (2018-actualidad)</displayed-value>
+				<stored-value>Consejo Superior de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología (I)</stored-value>
 			</pair>
 			<pair>
-				<displayed-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia Tecnología (I) (2014-2017)</displayed-value>
-				<stored-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia Tecnología (I)</stored-value>
+				<displayed-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología (I) (2014-2017)</displayed-value>
+				<stored-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología (I)</stored-value>
 			</pair>
 			<pair>
-				<displayed-value>Consejo de Investigación, Desarrollo y Transferencia Tecnología (I) (2011-2013)</displayed-value>
-				<stored-value>Consejo de Investigación, Desarrollo y Transferencia Tecnología (I)</stored-value>
+				<displayed-value>Consejo de Investigación, Desarrollo y Transferencia de Tecnología (I) (2011-2013)</displayed-value>
+				<stored-value>Consejo de Investigación, Desarrollo y Transferencia de Tecnología (I)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Sede Atlántica (A)</displayed-value>
+				<stored-value>Sede Atlántica (A)</stored-value>
 			</pair>
 			<pair>
 				<displayed-value>Sede Atlántica (A)</displayed-value>
@@ -1135,8 +1139,8 @@
 				<stored-value>Sede Andina (B)</stored-value>
 			</pair>
 			<pair>
-				<displayed-value>Sede Alto Valle (C)</displayed-value>
-				<stored-value>Sede Alto Valle (C)</stored-value>
+				<displayed-value>Sede Alto Valle y Valle Medio (C)</displayed-value>
+				<stored-value>Sede Alto Valle y Valle Medio (C)</stored-value>
 			</pair>
 		</value-pairs>
 

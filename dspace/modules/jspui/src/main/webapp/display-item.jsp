@@ -245,6 +245,7 @@
     %>
     </div>
   </div>
+  <br/>
   <%-- Ley 26899 --%>
   <div class="row">
     <div class="col-sm-12">
