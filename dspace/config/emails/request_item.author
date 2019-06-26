@@ -1,17 +1,42 @@
-Subject: Request copy of document
+####Inicio mensaje original####
+#Subject: Request copy of document
+#
+#Dear {7},
+#
+#A user of {9}, named {0} and using the email {1}, requested a copy of the file(s) associated with the document: "{4}" ({3}) submitted by you.
+#
+#This request came along with the following message:
+#
+#"{5}"
+#
+#To answer, click {6}. Whether you choose to grant or deny the request, we think that it''s in your best interest to respond.
+#
+#IF YOU ARE NOT AN AUTHOR OF THIS DOCUMENT, and only submitted the document on the author''s behalf, PLEASE REDIRECT THIS MESSAGE TO THE AUTHOR(S).  Only the author(s) should answer the request to send a copy.
+#
+#IF YOU ARE AN AUTHOR OF THE REQUESTED DOCUMENT, thank you for your cooperation!
+#
+#If you have any questions concerning this request, please contact {10}.
+#
+####Fin mensaje original####
 
-Dear {7},
+Subject: Solicitud de documento
 
-A user of {9}, named {0} and using the email {1}, requested a copy of the file(s) associated with the document: "{4}" ({3}) submitted by you.
+Estimado/a {7},
 
-This request came along with the following message:
+Un usuario del {9}, llamado {0} cuyo dirección e-mail es {1}, solicitó una copia de del/los archivo/s asociados con el documento: "{4}" ({3}) submitted by you.
+
+Esta solicitud vino junto con el siguiente mensaje:
 
 "{5}"
 
-To answer, click {6}. Whether you choose to grant or deny the request, we think that it''s in your best interest to respond.
+Para responder, haga clic en {6}.
+Ya sea que elija Enviar o No enviar la solicitud, creemos que es conveniente una respuesta.
 
-IF YOU ARE NOT AN AUTHOR OF THIS DOCUMENT, and only submitted the document on the author''s behalf, PLEASE REDIRECT THIS MESSAGE TO THE AUTHOR(S).  Only the author(s) should answer the request to send a copy.
+SI UD. NO ES UN AUTOR DE ESTE DOCUMENTO, y solo presentó el documento en nombre del autor, POR FAVOR, REENVIE ESTE MENSAJE AL/LOS AUTOR/ES. Solo un Autor debe responder a esta solicitud.
 
-IF YOU ARE AN AUTHOR OF THE REQUESTED DOCUMENT, thank you for your cooperation!
+SI UD. ES UN AUTOR DEL DOCUMENTO SOLICITADO, ¡gracias por su cooperación!
 
-If you have any questions concerning this request, please contact {10}.
+Si tiene alguna pregunta relacionada con esta solicitud, comuníquese con {10}.
+
+Atentamente
+Equipo RID-UNRN
