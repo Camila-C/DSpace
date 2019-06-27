@@ -54,6 +54,7 @@
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
+			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css" type="text/css" />
 			<%	if (!"NONE".equals(feedRef)) {
         		for (int i = 0; i < parts.size(); i+= 3) {
 			%>
@@ -118,7 +119,7 @@
 		<%	} %>
 		</header>
 
-		<main id="content" tabindex=-1>
+		<main id="content" role="main">
 			<div class="container banner">
 				<div class="row">
          	<div class="col-md-4">

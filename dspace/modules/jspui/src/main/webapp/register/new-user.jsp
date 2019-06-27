@@ -30,7 +30,7 @@
     boolean retry = (request.getAttribute("retry") != null);
 %>
 
-<dspace:layout style="submission" titlekey="jsp.register.new-user.title">
+<dspace:layout titlekey="jsp.register.new-user.title">
 	<h1><fmt:message key="jsp.register.new-user.title"/></h1>
 	<%	if (retry) { %>
 	<p class="alert alert-warning">
