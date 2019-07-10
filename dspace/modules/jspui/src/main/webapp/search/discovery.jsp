@@ -216,7 +216,7 @@ else if( qResults != null)
 
 %>
 <hr/>
-<div class="discovery-result-pagination row container">
+<div class="discovery-result-pagination row">
 <%
 	long lastHint = qResults.getStart()+qResults.getMaxResults() <= qResults.getTotalSearchResults()?
 	        qResults.getStart()+qResults.getMaxResults():qResults.getTotalSearchResults();
@@ -285,7 +285,7 @@ else if( qResults != null)
 	</ul>
 <!-- give a content to the div -->
 </div>
-<div class="discovery-result-results">
+<div class="discovery-result-results row">
 <% if (communities.length > 0 ) { %>
     <div class="panel panel-info">
     <div class="panel-heading"><fmt:message key="jsp.search.results.comhits"/></div>
@@ -310,7 +310,7 @@ else if( qResults != null)
 <%-- if the result page is enought long... --%>
 <% if ((communities.length + collections.length + items.length) > 10) {%>
 <%-- show again the navigation info/links --%>
-<div class="discovery-result-pagination row container">
+<div class="discovery-result-pagination row">
     <%-- <p align="center">Results <//%=qResults.getStart()+1%>-<//%=qResults.getStart()+qResults.getHitHandles().size()%> of --%>
 	<div class="alert alert-info"><fmt:message key="jsp.search.results.results">
         <fmt:param><%=qResults.getStart()+1%></fmt:param>
@@ -387,7 +387,7 @@ else
 
 <h2><fmt:message key="jsp.search.title"/></h2>
 
-<div class="discovery-search-form panel panel-default">
+<div class="discovery-search-form panel panel-default row">
     <%-- Controls for a repeat search --%>
 	<div class="discovery-query panel-heading">
     <form action="simple-search" method="get">
