@@ -1,5 +1,7 @@
 html, body {
   height: 100%;
+  font-family: "Chivo", sans-serif;
+  color: #1d2234;
 }
 body {
   display: flex;
@@ -8,7 +10,84 @@ body {
 main#content {
   flex: 1 0 auto;
 }
-/* Inicio Footer */
+#page-content {
+  padding-top: 20px;
+}
+
+/*** INICIO HEADER ***/
+/* Navbar */
+header nav {
+  background: transparent;
+  padding: 5px 0px;
+}
+header .nav > li > a {
+  color: #fff;
+}
+header .nav > li > a:hover,
+header .nav > li > a:focus {
+  background-color: transparent;
+}
+header .nav > li > p > .btn-login {
+  background-color: transparent;
+  color: #eb2141;
+  border: 2px solid #eb2141;
+  border-radius: 5px;
+  font-weight: 600;
+}
+header .nav > li > p > .btn-login {
+  color: #eb2141 !important;
+}
+header .nav > li > p > .btn-login:hover {
+  background-color: #eb2141;
+  color: #fff !important;
+}
+/* Menú mobile */
+header .navbar-toggle > .icon-bar {
+  background-color: #fff;
+}
+header .navbar-solid .navbar-toggle > .icon-bar {
+  background-color: #eb2141;
+}
+header .navbar-solid {
+  background-color: #fff;
+  transition: background-color 0.2s linear;
+  border-bottom: 1px solid #eee;
+}
+header .navbar-solid .nav li a {
+  color: #1b2437;
+}
+header .nav > li > a:focus {
+    text-decoration: none;
+    background-color: transparent !important;
+}
+/* Jumbotron Header */
+header .jumbotron {
+  background-image: url("../../../image/header/frente-unrn.jpg");
+  background-position: 50% 0px;
+  background-color: rgba(0, 0, 0, 0.51);
+  background-size: cover;
+  background-blend-mode: soft-light;
+  color: #fff;
+  padding: 100px 25px;
+  font-family: Montserrat, sans-serif;
+  margin-bottom: 0;
+}
+header .jumbotron-admin {
+  background-image: url("../../../image/header/admin.jpg");
+}
+header .jumbotron button {
+  background-color: #eb2141;
+}
+/* Breadcrums */
+.main-breadcrumb {
+  background-color: #1b2437;
+}
+.main-breadcrumb .breadcrumb {
+  background-color: transparent;
+}
+/*** FIN HEADER ***/
+
+/*** INICIO FOOTER ***/
 footer {
   flex-shrink: 0;
   background-color: #1b2437;
@@ -58,7 +137,6 @@ footer a:hover {
 .footer-links.inline li {
   display: inline-block;
 }
-
 .copyright-text {
   margin: 0;
 }
@@ -96,4 +174,4 @@ footer .box-logos .box-logo a {
 footer .box-logos .box-logo img {
    width: 90%;
 }
-/* Fin Footer*/
+/*** FIN FOOTER ***/

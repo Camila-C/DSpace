@@ -7,18 +7,13 @@
     http://www.dspace.org/license/
 
 --%>
-<%--
-  - Display a tombstone indicating that an item has been withdrawn.
-  --%>
 
 <%@ page contentType="text/html;charset=ISO-8859-1" %>
 
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"
-    prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 	
-<dspace:layout title="Políticas">
+<dspace:layout title="Polï¿½ticas">
 
 <h4>
 	<strong>

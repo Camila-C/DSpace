@@ -34,9 +34,9 @@
     try {
       context = UIUtil.obtainContext(request);
 %>
-<dspace:layout style="submission" locbar="link" navbar="admin" titlekey="jsp.administer">
-  <h1>Bienvenidos al la secci&oacute;n de administraci&oacute;n de Dspace</h1>
-</dspace:layout>
+      <dspace:layout style="submission" locbar="link" navbar="admin" titlekey="jsp.administer">
+        <h1>Bienvenidos a la secci&oacute;n de administraci&oacute;n del RID-UNRN</h1>
+      </dspace:layout>
 <%
     }
     catch (SQLException se) {
@@ -55,4 +55,3 @@
       context.abort();
     }
 %>
-

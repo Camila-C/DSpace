@@ -53,8 +53,8 @@
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/jquery-ui-1.10.3.custom/redmond/jquery-ui-1.10.3.custom.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" />
-	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
 			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css" type="text/css" />
+	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
 			<%	if (!"NONE".equals(feedRef)) {
         		for (int i = 0; i < parts.size(); i+= 3) {
 			%>
@@ -76,6 +76,7 @@
 			<script type='text/javascript' src='<%= request.getContextPath() %>/static/js/holder.js'></script>
 			<script type="text/javascript" src="<%= request.getContextPath() %>/utils.js"></script>
 			<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
+			<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/rid-unrn-theme.js"> </script>
 
 	    <%--Gooogle Analytics recording.--%>
     	<% 	if (analyticsKey != null && analyticsKey.length() > 0) { %>
@@ -105,13 +106,11 @@
 
   <%-- HACK: leftmargin, topmargin: for non-CSS compliant Microsoft IE browser --%>
   <%-- HACK: marginwidth, marginheight: for non-CSS compliant Netscape browser --%>
-  <body class="undernavigation">
+  <body>
 		<a class="sr-only" href="#content">Skip navigation</a>
-		<header class="navbar navbar-inverse navbar-fixed-top">    
+		<header>    
     <%	if (!navbar.equals("off")) { %>
-      <div class="container">
         <dspace:include page="<%= navbar %>" />
-      </div>
 		<%	} else { %>
       <div class="container">
         <dspace:include page="/layout/navbar-minimal.jsp" />
@@ -120,31 +119,13 @@
 		</header>
 
 		<main id="content" role="main">
-			<div class="container banner">
-				<div class="row">
-         	<div class="col-md-4">
-					 	<a href="http://rid.unrn.edu.ar/">
-							<img class="pull-right" src="<%= request.getContextPath() %>/image/Logo_UNRN_apaisado.png" alt="DSpace logo" />
-						</a>
-        	</div>
-					<div class="col-md-8 brand">
-						<center> 
-							<fmt:message key="jsp.layout.header-default.brand.heading" />
-							<fmt:message key="jsp.layout.header-default.brand.heading2" />
-						</center>
-					</div>
-				</div>
-			</div>
-			<br/>
 			<%-- Location bar --%>
 			<%	if (locbar) { %>
-			<div class="container">
-				<dspace:include page="/layout/location-bar.jsp" />
-			</div>                
+				<dspace:include page="/layout/location-bar.jsp" />        
 			<%	}	%>
 
       <%-- Page contents --%>
-			<div class="container">
+			<div id="page-content" class="container">
  			<% if (request.getAttribute("dspace.layout.sidebar") != null) { %>
 				<div class="row">
 					<div class="col-md-9">

@@ -11,7 +11,7 @@
   - Default navigation bar
 --%>
 
-<%@page import="org.apache.commons.lang.StringUtils"%>
+<%@ page import="org.apache.commons.lang.StringUtils"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -40,60 +40,65 @@
     // Get the current page, minus query string
     String currentPage = UIUtil.getOriginalURL(request);
     int c = currentPage.indexOf( '?' );
-    if( c > -1 )
-    {
-        currentPage = currentPage.substring( 0, c );
+    if( c > -1 ) {
+      currentPage = currentPage.substring( 0, c );
     }
 
     // E-mail may have to be truncated
     String navbarEmail = null;
-
-    if (user != null)
-    {
-        navbarEmail = user.getEmail();
+    if (user != null) {
+      navbarEmail = user.getEmail();
     }
 %>
 
-
-       <div class="navbar-header">
-         <a class="navbar-brand" href="<%= request.getContextPath() %>/"><img height="25" src="<%= request.getContextPath() %>/image/header_logo_unrn_blanco.svg" alt="DSpace logo" /></a>
-       </div>
-       <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-       <div class="nav navbar-nav navbar-right">
-		<ul class="nav navbar-nav navbar-right">
-         <li class="dropdown">
-         <%
-    if (user != null)
-    {
-		%>
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <fmt:message key="jsp.layout.navbar-default.loggedin">
-		      <fmt:param><%= StringUtils.abbreviate(navbarEmail, 20) %></fmt:param>
-		  </fmt:message> <b class="caret"></b></a>
-		<%
-    } else {
-		%>
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <fmt:message key="jsp.layout.navbar-default.sign"/> <b class="caret"></b></a>
-	<% } %>             
-             <ul class="dropdown-menu">
-               <li><a href="<%= request.getContextPath() %>/mydspace"><fmt:message key="jsp.layout.navbar-default.users"/></a></li>
-               <li><a href="<%= request.getContextPath() %>/subscribe"><fmt:message key="jsp.layout.navbar-default.receive"/></a></li>
-               <li><a href="<%= request.getContextPath() %>/profile"><fmt:message key="jsp.layout.navbar-default.edit"/></a></li>
-
-		<%
-		  if (isAdmin)
-		  {
-		%>
-			   <li class="divider"></li>  
-               <li><a href="<%= request.getContextPath() %>/dspace-admin"><fmt:message key="jsp.administer"/></a></li>
-		<%
-		  }
-		  if (user != null) {
-		%>
-		<li><a href="<%= request.getContextPath() %>/logout"><span class="glyphicon glyphicon-log-out"></span> <fmt:message key="jsp.layout.navbar-default.logout"/></a></li>
-		<% } %>
-             </ul>
-           </li>
+<nav class="navbar navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= request.getContextPath() %>/">
+        <img id="logo" src="<%= request.getContextPath() %>/image/header/header_logo_unrn_blanco.svg" alt="RID-UNRN logo" />
+      </a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <%-- Listar --%>
+        <li class="dropdown">
+        <%  if (user != null) { %>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-user"></span>
+            <fmt:message key="jsp.layout.navbar-default.loggedin">
+              <fmt:param><%= StringUtils.abbreviate(navbarEmail, 20) %></fmt:param>
+            </fmt:message>
+            <b class="caret"></b>
+          </a>
+        <%  } else { %>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-user"></span>
+            <fmt:message key="jsp.layout.navbar-default.sign"/>
+            <b class="caret"></b>
+          </a>
+        <%  } %>             
+          <ul class="dropdown-menu">
+            <li><a href="<%= request.getContextPath() %>/mydspace"><fmt:message key="jsp.layout.navbar-default.users"/></a></li>
+            <li><a href="<%= request.getContextPath() %>/subscribe"><fmt:message key="jsp.layout.navbar-default.receive"/></a></li>
+            <li><a href="<%= request.getContextPath() %>/profile"><fmt:message key="jsp.layout.navbar-default.edit"/></a></li>
+        <%  if (isAdmin) { %>
+            <li class="divider"></li>  
+            <li><a href="<%= request.getContextPath() %>/dspace-admin"><fmt:message key="jsp.administer"/></a></li>
+        <%  }
+            if (user != null) {
+        %>
+            <li><a href="<%= request.getContextPath() %>/logout"><span class="glyphicon glyphicon-log-out"></span> <fmt:message key="jsp.layout.navbar-default.logout"/></a></li>
+        <%  } %>
           </ul>
-          
+        </li>
+      </ul>
+    </div>
 	</div>
-    </nav>
+</nav>
