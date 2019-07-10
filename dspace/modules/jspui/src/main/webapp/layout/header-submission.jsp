@@ -53,30 +53,25 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/jquery-ui-1.10.3.custom/redmond/jquery-ui-1.10.3.custom.css" type="text/css" />
     <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
     <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css" type="text/css" />
-<%
-    if (!"NONE".equals(feedRef))
-    {
-      for (int i = 0; i < parts.size(); i+= 3) {
-%>
-        <link rel="alternate" type="application/<%= (String)parts.get(i) %>" title="<%= (String)parts.get(i+1) %>" href="<%= request.getContextPath() %>/feed/<%= (String)parts.get(i+2) %>/<%= feedRef %>"/>
-<%
-      }
-    }
-    
-    if (osLink) {
-%>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
+    <%
+        if (!"NONE".equals(feedRef)) {
+          for (int i = 0; i < parts.size(); i+= 3) {
+    %>
+      <link rel="alternate" type="application/<%= (String)parts.get(i) %>" title="<%= (String)parts.get(i+1) %>" href="<%= request.getContextPath() %>/feed/<%= (String)parts.get(i+2) %>/<%= feedRef %>"/>
+    <%    }
+        }
+        if (osLink) {
+    %>
       <link rel="search" type="application/opensearchdescription+xml" href="<%= request.getContextPath() %>/<%= osCtx %>description.xml" title="<%= osName %>"/>
-<%
-    }
-
-    if (extraHeadData != null) { 
-%>
-      <%= extraHeadData %>
-<%
-    }
-%>
+    <%  }
+        if (extraHeadData != null) { 
+    %>
+          <%= extraHeadData %>
+    <%
+        }
+    %>
         
     <script type='text/javascript' src="<%= request.getContextPath() %>/static/js/jquery/jquery-1.10.2.min.js"></script>
     <script type='text/javascript' src='<%= request.getContextPath() %>/static/js/jquery/jquery-ui-1.10.3.custom.min.js'></script>
@@ -84,11 +79,10 @@
     <script type='text/javascript' src='<%= request.getContextPath() %>/static/js/holder.js'></script>
     <script type="text/javascript" src="<%= request.getContextPath() %>/utils.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
+    <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/rid-unrn-theme.js"> </script>
 
     <%--Gooogle Analytics recording.--%>
-    <%
-    if (analyticsKey != null && analyticsKey.length() > 0) {
-    %>
+    <%  if (analyticsKey != null && analyticsKey.length() > 0) { %>
       <script type="text/javascript">
         var _gaq = _gaq || [];
             _gaq.push(['_setAccount', '<%= analyticsKey %>']);
@@ -98,16 +92,16 @@
           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
               ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-         })();
+        })();
       </script>
     <%
-    }
-    if (extraHeadDataLast != null) { %>
-		  <%= extraHeadDataLast %>
-		<%
-		}
+        }
+        if (extraHeadDataLast != null) {
     %>
-
+		      <%= extraHeadDataLast %>
+		<%
+		    }
+    %>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="<%= request.getContextPath() %>/static/js/html5shiv.js"></script>
@@ -117,41 +111,27 @@
 
   <%-- HACK: leftmargin, topmargin: for non-CSS compliant Microsoft IE browser --%>
   <%-- HACK: marginwidth, marginheight: for non-CSS compliant Netscape browser --%>
-  <body class="undernavigation">
+  <body>
     <a class="sr-only" href="#content">Skip navigation</a>
-    <header class="navbar navbar-inverse navbar-fixed-top">    
-    <%
-      if (!navbar.equals("off")) {
-    %>
-        <div class="container">
-          <dspace:include page="<%= navbar %>" />
-        </div>
-    <%
-      } else { 
-    %>
+    <header>
+    <%  if (!navbar.equals("off")) { %>
+        <dspace:include page="<%= navbar %>" />
+    <%  } else { %>
         <div class="container">
           <dspace:include page="/layout/navbar-minimal.jsp" />
         </div>
-    <%    	
-      }
-    %>
+    <%  } %>
 </header>
 
 <main id="content" role="main">
   <%-- Location bar --%>
-  <% 
-    if (locbar) {
-  %>
-      <div class="container">
-        <dspace:include page="/layout/location-bar.jsp" />
-      </div>                
-  <%
-    }
-  %>
+  <%  if (locbar) { %>
+      <dspace:include page="/layout/location-bar.jsp" />                
+  <%  } %>
 
   <%-- Page contents --%>
-  <div class="container">
-  <% if (request.getAttribute("dspace.layout.sidebar") != null) { %>
-	    <div class="row">
-		    <div class="col-md-9">
-  <% } %>
+  <div id="page-content" class="container">
+  <%  if (request.getAttribute("dspace.layout.sidebar") != null) { %>
+	      <div class="row">
+		      <div class="col-md-9">
+  <%  } %>
