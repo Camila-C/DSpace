@@ -72,6 +72,9 @@ header .jumbotron {
   font-family: Montserrat, sans-serif;
   margin-bottom: 0;
 }
+header .jumbotron-admin {
+  background-image: url("../../../image/header/admin.jpg");
+}
 header .jumbotron button {
   background-color: #eb2141;
 }
