@@ -26,6 +26,8 @@
 <%@ page import="java.io.File" %>
 <%@ page import="java.util.Enumeration"%>
 <%@ page import="java.util.Locale"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Arrays"%>
 <%@ page import="javax.servlet.jsp.jstl.core.*" %>
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
 <%@ page import="org.dspace.core.I18nUtil" %>
@@ -55,6 +57,17 @@
   ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
 
   RecentSubmissions submissions = (RecentSubmissions) request.getAttribute("recent.submissions");
+
+  /*
+   * Creo un ARRAY con los ids de las 4 comunidades importantes y sus iconos
+   * ID 2: Tesis y Trabajos finales
+   * ID 5: Libros
+   * ID 8: Artículos de revista
+   * ID 9: Congresos y jornadas
+   */
+
+  ArrayList<Integer> fourCommunities = new ArrayList<Integer>(Arrays.asList(2, 5, 8, 9));
+  String[] communityIcons = {"fas fa-user-graduate", "fas fa-paste", "fas fa-book", "fab fa-react"};
 %>
 
 <dspace:layout locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
@@ -65,8 +78,8 @@
     </div> 
   -->
 
-  <!-- Se oculta hasta que se resuelva lo del DIGESTO
-  <div class="row">
+  <!-- Se oculta hasta que se resuelva lo del DIGESTO -->
+  <section class="container">
     <% if (submissions != null && submissions.count() > 0) { %>
       <div class="col-md-8">
         <div class="panel panel-primary">        
@@ -89,17 +102,16 @@
                       icon = "rss.gif";
                       width = 36;
                     }
-                %>
+              %>
                     <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/site">
                       <img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" />
                     </a>
-                <%
+              <%
                   }
                 }
               %>
             </h3>
-                
-            Wrapper for slides -- comentar
+            <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <%
                 boolean first = true;
@@ -126,8 +138,7 @@
                 }
               %>
             </div>
-
-            Controls -- comentar
+            <!-- Controls -->
             <a class="left carousel-control" href="#recent-submissions-carousel" data-slide="prev">
               <span class="icon-prev"></span>
             </a>
@@ -147,81 +158,94 @@
     <div class="col-md-4">
       <%= sideNews %>
     </div>
-  </div>
-  -->
-
-  <div class="container row">
+  </section>
+  <!-- COMUNIDADES -->
+  <section class="bg-grey-light pt-100 pb-100" id="four-communities">
     <% if (communities != null && communities.length != 0) { %>
-      <div class="col-md-9">		
-        <h3><fmt:message key="jsp.home.com1"/></h3>
-        <p><fmt:message key="jsp.home.com2"/></p>
-        <div class="list-group">
-          <%
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-8 mx-auto text-center">
+            <div class="section-title">
+              <h4><fmt:message key="jsp.home.com1"/></h4>
+              <p>
+                <fmt:message key="jsp.home.com2">
+                  <fmt:param><%= request.getContextPath() %>/community-list</fmt:param>
+                </fmt:message>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row row-equal">
+        <%
             boolean showLogos = ConfigurationManager.getBooleanProperty("jspui.home-page.logos", true);
+            int id = 0;
             for (int i = 0; i < communities.length; i++) {
-          %>
-              <%-- El ID de autoarchivo es el nro. 50. Por lo tanto, para no mostrarla, pregunto si el ID es dintinto a 50 --%>
-              <% if (communities[i].getID() != 50) { %>
-                  <div class="list-group-item row">
-                    <%  
-                      Bitstream logo = communities[i].getLogo();
-                      if (showLogos && logo != null) {
-                    %>
-                        <div class="col-md-2">
-                          <img alt="Logo" class="img-responsive" width="72px" height="72px" src="<%= request.getContextPath() %>/retrieve/<%= logo.getID() %>" /> 
-                        </div>
-                        <div class="col-md-9">
-                    <% } else { %>
-                        <div class="col-md-12">
-                    <% } %>	
-                          <h4 class="list-group-item-heading">
-                            <a href="<%= request.getContextPath() %>/handle/<%= communities[i].getHandle() %>">
-                              <%= communities[i].getMetadata("name") %>
-                            </a>
-                            <% if (ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
-                              <span class="badge pull-right"><%= ic.getCount(communities[i]) %></span>
-                            <% } %>
-                          </h4>
-                          <p><%= communities[i].getMetadata("short_description") %></p>
-                        </div>
+              id = communities[i].getID();
+              //Pregunto si el ID se encuentra en las 4 comunidades mas importantes
+              if (fourCommunities.contains(id)) {
+        %>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <a href="<%= request.getContextPath() %>/handle/<%= communities[i].getHandle() %>">
+                  <div class="single-service">
+                    <%  // FIXME: Buscar una forma mejor
+                        if (id == 2) { %>
+                          <i class="fas fa-user-graduate"></i>
+                    <%  } else if(id == 5) { %>
+                          <i class="fas fa-book"></i>
+                    <%  } else if(id == 8) { %>
+                          <i class="fas fa-paste"></i>
+                    <%  } else { %>
+                          <i class="fab fa-react"></i>
+                    <%  } %>
+                    <h4>
+                      <%= communities[i].getMetadata("name") %>
+                      <% if (ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
+                        <br><span class="badge"><%= ic.getCount(communities[i]) %></span>
+                      <% } %>
+                    </h4>
+                    <p><%= communities[i].getMetadata("short_description") %></p>
                   </div>
-              <% } %>
-          <% } %>
+                </a>
+              </div>
+        <%
+              }
+            } 
+        %>
         </div>
       </div>
     <% } %>
-      <div class="col-md-3">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <fmt:message key="jsp.layout.sidebar.uploadFile"/>
-              </div>
-              <div class="panel-body">
-                <p><fmt:message key="jsp.layout.sidebar.uploadFile.description"/></p>
-                <p>
-                  <a href="<%= request.getContextPath() %>/como-subir.jsp">
-                    <fmt:message key="jsp.layout.sidebar.uploadFile.moreInformation"/>
-                  </a>
-                </p>
-                <a href="<%= request.getContextPath() %>/mydspace" class="btn btn-block btn-info btn-lg">
-                  <span class="glyphicon glyphicon-cloud-upload"></span>
-                  Subir
+  </section>
+  <section class="container">
+    <div class="col-md-3">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <fmt:message key="jsp.layout.sidebar.uploadFile"/>
+            </div>
+            <div class="panel-body">
+              <p><fmt:message key="jsp.layout.sidebar.uploadFile.description"/></p>
+              <p>
+                <a href="<%= request.getContextPath() %>/como-subir.jsp">
+                  <fmt:message key="jsp.layout.sidebar.uploadFile.moreInformation"/>
                 </a>
-              </div>
+              </p>
+              <a href="<%= request.getContextPath() %>/mydspace" class="btn btn-block btn-info btn-lg">
+                <span class="glyphicon glyphicon-cloud-upload"></span>
+                Subir
+              </a>
             </div>
           </div>
-          <%
-              int discovery_panel_cols = 12;
-              int discovery_facet_cols = 12;
-          %>
-          <%@ include file="discovery/static-sidebar-facet.jsp" %>  
         </div>
+        <%
+            int discovery_panel_cols = 12;
+            int discovery_facet_cols = 12;
+        %>
+        <%@ include file="discovery/static-sidebar-facet.jsp" %>  
       </div>
     </div>
-
     <div class="row">
       <%@ include file="discovery/static-tagcloud-facet.jsp" %>
     </div>
-  </div>
+  </section>
 </dspace:layout>

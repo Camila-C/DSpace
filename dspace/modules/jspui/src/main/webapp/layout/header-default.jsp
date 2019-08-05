@@ -40,6 +40,8 @@
 	String dsVersion = Util.getSourceVersion();
 	String generator = dsVersion == null ? "DSpace" : "DSpace "+dsVersion;
 	String analyticsKey = ConfigurationManager.getProperty("jspui.google.analytics.key");
+
+	String currentPath = (String)request.getAttribute("javax.servlet.forward.request_uri");
 %>
 
 <!DOCTYPE html>
@@ -53,7 +55,10 @@
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/jquery-ui-1.10.3.custom/redmond/jquery-ui-1.10.3.custom.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" />
+			<!-- Tema del RID -->
 			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css" type="text/css" />
+			<!-- Fontawesome 5.10.1 -->
+			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/fontawesome-free-5.10.1/css/all.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
 			<%	if (!"NONE".equals(feedRef)) {
         		for (int i = 0; i < parts.size(); i+= 3) {
@@ -125,7 +130,11 @@
 			<%	}	%>
 
       <%-- Page contents --%>
-			<div id="page-content" class="container">
+			<%  if (currentPath != null && currentPath.equals("/jspui/")) { %>
+        		<div id="page-content">
+			<%  } else { %>
+						<div id="page-content" class="container">
+			<%  } %>
  			<% if (request.getAttribute("dspace.layout.sidebar") != null) { %>
 				<div class="row">
 					<div class="col-md-9">
