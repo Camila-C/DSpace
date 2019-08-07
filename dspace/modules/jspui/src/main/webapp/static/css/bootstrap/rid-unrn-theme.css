@@ -270,3 +270,70 @@ footer .box-logos .box-logo img {
 	font-weight: 500;
 }
 /* FIN: COMUNIDADES */
+
+/* INICIO: PARALLAX */
+.bgimg-1 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-blend-mode: soft-light;
+  background-attachment: scroll;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("https://bitcoinist.com/wp-content/uploads/2018/06/shutterstock_675110980.jpg");
+  min-height: 400px;
+}
+.caption {
+  padding: 20px 20px;
+  text-align: right;
+}
+.caption a {
+  text-decoration: none!important;
+}
+.caption h1 {
+  color: #fff;
+  margin-bottom:0;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.caption h1 span {
+  display: block;
+  color: #EB1F3F;
+}
+.caption h2 {
+  color: #fff;
+}
+.btn-mas-info {
+  display: inline-block;
+  border: 1px solid #FFF;
+  padding: 16px 20px 16px 20px;
+  font-size: 13px;
+  color: #fff;
+  margin-top: 30px;
+  letter-spacing: 3px;
+  -webkit-transition: all .4s ease 0s;
+  -moz-transition: all .4s ease 0s;
+  -o-transition: all .4s ease 0s;
+  transition: all .4s ease 0s;
+  text-transform: uppercase;
+}
+.btn-mas-info:hover {
+  background-color: #EB1F3F;
+  border-color: #EB1F3F;
+  color: #FFF;
+}
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (min-width: 768px) {
+  .bgimg-1 {
+    background-attachment: fixed;
+  }
+  .caption {
+    padding: 20px 0px;
+  }
+  .caption h1 {
+    font-size: 50px;
+  }
+}
+/* FIN PARALLAX */

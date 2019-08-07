@@ -215,6 +215,17 @@
       </div>
     <% } %>
   </section>
+  <section id="authors">
+    <div class="bgimg-1">
+      <div class="caption container">
+        <h1><fmt:message key="jsp.layout.sidebar.uploadFile"/></h1>
+        <h2><fmt:message key="jsp.layout.sidebar.uploadFile.description"/></h2>
+        <a href="<%= request.getContextPath() %>/como-subir.jsp" class="btn-mas-info">
+          <fmt:message key="jsp.layout.sidebar.uploadFile.moreInformation"/>
+        </a>
+      </div>
+    </div>
+  </section>
   <section class="container">
     <div class="col-md-3">
       <div class="row">
