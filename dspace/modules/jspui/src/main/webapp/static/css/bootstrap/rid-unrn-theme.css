@@ -11,6 +11,17 @@ main#content {
   flex: 1 0 auto;
 }
 
+/* INICIO: SELECCIÓN DE TEXTO */
+::-moz-selection {
+  background: #eb2141;
+  color: #fff;
+}
+::selection {
+  background: #eb2141;
+  color: #fff;
+}
+/* FIN: SELECCIÓN DE TEXTO */
+
 /*** INICIO HEADER ***/
 /* Navbar */
 header nav {
@@ -287,7 +298,6 @@ footer .box-logos .box-logo img {
 }
 .caption {
   padding: 20px 20px;
-  text-align: right;
 }
 .caption a {
   text-decoration: none!important;
@@ -337,3 +347,68 @@ footer .box-logos .box-logo img {
   }
 }
 /* FIN PARALLAX */
+
+/* INICIO: ENVIOS RECIENTES */
+#recent-shipments .panel {
+  height: 100%;
+}
+#recent-shipments .descripcion {
+  padding: 22px 35px;
+  position: relative;
+}
+#recent-shipments .descripcion .icono {
+  display: block;
+  text-align: center;
+  margin: 30px auto;
+  font-size: 18px;
+}
+#recent-shipments .descripcion p {
+  text-align: center;
+  overflow: hidden;
+  line-height: 25px;
+  color: #5a5a5a;
+  font-size: 14px;
+}
+#recent-shipments .descripcion .line-short {
+  width: 29px;
+  height: 3px;
+  margin: 24px auto;
+  background-color: #202020;
+  text-align: center;
+}
+#recent-shipments .descripcion .fecha {
+  text-align: center;
+  margin: 0 auto;
+  float: none;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+#recent-shipments h1 {
+  font-size: 40px;
+  letter-spacing: 10px;
+  font-weight: 900;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  padding: 0 0 8vh 0;
+}
+/* Carousel */
+.carousel {
+  margin-bottom: 0;
+  padding: 0 40px 30px 40px;
+}
+.carousel-control {
+  width: 0;
+  bottom: 60px;
+}
+.carousel-indicators {
+  bottom: -10px;
+}
+.carousel-indicators li {
+  background: #cecece;
+}
+.carousel-indicators .active {
+  background: #eb2141;
+}
+/* FIN: ENVIOS RECIENTES */
