@@ -9,7 +9,7 @@ $.noConflict();
       // checks if window is scrolled more than 50px, adds/removes solid class
       if($(this).scrollTop() > 50) { 
         $('.navbar').addClass('navbar-solid');
-        $('#logo').attr('src', '/jspui/image/header/header_logo_unrn_negro.svg')
+        $('#logo').attr('src', '/jspui/image/header/header_logo_unrn_negro.svg');
       } else {
         $('.navbar').removeClass('navbar-solid');
         $('#logo').attr('src','/jspui/image/header/header_logo_unrn_blanco.svg');
