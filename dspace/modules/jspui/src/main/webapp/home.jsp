@@ -139,7 +139,7 @@
       <div class="caption text-right container">
         <h1><fmt:message key="jsp.layout.sidebar.uploadFile"/></h1>
         <h2><fmt:message key="jsp.layout.sidebar.uploadFile.description"/></h2>
-        <a href="<%= request.getContextPath() %>/como-subir.jsp" class="btn-mas-info">
+        <a href="<%= request.getContextPath() %>/faqs.jsp#como-subir-un-documento" class="btn-mas-info">
           <fmt:message key="jsp.layout.sidebar.uploadFile.moreInformation"/>
         </a>
       </div>
@@ -218,7 +218,7 @@
                             <div class="descripcion"> 
                               <i class="icono fas fa-file-pdf"></i>
                               <p><%= StringUtils.abbreviate(displayTitle, 120) %></p>
-                              <p><a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">Ver más</a></p>
+                              <p><a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">Ver m&aacute;s</a></p>
                               <div class="line-short"></div>
                               <div class="fecha"><%=displayDate%></div>
                             </div>
@@ -284,7 +284,7 @@
                     <div class="descripcion"> 
                       <i class="icono fas fa-file-pdf"></i>
                       <p><%= StringUtils.abbreviate(displayTitle, 120) %></p>
-                      <p><a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">Ver más</a></p>
+                      <p><a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">Ver m&aacute;s</a></p>
                       <div class="line-short"></div>
                       <div class="fecha"><%=displayDate%></div>
                     </div>
