@@ -121,19 +121,10 @@
           </ul>
         </li>
         <%-- Preguntas Frecuentes--%>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <li>
+          <a href="<%= request.getContextPath() %>/faqs.jsp">
             Preguntas Frecuentes
-            <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu">
-            <li><a href="<%= request.getContextPath() %>/que-es.jsp">&iquest;Qu&eacute; es el RID-UNRN?</a></li>
-            <li><a href="<%= request.getContextPath() %>/comunidades-colecciones.jsp">&iquest;C&oacute;mo est&aacute; organizado?</a></li>
-            <li><a href="<%= request.getContextPath() %>/como-buscar.jsp">&iquest;C&oacute;mo buscar en el RID-UNRN?</a></li>
-            <li><a href="<%= request.getContextPath() %>/como-subir.jsp">&iquest;C&oacute;mo subir un documento?</a></li>
-            <li class="divider"></li>
-            <li><a href="<%= request.getContextPath() %>/ayuda-bibliotecarios.jsp">Ayuda para los bibliotecarios</a></li>
-          </ul>
         </li>
         <%-- Políticas del RID-UNRN --%>
         <li><a href="<%= request.getContextPath() %>/politicas.jsp">Pol&iacute;ticas</a></li>
