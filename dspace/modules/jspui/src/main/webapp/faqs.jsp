@@ -231,7 +231,7 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a class="collapsed" data-toggle="collapse" data-parent="#accordion-faqs" href="#que-es-la-cesion-no-exclusiva">
-                &iquest;Qu&eacute; es el Cesi&oacute;n No Exclusiva de Derechos para el Dep&oacute;sito en el RID-UNRN?
+                &iquest;Qu&eacute; es la Cesi&oacute;n No Exclusiva de Derechos para el Dep&oacute;sito en el RID-UNRN?
               </a>
             </h4>
           </div>
