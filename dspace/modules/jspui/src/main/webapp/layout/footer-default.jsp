@@ -14,7 +14,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ page contentType="text/html;charset=ISO-8859-1" %>
-
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="org.dspace.app.webui.util.UIUtil" %>
 
@@ -89,11 +88,11 @@
           <div class="col-xs-12 col-md-3">
             <h6>Normativas</h6>
             <ul class="footer-links">
-              <li><a href="<%= request.getContextPath() %>/cicadytt.jsp">Creaci&oacute;n del RID-UNRN</a></li>
+              <li><a href="<%= request.getContextPath() %>/handle/20.500.12049/802">Creaci&oacute;n del RID-UNRN</a></li>
               <li><a href="<%= request.getContextPath() %>/politicas.jsp">Pol&iacute;ticas del RID-UNRN</a></li>
-              <li><a href="<%= request.getContextPath() %>/ley-26899.jsp">Ley Nacional de Repositorios Digitales</a></li>
-              <li><a href="<%= request.getContextPath() %>/handle/20.500.12049/237">Digesto</a></li>
-              <li><a href="<%= request.getContextPath() %>/disp-circuitos-ingesta.jsp">Circuitos de Ingesta</a></li>
+              <li><a href="<%= request.getContextPath() %>/handle/20.500.12049/244">Ley Nacional 26.899 de Repositorios Digitales</a></li>
+              <li><a href="<%= request.getContextPath() %>/handle/20.500.12049/245">Reglamentaci&oacute;n de la Ley 26.899</a></li>
+              <li><a href="<%= request.getContextPath() %>/handle/20.500.12049/237">Digesto UNRN</a></li>
             </ul>
           </div>
           <div class="col-xs-12 col-md-3">
@@ -103,7 +102,7 @@
               <li><a href="http://www.openaccessweek.org/group/open-access-argentina" target="_blank">Acceso Abierto</a></li>
               <li><a href="https://datos.mincyt.gob.ar" target="_blank">Ciencia Abierta</a></li>
               <li><a href="http://repositoriosdigitales.mincyt.gob.ar" target="_blank">Portal del SNRD</a></li>
-              <li><a href="http://www.biblioteca.mincyt.gob.ar/">Biblioteca Electr&oacute;nica</a></li>
+              <li><a href="http://www.biblioteca.mincyt.gob.ar/" target="_blank">Biblioteca Electr&oacute;nica</a></li>
             </ul>
           </div>
         </div>
@@ -116,7 +115,7 @@
           </div>
           <div class="col col-sm-6 hidden-xs">
             <p class="copyright-text pull-right">&copy; Desarrollo Digital.
-              <a href="#"><strong>CRAI</strong></a>.
+              <a href="https://crai.unrn.edu.ar/" target="_blank"><strong>CRAI</strong></a>.
             </p>
           </div>
         </div>
