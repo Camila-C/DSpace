@@ -191,6 +191,9 @@ footer .box-logos .box-logo img {
 /*******        H O M E       ***********/
 /****************************************/
 /* INICIO: HELPERS */
+.pt-30 {
+  padding-top: 30px;
+}
 .pt-100 {
 	padding-top: 100px;
 }
@@ -503,4 +506,22 @@ footer .box-logos .box-logo img {
 }
 #accordion-faqs .panel-body p{
   margin-bottom: 0;
+}
+
+/****************************************/
+/*******     P O L I T I C A S    *******/
+/****************************************/
+.polices {
+  text-align: justify;
+}
+.polices h2,
+.polices h3 {
+  color: #1b2437;
+}
+.polices h2 {
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+.polices ol {
+  list-style-type: lower-alpha;
 }
