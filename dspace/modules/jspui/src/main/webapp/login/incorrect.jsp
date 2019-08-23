@@ -8,15 +8,15 @@
 
 --%>
 <%--
-  - Page that displays the email/password login form
+  - Display message indicating password is incorrect, and allow a retry
   --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
-<dspace:layout navbar="default" locbar="off" titlekey="jsp.login.password.title" nocache="true">
+<dspace:layout style="submission" navbar="default" locbar="nolink" titlekey="jsp.login.incorrect.title">
   <section class="container pt-30">
     <h2 class="text-center">
       <fmt:message key="jsp.login.password.heading"/>
@@ -31,6 +31,9 @@
     <div class="row">
       <div class="col-md-6 col-xs-12">
         <div class="well">
+          <div class="alert alert-danger">
+            <fmt:message key="jsp.login.incorrect.text" />
+          </div>
           <dspace:include page="/components/login-form.jsp" />
         </div>
       </div>
