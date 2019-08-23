@@ -113,7 +113,7 @@
   <%-- HACK: marginwidth, marginheight: for non-CSS compliant Netscape browser --%>
   <body>
 		<a class="sr-only" href="#content">Skip navigation</a>
-		<header>    
+		<header>
     <%	if (!navbar.equals("off")) { %>
         <dspace:include page="<%= navbar %>" />
 		<%	} else { %>
@@ -131,7 +131,7 @@
 
       <%-- Page contents --%>
 			<%  if (currentPath != null && currentPath.equals("/jspui/")) { %>
-        		<div id="page-content">
+        		<div>
 			<%  } else { %>
 						<div id="page-content" class="container">
 			<%  } %>

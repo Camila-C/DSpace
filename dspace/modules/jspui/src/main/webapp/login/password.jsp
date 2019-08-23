@@ -20,7 +20,7 @@
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
 
 <dspace:layout navbar="default" locbar="off" titlekey="jsp.login.password.title" nocache="true">
-  <section class="container">
+  <section class="container pt-30">
     <h2 class="text-center">
       <fmt:message key="jsp.login.password.heading"/>
       <%--

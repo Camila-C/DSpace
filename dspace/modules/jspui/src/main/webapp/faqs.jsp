@@ -12,18 +12,14 @@
   --%>
 
 <%@ page contentType="text/html;charset=ISO-8859-1" %>
-
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"
-    prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 	
 <dspace:layout title="Preguntas frecuentes">
-  <div class="row">
+  <div class="row pt-30">
     <div class="col-md-12">
       <div class="text-center">
-        <h1>Preguntas frecuentes</h1>
-        <p>del Repositorio Digital de la UNRN</p>
+        <h2>Preguntas frecuentes</h2>
       </div>
     </div>
     <div class="col-md-12">
