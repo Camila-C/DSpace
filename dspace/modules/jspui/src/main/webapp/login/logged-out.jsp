@@ -16,7 +16,7 @@
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
 <dspace:layout locbar="nolink" titlekey="jsp.login.logged-out.title">
-  <section class="jumbotron text-center container bg-transparent">
+  <section class="jumbotron text-center bg-transparent">
     <h2><fmt:message key="jsp.login.logged-out.title"/></h2>
     <p class="lead"><fmt:message key="jsp.login.logged-out.thank"/></p>
     <hr>
