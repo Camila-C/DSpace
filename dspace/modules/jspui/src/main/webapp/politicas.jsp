@@ -17,7 +17,7 @@
 	<div class="polices pt-30">
 		<h2>
 			Pol&iacute;ticas del Repositorio Institucional Digital de la Universidad
-			Nacional de R&iacute;o Negro, RID-UNRN.
+			Nacional de R&iacute;o Negro.
 		</h2>
 		<p>
 			El Repositorio Institucional de la UNIVERSIDAD NACIONAL DE R&Iacute;O NEGRO
