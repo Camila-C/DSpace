@@ -51,10 +51,6 @@
         </div>
       </form>
     </div>
-    <p class="pt-30">
-      &iquest;Tuvo alg&uacute;n problema? 
-      <a href="<%= request.getContextPath() %>/feedback">Cont&aacute;ctenos</a>
-    </p>
-    <%-- <dspace:include page="/components/contact-info.jsp" /> --%>
+    <dspace:include page="/components/contact-info.jsp" />
   </section>
 </dspace:layout>

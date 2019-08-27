@@ -21,13 +21,10 @@
     <p class="lead"><fmt:message key="jsp.login.logged-out.thank"/></p>
     <hr>
     <p>
-      &iquest;Tuvo alg&uacute;n problema? 
-      <a href="<%= request.getContextPath() %>/feedback">Cont&aacute;ctenos</a>
-    </p>
-    <p>
-      <a class="btn btn-unrn" href="<%= request.getContextPath() %>/">
+      <a class="btn btn-lg btn-unrn" href="<%= request.getContextPath() %>/">
         <fmt:message key="jsp.general.gohome"/>
       </a>
     </p>
+    <dspace:include page="/components/contact-info.jsp" />
   </section>
 </dspace:layout>
