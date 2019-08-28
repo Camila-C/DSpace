@@ -7,6 +7,46 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* INICIO: BOTÓN UNRN */
+.btn-unrn {
+  background-color: #fff;
+  color: #eb2141;
+  border-color: #eb2141;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+}
+.btn-unrn:hover {
+  background-color: #eb2141;
+  text-shadow: 0 1px 0 #fff;
+  color: #fff;
+  border-color: #eb2141;
+}
+.btn-unrn-reverse {
+  background-color: #eb2141;
+  color: #fff;
+  border-color: #eb2141;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+}
+.btn-unrn-reverse:hover {
+  background-color: #fff;
+  text-shadow: 0 1px 0 #eb2141;
+  color: #eb2141;
+  border-color: #eb2141;
+}
+/* FIN: BOTÓN UNRN */
+
+/* INICIO: TÍTULOS */
+#page-content h2,
+#page-content h3 {
+  color: #1b2437;
+}
+#page-content h2 {
+  font-size: 35px;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+/* FIN: TÍTULOS */
+
 main#content {
   flex: 1 0 auto;
 }
@@ -213,6 +253,9 @@ footer .box-logos .box-logo img {
 .row-equal > [class*='col-'] {
   display: flex;
   flex-direction: column;
+}
+.bg-transparent {
+  background-color: transparent;
 }
 /* FIN: HELPERS */
 
@@ -488,7 +531,6 @@ footer .box-logos .box-logo img {
 }
 #accordion-faqs .panel-body{
   font-size: 14px;
-  color: #5a3245;
   line-height: 25px;
   padding: 20px 15px 20px 40px;
   position: relative;
@@ -513,14 +555,6 @@ footer .box-logos .box-logo img {
 /****************************************/
 .polices {
   text-align: justify;
-}
-.polices h2,
-.polices h3 {
-  color: #1b2437;
-}
-.polices h2 {
-  text-transform: uppercase;
-  padding-bottom: 20px;
 }
 .polices ol {
   list-style-type: lower-alpha;

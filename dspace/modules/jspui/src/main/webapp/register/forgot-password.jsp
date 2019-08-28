@@ -8,10 +8,10 @@
 
 --%>
 <%--
-  - Register with DSpace form
+  - Forgotten password DSpace form
   -
-  - Form where new users enter their email address to get a token to access
-  - the personal info page.
+  - Form where new users enter their email address to get a token to enter a
+  - new password.
   -
   - Attributes to pass in:
   -     retry  - if set, this is a retry after the user entered an invalid email
@@ -25,32 +25,33 @@
 <%
     boolean retry = (request.getAttribute("retry") != null);
 %>
-<dspace:layout titlekey="jsp.register.new-user.title">
+
+<dspace:layout titlekey="jsp.register.forgot-password.title">
   <section class="jumbotron bg-transparent">
-    <h2><fmt:message key="jsp.register.new-user.title"/></h2>
+    <h2><fmt:message key="jsp.register.forgot-password.title"/></h2>
     <p class="lead">
-      <fmt:message key="jsp.register.new-user.info2"/>
+      <fmt:message key="jsp.register.forgot-password.info2"/>
     </p>
     <hr>
     <%	if (retry) { %>
       <div class="alert alert-danger">
-        <fmt:message key="jsp.register.new-user.info1"/>
+        <fmt:message key="jsp.register.forgot-password.info1"/>
       </div>
     <%	} %>
     <div class="row">
-      <form method="post" action="<%= request.getContextPath() %>/register">
+      <form method="post" action="<%= request.getContextPath() %>/forgot">
         <input type="hidden" name="step" value="<%= RegisterServlet.ENTER_EMAIL_PAGE %>"/>
         <div class="form-group col-md-6">
-          <label for="temail"><fmt:message key="jsp.register.new-user.email.field"/></label>
+          <label for="temail"><fmt:message key="jsp.register.forgot-password.email.field"/></label>
           <input type="text" class="form-control" name="email" id="temail" placeholder="ejemplo@unrn.edu.ar">
         </div>
         <div class="form-group col-md-12">
           <button type="submit" class="btn btn-unrn-reverse">
-            <fmt:message key="jsp.register.new-user.register.button"/>
+            <fmt:message key="jsp.register.forgot-password.forgot.button"/>
           </button>
         </div>
       </form>
     </div>
     <dspace:include page="/components/contact-info.jsp" />
-  </section>
+  </section>    
 </dspace:layout>
