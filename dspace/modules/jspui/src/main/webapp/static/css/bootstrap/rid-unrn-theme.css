@@ -7,6 +7,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+main#content {
+  flex: 1 0 auto;
+  padding-bottom: 0px;
+}
+#page-content {
+  padding-bottom: 60px;
+}
 
 /* INICIO: BOTÓN UNRN */
 .btn-unrn {
@@ -46,10 +53,6 @@ body {
   padding-bottom: 20px;
 }
 /* FIN: TÍTULOS */
-
-main#content {
-  flex: 1 0 auto;
-}
 
 /* INICIO: SELECCIÓN DE TEXTO */
 ::-moz-selection {
@@ -558,4 +561,28 @@ footer .box-logos .box-logo img {
 }
 .polices ol {
   list-style-type: lower-alpha;
+}
+
+/****************************************/
+/*******  C O M M U N I T T I E S  ******/
+/****************************************/
+#accordion-communities .panel-title a {
+  position: relative;
+}
+#accordion-communities .panel-title a:first-child:focus,
+#accordion-communities .panel-title a:first-child:hover,
+#accordion-communities .panel-title a:first-child:active {
+  text-decoration: none;
+}
+#accordion-communities .panel-title a:first-child:after {
+  content: "\f068";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  right: 0;
+  padding: 0 10px;
+}
+#accordion-communities .panel-title a:first-child.collapsed:after {
+  content: "\f067";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }
