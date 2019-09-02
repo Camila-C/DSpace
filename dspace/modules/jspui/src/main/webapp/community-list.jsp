@@ -103,7 +103,7 @@
 
 				out.println(cols[j].getMetadata("name"));
 				if(ConfigurationManager.getBooleanProperty("webui.strengths.show")) {
-					out.println(" [" + ic.getCount(cols[j]) + "]");
+					out.println(" <span class=\"label label-info\">" + ic.getCount(cols[j]) + "</span>");
 				}
 				out.println("</a></h4></div>");
 
@@ -159,8 +159,13 @@
 				</div>
 			</dspace:sidebar>
 	<% } %>
-	<h1><fmt:message key="jsp.community-list.title"/></h1>
-	<p><fmt:message key="jsp.community-list.text1"/></p>
+	<h2 class="text-center">
+		<fmt:message key="jsp.community-list.title"/>
+	</h2>
+	<div class="alert alert-info">
+		<strong>Informaci&oacute;n! </strong>
+		<fmt:message key="jsp.community-list.text1"/>
+	</div>
 	<% 	
 			if (communities.length != 0) {
 				String idAccordion = "accordion-communities";
