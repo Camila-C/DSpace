@@ -51,72 +51,90 @@
 
 <%!
 	void showCommunity(Community c, JspWriter out, HttpServletRequest request, ItemCounter ic,
-	Map collectionMap, Map subcommunityMap) throws ItemCountException, IOException, SQLException
+	Map collectionMap, Map subcommunityMap, String idAccordion, Boolean first) throws ItemCountException, IOException, SQLException
 	{
 		boolean showLogos = ConfigurationManager.getBooleanProperty("jspui.community-list.logos", true);
-		out.println( "<li class=\"media well\">" );
+		// Inicio panel-default
+		out.println("<div class=\"panel panel-default\">");
+		
+		// Inicio panel-heading
+		out.println("<div class=\"panel-heading\">");
+		out.println("<h4 class=\"panel-title\">");
+
+		out.println("<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#" + idAccordion
+			+ "\" class=\"" + (first ? "" : "collapsed") + "\" href=\"#com-collapse-" + c.getID() + "\"></a>");
+
+		out.println("<a href=\"" + request.getContextPath() + "/handle/" + c.getHandle() + "\">");
+
 		Bitstream logo = c.getLogo();
 		if (showLogos && logo != null) {
-			out.println("<a class=\"pull-left col-md-2\" href=\"" + request.getContextPath()
-				+ "/handle/" 
-				+ c.getHandle() + "\"><img class=\"media-object img-responsive\" src=\""
-				+ request.getContextPath() + "/retrieve/" + logo.getID() + "\" alt=\"community logo\"></a>");
+			out.println("<img src=\"" + request.getContextPath() + "/retrieve/" + logo.getID()
+				+ "\" alt=\"community logo\" height=\"30\">");
 		}
 
-		out.println( "<div class=\"media-body\"><h4 class=\"media-heading\"><a href=\"" + request.getContextPath() + "/handle/" 
-			+ c.getHandle() + "\">" + c.getMetadata("name") + "</a>");
+		out.println(c.getMetadata("name"));
 
 		if(ConfigurationManager.getBooleanProperty("webui.strengths.show")) {
 			out.println(" <span class=\"badge\">" + ic.getCount(c) + "</span>");
 		}
-	
-		out.println("</h4>");
-	
+		
+		out.println("</a></h4></div>");
+		// Fin panel-heading
+		
+		// Inicio panel-collapse
+		out.println("<div id=\"com-collapse-" + c.getID() + "\" class=\"panel-collapse collapse " + (first ? "in" : "") + "\">");
+		out.println("<div class=\"panel-body\">");
+
 		if (StringUtils.isNotBlank(c.getMetadata("short_description")))	{
-			out.println(c.getMetadata("short_description"));
+			out.println("<p>" + c.getMetadata("short_description") + "</p>");
 		}
-		
-		out.println("<br>");
-		
+
 		// Get the collections in this community
 		Collection[] cols = (Collection[]) collectionMap.get(c.getID());
 		if (cols != null && cols.length > 0) {
-			out.println("<ul class=\"media-list\">");
+			out.println("<div class=\"panel-group\" id=\"col-accordion-" + c.getID() + "\">");
 			for (int j = 0; j < cols.length; j++) {
-				out.println("<li class=\"media well\">");
-				Bitstream logoCol = cols[j].getLogo();
-				if (showLogos && logoCol != null) {
-					out.println("<a class=\"pull-left col-md-2\" href=\"" + request.getContextPath()
-						+ "/handle/"
-						+ cols[j].getHandle()
-						+ "\"><img class=\"media-object img-responsive\" src=\""
-						+ request.getContextPath() + "/retrieve/" + logoCol.getID() + "\" alt=\"collection logo\"></a>");
-				}
-				out.println("<div class=\"media-body\"><h4 class=\"media-heading\"><a href=\"" + request.getContextPath() + "/handle/" + cols[j].getHandle() + "\">" + cols[j].getMetadata("name") +"</a>");
+				out.println("<div class=\"panel panel-default\">");
+				out.println("<div class=\"panel-heading\">");
+				out.println("<h4 class=\"panel-title\">");
+				out.println("<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#col-accordion-"
+					+ c.getID() + "\" class=\"collapsed\" href=\"#col-collapse-" + cols[j].getID() + "\"></a>");
+				out.println("<a href=\"" + request.getContextPath() + "/handle/" + cols[j].getHandle() + "\">");
+
+				out.println(cols[j].getMetadata("name"));
 				if(ConfigurationManager.getBooleanProperty("webui.strengths.show")) {
-					out.println(" [" + ic.getCount(cols[j]) + "]");
+					out.println(" <span class=\"label label-info\">" + ic.getCount(cols[j]) + "</span>");
 				}
-				out.println("</h4>");
+				out.println("</a></h4></div>");
+
+				out.println("<div id=\"col-collapse-" + cols[j].getID() + "\" class=\"panel-collapse collapse\">");
+				out.println("<div class=\"panel-body\">");
 				if (StringUtils.isNotBlank(cols[j].getMetadata("short_description"))) {
-					out.println(cols[j].getMetadata("short_description"));
+					out.println("<p>" + cols[j].getMetadata("short_description") + "</p>");
 				}
 				out.println("</div>");
-				out.println("</li>");
+				out.println("</div>");
+				out.println("</div>");
 			}
-			out.println("</ul>");
+			out.println("</div>");
 		}
 
 		// Get the sub-communities in this community
 		Community[] comms = (Community[]) subcommunityMap.get(c.getID());
 		if (comms != null && comms.length > 0) {
-			out.println("<ul class=\"media-list\">");
+			String newidAccordion = "accordion-" + c.getID();
+			out.println("<div class=\"panel-group\" id=\"" + newidAccordion + "\">");
 			for (int k = 0; k < comms.length; k++) {
-				showCommunity(comms[k], out, request, ic, collectionMap, subcommunityMap);
+				showCommunity(comms[k], out, request, ic, collectionMap, subcommunityMap, newidAccordion, false);
 			}
-			out.println("</ul>"); 
+			out.println("</div>"); 
 		}
+
 		out.println("</div>");
-		out.println("</li>");
+		out.println("</div>");
+		// Fin panel-collapse
+		out.println("</div>");
+		// Fin panel-default
 	}
 %>
 
@@ -141,17 +159,28 @@
 				</div>
 			</dspace:sidebar>
 	<% } %>
-	<h1><fmt:message key="jsp.community-list.title"/></h1>
-	<p><fmt:message key="jsp.community-list.text1"/></p>
-	<% 	if (communities.length != 0) { %>
-    		<ul class="media-list">
+	<h2 class="text-center">
+		<fmt:message key="jsp.community-list.title"/>
+	</h2>
+	<div class="alert alert-info">
+		<strong>Informaci&oacute;n! </strong>
+		<fmt:message key="jsp.community-list.text1"/>
+	</div>
+	<% 	
+			if (communities.length != 0) {
+				String idAccordion = "accordion-communities";
+				// Añadir la clase "in" al collapse del primer elemento del Accordion
+				boolean first = true;
+	%>
+    		<div class="panel-group" id="<%=idAccordion%>">
 				<%	for (int i = 0; i < communities.length; i++) {
 							//El ID de autoarchivo es el nro. 50. Por lo tanto, para no mostrarla, pregunto si el ID es dintinto a 50
           		if (communities[i].getID() != 50) {
-								showCommunity(communities[i], out, request, ic, collectionMap, subcommunityMap);
+								showCommunity(communities[i], out, request, ic, collectionMap, subcommunityMap, idAccordion, first);
+								first = false;
 							}
          		}
 				%>
-    		</ul>
+    		</div>
 	<%	}	%>
 </dspace:layout>
