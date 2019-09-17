@@ -45,7 +45,7 @@
           <li><span class="fas fa-check text-success"></span> Incremente el impacto de sus trabajos a trav&eacute;s de Altmetrics y Google Acad&eacute;mico</li>
           <li><span class="fas fa-check text-success"></span> Int&eacute;grese en redes de investigaci&oacute;n nacional e internacional</li>
           <li><span class="fas fa-check text-success"></span> Obtenga facilidad de difusi&oacute;n</li>
-          <li><a href="<%= request.getContextPath() %>/faqs.jsp#por-que-publicar"><u>Leer m&aacute;s</u></a></li>
+          <li><a href="<%= request.getContextPath() %>/faqs#por-que-publicar"><u>Leer m&aacute;s</u></a></li>
         </ul>
         <p>
           <a class="btn btn-info btn-block" href="<%= request.getContextPath() %>/register">

@@ -122,7 +122,7 @@
         </li>
         <%-- Preguntas Frecuentes--%>
         <li>
-          <a href="<%= request.getContextPath() %>/faqs.jsp">
+          <a href="<%= request.getContextPath() %>/faqs">
             Preguntas Frecuentes
           </a>
         </li>

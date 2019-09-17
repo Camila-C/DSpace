@@ -139,7 +139,7 @@
       <div class="caption text-right container">
         <h1><fmt:message key="jsp.layout.sidebar.uploadFile"/></h1>
         <h2><fmt:message key="jsp.layout.sidebar.uploadFile.description"/></h2>
-        <a href="<%= request.getContextPath() %>/faqs.jsp#como-subir-un-documento" class="btn-mas-info">
+        <a href="<%= request.getContextPath() %>/faqs#como-subir-un-documento" class="btn-mas-info">
           <fmt:message key="jsp.layout.sidebar.uploadFile.moreInformation"/>
         </a>
       </div>
