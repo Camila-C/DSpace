@@ -460,6 +460,11 @@
     <servlet-class>org.dspace.app.webui.servlet.FAQServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>rid-policies</servlet-name>
+    <servlet-class>org.dspace.app.webui.servlet.RIDPoliciesServlet</servlet-class>
+  </servlet>
+
   <!-- shibbolized dspace -->
   <servlet>
     <servlet-name>shibboleth-login</servlet-name>
@@ -822,6 +827,11 @@
   <servlet-mapping>
     <servlet-name>faqs</servlet-name>
     <url-pattern>/faqs</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>rid-policies</servlet-name>
+    <url-pattern>/rid-policies</url-pattern>
   </servlet-mapping>
   
   <!-- Icon MIME type -->
