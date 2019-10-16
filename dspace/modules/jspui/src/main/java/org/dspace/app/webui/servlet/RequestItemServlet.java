@@ -44,82 +44,78 @@ import java.util.Date;
  */
 public class RequestItemServlet extends DSpaceServlet
 {
-    /** log4j category */
-    private static Logger log = Logger.getLogger(RequestItemServlet.class);
-    
-    /** The information get by form step */
-    public static final int ENTER_FORM_PAGE = 1;
-
-    /** The link by submmiter email step*/
-    public static final int ENTER_TOKEN = 2;
-    
-    /** The link Aproved genarate letter step*/
-    public static final int APROVE_TOKEN = 3;
-
-    /* resume leter for request user*/
-    public static final int RESUME_REQUEST = 4;
-
-    /* resume leter for request dspace administrator*/
-    public static final int RESUME_FREEACESS = 5;
-
-    protected void doDSGet(Context context,
-        HttpServletRequest request,
-        HttpServletResponse response)
-        throws ServletException, IOException, SQLException, AuthorizeException
-    {
-        // First get the step
-        int step = UIUtil.getIntParameter(request, "step");
-
-        try
-        {
-	        switch (step)
-	        {
-	        case ENTER_FORM_PAGE:
-	            processForm(context, request, response);
-	            break;
+	/** log4j category */
+	private static Logger log = Logger.getLogger(RequestItemServlet.class);
 	
-	        case ENTER_TOKEN:
-	            processToken(context, request, response);
-	            break;
-	
-	        case APROVE_TOKEN:
-	            processLetter(context, request, response);
-	            break;
-	
-	        case RESUME_REQUEST:
-	            processAttach(context, request, response);
-	            break;
-	
-	        case RESUME_FREEACESS:
-	            processAdmin(context, request, response);
-	            break;
-	            
-	        default:
-	            processForm(context, request, response);
-	        }
-	        context.complete();
-        }
-        catch (MessagingException e)
-        {
-        	throw new RuntimeException(e.getMessage(), e);
-        }
-    }
+	/** The information get by form step */
+	public static final int ENTER_FORM_PAGE = 1;
 
-    protected void doDSPost(Context context,
-        HttpServletRequest request,
-        HttpServletResponse response)
-        throws ServletException, IOException, SQLException, AuthorizeException
-    {
-        // Treat as a GET
-        doDSGet(context, request, response);
-    }
+	/** The link by submmiter email step*/
+	public static final int ENTER_TOKEN = 2;
+	
+	/** The link Aproved genarate letter step*/
+	public static final int APROVE_TOKEN = 3;
+
+	/* resume leter for request user*/
+	public static final int RESUME_REQUEST = 4;
+
+	/* resume leter for request dspace administrator*/
+	public static final int RESUME_FREEACESS = 5;
+
+	protected void doDSGet(Context context,
+			HttpServletRequest request,
+			HttpServletResponse response)
+			throws ServletException, IOException, SQLException, AuthorizeException
+	{
+		// First get the step
+		int step = UIUtil.getIntParameter(request, "step");
+
+		try {
+			switch (step) {
+				case ENTER_FORM_PAGE:
+					processForm(context, request, response);
+					break;
+
+				case ENTER_TOKEN:
+					processToken(context, request, response);
+					break;
+
+				case APROVE_TOKEN:
+					processLetter(context, request, response);
+					break;
+
+				case RESUME_REQUEST:
+					processAttach(context, request, response);
+					break;
+
+				case RESUME_FREEACESS:
+					processAdmin(context, request, response);
+					break;
+						
+				default:
+					processForm(context, request, response);
+			}
+			context.complete();
+		} catch (MessagingException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+
+	protected void doDSPost(Context context,
+			HttpServletRequest request,
+			HttpServletResponse response)
+			throws ServletException, IOException, SQLException, AuthorizeException
+	{
+		// Treat as a GET
+		doDSGet(context, request, response);
+	}
  
-    private void processForm (Context context,
-        HttpServletRequest request,
-        HttpServletResponse response)
-        throws ServletException, IOException, SQLException, AuthorizeException
-    {
-    	boolean showRequestCopy = false;
+	private void processForm (Context context,
+			HttpServletRequest request,
+			HttpServletResponse response)
+			throws ServletException, IOException, SQLException, AuthorizeException
+	{
+		boolean showRequestCopy = false;
 		if ("all".equalsIgnoreCase(ConfigurationManager.getProperty("request.item.type")) || 
 				("logged".equalsIgnoreCase(ConfigurationManager.getProperty("request.item.type")) &&
 						context.getCurrentUser() != null))
@@ -127,77 +123,68 @@ public class RequestItemServlet extends DSpaceServlet
 			showRequestCopy = true;
 		}
 		
-		if (!showRequestCopy)
-		{
+		if (!showRequestCopy) {
 			throw new AuthorizeException("The request copy feature is disabled");
 		}
+	
+		// handle
+		String handle = request.getParameter("handle");
+		String bitstream_id=request.getParameter("bitstream-id");
 		
-        // handle
-        String handle = request.getParameter("handle");
-        
-        String bitstream_id=request.getParameter("bitstream-id");
-        
-        // Title
-        String title = null;
-        Item item = null;
-        if (StringUtils.isNotBlank(handle))
-        {
-            item = (Item) HandleManager.resolveToObject(context, handle);
-            
-        }
-        if (item == null)
-        {   
-        	JSPManager.showInvalidIDError(request, response, handle, -1);
-        }
-        Metadatum[] titleDC = item.getDC("title", null, Item.ANY);
-        if (titleDC != null || titleDC.length > 0)
-        {
-            title = titleDC[0].value;
-        }
-        else
-		{
+		// Title
+		String title = null;
+		Item item = null;
+		if (StringUtils.isNotBlank(handle)) {
+			item = (Item) HandleManager.resolveToObject(context, handle);  
+		}
+		if (item == null) {   
+			JSPManager.showInvalidIDError(request, response, handle, -1);
+		}
+		Metadatum[] titleDC = item.getDC("title", null, Item.ANY);
+		if (titleDC != null || titleDC.length > 0) {
+			title = titleDC[0].value;
+		} else {
 			title = I18nUtil.getMessage("jsp.general.untitled", context);
 		}
-          
-        // User email from context
-        String requesterEmail = request.getParameter("email");
-        EPerson currentUser = context.getCurrentUser();
-        String userName = null;
-        
-        if (currentUser != null)
-        {
-            requesterEmail = currentUser.getEmail();
-            userName = currentUser.getFullName();
-        }
-        
-        if (request.getParameter("submit") != null)
-        {
-            String reqname = request.getParameter("reqname");
-            String coment = request.getParameter("coment");
-            if (coment == null || coment.equals(""))
-                coment = "";
-            boolean allfiles = "true".equals(request.getParameter("allfiles"));
-            
-            // Check all data is there
-            if (requesterEmail == null || requesterEmail.equals("") ||
-                reqname == null || reqname.equals("") || coment == null || coment.equals("")) 
-            {
-                request.setAttribute("handle",handle);
-                request.setAttribute("bitstream-id", bitstream_id);
-                request.setAttribute("reqname", reqname);
-                request.setAttribute("email", requesterEmail);
-                request.setAttribute("coment", coment);
-                request.setAttribute("title", title); 
-                request.setAttribute("allfiles", allfiles?"true":null); 
-                
-                request.setAttribute("requestItem.problem", new Boolean(true));
-                JSPManager.showJSP(request, response, "/requestItem/request-form.jsp");
-                return;
-            }
+			
+		// User email from context
+		String requesterEmail = request.getParameter("email");
+		EPerson currentUser = context.getCurrentUser();
+		String userName = null;
+		
+		if (currentUser != null) {
+			requesterEmail = currentUser.getEmail();
+			userName = currentUser.getFullName();
+		}
+		
+		if (request.getParameter("submit") != null) {
+			String reqname = request.getParameter("reqname");
+			String coment = request.getParameter("coment");
+			if (coment == null || coment.equals("")) {
+				coment = "";
+			}
+					
+			boolean allfiles = "true".equals(request.getParameter("allfiles"));
+			
+			// Check all data is there
+			if (requesterEmail == null || requesterEmail.equals("") ||
+					reqname == null || reqname.equals("") || coment == null || coment.equals("")) 
+			{
+				request.setAttribute("handle",handle);
+				request.setAttribute("bitstream-id", bitstream_id);
+				request.setAttribute("reqname", reqname);
+				request.setAttribute("email", requesterEmail);
+				request.setAttribute("coment", coment);
+				request.setAttribute("title", title); 
+				request.setAttribute("allfiles", allfiles?"true":null); 
+				
+				request.setAttribute("requestItem.problem", new Boolean(true));
+				JSPManager.showJSP(request, response, "/requestItem/request-form.jsp");
+				return;
+			}
 
-            try
-            {
-                // All data is there, send the email
+			try {
+				// All data is there, send the email
 				Email email = Email.getEmail(I18nUtil.getEmailFilename(
 						context.getCurrentLocale(), "request_item.author"));
 				
@@ -228,83 +215,76 @@ public class RequestItemServlet extends DSpaceServlet
 				
 				email.addArgument(authorName); // corresponding author name
 				email.addArgument(authorEmail); // corresponding author email
-				email.addArgument(ConfigurationManager
-						.getProperty("dspace.name"));
-				email.addArgument(ConfigurationManager
-						.getProperty("mail.helpdesk"));
+				email.addArgument(ConfigurationManager.getProperty("dspace.name"));
+				email.addArgument(ConfigurationManager.getProperty("mail.helpdesk"));
 				email.setReplyTo(requesterEmail);
 				email.send();
 
-                log.info(LogManager.getHeader(context,
-                    "sent_email_requestItem",
-                    "submitter_id=" + requesterEmail
-                        + ",bitstream_id="+bitstream_id
-                        + ",requestEmail="+requesterEmail));
+				log.info(LogManager.getHeader(context,
+						"sent_email_requestItem",
+						"submitter_id=" + requesterEmail
+								+ ",bitstream_id="+bitstream_id
+								+ ",requestEmail="+requesterEmail));
 
-                request.setAttribute("handle", handle);
-                JSPManager.showJSP(request, response,
-                    "/requestItem/request-send.jsp");
-            }
-            catch (MessagingException me)
-            {
-                log.warn(LogManager.getHeader(context,
-                    "error_mailing_requestItem",
-                    ""), me);
-               JSPManager.showInternalError(request, response);
-            }
-        }
-        else
-        {
-            // Display request copy form
-            log.info(LogManager.getHeader(context,
-                "show_requestItem_form",
-                "problem=false"));
-            request.setAttribute("handle", handle);
-            request.setAttribute("bitstream-id", bitstream_id);
-            request.setAttribute("email", requesterEmail);
-            request.setAttribute("reqname", userName);
-            request.setAttribute("title", title);
-            request.setAttribute("allfiles", "true");
-            JSPManager.showJSP(request, response, "/requestItem/request-form.jsp"); 
-        }
-   }
+				request.setAttribute("handle", handle);
+				JSPManager.showJSP(request, response,
+						"/requestItem/request-send.jsp");
+			}
+			catch (MessagingException me) {
+				log.warn(LogManager.getHeader(context,
+						"error_mailing_requestItem",
+						""), me);
+				JSPManager.showInternalError(request, response);
+			}
+		} else {
+			// Display request copy form
+			log.info(LogManager.getHeader(context,
+					"show_requestItem_form",
+					"problem=false"));
+			request.setAttribute("handle", handle);
+			request.setAttribute("bitstream-id", bitstream_id);
+			request.setAttribute("email", requesterEmail);
+			request.setAttribute("reqname", userName);
+			request.setAttribute("title", title);
+			request.setAttribute("allfiles", "true");
+			JSPManager.showJSP(request, response, "/requestItem/request-form.jsp"); 
+		}
+	}
 
-
-    /* receive token
-     * get all request data by token
-     * send email to request user
-     */
-   private void processToken (Context context,
-        HttpServletRequest request,
-        HttpServletResponse response)
-        throws ServletException, IOException, SQLException, AuthorizeException
-    {
-       // Token
-        String token = request.getParameter("token");
-       
-        TableRow requestItem = RequestItemManager.getRequestbyToken( context, token);
-        // validate
-        if (requestItem != null)
-        {
-            Item item = Item.find(context, requestItem.getIntColumn("item_id"));
-            String title = "";
-             if (item != null)
-            {   
-                Metadatum[] titleDC = item.getDC("title", null, Item.ANY);
-                if (titleDC != null || titleDC.length > 0) 
-                    title = titleDC[0].value; 
-            }
-            request.setAttribute("request-name", requestItem.getStringColumn("request_name"));
-            request.setAttribute("handle", item.getHandle());
-            request.setAttribute("title", title);
-            
-            JSPManager.showJSP(request, response,
-                    "/requestItem/request-information.jsp");
-        }else{
-            JSPManager.showInvalidIDError(request, response, token, -1);
-        }
-        
-   }
+	/* receive token
+		* get all request data by token
+		* send email to request user
+		*/
+	private void processToken (Context context,
+			HttpServletRequest request,
+			HttpServletResponse response)
+			throws ServletException, IOException, SQLException, AuthorizeException
+	{
+		// Token
+		String token = request.getParameter("token");
+		
+		TableRow requestItem = RequestItemManager.getRequestbyToken( context, token);
+		// validate
+		if (requestItem != null)
+		{
+			Item item = Item.find(context, requestItem.getIntColumn("item_id"));
+			String title = "";
+				if (item != null)
+			{   
+					Metadatum[] titleDC = item.getDC("title", null, Item.ANY);
+					if (titleDC != null || titleDC.length > 0) 
+							title = titleDC[0].value; 
+			}
+			request.setAttribute("request-name", requestItem.getStringColumn("request_name"));
+			request.setAttribute("handle", item.getHandle());
+			request.setAttribute("title", title);
+			
+			JSPManager.showJSP(request, response,
+							"/requestItem/request-information.jsp");
+		}else{
+			JSPManager.showInvalidIDError(request, response, token, -1);
+		}
+	}
    
 	/*
 	 * receive approvation and generate a letter
@@ -313,7 +293,8 @@ public class RequestItemServlet extends DSpaceServlet
 	 */
 	private void processLetter(Context context, HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
-			SQLException, AuthorizeException, MessagingException {
+			SQLException, AuthorizeException, MessagingException
+	{
 		// Token
 		String token = request.getParameter("token");
 		boolean yes = request.getParameter("submit_yes") != null;
@@ -363,94 +344,86 @@ public class RequestItemServlet extends DSpaceServlet
 	 * get all request data by token 
 	 * send email to request user
 	 */
-   private void processAttach (Context context,
-        HttpServletRequest request,
-        HttpServletResponse response)
-        throws ServletException, IOException, SQLException, AuthorizeException
-    {
-       // Token
-        String token = request.getParameter("token");
-        
-        //buttom
-        boolean submit_next = (request.getParameter("submit_next") != null);
-       
-        if (submit_next)
-        {
-            TableRow requestItem = RequestItemManager.getRequestbyToken( context, token);
-            // validate
-            if (requestItem != null)
-            {
-                // Token
-                String subject = request.getParameter("subject");
-                String message = request.getParameter("message");
-                boolean accept = UIUtil.getBoolParameter(request, "accept_request");
-                try
-                {
-                    Item item = Item.find(context, requestItem.getIntColumn("item_id"));
-                    Email email = new Email();
-                    email.setSubject(subject);
-                    email.setContent("{0}");
-        			email.addRecipient(requestItem.getStringColumn("request_email"));
-                    email.addArgument(message);
-                    
+  private void processAttach (Context context,
+			HttpServletRequest request,
+			HttpServletResponse response)
+			throws ServletException, IOException, SQLException, AuthorizeException
+  {
+		// Token
+		String token = request.getParameter("token");
+		
+		//buttom
+		boolean submit_next = (request.getParameter("submit_next") != null);
+		
+		if (submit_next) {
+			TableRow requestItem = RequestItemManager.getRequestbyToken( context, token);
+			// validate
+			if (requestItem != null) {
+				// Token
+				String subject = request.getParameter("subject");
+				String message = request.getParameter("message");
+				boolean accept = UIUtil.getBoolParameter(request, "accept_request");
+				try
+				{
+					Item item = Item.find(context, requestItem.getIntColumn("item_id"));
+					Email email = new Email();
+					email.setSubject(subject);
+					email.setContent("{0}");
+					email.addRecipient(requestItem.getStringColumn("request_email"));
+					email.addArgument(message);
+								
 					// add attach
 					if (accept) {
 						if (requestItem.getBooleanColumn("allfiles")) {
 							Bundle[] bundles = item.getBundles("ORIGINAL");
 							for (int i = 0; i < bundles.length; i++) {
-								Bitstream[] bitstreams = bundles[i]
-										.getBitstreams();
+								Bitstream[] bitstreams = bundles[i].getBitstreams();
 								for (int k = 0; k < bitstreams.length; k++) {
 									if (!bitstreams[k].getFormat().isInternal()
-											&& RequestItemManager.isRestricted(
-													context, bitstreams[k])) {
+										&& RequestItemManager.isRestricted(context, bitstreams[k]))
+									{
 										email.addAttachment(
-												BitstreamStorageManager
-														.retrieve(
-																context,
-																bitstreams[k]
-																		.getID()),
-												bitstreams[k].getName(),
-												bitstreams[k].getFormat()
-														.getMIMEType());
+											BitstreamStorageManager
+												.retrieve(context, bitstreams[k].getID()),
+											bitstreams[k].getName(),
+											bitstreams[k].getFormat().getMIMEType());
 									}
 								}
 							}
 						} else {
 							Bitstream bit = Bitstream.find(context,
-									requestItem.getIntColumn("bitstream_id"));
+								requestItem.getIntColumn("bitstream_id"));
 							email.addAttachment(BitstreamStorageManager
-									.retrieve(context, requestItem
-											.getIntColumn("bitstream_id")), bit
-									.getName(), bit.getFormat().getMIMEType());
+								.retrieve(context, requestItem
+										.getIntColumn("bitstream_id")), bit
+								.getName(), bit.getFormat().getMIMEType());
 						}
 					}
-                    email.send();
+					
+					email.send();
+					requestItem.setColumn("accept_request",accept);
+					requestItem.setColumn("decision_date",new Date());
+					DatabaseManager.update(context, requestItem);
 
-                    requestItem.setColumn("accept_request",accept);
-                    requestItem.setColumn("decision_date",new Date());
-                    DatabaseManager.update(context, requestItem);
+					log.info(LogManager.getHeader(context,
+							"sent_attach_requestItem",
+							"token=" + token));
 
-                    log.info(LogManager.getHeader(context,
-                        "sent_attach_requestItem",
-                        "token=" + token));
-
-                    JSPManager.showJSP(request, response,
-                        "/requestItem/request-free-access.jsp");
-                }
-                catch (MessagingException me)
-                {
-                    log.warn(LogManager.getHeader(context,
-                        "error_mailing_requestItem",
-                        ""), me);
-                   JSPManager.showInternalError(request, response);
-                }            
-			} else
+					JSPManager.showJSP(request, response, "/requestItem/request-free-access.jsp");
+				}
+				catch (MessagingException me) {
+					log.warn(LogManager.getHeader(context,
+											"error_mailing_requestItem",
+											""), me);
+					JSPManager.showInternalError(request, response);
+				}            
+			} else {
 				JSPManager.showInvalidIDError(request, response, null, -1);
+			}
 		} else {
 			processToken(context, request, response);
 		}
-   }
+	}
 
 	/*
 	 * receive approvation and generate a letter 
@@ -461,7 +434,7 @@ public class RequestItemServlet extends DSpaceServlet
         HttpServletRequest request,
         HttpServletResponse response)
         throws ServletException, IOException, SQLException, AuthorizeException
-    {
+  {
 		// Token
 		String token = request.getParameter("token");
 		boolean free = request.getParameter("submit_free") != null;
@@ -469,34 +442,30 @@ public class RequestItemServlet extends DSpaceServlet
 		String mail = request.getParameter("email");
 		// get token, get register, get email template, format email, get
 		// message to jsp
-		TableRow requestItem = RequestItemManager.getRequestbyToken(context,
-				token);
+		TableRow requestItem = RequestItemManager.getRequestbyToken(context, token);
 
 		if (requestItem != null && free) {
 			try {
-				Item item = Item.find(context,
-						requestItem.getIntColumn("item_id"));
-
+				Item item = Item.find(context, requestItem.getIntColumn("item_id"));
 				String emailRequest;
 				EPerson submiter = item.getSubmitter();
+				
 				if (submiter != null) {
 					emailRequest = submiter.getEmail();
 				} else {
-					emailRequest = ConfigurationManager
-							.getProperty("mail.helpdesk");
+					emailRequest = ConfigurationManager.getProperty("mail.helpdesk");
 				}
+				
 				if (emailRequest == null) {
-					emailRequest = ConfigurationManager
-							.getProperty("mail.admin");
+					emailRequest = ConfigurationManager.getProperty("mail.admin");
 				}
+
 				Email email = Email.getEmail(I18nUtil.getEmailFilename(
 						context.getCurrentLocale(), "request_item.admin"));
 				email.addRecipient(emailRequest);
-
 				email.addArgument(Bitstream.find(context,
 						requestItem.getIntColumn("bitstream_id")).getName());
-				email.addArgument(HandleManager.getCanonicalForm(item
-						.getHandle()));
+				email.addArgument(HandleManager.getCanonicalForm(item.getHandle()));
 				email.addArgument(requestItem.getStringColumn("token"));
 				email.addArgument(name);
 				email.addArgument(mail);
@@ -507,8 +476,7 @@ public class RequestItemServlet extends DSpaceServlet
 						"token=" + requestItem.getStringColumn("token")
 								+ "item_id=" + item.getID()));
 
-				JSPManager.showJSP(request, response,
-						"/requestItem/response-send.jsp");
+				JSPManager.showJSP(request, response, "/requestItem/response-send.jsp");
 			} catch (MessagingException me) {
 				log.warn(LogManager.getHeader(context,
 						"error_mailing_requestItem", ""), me);
@@ -517,5 +485,5 @@ public class RequestItemServlet extends DSpaceServlet
 		} else {
 			JSPManager.showInvalidIDError(request, response, token, -1);
 		}
-   }
+  }
 }
