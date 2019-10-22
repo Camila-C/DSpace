@@ -89,7 +89,7 @@
             <h6>Normativas</h6>
             <ul class="footer-links">
               <li><a href="<%= request.getContextPath() %>/handle/20.500.12049/802">Creaci&oacute;n del RID-UNRN</a></li>
-              <li><a href="<%= request.getContextPath() %>/politicas.jsp">Pol&iacute;ticas del RID-UNRN</a></li>
+              <li><a href="<%= request.getContextPath() %>/rid-policies">Pol&iacute;ticas del RID-UNRN</a></li>
               <li><a href="<%= request.getContextPath() %>/handle/20.500.12049/244">Ley Nacional 26.899 de Repositorios Digitales</a></li>
               <li><a href="<%= request.getContextPath() %>/handle/20.500.12049/245">Reglamentaci&oacute;n de la Ley 26.899</a></li>
               <li><a href="<%= request.getContextPath() %>/handle/20.500.12049/237">Digesto UNRN</a></li>

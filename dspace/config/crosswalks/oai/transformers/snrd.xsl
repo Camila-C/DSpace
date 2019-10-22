@@ -9,8 +9,7 @@
 	Following Driver Guidelines 2.0:
 		- http://www.driver-support.eu/managers.html#guidelines
  -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:doc="http://www.lyncode.com/xoai">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:doc="http://www.lyncode.com/xoai">
 	<xsl:output indent="yes" method="xml" omit-xml-declaration="yes" />
 	
 	<xsl:template match="@*|node()">
@@ -88,33 +87,33 @@
 				</xsl:when>
 				<xsl:when test="$theValue = 'Tesis'">
 					<!-- Para cada tipo, busca los subtipos subtipo y los compara -->
-                    <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
-                        <xsl:choose>
-                            <xsl:when test=". = 'Tesis de grado'">
-                                bachelorThesis
-                            </xsl:when>
+					<xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
+						<xsl:choose>
+							<xsl:when test=". = 'Tesis de grado'">
+								bachelorThesis
+							</xsl:when>
 							<xsl:when test=". = 'Tesis de maestria'">
-                                masterThesis
-                            </xsl:when>
-                            <xsl:when test=". = 'Tesis de doctorado'">
-                                doctoralThesis
-                            </xsl:when>
-                        </xsl:choose>
-                    </xsl:for-each>
-                </xsl:when>
+								masterThesis
+							</xsl:when>
+							<xsl:when test=". = 'Tesis de doctorado'">
+								doctoralThesis
+							</xsl:when>
+						</xsl:choose>
+					</xsl:for-each>
+				</xsl:when>
 				<xsl:when test="$theValue = 'Trabajo final'">
 					<!-- Para cada tipo, busca los subtipos subtipo y los compara -->
-                    <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
-                        <xsl:choose>
-                            <xsl:when test=". = 'Trabajo final de grado'">
+          <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
+        	  <xsl:choose>
+              <xsl:when test=". = 'Trabajo final de grado'">
 								bachelorThesis
 							</xsl:when>
 							<xsl:when test=". = 'Trabajo final de posgrado'">
 								masterThesis
 							</xsl:when>
-                        </xsl:choose>
-                    </xsl:for-each>
-                </xsl:when>
+            </xsl:choose>
+          </xsl:for-each>
+        </xsl:when>
 				<xsl:when test="$theValue = 'Libro'">
 					book
 				</xsl:when>
@@ -157,33 +156,33 @@
 				</xsl:when>
 				<xsl:when test="$theValue = 'Tesis'">
 					<!-- Para cada tipo, busca los subtipos subtipo y los compara -->
-                    <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
-                        <xsl:choose>
-                            <xsl:when test=". = 'Tesis de grado'">
-                                tesis de grado
-                            </xsl:when>
+          <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
+            <xsl:choose>
+              <xsl:when test=". = 'Tesis de grado'">
+                tesis de grado
+              </xsl:when>
 							<xsl:when test=". = 'Tesis de maestria'">
-                                tesis de maestría
-                            </xsl:when>
-                            <xsl:when test=". = 'Tesis de doctorado'">
-                                tesis doctoral
-                            </xsl:when>
-                        </xsl:choose>
-                    </xsl:for-each>
-                </xsl:when>
+                tesis de maestría
+              </xsl:when>
+              <xsl:when test=". = 'Tesis de doctorado'">
+                tesis doctoral
+              </xsl:when>
+            </xsl:choose>
+          </xsl:for-each>
+        </xsl:when>
 				<xsl:when test="$theValue = 'Trabajo final'">
 					<!-- Para cada tipo, busca los subtipos subtipo y los compara -->
-                    <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
-                        <xsl:choose>
-                            <xsl:when test=". = 'Trabajo final de grado'">
+          <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
+            <xsl:choose>
+              <xsl:when test=". = 'Trabajo final de grado'">
 								trabajo final de grado
 							</xsl:when>
 							<xsl:when test=". = 'Trabajo final de posgrado'">
 								tesis de maestría
 							</xsl:when>
-                        </xsl:choose>
-                    </xsl:for-each>
-                </xsl:when>
+            </xsl:choose>
+          </xsl:for-each>
+        </xsl:when>
 				<xsl:when test="$theValue = 'Libro'">
 					libro
 				</xsl:when>

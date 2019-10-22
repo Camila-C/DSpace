@@ -122,12 +122,12 @@
         </li>
         <%-- Preguntas Frecuentes--%>
         <li>
-          <a href="<%= request.getContextPath() %>/faqs.jsp">
+          <a href="<%= request.getContextPath() %>/faqs">
             Preguntas Frecuentes
           </a>
         </li>
         <%-- Políticas del RID-UNRN --%>
-        <li><a href="<%= request.getContextPath() %>/politicas.jsp">Pol&iacute;ticas</a></li>
+        <li><a href="<%= request.getContextPath() %>/rid-policies">Pol&iacute;ticas</a></li>
         <%--
           <li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") %>"><fmt:message key="jsp.layout.navbar-default.help"/></dspace:popup></li>
         --%>
