@@ -9,13 +9,15 @@ package org.dspace.authority.indexer;
 
 import org.dspace.authority.AuthorityValue;
 import org.apache.log4j.Logger;
+import org.dspace.authority.factory.AuthorityServiceFactory;
+import org.dspace.authority.service.AuthorityService;
 import org.dspace.content.Item;
+import org.dspace.content.factory.ContentServiceFactory;
+import org.dspace.content.service.ItemService;
 import org.dspace.core.Context;
-import org.dspace.kernel.ServiceManager;
-import org.dspace.utils.DSpace;
 
-import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -30,19 +32,21 @@ public class AuthorityIndexClient {
 
     private static Logger log = Logger.getLogger(AuthorityIndexClient.class);
 
+    protected static final AuthorityService authorityService = AuthorityServiceFactory.getInstance().getAuthorityService();
+    protected static final AuthorityIndexingService indexingService = AuthorityServiceFactory.getInstance().getAuthorityIndexingService();
+    protected static final List<AuthorityIndexerInterface> indexers = AuthorityServiceFactory.getInstance().getAuthorityIndexers();
+    protected static final ItemService itemService = ContentServiceFactory.getInstance().getItemService();
+
     public static void main(String[] args) throws Exception {
 
         //Populate our solr
-        Context context = new ContextNoCaching();
+        Context context = new Context();
         //Ensure that we can update items if we are altering our authority control
         context.turnOffAuthorisationSystem();
-        ServiceManager serviceManager = getServiceManager();
 
 
-        AuthorityIndexingService indexingService = serviceManager.getServiceByName(AuthorityIndexingService.class.getName(),AuthorityIndexingService.class);
-        List<AuthorityIndexerInterface> indexers = serviceManager.getServicesByType(AuthorityIndexerInterface.class);
 
-        if(!isConfigurationValid(indexingService, indexers)){
+        if(!authorityService.isConfigurationValid()){
                     //Cannot index, configuration not valid
             System.out.println("Cannot index authority values since the configuration isn't valid. Check dspace logs for more information.");
 
@@ -54,18 +58,23 @@ public class AuthorityIndexClient {
 
         //Get all our values from the input forms
         Map<String, AuthorityValue> toIndexValues = new HashMap<>();
+
         for (AuthorityIndexerInterface indexerInterface : indexers) {
             log.info("Initialize " + indexerInterface.getClass().getName());
             System.out.println("Initialize " + indexerInterface.getClass().getName());
-            indexerInterface.init(context, true);
-            while (indexerInterface.hasMore()) {
-                AuthorityValue authorityValue = indexerInterface.nextValue();
-                if(authorityValue != null){
+
+            Iterator<Item> allItems = itemService.findAll(context);
+            Map<String, AuthorityValue> authorityCache = new HashMap<>();
+            while (allItems.hasNext()) {
+                Item item = allItems.next();
+
+                List<AuthorityValue> authorityValues = indexerInterface.getAuthorityValues(context, item, authorityCache);
+                for (AuthorityValue authorityValue : authorityValues) {
                     toIndexValues.put(authorityValue.getId(), authorityValue);
                 }
+
+                context.uncacheEntity(item);
             }
-            //Close up
-            indexerInterface.close();
         }
 
 
@@ -75,74 +84,14 @@ public class AuthorityIndexClient {
         log.info("Writing new data");
         System.out.println("Writing new data");
         for(String id : toIndexValues.keySet()){
-            indexingService.indexContent(toIndexValues.get(id), true);
+            indexingService.indexContent(toIndexValues.get(id));
             indexingService.commit();
         }
 
-        context.commit();
         //In the end commit our server
         indexingService.commit();
-        context.abort();
+        context.complete();
         System.out.println("All done !");
         log.info("All done !");
     }
-
-    public static void indexItem(Context context, Item item){
-        ServiceManager serviceManager = getServiceManager();
-
-        AuthorityIndexingService indexingService = serviceManager.getServiceByName(AuthorityIndexingService.class.getName(),AuthorityIndexingService.class);
-        List<AuthorityIndexerInterface> indexers = serviceManager.getServicesByType(AuthorityIndexerInterface.class);
-
-        if(!isConfigurationValid(indexingService, indexers)){
-            //Cannot index, configuration not valid
-            return;
-        }
-
-        for (AuthorityIndexerInterface indexerInterface : indexers) {
-
-            indexerInterface.init(context , item);
-            while (indexerInterface.hasMore()) {
-                AuthorityValue authorityValue = indexerInterface.nextValue();
-                if(authorityValue != null)
-                    indexingService.indexContent(authorityValue, true);
-            }
-            //Close up
-            indexerInterface.close();
-        }
-        //Commit to our server
-        indexingService.commit();
-    }
-
-    private static ServiceManager getServiceManager() {
-        //Retrieve our service
-        DSpace dspace = new DSpace();
-        return dspace.getServiceManager();
-    }
-
-    private static class ContextNoCaching extends Context
-    {
-
-        public ContextNoCaching() throws SQLException {
-            super();
-        }
-
-        @Override
-        public void cache(Object o, int id) {
-            //Do not cache any object
-        }
-    }
-
-    private static boolean isConfigurationValid(AuthorityIndexingService indexingService, List<AuthorityIndexerInterface> indexers){
-        if(!indexingService.isConfiguredProperly()){
-            return false;
-        }
-
-        for (AuthorityIndexerInterface indexerInterface : indexers) {
-            if(!indexerInterface.isConfiguredProperly()){
-                return false;
-            }
-        }
-        return true;
-    }
-
 }

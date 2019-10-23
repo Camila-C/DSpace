@@ -41,6 +41,7 @@ public class MetadataImportInvalidHeadingException extends Exception
      *
      * @param message the error message
      * @param theType the type of the error
+     * @param theColumn column number
      */
     public MetadataImportInvalidHeadingException(String message, int theType, int theColumn)
     {
@@ -85,20 +86,21 @@ public class MetadataImportInvalidHeadingException extends Exception
      *
      * @return The exception message
      */
+    @Override
     public String getMessage()
     {
         if (type == SCHEMA)
         {
-            return "Unknown metadata schema in row " + column + ": " + badHeading;
+            return "Unknown metadata schema in column " + column + ": " + badHeading;
         } else if (type == ELEMENT)
         {
-            return "Unknown metadata element in row " + column + ": " + badHeading;
+            return "Unknown metadata element in column " + column + ": " + badHeading;
         } else if (type == MISSING)
         {
-            return "Row with missing header: Row " + column;
+            return "Row with missing header: column " + column;
         } else
         {
-            return "Bad metadata declaration in row " + column + ": " + badHeading;
+            return "Bad metadata declaration in column" + column + ": " + badHeading;
         }
     }
 }

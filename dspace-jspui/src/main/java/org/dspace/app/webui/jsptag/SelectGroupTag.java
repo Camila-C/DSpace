@@ -17,6 +17,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.dspace.eperson.Group;
+import org.dspace.core.Utils;
 
 /**
  * <P>Tag for producing an e-person select widget in a form.  Somewhat
@@ -42,7 +43,7 @@ public class SelectGroupTag extends TagSupport
 	private boolean multiple;
 	
 	/** Which groups are initially in the list? */
-	private transient Group[] groups;
+	private Group[] groups;
 
     private static final long serialVersionUID = -3330389128849427302L; 
 
@@ -89,6 +90,7 @@ public class SelectGroupTag extends TagSupport
 	}
 
 	
+    @Override
 	public void release()
 	{
 		multiple = false;
@@ -96,6 +98,7 @@ public class SelectGroupTag extends TagSupport
 	}
 
 
+    @Override
 	public int doStartTag()
 		throws JspException
 	{
@@ -119,7 +122,7 @@ public class SelectGroupTag extends TagSupport
 				for (int i = 0; i < groups.length; i++)
 				{
 					out.print("<option value=\"" + groups[i].getID() + "\">");
-					out.print(groups[i].getName() + " (" + groups[i].getID() + ")");
+					out.print(Utils.addEntities(groups[i].getName()) + " (" + groups[i].getID() + ")");
 					out.println("</option>");
 				}
 			}
