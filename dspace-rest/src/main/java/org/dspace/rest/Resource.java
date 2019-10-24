@@ -59,9 +59,6 @@ public class Resource
         writeStatistics = DSpaceServicesFactory.getInstance().getConfigurationService().getBooleanProperty("rest.stats", false);
     }
 
-    static public String getServletContextPath() {
-        return servletContext.getContextPath();
-    }
     /**
      * Create context to work with DSpace database. It can create context
      * with or without a logged in user (retrieved from SecurityContextHolder). Throws
