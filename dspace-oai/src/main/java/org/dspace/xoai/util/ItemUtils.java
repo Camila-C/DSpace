@@ -17,7 +17,6 @@ import org.dspace.content.*;
 import org.dspace.content.authority.Choices;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Constants;
-import org.dspace.core.Context;
 import org.dspace.core.Utils;
 import org.dspace.xoai.data.DSpaceItem;
 
@@ -25,8 +24,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import org.dspace.app.util.factory.UtilServiceFactory;
 import org.dspace.app.util.service.MetadataExposureService;
@@ -251,29 +248,6 @@ public class ItemUtils
                     bitstream.getField().add(
                             createValue("sid", bit.getSequenceID()
                                     + ""));
-                    List<ResourcePolicy> polices = AuthorizeManager.getPolicies(context, bit);
-                    String embargo = "forever";
-                    Date minDate = null;
-            		Date today = new Date();
-            		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    sdf.setTimeZone(TimeZone.getTimeZone("ZULU"));
-            		for (ResourcePolicy policy : polices){
-                    	if (policy.getGroup() == null || !(org.dspace.eperson.Group.ANONYMOUS_ID == policy.getGroup().getID())|| (policy.getEndDate() != null && policy.getEndDate().before(today))){
-                    		continue;
-                    	}
-                       	if (policy.getStartDate() == null || policy.getStartDate().before(today)){
-                       		embargo = null;
-                       		break;
-                       	}
-                       	else if (minDate == null || policy.getStartDate().before(minDate)){
-                        		minDate = policy.getStartDate();
-                       			embargo = sdf.format(policy.getStartDate());                        				
-                       	}
-                    };
-                    if (embargo != null)
-                        bitstream.getField().add(
-                                createValue("embargo", embargo));
-
                 }
             }
         }
