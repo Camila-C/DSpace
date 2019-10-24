@@ -15,61 +15,75 @@
   -    recent.submissions - RecetSubmissions
   --%>
 
+<%@ page import="org.dspace.core.factory.CoreServiceFactory"%>
+<%@ page import="org.dspace.core.service.NewsService"%>
+<%@ page import="org.dspace.content.service.CommunityService"%>
+<%@ page import="org.dspace.content.factory.ContentServiceFactory"%>
+<%@ page import="org.dspace.content.service.ItemService"%>
 <%@ page import="org.dspace.core.Utils"%>
 <%@ page import="org.dspace.content.Bitstream"%>
-<%@ page import="org.apache.commons.lang.StringUtils"%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 
 <%@ page import="java.io.File" %>
 <%@ page import="java.util.Enumeration"%>
 <%@ page import="java.util.Locale"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.Arrays"%>
+<%@ page import="java.util.List"%>
 <%@ page import="javax.servlet.jsp.jstl.core.*" %>
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
+<%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="org.dspace.core.I18nUtil" %>
 <%@ page import="org.dspace.app.webui.util.UIUtil" %>
 <%@ page import="org.dspace.app.webui.components.RecentSubmissions" %>
 <%@ page import="org.dspace.content.Community" %>
-<%@ page import="org.dspace.core.ConfigurationManager" %>
-<%@ page import="org.dspace.core.NewsManager" %>
 <%@ page import="org.dspace.browse.ItemCounter" %>
-<%@ page import="org.dspace.content.Metadatum" %>
 <%@ page import="org.dspace.content.Item" %>
+<%@ page import="org.dspace.services.ConfigurationService" %>
+<%@ page import="org.dspace.services.factory.DSpaceServicesFactory" %>
+
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Arrays"%>
+<%@ page import="java.util.Date" %>
 
 <%
-  Community[] communities = (Community[]) request.getAttribute("communities");
+    List<Community> communities = (List<Community>) request.getAttribute("communities");
 
-  Locale sessionLocale = UIUtil.getSessionLocale(request);
-  Config.set(request.getSession(), Config.FMT_LOCALE, sessionLocale);
-  String topNews = NewsManager.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-top.html"));
-  String sideNews = NewsManager.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-side.html"));
+    Locale sessionLocale = UIUtil.getSessionLocale(request);
+    Config.set(request.getSession(), Config.FMT_LOCALE, sessionLocale);
+    // NewsService newsService = CoreServiceFactory.getInstance().getNewsService();
+    // String topNews = newsService.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-top.html"));
+    // String sideNews = newsService.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-side.html"));
 
-  boolean feedEnabled = ConfigurationManager.getBooleanProperty("webui.feed.enable");
-  String feedData = "NONE";
-  if (feedEnabled) {
-    feedData = "ALL:" + ConfigurationManager.getProperty("webui.feed.formats");
-  }
+    ConfigurationService configurationService = DSpaceServicesFactory.getInstance().getConfigurationService();
     
-  ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
+    boolean feedEnabled = configurationService.getBooleanProperty("webui.feed.enable");
+    String feedData = "NONE";
+    if (feedEnabled)
+    {
+        // FeedData is expected to be a comma separated list
+        String[] formats = configurationService.getArrayProperty("webui.feed.formats");
+        String allFormats = StringUtils.join(formats, ",");
+        feedData = "ALL:" + allFormats;
+    }
+    
+    ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
 
-  RecentSubmissions submissions = (RecentSubmissions) request.getAttribute("recent.submissions");
+    RecentSubmissions submissions = (RecentSubmissions) request.getAttribute("recent.submissions");
+    ItemService itemService = ContentServiceFactory.getInstance().getItemService();
+    CommunityService communityService = ContentServiceFactory.getInstance().getCommunityService();
 
   /*
    * Creo un ARRAY con los ids de las 4 comunidades importantes y sus iconos
-   * ID 2: Tesis y Trabajos finales
-   * ID 5: Libros
-   * ID 8: Artículos de revista
-   * ID 9: Congresos y jornadas
+   * ID 4adc0bc2-6df7-4279-b737-b4f10a446a02: Tesis y Trabajos finales
+   * ID 77173674-579c-49f1-b0ea-5ee167782d62: Libros
+   * ID 17ec6901-d19f-4fb3-85e5-fef3757560d7: Artículos de revista
+   * ID beb34996-1e53-4868-8fec-4ac8b6223c3a: Congresos y jornadas
    */
 
-  ArrayList<Integer> fourCommunities = new ArrayList<Integer>(Arrays.asList(2, 5, 8, 9));
-  String[] communityIcons = {"fas fa-user-graduate", "fas fa-paste", "fas fa-book", "fab fa-react"};
+  ArrayList<String> fourCommunities = new ArrayList<String>(Arrays.asList("4adc0bc2-6df7-4279-b737-b4f10a446a02", "77173674-579c-49f1-b0ea-5ee167782d62", "17ec6901-d19f-4fb3-85e5-fef3757560d7", "beb34996-1e53-4868-8fec-4ac8b6223c3a"));
 %>
 
 <dspace:layout locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
@@ -80,7 +94,7 @@
   --%>
   <!-- COMUNIDADES -->
   <section class="pt-100 pb-100" id="four-communities">
-    <% if (communities != null && communities.length != 0) { %>
+    <% if (communities != null && communities.size() != 0) { %>
       <div class="container">
         <div class="row">
           <div class="col-xl-8 mx-auto text-center">
@@ -96,33 +110,33 @@
         </div>
         <div class="row row-equal">
         <%
-            boolean showLogos = ConfigurationManager.getBooleanProperty("jspui.home-page.logos", true);
-            int id = 0;
-            for (int i = 0; i < communities.length; i++) {
-              id = communities[i].getID();
+            boolean showLogos = configurationService.getBooleanProperty("jspui.home-page.logos", true);
+            String id = "";
+            for (Community com : communities) {
+              id = com.getID().toString();
               //Pregunto si el ID se encuentra en las 4 comunidades mas importantes
               if (fourCommunities.contains(id)) {
         %>
               <div class="col-md-3 col-sm-6 col-xs-12">
-                <a href="<%= request.getContextPath() %>/handle/<%= communities[i].getHandle() %>">
+                <a href="<%= request.getContextPath() %>/handle/<%= com.getHandle() %>">
                   <div class="single-service">
                     <%  // FIXME: Buscar una forma mejor
-                        if (id == 2) { %>
+                        if ("4adc0bc2-6df7-4279-b737-b4f10a446a02".equals(id)) { %>
                           <i class="fas fa-user-graduate"></i>
-                    <%  } else if(id == 5) { %>
+                    <%  } else if("77173674-579c-49f1-b0ea-5ee167782d62".equals(id)) { %>
                           <i class="fas fa-book"></i>
-                    <%  } else if(id == 8) { %>
+                    <%  } else if("17ec6901-d19f-4fb3-85e5-fef3757560d7".equals(id)) { %>
                           <i class="fas fa-paste"></i>
                     <%  } else { %>
                           <i class="fab fa-react"></i>
                     <%  } %>
                     <h4>
-                      <%= communities[i].getMetadata("name") %>
-                      <% if (ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
-                        <br><span class="badge"><%= ic.getCount(communities[i]) %></span>
+                      <%= com.getName() %>
+                      <% if (configurationService.getBooleanProperty("webui.strengths.show")) { %>
+                        <br><span class="badge"><%= ic.getCount(com) %></span>
                       <% } %>
                     </h4>
-                    <p><%= communities[i].getMetadata("short_description") %></p>
+                    <p><%= communityService.getMetadata(com, "short_description") %></p>
                   </div>
                 </a>
               </div>
@@ -182,22 +196,18 @@
                 boolean first = true;
                 int flag = 0;
                 for (Item item : submissions.getRecentSubmissions()) {
-                  Metadatum[] dcv = item.getMetadata("dc", "title", null, Item.ANY);
-                  String displayTitle = "Untitled";
-                  if (dcv != null & dcv.length > 0) {
-                    displayTitle = Utils.addEntities(dcv[0].value);
+                  String displayTitle = itemService.getMetadataFirstValue(item, "dc", "title", null, Item.ANY);
+                  if (displayTitle == null) {
+                    displayTitle = "Untitled";
                   }
-                  dcv = item.getMetadata("dc", "description", "abstract", Item.ANY);
-                  String displayAbstract = "";
-                  if (dcv != null & dcv.length > 0) {
-                    displayAbstract = Utils.addEntities(dcv[0].value);
+                  String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
+                  if (displayAbstract == null) {
+                    displayAbstract = "";
                   }
-                  dcv = item.getMetadata("dc", "date", "accessioned", Item.ANY);
-                  String displayDate = null;
-                  if (dcv != null & dcv.length > 0) {
-                    String date = dcv[0].value;
+                  String displayDate = itemService.getMetadataFirstValue(item, "dc", "date", "accessioned", Item.ANY);
+                  if (displayDate != null) {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-                    Date tmpDate = sdf.parse(date);
+                    Date tmpDate = sdf.parse(displayDate);
                     SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM, yyyy");
                     displayDate = dateFormat.format(tmpDate);
                   }
@@ -217,7 +227,7 @@
                           <div class="panel">
                             <div class="descripcion"> 
                               <i class="icono fas fa-file-pdf"></i>
-                              <p><%= StringUtils.abbreviate(displayTitle, 120) %></p>
+                              <p><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 120)) %></p>
                               <p><a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">Ver m&aacute;s</a></p>
                               <div class="line-short"></div>
                               <div class="fecha"><%=displayDate%></div>
@@ -259,31 +269,27 @@
             <%
                 first = true;
                 for (Item item : submissions.getRecentSubmissions()) {
-                  Metadatum[] dcv = item.getMetadata("dc", "title", null, Item.ANY);
-                  String displayTitle = "Untitled";
-                  if (dcv != null & dcv.length > 0) {
-                    displayTitle = Utils.addEntities(dcv[0].value);
+                  String displayTitle = itemService.getMetadataFirstValue(item, "dc", "title", null, Item.ANY);
+                  if (displayTitle == null) {
+                    displayTitle = "Untitled";
                   }
-                  dcv = item.getMetadata("dc", "description", "abstract", Item.ANY);
-                  String displayAbstract = "";
-                  if (dcv != null & dcv.length > 0) {
-                    displayAbstract = Utils.addEntities(dcv[0].value);
+                  String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
+                  if (displayAbstract == null) {
+                    displayAbstract = "";
                   }
-                  dcv = item.getMetadata("dc", "date", "accessioned", Item.ANY);
-                  String displayDate = null;
-                  if (dcv != null & dcv.length > 0) {
-                    String date = dcv[0].value;
+                  String displayDate = itemService.getMetadataFirstValue(item, "dc", "date", "accessioned", Item.ANY);
+                  if (displayDate == null) {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-                    Date tmpDate = sdf.parse(date);
+                    Date tmpDate = sdf.parse(displayDate);
                     SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM, yyyy");
                     displayDate = dateFormat.format(tmpDate);
                   }
               %>
                 <div class="item <%= first?"active":""%>">
                   <div class="panel">
-                    <div class="descripcion"> 
+                    <div class="descripcion">
                       <i class="icono fas fa-file-pdf"></i>
-                      <p><%= StringUtils.abbreviate(displayTitle, 120) %></p>
+                      <p><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 120)) %></p>
                       <p><a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">Ver m&aacute;s</a></p>
                       <div class="line-short"></div>
                       <div class="fecha"><%=displayDate%></div>
