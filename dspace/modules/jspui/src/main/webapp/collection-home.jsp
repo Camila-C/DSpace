@@ -28,6 +28,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
+<%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="org.dspace.app.webui.components.RecentSubmissions" %>
 
 <%@ page import="org.dspace.app.webui.servlet.admin.EditCommunitiesServlet" %>
@@ -36,76 +37,83 @@
 <%@ page import="org.dspace.browse.BrowseInfo" %>
 <%@ page import="org.dspace.browse.ItemCounter"%>
 <%@ page import="org.dspace.content.*"%>
-<%@ page import="org.dspace.core.ConfigurationManager"%>
-<%@ page import="org.dspace.core.Context" %>
 <%@ page import="org.dspace.core.Utils" %>
 <%@ page import="org.dspace.eperson.Group"     %>
+<%@ page import="org.dspace.services.ConfigurationService" %>
+<%@ page import="org.dspace.services.factory.DSpaceServicesFactory" %>
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
-<%@ page import="java.net.URLEncoder" %>
 
 <%
-  // Retrieve attributes
-	Collection collection = (Collection) request.getAttribute("collection");
-	Community community  = (Community) request.getAttribute("community");
-	Group submitters = (Group) request.getAttribute("submitters");
+    // Retrieve attributes
+    Collection collection = (Collection) request.getAttribute("collection");
+    Community  community  = (Community) request.getAttribute("community");
+    Group      submitters = (Group) request.getAttribute("submitters");
 
-	RecentSubmissions rs = (RecentSubmissions) request.getAttribute("recently.submitted");
-	
-	boolean loggedIn =  ((Boolean) request.getAttribute("logged.in")).booleanValue();
-	boolean subscribed = ((Boolean) request.getAttribute("subscribed")).booleanValue();
-	
-	Boolean admin_b = (Boolean)request.getAttribute("admin_button");
-	boolean admin_button = (admin_b == null ? false : admin_b.booleanValue());
+    RecentSubmissions rs = (RecentSubmissions) request.getAttribute("recently.submitted");
+    
+    boolean loggedIn = ((Boolean) request.getAttribute("logged.in")).booleanValue();
+    boolean subscribed = ((Boolean) request.getAttribute("subscribed")).booleanValue();
+    Boolean admin_b = (Boolean)request.getAttribute("admin_button");
+    boolean admin_button = (admin_b == null ? false : admin_b.booleanValue());
 
-	Boolean editor_b = (Boolean)request.getAttribute("editor_button");
-	boolean editor_button = (editor_b == null ? false : editor_b.booleanValue());
+    Boolean editor_b      = (Boolean)request.getAttribute("editor_button");
+    boolean editor_button = (editor_b == null ? false : editor_b.booleanValue());
 
-	Boolean submit_b = (Boolean)request.getAttribute("can_submit_button");
-	boolean submit_button = (submit_b == null ? false : submit_b.booleanValue());
+    Boolean submit_b      = (Boolean)request.getAttribute("can_submit_button");
+    boolean submit_button = (submit_b == null ? false : submit_b.booleanValue());
 
-	// get the browse indices
-	BrowseIndex[] bis = BrowseIndex.getBrowseIndices();
+    // get the browse indices
+    BrowseIndex[] bis = BrowseIndex.getBrowseIndices();
 
-	// Put the metadata values into guaranteed non-null variables
-	String name = collection.getMetadata("name");
-	String intro = collection.getMetadata("introductory_text");
-	if (intro == null) {
-		intro = "";
-	}
-	String copyright = collection.getMetadata("copyright_text");
-	if (copyright == null) {
-		copyright = "";
-	}
-	String sidebar = collection.getMetadata("side_bar_text");
-	if(sidebar == null) {
-		sidebar = "";
-	}
+    CollectionService collectionService = ContentServiceFactory.getInstance().getCollectionService();
+    // Put the metadata values into guaranteed non-null variables
+    String name = collectionService.getMetadata(collection, "name");
+    String intro = collectionService.getMetadata(collection, "introductory_text");
+    if (intro == null) {
+        intro = "";
+    }
+    String copyright = collectionService.getMetadata(collection, "copyright_text");
+    if (copyright == null) {
+        copyright = "";
+    }
+    String sidebar = collectionService.getMetadata(collection, "side_bar_text");
+    if(sidebar == null) {
+        sidebar = "";
+    }
 
-	String communityName = community.getMetadata("name");
-	String communityLink = "/handle/" + community.getHandle();
+    String communityName = collectionService.getMetadata(collection, "name");
+    String communityLink = "/handle/" + community.getHandle();
 
-	Bitstream logo = collection.getLogo();
-	
-	boolean feedEnabled = ConfigurationManager.getBooleanProperty("webui.feed.enable");
-	String feedData = "NONE";
-	if (feedEnabled) {
-		feedData = "coll:" + ConfigurationManager.getProperty("webui.feed.formats");
-	}
-	
-	ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
+    Bitstream logo = collection.getLogo();
+    
+    ConfigurationService configurationService = DSpaceServicesFactory.getInstance().getConfigurationService();
+    
+    boolean feedEnabled = configurationService.getBooleanProperty("webui.feed.enable");
+    String feedData = "NONE";
+    if (feedEnabled) {
+      // FeedData is expected to be a comma separated list
+      String[] formats = configurationService.getArrayProperty("webui.feed.formats");
+      String allFormats = StringUtils.join(formats, ",");
+      feedData = "coll:" + allFormats;
+    }
+    
+    ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
 
-	Boolean showItems = (Boolean)request.getAttribute("show.items");
-	boolean show_items = showItems != null ? showItems.booleanValue() : false;
+    Boolean showItems = (Boolean)request.getAttribute("show.items");
+    boolean show_items = showItems != null ? showItems.booleanValue() : false;
 %>
 
-<%@ page import="org.dspace.app.webui.servlet.MyDSpaceServlet" %>
+<%@ page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
+<%@ page import="org.dspace.content.factory.ContentServiceFactory" %>
+<%@ page import="org.dspace.content.service.CollectionService" %>
+<%@ page import="org.dspace.content.service.ItemService" %>
 <dspace:layout locbar="commLink" title="<%= name %>" feedData="<%= feedData %>">
   <div class="well">
     <div class="row">
       <div class="col-md-8">
         <h2>
           <%= name %>
-          <% if(ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
+          <% if(configurationService.getBooleanProperty("webui.strengths.show")) { %>
             : [<%= ic.getCount(collection) %>]
           <% } %>
             <small><fmt:message key="jsp.collection-home.heading1"/></small>
@@ -322,21 +330,22 @@
         </div>
     <% } %>
 
-    <% if (rs != null) { %>
-      <h3>Comunidades en RID-UNRN</h3>
+    <% if (rs != null && rs.count() > 0) { %>
+      <h3><fmt:message key="jsp.collection-home.recentsub"/></h3>
       <%
-        Item[] items = rs.getRecentSubmissions();
-        for (int i = 0; i < items.length; i++) {
-          Metadatum[] dcv = items[i].getMetadata("dc", "title", null, Item.ANY);
-          String displayTitle = "Untitled";
-          if (dcv != null) {
-            if (dcv.length > 0) {
-              displayTitle = Utils.addEntities(dcv[0].value);
-            }
-          }
+          ItemService itemService = ContentServiceFactory.getInstance().getItemService();
+          List<Item> items = rs.getRecentSubmissions();
+		      for (int i = 0; i < items.size(); i++) {
+			      List<MetadataValue> dcv = itemService.getMetadata(items.get(i), "dc", "title", null, Item.ANY);
+			      String displayTitle = "Untitled";
+			      if (dcv != null) {
+				      if (dcv.size() > 0) {
+					      displayTitle = Utils.addEntities(dcv.get(0).getValue());
+				      }
+			      }
       %>
           <p class="recentItem">
-            <a href="<%= request.getContextPath() %>/handle/<%= items[i].getHandle() %>"><%= displayTitle %></a>
+            <a href="<%= request.getContextPath() %>/handle/<%= items.get(i).getHandle() %>"><%= displayTitle %></a>
           </p>
       <% } %>
       <p>&nbsp;</p>
