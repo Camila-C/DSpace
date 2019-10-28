@@ -14,7 +14,7 @@
 <%@ page import="org.apache.commons.lang.StringUtils"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<%@ page contentType="text/html;charset=ISO-8859-1" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ taglib uri="/WEB-INF/dspace-tags.tld" prefix="dspace" %>
 
@@ -39,6 +39,12 @@
     Boolean admin = (Boolean)request.getAttribute("is.admin");
     boolean isAdmin = (admin == null ? false : admin.booleanValue());
 
+    Boolean communityAdmin = (Boolean)request.getAttribute("is.communityAdmin");
+    boolean isCommunityAdmin = (communityAdmin == null ? false : communityAdmin.booleanValue());
+    
+    Boolean collectionAdmin = (Boolean)request.getAttribute("is.collectionAdmin");
+    boolean isCollectionAdmin = (collectionAdmin == null ? false : collectionAdmin.booleanValue());
+
     // Get the current page, minus query string
     String currentPage = UIUtil.getOriginalURL(request);
     int c = currentPage.indexOf( '?' );
@@ -53,7 +59,7 @@
     }
     
     // get the browse indices
-	  BrowseIndex[] bis = BrowseIndex.getBrowseIndices();
+    BrowseIndex[] bis = BrowseIndex.getBrowseIndices();
     BrowseInfo binfo = (BrowseInfo) request.getAttribute("browse.info");
     String browseCurrent = "";
     if (binfo != null) {
@@ -62,7 +68,7 @@
       // or the selected sort option is the default for the index
       if (bix.isMetadataIndex() || bix.getSortOption() == binfo.getSortOption()) {
         if (bix.getName() != null)
-    			browseCurrent = bix.getName();
+          browseCurrent = bix.getName();
       }
     }
 
@@ -186,10 +192,19 @@
             <li><a href="<%= request.getContextPath() %>/subscribe"><fmt:message key="jsp.layout.navbar-default.receive"/></a></li>
             <li><a href="<%= request.getContextPath() %>/profile"><fmt:message key="jsp.layout.navbar-default.edit"/></a></li>
         <%
-            if (isAdmin) {
+            if (isAdmin || isCommunityAdmin || isCollectionAdmin) {
         %>
-            <li role="separator" class="divider"></li>  
-            <li><a href="<%= request.getContextPath() %>/dspace-admin"><fmt:message key="jsp.administer"/></a></li>
+            <li role="separator" class="divider"></li>
+            <%  if (isAdmin) { %>
+              <li>
+                <a href="<%= request.getContextPath() %>/dspace-admin">
+            <%  } else if (isCommunityAdmin || isCollectionAdmin) { %>
+              <li>
+                <a href="<%= request.getContextPath()%>/tools">
+            <%  } %>
+                  <fmt:message key="jsp.administer"/>
+                </a>
+              </li>
         <%
             }
             if (user != null) {
