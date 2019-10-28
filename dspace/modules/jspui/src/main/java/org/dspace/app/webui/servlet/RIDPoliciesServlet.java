@@ -26,6 +26,6 @@ public class RIDPoliciesServlet extends DSpaceServlet
 		HttpServletResponse response
 	) throws ServletException, IOException, SQLException, AuthorizeException
 	{
-		JSPManager.showJSP(request, response, "/rid-policies.jsp");
+		JSPManager.showJSP(request, response, "/staticPages/rid-policies.jsp");
 	}
 }

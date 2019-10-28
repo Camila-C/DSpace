@@ -129,7 +129,7 @@
                 </ul>
               </p>
               <p>
-                Para ver un tutorial detallado de este proceso, haga clic <a href="<%= request.getContextPath() %>/instructivo-autoarchivo.pdf">aqu&iacute;</a>.
+                Para ver un tutorial detallado de este proceso, haga clic <a href="<%= request.getContextPath() %>/documents/instructivo-autoarchivo.pdf">aqu&iacute;</a>.
               </p>
               <p>
                 Por otro lado, si ya se encuentra registrado haga clic en el siguiente bot&oacute;n:
