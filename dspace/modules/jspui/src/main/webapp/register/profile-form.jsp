@@ -18,12 +18,18 @@
   --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
+
 <%@ page import="java.util.Locale"%>
+
 <%@ page import="org.dspace.core.I18nUtil" %>
 <%@ page import="org.dspace.app.webui.util.UIUtil" %>
 <%@ page import="org.dspace.eperson.EPerson" %>
+<%@ page import="org.dspace.eperson.service.EPersonService" %>
+<%@ page import="org.dspace.eperson.factory.EPersonServiceFactory" %>
 <%@ page import="org.dspace.core.Utils" %>
 
 <%
@@ -36,6 +42,8 @@
     String language = "";
 
     if (epersonForm != null) {
+      EPersonService epersonService = EPersonServiceFactory.getInstance().getEPersonService();
+
       // Get non-null values
       lastName = epersonForm.getLastName();
       if (lastName == null) lastName = "";
@@ -43,10 +51,10 @@
       firstName = epersonForm.getFirstName();
       if (firstName == null) firstName = "";
 
-      phone = epersonForm.getMetadata("phone");
+      phone = epersonService.getMetadata(epersonForm, "phone");
       if (phone == null) phone = "";
 
-      language = epersonForm.getMetadata("language");
+      language = epersonService.getMetadata(epersonForm, "language");
       if (language == null) language = "";
     }
 %>
@@ -78,7 +86,9 @@
               selected = "selected=\"selected\"";
             }
       %>
-            <option <%= selected %> value="<%= lang %>"><%= supportedLocales[i].getDisplayName(UIUtil.getSessionLocale(request)) %></option>
+            <option <%= selected %> value="<%= lang %>">
+              <%= supportedLocales[i].getDisplayName(UIUtil.getSessionLocale(request)) %>
+            </option>
       <%  } %>
     </select>
   </div>
