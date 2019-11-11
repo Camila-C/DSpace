@@ -92,6 +92,51 @@
       <%= topNews %>
     </div> 
   --%>
+  <!-- INICIO -->
+  <section id="home">
+    <div class="jumbotron text-center">
+      <div class="pattern"></div>
+      <h2><fmt:message key="jsp.layout.header-default.brand.heading" /></h2>
+      <p class="container"><fmt:message key="jsp.layout.header-default.brand.heading2" /></p>
+      <%-- Search Box --%>
+      <form class="form-inline" method="get" action="<%= request.getContextPath() %>/simple-search">
+        <div class="input-group input-group-lg">
+          <input
+            type="text"
+            class="form-control"
+            maxlength=200
+            size="50"
+            placeholder="<fmt:message key='jsp.layout.header-default.form.search' />"
+            name="query"
+            id="tequery"
+            title="Buscar en RID-UNRN"
+          >
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-unrn-reverse">
+              <span class="fas fa-search"></span>
+              Buscar
+            </button>
+          </div>
+          <%--
+            <br/>
+            <a href="<%= request.getContextPath() %>/advanced-search">
+              <fmt:message key="jsp.layout.navbar-default.advanced"/>
+            </a>
+            <%
+                if (ConfigurationManager.getBooleanProperty("webui.controlledvocabulary.enable")) {
+            %>        
+            <br/>
+            <a href="<%= request.getContextPath() %>/subject-search">
+              <fmt:message key="jsp.layout.navbar-default.subjectsearch"/>
+            </a>
+            <%
+                }
+            %>
+          --%> 
+        </div>
+      </form>
+    </div>
+  </section>
   <!-- COMUNIDADES -->
   <section class="pt-100 pb-100" id="four-communities">
     <% if (communities != null && communities.size() != 0) { %>
