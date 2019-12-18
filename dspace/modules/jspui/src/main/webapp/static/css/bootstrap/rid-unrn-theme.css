@@ -482,67 +482,76 @@ footer .box-logos .box-logo img {
 /* FIN PARALLAX */
 
 /* INICIO: ENVIOS RECIENTES */
-#recent-shipments .panel {
-  height: 100%;
-}
-#recent-shipments .descripcion {
-  padding: 22px 35px;
+.recent-submissions {
+  padding: 0 0 60px 0;
   position: relative;
 }
-#recent-shipments .descripcion .icono {
+.recent-submissions a {
+  color: inherit;
+  text-decoration: none !important;
+}
+.top-title {
+  position: relative;
+  margin: 35px 0 30px 0;
+  border-bottom: 1px solid #1A2437;
+}
+.top-title h3 {
+  float: left;
+  font-size: 32px;
+  letter-spacing: 8px;
+}
+.top-title h3 span {
   display: block;
-  text-align: center;
-  margin: 30px auto;
-  font-size: 18px;
+  padding-bottom: 10px;
+  font-weight: bold;
 }
-#recent-shipments .descripcion p {
-  text-align: center;
-  overflow: hidden;
-  line-height: 25px;
-  color: #5a5a5a;
-  font-size: 14px;
-}
-#recent-shipments .descripcion .line-short {
-  width: 29px;
-  height: 3px;
-  margin: 24px auto;
-  background-color: #202020;
-  text-align: center;
-}
-#recent-shipments .descripcion .fecha {
-  text-align: center;
-  margin: 0 auto;
-  float: none;
+.top-title .btn-show-more {
+  float: right;
+  text-transform: uppercase;
   font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 3px;
-}
-#recent-shipments h1 {
-  font-size: 40px;
-  letter-spacing: 10px;
-  font-weight: 900;
-  margin: 0 auto;
-  text-align: center;
+  color: #EB2141;
+  letter-spacing: 2px;
+  margin-top: 45px;
   display: block;
-  padding: 0 0 8vh 0;
 }
-/* Carousel */
-.carousel {
-  margin-bottom: 0;
-  padding: 0 40px 30px 40px;
+/*Listado de envios recientes*/
+.submissions-list a:hover h4 {
+  color: #eb1f3f;
 }
-.carousel-control {
-  width: 0;
-  bottom: 60px;
+.submissions-list h4 {
+  line-height: 23px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0px;
+  font-weight: bold;
 }
-.carousel-indicators {
-  bottom: -10px;
+.submissions-list p {
+  line-height: 20px;
+  color: #afafaf;
 }
-.carousel-indicators li {
-  background: #cecece;
+.submissions-list .group-submission {
+  position: relative;
+  margin: 0 0 35px 0;
+  display: block;
 }
-.carousel-indicators .active {
-  background: #eb2141;
+.submissions-list .group-submission .type-group .date {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.submissions-list .line-short {
+  width: 18px;
+  height: 2px;
+  margin: 12px 0;
+  background-color: #202020;
+}
+.submissions-list .group-submission .type-group .type {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #EB1F3F;
+  text-transform: uppercase;
 }
 /* FIN: ENVIOS RECIENTES */
 

@@ -204,169 +204,71 @@
       </div>
     </div>
   </section>
-  <section class="bg-grey-strong pt-100 pb-100" id="recent-shipments">
+  <section class="recent-submissions">
     <div class="container">
-      <%  if (submissions != null && submissions.count() > 0) { %>
-        <h1>ENVÍOS RECIENTES
-          <br>
-          <% 
-              if(feedEnabled) {
-                String[] fmts = feedData.substring(feedData.indexOf(':')+1).split(",");
-                String icon = null;
-                int width = 0;
-                for (int j = 0; j < fmts.length; j++) {
-                  if ("rss_1.0".equals(fmts[j])) {
-                    icon = "rss1.gif";
-                    width = 80;
-                  } else if ("rss_2.0".equals(fmts[j])) {
-                    icon = "rss2.gif";
-                    width = 80;
-                  } else {
-                    icon = "rss.gif";
-                    width = 36;
-                  }
-          %>
-                  <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/site">
-                    <img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" />
-                  </a>
-          <%    }
-              }
-          %>
-        </h1>
-        <div class="row">
-          <div id="myCarousel" class="carousel slide hidden-xs hidden-sm">
-            <!-- Carousel items: only desktop -->
-            <div class="carousel-inner">
-              <%
-                boolean first = true;
-                int flag = 0;
-                for (Item item : submissions.getRecentSubmissions()) {
-                  String displayTitle = itemService.getMetadataFirstValue(item, "dc", "title", null, Item.ANY);
-                  if (displayTitle == null) {
-                    displayTitle = "Untitled";
-                  }
-                  String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
-                  if (displayAbstract == null) {
-                    displayAbstract = "";
-                  }
-                  String displayDate = itemService.getMetadataFirstValue(item, "dc", "date", "accessioned", Item.ANY);
-                  if (displayDate != null) {
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-                    Date tmpDate = sdf.parse(displayDate);
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM, yyyy");
-                    displayDate = dateFormat.format(tmpDate);
-                  }
-                  
-                  if (flag == 4) {
-              %>
-                      </div>
-                    </div>
-              <%  }
-
-                  if (flag == 0 || flag == 4) {
-              %>
-                    <div class="item <%= first?"active":""%>">
-                      <div class="row row-equal">
-              <%  } %>
-                        <div class="col-md-3">
-                          <div class="panel">
-                            <div class="descripcion"> 
-                              <i class="icono fas fa-file-pdf"></i>
-                              <p><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 120)) %></p>
-                              <p><a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">Ver m&aacute;s</a></p>
-                              <div class="line-short"></div>
-                              <div class="fecha"><%=displayDate%></div>
-                            </div>
-                          </div>
-                        </div>
-              <%  
-                  if (flag == 7) {
-              %>
-                      </div>
-                    </div>
-              <%  }
-                  flag++;
-                  first = false;
-                }
-              %>
-            </div>
-            <!-- Indicadores -->
-            <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
-            </ol>
-            <!-- Controles -->
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              <span class="sr-only">Next</span>
-            </a>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="top-title clearfix">
+            <h3>
+              ENV&Iacute;OS/
+              <span>RECIENTES</span>
+            </h3>
+            <%--<a class="btn-show-more hidden-xs hidden-sm" href="">VER TODOS ></a>--%>
           </div>
         </div>
-        <!-- Carousel: only mobile and tablets -->
-        <div id="myCarouselMobile" class="carousel slide hidden-md hidden-lg">
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-            <%
-                first = true;
-                for (Item item : submissions.getRecentSubmissions()) {
-                  String displayTitle = itemService.getMetadataFirstValue(item, "dc", "title", null, Item.ANY);
-                  if (displayTitle == null) {
-                    displayTitle = "Untitled";
-                  }
-                  String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
-                  if (displayAbstract == null) {
-                    displayAbstract = "";
-                  }
-                  String displayDate = itemService.getMetadataFirstValue(item, "dc", "date", "accessioned", Item.ANY);
-                  if (displayDate == null) {
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-                    Date tmpDate = sdf.parse(displayDate);
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM, yyyy");
-                    displayDate = dateFormat.format(tmpDate);
-                  }
-              %>
-                <div class="item <%= first?"active":""%>">
-                  <div class="panel">
-                    <div class="descripcion">
-                      <i class="icono fas fa-file-pdf"></i>
-                      <p><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 120)) %></p>
-                      <p><a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">Ver m&aacute;s</a></p>
-                      <div class="line-short"></div>
-                      <div class="fecha"><%=displayDate%></div>
-                    </div>
-                  </div>
-                </div>
-              <%
-                  first = false;
-                }
-              %>
+      </div>
+      <div class="row submissions-list">
+      <%
+        int count = 0;
+        for (Item item : submissions.getRecentSubmissions()) {
+          //Título
+          String displayTitle = itemService.getMetadataFirstValue(item, "dc", "title", null, Item.ANY);
+          if (displayTitle == null) {
+            displayTitle = "Sin título";
+          }
+          //Resumen
+          String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
+          if (displayAbstract == null) {
+            displayAbstract = "Sin resumen";
+          }
+          //Tipo
+          String displayType = itemService.getMetadataFirstValue(item, "dc", "type", null, Item.ANY);
+          if (displayType == null) {
+            displayType = "Indefinido";
+          }
+          //Fecha de publicación
+          String displayDate = itemService.getMetadataFirstValue(item, "dc", "date", "accessioned", Item.ANY);
+          if (displayDate != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            Date tmpDate = sdf.parse(displayDate);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM, yyyy");
+            displayDate = dateFormat.format(tmpDate);
+          }
+      %>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">
+            <div class="row group-submission">
+              <div class="type-group col-md-2">
+                <div class="date"><%=displayDate%></div>
+                <div class="line-short hidden-xs"></div>
+                <div class="type"><%=displayType%></div>
+              </div>
+              <div class="title-group col-md-10">
+                <div class="line-short visible-xs"></div>
+                <h4><%=displayTitle%></h4>
+                <p><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 270))%></p>
+              </div>
             </div>
-            <!-- Indicadores -->
-            <ol class="carousel-indicators">
-              <li data-target="#myCarouselMobile" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarouselMobile" data-slide-to="1"></li>
-              <% for (int i = 1; i < submissions.count(); i++){ %>
-                  <li data-target="#myCarouselMobile" data-slide-to="<%= i %>"></li>
-              <% } %>
-            </ol>
-            <!-- Controles -->
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarouselMobile" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarouselMobile" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
+          </a>
         </div>
-      <%  } %>
+      <%
+          count++;
+          if (count > 5) {
+            break;
+          }
+        }
+      %>
+      </div>
     </div>
-  </section>
+  <section>
 </dspace:layout>
