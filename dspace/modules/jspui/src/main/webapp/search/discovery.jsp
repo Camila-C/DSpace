@@ -160,7 +160,8 @@
 	</script>
 </c:set>
 
-<dspace:layout titlekey="jsp.search.title">
+<%-- La propiedad navbar="off" permite acceder a la versión minimal de navbar (es decir, sin el input search en el header) --%>
+<dspace:layout navbar="off" titlekey="jsp.search.title">
 	<%-- Titulo BUSCAR --%>
 	<h2><i class="fas fa-file"></i> <fmt:message key="jsp.search.title"/></h2>
 	<%-- BUSCADOR --%>
@@ -189,7 +190,13 @@
 					</span>
 				</div>
 				<% if (StringUtils.isNotBlank(spellCheckQuery)) {%>
-				<p class="lead"><fmt:message key="jsp.search.didyoumean"><fmt:param><a id="spellCheckQuery" data-spell="<%= Utils.addEntities(spellCheckQuery) %>" href="#"><%= spellCheckQuery %></a></fmt:param></fmt:message></p>
+				<p class="lead">
+					<fmt:message key="jsp.search.didyoumean">
+						<fmt:param>
+							<a id="spellCheckQuery" data-spell="<%= Utils.addEntities(spellCheckQuery) %>" href="#"><%= spellCheckQuery %></a>
+						</fmt:param>
+					</fmt:message>
+				</p>
 				<% } %>                  
 				<input type="hidden" value="<%= rpp %>" name="rpp" />
 				<input type="hidden" value="<%= Utils.addEntities(sortedBy) %>" name="sort_by" />
@@ -629,7 +636,7 @@
 					{
 						%><li class="list-group-item"><span style="visibility: hidden;">.</span>
 						<% if (currFp > 0) { %>
-								<a class="pull-right" href="<%= request.getContextPath()
+								<a href="<%= request.getContextPath()
 										+ (!searchScope.equals("")?"/handle/"+searchScope:"")
 										+ "/simple-search?query="
 										+ URLEncoder.encode(query,"UTF-8")
@@ -640,7 +647,9 @@
 										+ "&amp;etal=" + etAl  
 										+ "&amp;"+f+"_page="+(currFp-1) %>"
 								>
-									<fmt:message key="jsp.search.facet.refine.previous" />
+									<span class="pull-left">
+										<fmt:message key="jsp.search.facet.refine.previous" />
+									</span>
 								</a>
 						<% 
 							}
