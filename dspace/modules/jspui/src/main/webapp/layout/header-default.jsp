@@ -102,9 +102,7 @@
     <%	if (!navbar.equals("off")) { %>
         <dspace:include page="<%= navbar %>" />
 		<%	} else { %>
-      <div class="container">
         <dspace:include page="/layout/navbar-minimal.jsp" />
-      </div>
 		<%	} %>
 		</header>
 

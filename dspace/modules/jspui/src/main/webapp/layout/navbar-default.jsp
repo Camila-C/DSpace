@@ -95,7 +95,6 @@
         <br>
         Institucional Digital
       </p>
-      <%  if (!currentPage.endsWith( "/home.jsp" )) { %>
       <form class="navbar-form navbar-right hidden-xs" role="search" method="get" action="<%= request.getContextPath() %>/simple-search">
         <div class="form-group">
           <input
@@ -113,7 +112,6 @@
           <span><i class="fas fa-search"></i></span>
         </button>
       </form>
-      <%  } %>
     </div>
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
