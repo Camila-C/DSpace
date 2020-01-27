@@ -15,7 +15,7 @@
 	
 <dspace:layout title="Pol&iacute;ticas">
 	<div class="polices pt-30">
-		<h2>
+		<h2 id="politicas-del-rid">
 			Pol&iacute;ticas del Repositorio Institucional Digital de la Universidad
 			Nacional de R&iacute;o Negro.
 		</h2>
@@ -33,8 +33,29 @@
 			El RID-UNRN adhiere a la Iniciativa de Acceso Abierto que sustenta el
 			principio de la libre disposici&oacute;n de la informaci&oacute;n.
 		</p>
+		<h3>&Iacute;ndice</h3>
+		<ul>
+			<li><a href="politicas-del-rid">Pol&iacute;ticas del RID</a>
+				<ul>
+					<li><a href="#politica-de-deposito">Pol&iacute;tica de dep&oacute;sito</a></li>
+					<li><a href="#politica-de-contenido">Pol&iacute;tica de contenidos</a></li>
+					<li><a href="#idioma">Idioma</a></li>
+					<li><a href="#formatos">Formatos</a></li>
+					<li><a href="#politica-de-acceso-a-los-datos">Pol&iacute;tica de acceso a los datos</a></li>
+					<li><a href="#circuitos-de-ingesta">Circuitos de ingesta</a></li>
+					<li><a href="#plazos">Plazos</a></li>
+					<li><a href="#periodo-de-embargo">Per&iacute;odo de embargo</a></li>
+					<li><a href="#responsabilidades-y-derechos">Responsabilidades y derechos</a></li>
+					<li><a href="#politicas-de-gestion-de-derechos-de-autor">Pol&iacute;ticas de gesti&oacute;n de los derechos de autor</a></li>
+					<li><a href="#politica-de-preservacion">Pol&iacute;tica de preservaci&oacute;n</a></li>
+					<li><a href="#politica-de-metadatos">Pol&iacute;tica de metadatos</a></li>
+					<li><a href="#reconocimiento-a-la-universidad">Reconocimiento a la Universidad</a></li>
+				</ul>
+			</li>
+			<li><a href="#documentos-relacionados">Documentos relacionados</a></li>
+		</ul>
 		<!-- Políticas de depósito -->
-		<h3>Pol&iacute;tica de dep&oacute;sito</h3>
+		<h3 id="politica-de-deposito">Pol&iacute;tica de dep&oacute;sito</h3>
 		<p>
 			Cada investigador, tecn&oacute;logo, docente, no docente, becario o
 			estudiante de grado o de posgrado que pertenezca a la Universidad y que
@@ -100,7 +121,7 @@
 			</li>
 		</ol>
 		<!-- Políticas de contenidos -->
-		<h3>Pol&iacute;tica de contenidos</h3>
+		<h3 id="politica-de-contenido">Pol&iacute;tica de contenidos</h3>
 		<p>
 			El RID-UNRN recibe la producci&oacute;n de toda la universidad en sus
 			actividades de ense&ntilde;anza, investigaci&oacute;n y extensi&oacute;n. Los
@@ -275,12 +296,12 @@
 			</a>
 		</p>
 		<!-- Idioma -->
-		<h3>Idioma</h3>
+		<h3 id="idioma">Idioma</h3>
 		<p>
 			Las obras depositadas pueden estar en cualquier idioma.
 		</p>
 		<!-- Formato -->
-		<h3>Formatos</h3>
+		<h3 id="formatos">Formatos</h3>
 		<p>
 			Por razones de accesibilidad y preservaci&oacute;n digital, teniendo en
 			cuenta los formatos correspondientes a los diferentes tipos de documentos
@@ -300,7 +321,7 @@
 			Powerpoint o Excel, aunque promover&aacute; el uso de formatos abiertos.
 		</p>
 		<!-- Políticas de acceso a los datos -->
-		<h3>Pol&iacute;tica de acceso a los datos</h3>
+		<h3 id="politica-de-acceso-a-los-datos">Pol&iacute;tica de acceso a los datos</h3>
 		<p>
 			Las obras alojadas en el repositorio pueden ser visualizadas y descargadas
 			de forma libre y gratuita, sin necesidad de registro o autorizaci&oacute;n
@@ -328,7 +349,7 @@
 			mencionada la obra y al autor original.
 		</p>
 		<!-- Circuitos de ingesta -->
-		<h3>Circuitos de ingesta</h3>
+		<h3 id="circuitos-de-ingesta">Circuitos de ingesta</h3>
 		<p>
 			Si bien el repositorio se sustenta en un modelo distribuido de trabajo
 			mediante el cual pueden existir diferentes v&iacute;as de dep&oacute;sito, en
@@ -356,7 +377,7 @@
 			mencionadas.
 		</p>
 		<!-- Plazos -->
-		<h3>Plazos</h3>
+		<h3 id="plazos">Plazos</h3>
 		<p>
 			Las obras deber&aacute;n ser entregadas para su dep&oacute;sito en un plazo no
 			mayor a cinco (5) meses de su publicaci&oacute;n, aceptaci&oacute;n para su
@@ -367,7 +388,7 @@
 			a&ntilde;os del momento de su recolecci&oacute;n.
 		</p>
 		<!-- Período de embargo -->
-		<h3>Per&iacute;odo de embargo</h3>
+		<h3 id="periodo-de-embargo">Per&iacute;odo de embargo</h3>
 		<p>
 			Los trabajos pueden ser depositados en cualquier momento y hacerse
 			p&uacute;blicos de manera inmediata o diferida luego de la finalizaci&oacute;n
@@ -413,7 +434,7 @@
 			</li>
 		</ul>
 		<!-- Responsabilidades y derechos -->
-		<h3>Responsabilidades y derechos</h3>
+		<h3 id="responsabilidades-y-derechos">Responsabilidades y derechos</h3>
 		<p>
 			Los autores afirman ser los titulares de los derechos de las obras
 			depositadas y por tanto asumen toda responsabilidad ante infracciones de la
@@ -429,7 +450,9 @@
 			iniciadas por las partes interesadas.
 		</p>
 		<!-- Políticas de gestión de los derechos de autor -->
-		<h3>Pol&iacute;ticas de gesti&oacute;n de los derechos de autor</h3>
+		<h3 id="politicas-de-gestion-de-derechos-de-autor">
+			Pol&iacute;ticas de gesti&oacute;n de los derechos de autor
+		</h3>
 		<p>
 			Los autores conservar&aacute;n en todo momento los derechos de autor sobre
 			sus obras. En virtud del car&aacute;cter no exclusivo de la cesi&oacute;n, el
@@ -555,7 +578,7 @@
 			</li>
 		</ul>
 		<!-- Políticas de preservación -->
-		<h3>Pol&iacute;tica de preservaci&oacute;n</h3>
+		<h3 id="politica-de-preservacion">Pol&iacute;tica de preservaci&oacute;n</h3>
 		<p>
 			Dentro de las tareas regulares que se cumplen en el repositorio se pueden
 			mencionar:
@@ -578,7 +601,7 @@
 			</li>
 		</ul>
 		<!-- Políticas de metadatos -->
-		<h3>Pol&iacute;tica de metadatos</h3>
+		<h3 id="politica-de-metadatos">Pol&iacute;tica de metadatos</h3>
 		<p>
 			Los metadatos son la informaci&oacute;n descriptiva que se aplica sobre un
 			recurso para facilitar su organizaci&oacute;n, recuperaci&oacute;n,
@@ -596,7 +619,7 @@
 			registro original de metadatos disponible en el portal del RID-UNRN.
 		</p>
 		<!-- Reconocimiento a la Universidad -->
-		<h3>Reconocimiento a la Universidad</h3>
+		<h3 id="reconocimiento-a-la-universidad">Reconocimiento a la Universidad</h3>
 		<p>
 			En cada publicaci&oacute;n se deber&aacute; declarar la filiaci&oacute;n
 			institucional a la Universidad de forma normalizada, como Universidad
@@ -630,7 +653,7 @@
 			</a>.
 		</p>
 		<br/>
-		<h2>Documentos relacionados</h2>
+		<h2 id="documentos-relacionados">Documentos relacionados</h2>
 		<ul>
 			<li>
 				<a href="<%= request.getContextPath() %>/handle/20.500.12049/247">
@@ -653,6 +676,16 @@
 				</a>
 			</li>
 		</ul>
+		<!-- BackToTop Button -->
+		<a
+			id="back-to-top"
+			href="#"
+			class="btn btn-unrn-reverse btn-lg back-to-top"
+			role="button"
+			title="Hacer click para volver al inicio"
+			data-toggle="tooltip"
+			data-placement="left"
+		><span><i class="fas fa-chevron-up"></i></span></a>
 	</div>
 </dspace:layout>
 
