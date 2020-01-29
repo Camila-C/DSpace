@@ -15,72 +15,116 @@
   -    recent.submissions - RecetSubmissions
   --%>
 
+<%@ page import="org.dspace.core.factory.CoreServiceFactory"%>
+<%@ page import="org.dspace.core.service.NewsService"%>
+<%@ page import="org.dspace.content.service.CommunityService"%>
+<%@ page import="org.dspace.content.factory.ContentServiceFactory"%>
+<%@ page import="org.dspace.content.service.ItemService"%>
 <%@ page import="org.dspace.core.Utils"%>
 <%@ page import="org.dspace.content.Bitstream"%>
-<%@ page import="org.apache.commons.lang.StringUtils"%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 
 <%@ page import="java.io.File" %>
 <%@ page import="java.util.Enumeration"%>
 <%@ page import="java.util.Locale"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.Arrays"%>
+<%@ page import="java.util.List"%>
 <%@ page import="javax.servlet.jsp.jstl.core.*" %>
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
+<%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="org.dspace.core.I18nUtil" %>
 <%@ page import="org.dspace.app.webui.util.UIUtil" %>
 <%@ page import="org.dspace.app.webui.components.RecentSubmissions" %>
 <%@ page import="org.dspace.content.Community" %>
-<%@ page import="org.dspace.core.ConfigurationManager" %>
-<%@ page import="org.dspace.core.NewsManager" %>
 <%@ page import="org.dspace.browse.ItemCounter" %>
-<%@ page import="org.dspace.content.Metadatum" %>
 <%@ page import="org.dspace.content.Item" %>
+<%@ page import="org.dspace.services.ConfigurationService" %>
+<%@ page import="org.dspace.services.factory.DSpaceServicesFactory" %>
+
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Arrays"%>
+<%@ page import="java.util.Date" %>
 
 <%
-  Community[] communities = (Community[]) request.getAttribute("communities");
+    List<Community> communities = (List<Community>) request.getAttribute("communities");
 
-  Locale sessionLocale = UIUtil.getSessionLocale(request);
-  Config.set(request.getSession(), Config.FMT_LOCALE, sessionLocale);
-  String topNews = NewsManager.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-top.html"));
-  String sideNews = NewsManager.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-side.html"));
+    Locale sessionLocale = UIUtil.getSessionLocale(request);
+    Config.set(request.getSession(), Config.FMT_LOCALE, sessionLocale);
+    // NewsService newsService = CoreServiceFactory.getInstance().getNewsService();
+    // String topNews = newsService.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-top.html"));
+    // String sideNews = newsService.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-side.html"));
 
-  boolean feedEnabled = ConfigurationManager.getBooleanProperty("webui.feed.enable");
-  String feedData = "NONE";
-  if (feedEnabled) {
-    feedData = "ALL:" + ConfigurationManager.getProperty("webui.feed.formats");
-  }
+    ConfigurationService configurationService = DSpaceServicesFactory.getInstance().getConfigurationService();
     
-  ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
+    boolean feedEnabled = configurationService.getBooleanProperty("webui.feed.enable");
+    String feedData = "NONE";
+    if (feedEnabled)
+    {
+        // FeedData is expected to be a comma separated list
+        String[] formats = configurationService.getArrayProperty("webui.feed.formats");
+        String allFormats = StringUtils.join(formats, ",");
+        feedData = "ALL:" + allFormats;
+    }
+    
+    ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
 
-  RecentSubmissions submissions = (RecentSubmissions) request.getAttribute("recent.submissions");
+    RecentSubmissions submissions = (RecentSubmissions) request.getAttribute("recent.submissions");
+    ItemService itemService = ContentServiceFactory.getInstance().getItemService();
+    CommunityService communityService = ContentServiceFactory.getInstance().getCommunityService();
 
   /*
    * Creo un ARRAY con los ids de las 4 comunidades importantes y sus iconos
-   * ID 2: Tesis y Trabajos finales
-   * ID 5: Libros
-   * ID 8: Artículos de revista
-   * ID 9: Congresos y jornadas
+   * ID 4adc0bc2-6df7-4279-b737-b4f10a446a02: Tesis y Trabajos finales
+   * ID 77173674-579c-49f1-b0ea-5ee167782d62: Libros
+   * ID 17ec6901-d19f-4fb3-85e5-fef3757560d7: Artículos de revista
+   * ID beb34996-1e53-4868-8fec-4ac8b6223c3a: Congresos y jornadas
    */
 
-  ArrayList<Integer> fourCommunities = new ArrayList<Integer>(Arrays.asList(2, 5, 8, 9));
-  String[] communityIcons = {"fas fa-user-graduate", "fas fa-paste", "fas fa-book", "fab fa-react"};
+  ArrayList<String> fourCommunities = new ArrayList<String>(Arrays.asList("4adc0bc2-6df7-4279-b737-b4f10a446a02", "77173674-579c-49f1-b0ea-5ee167782d62", "17ec6901-d19f-4fb3-85e5-fef3757560d7", "beb34996-1e53-4868-8fec-4ac8b6223c3a"));
 %>
 
-<dspace:layout locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
+<%-- La propiedad navbar="off" permite acceder a la versión minimal de navbar (es decir, sin el input search en el header) --%>
+<dspace:layout navbar="off" locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
   <%--
     <div class="jumbotron">
       <%= topNews %>
     </div> 
   --%>
+  <!-- INICIO -->
+  <section id="home">
+    <div class="jumbotron text-center">
+      <div class="pattern"></div>
+      <h2><fmt:message key="jsp.layout.header-default.brand.heading" /></h2>
+      <p class="container"><fmt:message key="jsp.layout.header-default.brand.heading2" /></p>
+      <%-- Search Box --%>
+      <form class="form-inline" method="get" action="<%= request.getContextPath() %>/simple-search">
+        <div class="input-group input-group-lg">
+          <input
+            type="text"
+            class="form-control"
+            maxlength=200
+            size="50"
+            placeholder="<fmt:message key='jsp.layout.header-default.form.search' />"
+            name="query"
+            id="tequery"
+            title="Buscar en RID-UNRN"
+          >
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-unrn-reverse">
+              <span class="fas fa-search"></span>
+              Buscar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
   <!-- COMUNIDADES -->
   <section class="pt-100 pb-100" id="four-communities">
-    <% if (communities != null && communities.length != 0) { %>
+    <% if (communities != null && communities.size() != 0) { %>
       <div class="container">
         <div class="row">
           <div class="col-xl-8 mx-auto text-center">
@@ -96,33 +140,33 @@
         </div>
         <div class="row row-equal">
         <%
-            boolean showLogos = ConfigurationManager.getBooleanProperty("jspui.home-page.logos", true);
-            int id = 0;
-            for (int i = 0; i < communities.length; i++) {
-              id = communities[i].getID();
+            boolean showLogos = configurationService.getBooleanProperty("jspui.home-page.logos", true);
+            String id = "";
+            for (Community com : communities) {
+              id = com.getID().toString();
               //Pregunto si el ID se encuentra en las 4 comunidades mas importantes
               if (fourCommunities.contains(id)) {
         %>
               <div class="col-md-3 col-sm-6 col-xs-12">
-                <a href="<%= request.getContextPath() %>/handle/<%= communities[i].getHandle() %>">
+                <a href="<%= request.getContextPath() %>/handle/<%= com.getHandle() %>">
                   <div class="single-service">
                     <%  // FIXME: Buscar una forma mejor
-                        if (id == 2) { %>
+                        if ("4adc0bc2-6df7-4279-b737-b4f10a446a02".equals(id)) { %>
                           <i class="fas fa-user-graduate"></i>
-                    <%  } else if(id == 5) { %>
+                    <%  } else if("77173674-579c-49f1-b0ea-5ee167782d62".equals(id)) { %>
                           <i class="fas fa-book"></i>
-                    <%  } else if(id == 8) { %>
+                    <%  } else if("17ec6901-d19f-4fb3-85e5-fef3757560d7".equals(id)) { %>
                           <i class="fas fa-paste"></i>
                     <%  } else { %>
                           <i class="fab fa-react"></i>
                     <%  } %>
                     <h4>
-                      <%= communities[i].getMetadata("name") %>
-                      <% if (ConfigurationManager.getBooleanProperty("webui.strengths.show")) { %>
-                        <br><span class="badge"><%= ic.getCount(communities[i]) %></span>
+                      <%= com.getName() %>
+                      <% if (configurationService.getBooleanProperty("webui.strengths.show")) { %>
+                        <br><span class="badge"><%= ic.getCount(com) %></span>
                       <% } %>
                     </h4>
-                    <p><%= communities[i].getMetadata("short_description") %></p>
+                    <p><%= communityService.getMetadata(com, "short_description") %></p>
                   </div>
                 </a>
               </div>
@@ -145,177 +189,71 @@
       </div>
     </div>
   </section>
-  <section class="bg-grey-strong pt-100 pb-100" id="recent-shipments">
+  <section class="recent-submissions">
     <div class="container">
-      <%  if (submissions != null && submissions.count() > 0) { %>
-        <h1>ENVÍOS RECIENTES
-          <br>
-          <% 
-              if(feedEnabled) {
-                String[] fmts = feedData.substring(feedData.indexOf(':')+1).split(",");
-                String icon = null;
-                int width = 0;
-                for (int j = 0; j < fmts.length; j++) {
-                  if ("rss_1.0".equals(fmts[j])) {
-                    icon = "rss1.gif";
-                    width = 80;
-                  } else if ("rss_2.0".equals(fmts[j])) {
-                    icon = "rss2.gif";
-                    width = 80;
-                  } else {
-                    icon = "rss.gif";
-                    width = 36;
-                  }
-          %>
-                  <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/site">
-                    <img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" />
-                  </a>
-          <%    }
-              }
-          %>
-        </h1>
-        <div class="row">
-          <div id="myCarousel" class="carousel slide hidden-xs hidden-sm">
-            <!-- Carousel items: only desktop -->
-            <div class="carousel-inner">
-              <%
-                boolean first = true;
-                int flag = 0;
-                for (Item item : submissions.getRecentSubmissions()) {
-                  Metadatum[] dcv = item.getMetadata("dc", "title", null, Item.ANY);
-                  String displayTitle = "Untitled";
-                  if (dcv != null & dcv.length > 0) {
-                    displayTitle = Utils.addEntities(dcv[0].value);
-                  }
-                  dcv = item.getMetadata("dc", "description", "abstract", Item.ANY);
-                  String displayAbstract = "";
-                  if (dcv != null & dcv.length > 0) {
-                    displayAbstract = Utils.addEntities(dcv[0].value);
-                  }
-                  dcv = item.getMetadata("dc", "date", "accessioned", Item.ANY);
-                  String displayDate = null;
-                  if (dcv != null & dcv.length > 0) {
-                    String date = dcv[0].value;
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-                    Date tmpDate = sdf.parse(date);
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM, yyyy");
-                    displayDate = dateFormat.format(tmpDate);
-                  }
-                  
-                  if (flag == 4) {
-              %>
-                      </div>
-                    </div>
-              <%  }
-
-                  if (flag == 0 || flag == 4) {
-              %>
-                    <div class="item <%= first?"active":""%>">
-                      <div class="row row-equal">
-              <%  } %>
-                        <div class="col-md-3">
-                          <div class="panel">
-                            <div class="descripcion"> 
-                              <i class="icono fas fa-file-pdf"></i>
-                              <p><%= StringUtils.abbreviate(displayTitle, 120) %></p>
-                              <p><a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">Ver m&aacute;s</a></p>
-                              <div class="line-short"></div>
-                              <div class="fecha"><%=displayDate%></div>
-                            </div>
-                          </div>
-                        </div>
-              <%  
-                  if (flag == 7) {
-              %>
-                      </div>
-                    </div>
-              <%  }
-                  flag++;
-                  first = false;
-                }
-              %>
-            </div>
-            <!-- Indicadores -->
-            <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
-            </ol>
-            <!-- Controles -->
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              <span class="sr-only">Next</span>
-            </a>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="top-title clearfix">
+            <h3>
+              ENV&Iacute;OS/
+              <span>RECIENTES</span>
+            </h3>
+            <%--<a class="btn-show-more hidden-xs hidden-sm" href="">VER TODOS ></a>--%>
           </div>
         </div>
-        <!-- Carousel: only mobile and tablets -->
-        <div id="myCarouselMobile" class="carousel slide hidden-md hidden-lg">
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-            <%
-                first = true;
-                for (Item item : submissions.getRecentSubmissions()) {
-                  Metadatum[] dcv = item.getMetadata("dc", "title", null, Item.ANY);
-                  String displayTitle = "Untitled";
-                  if (dcv != null & dcv.length > 0) {
-                    displayTitle = Utils.addEntities(dcv[0].value);
-                  }
-                  dcv = item.getMetadata("dc", "description", "abstract", Item.ANY);
-                  String displayAbstract = "";
-                  if (dcv != null & dcv.length > 0) {
-                    displayAbstract = Utils.addEntities(dcv[0].value);
-                  }
-                  dcv = item.getMetadata("dc", "date", "accessioned", Item.ANY);
-                  String displayDate = null;
-                  if (dcv != null & dcv.length > 0) {
-                    String date = dcv[0].value;
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-                    Date tmpDate = sdf.parse(date);
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM, yyyy");
-                    displayDate = dateFormat.format(tmpDate);
-                  }
-              %>
-                <div class="item <%= first?"active":""%>">
-                  <div class="panel">
-                    <div class="descripcion"> 
-                      <i class="icono fas fa-file-pdf"></i>
-                      <p><%= StringUtils.abbreviate(displayTitle, 120) %></p>
-                      <p><a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">Ver m&aacute;s</a></p>
-                      <div class="line-short"></div>
-                      <div class="fecha"><%=displayDate%></div>
-                    </div>
-                  </div>
-                </div>
-              <%
-                  first = false;
-                }
-              %>
+      </div>
+      <div class="row submissions-list">
+      <%
+        int count = 0;
+        for (Item item : submissions.getRecentSubmissions()) {
+          //Título
+          String displayTitle = itemService.getMetadataFirstValue(item, "dc", "title", null, Item.ANY);
+          if (displayTitle == null) {
+            displayTitle = "Sin título";
+          }
+          //Resumen
+          String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
+          if (displayAbstract == null) {
+            displayAbstract = "Sin resumen";
+          }
+          //Tipo
+          String displayType = itemService.getMetadataFirstValue(item, "dc", "type", null, Item.ANY);
+          if (displayType == null) {
+            displayType = "Indefinido";
+          }
+          //Fecha de publicación
+          String displayDate = itemService.getMetadataFirstValue(item, "dc", "date", "accessioned", Item.ANY);
+          if (displayDate != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            Date tmpDate = sdf.parse(displayDate);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM, yyyy");
+            displayDate = dateFormat.format(tmpDate);
+          }
+      %>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">
+            <div class="row group-submission">
+              <div class="type-group col-md-2">
+                <div class="date"><%=displayDate%></div>
+                <div class="line-short hidden-xs"></div>
+                <div class="type"><%=displayType%></div>
+              </div>
+              <div class="title-group col-md-10">
+                <div class="line-short visible-xs"></div>
+                <h4><%=displayTitle%></h4>
+                <p><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 270))%></p>
+              </div>
             </div>
-            <!-- Indicadores -->
-            <ol class="carousel-indicators">
-              <li data-target="#myCarouselMobile" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarouselMobile" data-slide-to="1"></li>
-              <% for (int i = 1; i < submissions.count(); i++){ %>
-                  <li data-target="#myCarouselMobile" data-slide-to="<%= i %>"></li>
-              <% } %>
-            </ol>
-            <!-- Controles -->
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarouselMobile" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarouselMobile" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
+          </a>
         </div>
-      <%  } %>
+      <%
+          count++;
+          if (count > 5) {
+            break;
+          }
+        }
+      %>
+      </div>
     </div>
-  </section>
+  <section>
 </dspace:layout>

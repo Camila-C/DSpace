@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.apache.solr.client.solrj.util.ClientUtils;
+
 import org.dspace.app.webui.util.UIUtil;
 import org.dspace.content.DSpaceObject;
 import org.dspace.core.Context;
@@ -32,13 +34,14 @@ import org.dspace.discovery.configuration.DiscoveryConfigurationParameters;
 import org.dspace.discovery.configuration.DiscoverySearchFilterFacet;
 import org.dspace.discovery.configuration.DiscoverySortConfiguration;
 import org.dspace.discovery.configuration.DiscoverySortFieldConfiguration;
-import org.dspace.handle.HandleManager;
+import org.dspace.handle.factory.HandleServiceFactory;
+import org.dspace.handle.service.HandleService;
 
 public class DiscoverUtility
 {
     /** log4j category */
     private static Logger log = Logger.getLogger(DiscoverUtility.class);
-
+    
     public static final int TYPE_FACETS = 1;
     public static final int TYPE_TAGCLOUD = 2;
     
@@ -68,7 +71,8 @@ public class DiscoverUtility
             }
             return null;
         }
-        DSpaceObject scope = HandleManager.resolveToObject(context, location);
+        HandleService handleService = HandleServiceFactory.getInstance().getHandleService();
+        DSpaceObject scope = handleService.resolveToObject(context, location);
         return scope;
     }
 
@@ -245,9 +249,13 @@ public class DiscoverUtility
         {
             try
             {
-            String newFilterQuery = SearchUtils.getSearchService()
-                    .toFilterQuery(context, f[0], f[1], f[2])
-                    .getFilterQuery();
+            String newFilterQuery = null;
+            if (StringUtils.isNotBlank(f[0]) && StringUtils.isNotBlank(f[2]))
+            {
+                newFilterQuery = SearchUtils.getSearchService()
+                        .toFilterQuery(context, f[0], f[1], f[2])
+                        .getFilterQuery();
+            }
             if (newFilterQuery != null)
             {
                 queryArgs.addFilterQueries(newFilterQuery);
@@ -269,17 +277,85 @@ public class DiscoverUtility
 
     }
 
-    /**
-     * Escape colon-space sequence in a user-entered query, based on the
-     * underlying search service. This is intended to let end users paste in a
-     * title containing colon-space without requiring them to escape the colon.
-     *
+     /**
+     * Escape some solr special characters from the user's query.
+     * 
+     * 1 - when a query ends with one of solr's special characters (^, \,!, +, -,:, ||, && (,),{,},[,]) 
+     *     (a space in between or not) (e.g. "keyword3 :") the user gets 
+     *     an erroneous notification or the search doesn't produce results. 
+     *     Those characters at the end of the query should be escaped.
+     * 
+     * 2 - escape every colon, followed by a space (e.g. "title: subtitle")
+     *     in a user's query. This is intended to let end users to pass 
+     *     in a title containing colon-space without requiring them to escape the colon.
+     * 
      * @param query user-entered query string
-     * @return query with colon in colon-space sequence escaped
+     * @return query escaping some of solr's special characters at the end and 
+     *         with a colon in colon-space sequence escaped if they occur.
      */
     private static String escapeQueryChars(String query)
     {
-        return StringUtils.replace(query, ": ", "\\: ");
+        query = query.trim();
+        
+        // [+\\-&|!()\\s{}\\[\\]\\^\"\\\\:]: Śome of the solr's special characters that need to be escaped for regex as well as for string.
+        //                                   Regex representation of \ is \\. Therefore the string representation of \\ is \\\\).
+        //                                   \\s is in case withespaces is in between the characters.
+        // + : Match or more of the preceding token
+        // (?=\s+$|$): Matches all solr's special characters at the end of a string independently of any whitespace characters 
+        //            - ?= is a positive lookahead. Matches a group after the main expression without including it in the result
+        //            - \s: Matches any whitespace character (spaces, tabs, line breaks )
+        //            - $: Matches the end of a string
+        String regx = "[+\\-&|!()\\s{}\\[\\]\\^\"\\\\:]+(?=\\s+$|$)";  
+        Pattern pattern = Pattern.compile(regx);
+        Matcher matcher = pattern.matcher(query);
+       
+        if(matcher.find())
+        {
+            String matcherGroup = matcher.group();
+            String escapedMatcherGroup = ClientUtils.escapeQueryChars(matcherGroup);
+            
+            // Do not escape brackets if they are properly opened and closed.
+            if(matcherGroup.equals(")") ||
+                    matcherGroup.equals("]") || 
+                    matcherGroup.equals("}") ||
+                    matcherGroup.equals("\""))
+            {
+                String closingBracket = matcher.group();
+                String openingBracket = new String();
+                
+                switch(closingBracket)
+                {
+                    case "}":
+                        openingBracket = "{";
+                        break;
+                    case ")":
+                        openingBracket = "(";
+                        break;
+                    case "]":
+                        openingBracket = "[";
+                        break;
+                    case "\"":
+                        openingBracket = "\"";
+                        break;
+                }
+                
+                String bracketsRegex = "\\".concat(openingBracket)
+                                           .concat("(.*?)\\")
+                                           .concat(closingBracket);
+               
+                if(!Pattern.compile(bracketsRegex).matcher(query).find()) 
+                {
+                    query = StringUtils.replace(query, matcherGroup, escapedMatcherGroup);
+                }
+            }
+            else
+            {
+                query = StringUtils.replace(query, matcherGroup, escapedMatcherGroup);
+            }
+        }
+        
+        query = StringUtils.replace(query, ": ", "\\:");
+        return query;
     }
 
     private static void setPagination(HttpServletRequest request,
@@ -581,7 +657,7 @@ public class DiscoverUtility
                             // filterquery
                             queryArgs.addFacetField(new DiscoverFacetField(
                                     facet.getIndexFieldName(), facet.getType(),
-                                    10, facet.getSortOrder()));
+                                    10, facet.getSortOrderSidebar()));
                         }
                         else
                         {
@@ -669,7 +745,7 @@ public class DiscoverUtility
                             .getIndexFieldName(),
                             DiscoveryConfigurationParameters.TYPE_TEXT,
                            limit, facet
-                                    .getSortOrder(), facetPage * facetLimit));
+                                    .getSortOrderSidebar(), facetPage * facetLimit));
                 }
             }
         }

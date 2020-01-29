@@ -26,6 +26,6 @@ public class FAQServlet extends DSpaceServlet
 		HttpServletResponse response
 	) throws ServletException, IOException, SQLException, AuthorizeException
 	{
-		JSPManager.showJSP(request, response, "/faqs.jsp");
+		JSPManager.showJSP(request, response, "/staticPages/faqs.jsp");
 	}
 }

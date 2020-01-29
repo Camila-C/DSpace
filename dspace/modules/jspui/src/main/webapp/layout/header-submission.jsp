@@ -85,28 +85,11 @@
     <script type="text/javascript" src="<%= request.getContextPath() %>/utils.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
     <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/rid-unrn-theme.js"> </script>
+    <dspace:include page="/layout/google-analytics-snippet.jsp" />
 
-    <%--Gooogle Analytics recording.--%>
-    <%  if (analyticsKey != null && analyticsKey.length() > 0) { %>
-      <script type="text/javascript">
-        var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', '<%= analyticsKey %>']);
-            _gaq.push(['_trackPageview']);
-
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-      </script>
-    <%
-        }
-        if (extraHeadDataLast != null) {
-    %>
+    <%  if (extraHeadDataLast != null) { %>
 		      <%= extraHeadDataLast %>
-		<%
-		    }
-    %>
+		<%  } %>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="<%= request.getContextPath() %>/static/js/html5shiv.js"></script>
@@ -130,9 +113,11 @@
 
 <main id="content" role="main">
   <%-- Location bar --%>
+  <%--
   <%  if (locbar) { %>
       <dspace:include page="/layout/location-bar.jsp" />                
   <%  } %>
+  --%>
 
   <%-- Page contents --%>
   <%  if (currentPath != null && currentPath.equals("/jspui/")) { %>

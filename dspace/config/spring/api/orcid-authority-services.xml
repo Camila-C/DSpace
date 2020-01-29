@@ -14,8 +14,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/context
-           http://www.springframework.org/schema/context/spring-context.xsd"
-       default-autowire-candidates="*Service,*DAO,javax.sql.DataSource">
+           http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config /> <!-- allows us to use spring annotations in beans -->
 
@@ -28,7 +27,7 @@
     <bean name="AuthorityTypes" class="org.dspace.authority.AuthorityTypes">
         <property name="types">
             <list>
-                <bean class="org.dspace.authority.orcid.OrcidAuthorityValue"/>
+                <bean class="org.dspace.authority.orcid.Orcidv2AuthorityValue"/>
                 <bean class="org.dspace.authority.PersonAuthorityValue"/>
             </list>
         </property>
@@ -41,9 +40,10 @@
         </property>
     </bean>
 
+
     <alias name="OrcidSource" alias="AuthoritySource"/>
-    <bean name="OrcidSource" class="org.dspace.authority.orcid.Orcid">
-        <constructor-arg value="http://pub.orcid.org"/>
+    <bean name="OrcidSource" class="org.dspace.authority.orcid.Orcidv2" init-method="init">
+        <constructor-arg value="${orcid.api.url}"/>
     </bean>
 
 

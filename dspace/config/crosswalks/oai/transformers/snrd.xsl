@@ -35,7 +35,7 @@
 	</xsl:template>
 
 	<!-- Formatting dc.language.iso to ISO 639-3--> 
-	<xsl:template  match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='language']/doc:element[@name='iso']/doc:field[@name='value']/text()">	
+	<xsl:template  match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='language']/doc:element[@name='iso']/doc:element/doc:field/text()">	
 		<xsl:call-template name="snrd-language">
 			<xsl:with-param name="value" select="."/>
 		</xsl:call-template> 
@@ -140,7 +140,7 @@
 		<!-- Prefijo añadido desde las Directrices SNRD v.2015 -->
 		<xsl:variable name="openaireTypePrefix">info:eu-repo/semantics/</xsl:variable>
 		<doc:element name="type">
-			<doc:element name='openaire'>
+			<doc:element name="openaire">
 				<doc:field name="value"><xsl:value-of select="concat($openaireTypePrefix, normalize-space($finalValue))"/></doc:field>						
 			</doc:element>
 		</doc:element>
@@ -209,7 +209,7 @@
 		<!-- Prefijo añadido desde las Directrices SNRD v.2015 -->
 		<xsl:variable name="snrdTypePrefix">info:ar-repo/semantics/</xsl:variable>
 		<doc:element name="type">
-			<doc:element name='snrd'>
+			<doc:element name="snrd">
 				<doc:field name="value"><xsl:value-of select="concat($snrdTypePrefix, normalize-space($finalValue))"/></doc:field>
 			</doc:element>
 		</doc:element>
@@ -220,19 +220,19 @@
 		<xsl:param name="value"/>
 		<xsl:variable name="valueLanguage">
 			<xsl:choose>
-				<xsl:when test="$value='es'">spa</xsl:when>
-				<xsl:when test="$value='en_US'">eng</xsl:when>
-				<xsl:when test="$value='en'">eng</xsl:when>
-				<xsl:when test="$value='de'">deu</xsl:when>
-				<xsl:when test="$value='pt'">por</xsl:when>
-				<xsl:when test="$value='fr'">fra</xsl:when>
-				<xsl:when test="$value='it'">ita</xsl:when>
-				<xsl:when test="$value='ja'">jpn</xsl:when>
-				<xsl:when test="$value='tr'">tur</xsl:when>
+				<xsl:when test="$value = 'es'">spa</xsl:when>
+				<xsl:when test="$value = 'en_US'">eng</xsl:when>
+				<xsl:when test="$value = 'en'">eng</xsl:when>
+				<xsl:when test="$value = 'de'">deu</xsl:when>
+				<xsl:when test="$value = 'pt'">por</xsl:when>
+				<xsl:when test="$value = 'fr'">fra</xsl:when>
+				<xsl:when test="$value = 'it'">ita</xsl:when>
+				<xsl:when test="$value = 'ja'">jpn</xsl:when>
+				<xsl:when test="$value = 'tr'">tur</xsl:when>
 				<xsl:otherwise>spa</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>		
-		<xsl:value-of select="normalize-space($valueLanguage)"/>	
+		<xsl:value-of select="normalize-space($valueLanguage)"/>
 	</xsl:template>
 	<!-- FIN: AUXILIARY TEMPLATES -->
 </xsl:stylesheet>

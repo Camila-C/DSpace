@@ -101,7 +101,6 @@ Es posible visualizar los metadatos: t&iacute;tulo, autor, fecha de publicaci&oa
 	<strong>Datos de contacto</strong>
 </p>
 <p>
-Tristana Pissaco <br>
 Dpto. Biblioteca Electr&oacute;nica, Repositorio y Contenidos Digitales <br>
 Secretar&iacute;a de Investigaci&oacute;n, Creaci&oacute;n Art&iacute;stica, Desarrollo y Transferencia de Tecnolog&iacute;a <br>
 Belgrano 526 &mdash; Viedma &mdash; R&iacute;o Negro | Tel. (02920) 442006 | <a href="mailto:rid@unrn.edu.ar?Subject=Consulta%20RID-UNRN" target="_top">rid@unrn.edu.ar</a>

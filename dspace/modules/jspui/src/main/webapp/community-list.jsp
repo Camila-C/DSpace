@@ -20,8 +20,12 @@
   -    admin_button - Boolean, show admin 'Create Top-Level Community' button
   --%>
 
-<%@ page import="org.dspace.content.Bitstream"%>
-<%@ page import="org.apache.commons.lang.StringUtils"%>
+<%@	page import="java.util.List"%>
+<%@	page import="org.dspace.content.service.CollectionService"%>
+<%@	page import="org.dspace.content.factory.ContentServiceFactory"%>
+<%@	page import="org.dspace.content.service.CommunityService"%>
+<%@	page import="org.dspace.content.Bitstream"%>
+<%@	page import="org.apache.commons.lang.StringUtils"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -41,17 +45,19 @@
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
 <%
-  Community[] communities = (Community[]) request.getAttribute("communities");
-  Map collectionMap = (Map) request.getAttribute("collections.map");
-  Map subcommunityMap = (Map) request.getAttribute("subcommunities.map");
-  Boolean admin_b = (Boolean)request.getAttribute("admin_button");
-  boolean admin_button = (admin_b == null ? false : admin_b.booleanValue());
-  ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
+	List<Community> communities = (List<Community>) request.getAttribute("communities");
+	Map collectionMap = (Map) request.getAttribute("collections.map");
+	Map subcommunityMap = (Map) request.getAttribute("subcommunities.map");
+	Boolean admin_b = (Boolean)request.getAttribute("admin_button");
+	boolean admin_button = (admin_b == null ? false : admin_b.booleanValue());
+	ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
 %>
 
 <%!
+	CommunityService comServ = ContentServiceFactory.getInstance().getCommunityService();
+	CollectionService colServ = ContentServiceFactory.getInstance().getCollectionService();
 	void showCommunity(Community c, JspWriter out, HttpServletRequest request, ItemCounter ic,
-	Map collectionMap, Map subcommunityMap, String idAccordion, Boolean first) throws ItemCountException, IOException, SQLException
+			Map collectionMap, Map subcommunityMap, String idAccordion, Boolean first) throws ItemCountException, IOException, SQLException
 	{
 		boolean showLogos = ConfigurationManager.getBooleanProperty("jspui.community-list.logos", true);
 		// Inicio panel-default
@@ -62,7 +68,7 @@
 		out.println("<h4 class=\"panel-title\">");
 
 		out.println("<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#" + idAccordion
-			+ "\" class=\"" + (first ? "" : "collapsed") + "\" href=\"#com-collapse-" + c.getID() + "\"></a>");
+			+ "\" class=\"" + (first ? "" : "collapsed") + "\" href=\"#com-collapse-" + c.getID().toString() + "\"></a>");
 
 		out.println("<a href=\"" + request.getContextPath() + "/handle/" + c.getHandle() + "\">");
 
@@ -72,7 +78,7 @@
 				+ "\" alt=\"community logo\" height=\"30\">");
 		}
 
-		out.println(c.getMetadata("name"));
+		out.println(c.getName());
 
 		if(ConfigurationManager.getBooleanProperty("webui.strengths.show")) {
 			out.println(" <span class=\"badge\">" + ic.getCount(c) + "</span>");
@@ -82,35 +88,35 @@
 		// Fin panel-heading
 		
 		// Inicio panel-collapse
-		out.println("<div id=\"com-collapse-" + c.getID() + "\" class=\"panel-collapse collapse " + (first ? "in" : "") + "\">");
+		out.println("<div id=\"com-collapse-" + c.getID().toString() + "\" class=\"panel-collapse collapse " + (first ? "in" : "") + "\">");
 		out.println("<div class=\"panel-body\">");
 
-		if (StringUtils.isNotBlank(c.getMetadata("short_description")))	{
-			out.println("<p>" + c.getMetadata("short_description") + "</p>");
+		if (StringUtils.isNotBlank(comServ.getMetadata(c, "short_description")))	{
+			out.println("<p>" + comServ.getMetadata(c, "short_description") + "</p>");
 		}
 
 		// Get the collections in this community
-		Collection[] cols = (Collection[]) collectionMap.get(c.getID());
-		if (cols != null && cols.length > 0) {
-			out.println("<div class=\"panel-group\" id=\"col-accordion-" + c.getID() + "\">");
-			for (int j = 0; j < cols.length; j++) {
+		List<Collection> cols = (List<Collection>) collectionMap.get(c.getID().toString());
+		if (cols != null && cols.size() > 0) {
+			out.println("<div class=\"panel-group\" id=\"col-accordion-" + c.getID().toString() + "\">");
+			for (int j = 0; j < cols.size(); j++) {
 				out.println("<div class=\"panel panel-default\">");
 				out.println("<div class=\"panel-heading\">");
 				out.println("<h4 class=\"panel-title\">");
 				out.println("<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#col-accordion-"
-					+ c.getID() + "\" class=\"collapsed\" href=\"#col-collapse-" + cols[j].getID() + "\"></a>");
-				out.println("<a href=\"" + request.getContextPath() + "/handle/" + cols[j].getHandle() + "\">");
+					+ c.getID().toString() + "\" class=\"collapsed\" href=\"#col-collapse-" + cols.get(j).getID().toString() + "\"></a>");
+				out.println("<a href=\"" + request.getContextPath() + "/handle/" + cols.get(j).getHandle() + "\">");
 
-				out.println(cols[j].getMetadata("name"));
+				out.println(cols.get(j).getName());
 				if(ConfigurationManager.getBooleanProperty("webui.strengths.show")) {
-					out.println(" <span class=\"label label-info\">" + ic.getCount(cols[j]) + "</span>");
+					out.println(" <span class=\"label label-info\">" + ic.getCount(cols.get(j)) + "</span>");
 				}
 				out.println("</a></h4></div>");
 
-				out.println("<div id=\"col-collapse-" + cols[j].getID() + "\" class=\"panel-collapse collapse\">");
+				out.println("<div id=\"col-collapse-" + cols.get(j).getID().toString() + "\" class=\"panel-collapse collapse\">");
 				out.println("<div class=\"panel-body\">");
-				if (StringUtils.isNotBlank(cols[j].getMetadata("short_description"))) {
-					out.println("<p>" + cols[j].getMetadata("short_description") + "</p>");
+				if (StringUtils.isNotBlank(colServ.getMetadata(cols.get(j), "short_description"))) {
+					out.println("<p>" + colServ.getMetadata(cols.get(j), "short_description") + "</p>");
 				}
 				out.println("</div>");
 				out.println("</div>");
@@ -120,12 +126,12 @@
 		}
 
 		// Get the sub-communities in this community
-		Community[] comms = (Community[]) subcommunityMap.get(c.getID());
-		if (comms != null && comms.length > 0) {
-			String newidAccordion = "accordion-" + c.getID();
+		List<Community> comms = (List<Community>) subcommunityMap.get(c.getID().toString());
+		if (comms != null && comms.size() > 0) {
+			String newidAccordion = "accordion-" + c.getID().toString();
 			out.println("<div class=\"panel-group\" id=\"" + newidAccordion + "\">");
-			for (int k = 0; k < comms.length; k++) {
-				showCommunity(comms[k], out, request, ic, collectionMap, subcommunityMap, newidAccordion, false);
+			for (int k = 0; k < comms.size(); k++) {
+				showCommunity(comms.get(k), out, request, ic, collectionMap, subcommunityMap, newidAccordion, false);
 			}
 			out.println("</div>"); 
 		}
@@ -167,16 +173,16 @@
 		<fmt:message key="jsp.community-list.text1"/>
 	</div>
 	<% 	
-			if (communities.length != 0) {
+			if (communities.size() != 0) {
 				String idAccordion = "accordion-communities";
 				// Añadir la clase "in" al collapse del primer elemento del Accordion
 				boolean first = true;
 	%>
     		<div class="panel-group" id="<%=idAccordion%>">
-				<%	for (int i = 0; i < communities.length; i++) {
+				<%	for (int i = 0; i < communities.size(); i++) {
 							//El ID de autoarchivo es el nro. 50. Por lo tanto, para no mostrarla, pregunto si el ID es dintinto a 50
-          		if (communities[i].getID() != 50) {
-								showCommunity(communities[i], out, request, ic, collectionMap, subcommunityMap, idAccordion, first);
+          		if (!"fdda2eb4-62b9-4312-8f09-f3e077940f1c".equals(communities.get(i).getID().toString())) {
+								showCommunity(communities.get(i), out, request, ic, collectionMap, subcommunityMap, idAccordion, first);
 								first = false;
 							}
          		}

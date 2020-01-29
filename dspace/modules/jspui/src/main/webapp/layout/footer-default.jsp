@@ -41,7 +41,7 @@
           </a>
         </div>
         <div class="box-logo">
-          <a href="https://crai.unrn.edu.ar/" target="_blank">
+          <a href="https://www.unrn.edu.ar/" target="_blank">
             <img src="<%= request.getContextPath() %>/image/footer/02_unrn_blanco.svg">
           </a>
         </div>

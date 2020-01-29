@@ -149,13 +149,16 @@
       </analyzer>
     </fieldType>
     <fieldtype name="ignored" stored="false" indexed="false" multiValued="true" class="solr.StrField" /> 
+
+    <!-- UUID support -->
+    <fieldType name="uuid" class="solr.UUIDField" indexed="true" />
  </types>
 
 
  <fields>
    <field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>
    <!-- Item always present information -->
-   <field name="item.id" type="int" indexed="true" stored="true" multiValued="false" />
+   <field name="item.id" type="uuid" indexed="true" stored="true" multiValued="false" />
    <field name="item.public" type="boolean" indexed="true" stored="true" multiValued="false" />
    <field name="item.handle" type="string" indexed="true" stored="true" multiValued="false" />
    <field name="item.collections" type="string" indexed="true" stored="true" multiValued="true" />
@@ -163,6 +166,8 @@
    <field name="item.lastmodified" type="date" indexed="true" stored="true" multiValued="false" />
    <field name="item.submitter" type="string" indexed="true" stored="true" multiValued="false" />
    <field name="item.deleted" type="boolean" indexed="true" stored="true" multiValued="false" />
+   <!-- if true, item.public will change in the future due to an embargo being set/lifted -->
+   <field name="item.willChangeStatus" type="boolean" indexed="true" stored="true" multiValued="false" />																									 
    
    <!-- Item compiled -->
    <field name="item.compile" type="string" indexed="false" stored="true" multiValued="false" />
