@@ -78,13 +78,13 @@
         }
     %>
         
-    <script type='text/javascript' src="<%= request.getContextPath() %>/static/js/jquery/jquery-1.10.2.min.js"></script>
-    <script type='text/javascript' src='<%= request.getContextPath() %>/static/js/jquery/jquery-ui-1.10.3.custom.min.js'></script>
-    <script type='text/javascript' src='<%= request.getContextPath() %>/static/js/bootstrap/bootstrap.min.js'></script>
-    <script type='text/javascript' src='<%= request.getContextPath() %>/static/js/holder.js'></script>
-    <script type="text/javascript" src="<%= request.getContextPath() %>/utils.js"></script>
-    <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
-    <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/rid-unrn-theme.js"> </script>
+    <script src="<%= request.getContextPath() %>/static/js/jquery/jquery-1.10.2.min.js"></script>
+    <script src="<%= request.getContextPath() %>/static/js/jquery/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="<%= request.getContextPath() %>/static/js/bootstrap/bootstrap.min.js"></script>
+    <script src="<%= request.getContextPath() %>/static/js/holder.js"></script>
+    <script src="<%= request.getContextPath() %>/utils.js"></script>
+    <script src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
+    <script src="<%= request.getContextPath() %>/static/js/rid-unrn-theme.js"> </script>
     <dspace:include page="/layout/google-analytics-snippet.jsp" />
 
     <%  if (extraHeadDataLast != null) { %>
