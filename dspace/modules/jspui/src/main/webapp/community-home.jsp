@@ -258,7 +258,45 @@
         <div class="top-title clearfix">
           <h4>
             Env&iacute;os/
-            <span>recientes</span>
+            <span>recientes
+            <%
+                if(feedEnabled)
+                {
+                  String[] fmts = feedData.substring(5).split(",");
+                  String icon = null;
+                  int width = 0;
+                  for (int j = 0; j < fmts.length; j++)
+                  {
+                    if ("rss_1.0".equals(fmts[j]))
+                    {
+                      icon = "rss1.gif";
+                      width = 80;
+                    }
+                    else if ("rss_2.0".equals(fmts[j]))
+                    {
+                      icon = "rss2.gif";
+                      width = 80;
+                    }
+                    else
+                      {
+                        icon = "rss.gif";
+                        width = 36;
+                      }
+            %>
+                <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/<%= community.getHandle() %>">
+                  <img
+                    src="<%= request.getContextPath() %>/image/<%= icon %>"
+                    alt="RSS Feed"
+                    width="<%= width %>"
+                    height="15"
+                    style="margin: 3px 0 3px"
+                  />
+                </a>
+            <%
+                  }
+                }
+            %>
+            </span>
           </h4>
           <%--<a class="btn-show-more hidden-xs hidden-sm" href="">VER TODOS ></a>--%>
         </div>
