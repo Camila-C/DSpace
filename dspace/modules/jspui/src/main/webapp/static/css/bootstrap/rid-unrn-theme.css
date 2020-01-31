@@ -496,12 +496,9 @@ footer .box-logos .box-logo img {
   padding: 0 0 60px 0;
   position: relative;
 }
-.recent-submissions a {
-  color: inherit;
-  text-decoration: none !important;
-}
 .top-title {
   position: relative;
+  text-transform: uppercase;
   margin: 35px 0 30px 0;
   border-bottom: 1px solid #1A2437;
 }
@@ -510,7 +507,13 @@ footer .box-logos .box-logo img {
   font-size: 32px;
   letter-spacing: 8px;
 }
-.top-title h3 span {
+.top-title h4 {
+  float: left;
+  font-size: 24px;
+  letter-spacing: 5px;
+}
+.top-title h3 span,
+.top-title h4 span {
   display: block;
   padding-bottom: 10px;
   font-weight: bold;
@@ -525,6 +528,10 @@ footer .box-logos .box-logo img {
   display: block;
 }
 /*Listado de envios recientes*/
+.submissions-list a {
+  color: inherit;
+  text-decoration: none !important;
+}
 .submissions-list a:hover h4 {
   color: #eb1f3f;
 }
@@ -764,4 +771,40 @@ footer .box-logos .box-logo img {
 /* Facets */
 .facets-box .badge {
   background-color: #eb2141;
+}
+
+/****************************************/
+/***********  COMMUNITY-HOME  ***********/
+/****************************************/
+#community-home h2 {
+  font-size: 35px;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  color: #1b2437;
+}
+#community-home .inline-form {
+  display: inline-block;
+}
+.btn-store {
+  color: #1b2437;
+  min-width: 280px;
+  padding: 12px 20px !important;
+  margin: 2px 1px;
+  border-color: #1b2437 !important;
+  background-color: #fff;
+}
+.btn-store:focus, 
+.btn-store:hover {
+  color: #ffffff !important;
+  background-color: #1b2437;
+  border-color: #1b2437 !important;
+}
+.btn-store .btn-label, 
+.btn-store .btn-caption {
+  display: block;
+  text-align: left;
+  line-height: 1;
+}
+.btn-store .btn-caption {
+  font-size: 24px;
 }
