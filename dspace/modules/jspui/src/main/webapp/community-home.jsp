@@ -100,7 +100,7 @@
         <h2>
           <%= name %>
           <%  if(configurationService.getBooleanProperty("webui.strengths.show")) { %>
-                : [<%= ic.getCount(community) %>]
+                [<%= ic.getCount(community) %>]
           <%  } %>
           <br>
           <small><fmt:message key="jsp.community-home.heading1"/></small>
@@ -298,7 +298,7 @@
             %>
             </span>
           </h4>
-          <%--<a class="btn-show-more hidden-xs hidden-sm" href="">VER TODOS ></a>--%>
+          <a class="btn-show-more hidden-xs hidden-sm" href="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/simple-search">VER TODOS ></a>
         </div>
         <div class="submissions-list">
         <%
