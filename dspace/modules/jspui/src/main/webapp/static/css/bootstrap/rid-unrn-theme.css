@@ -775,14 +775,17 @@ footer .box-logos .box-logo img {
 
 /****************************************/
 /***********  COMMUNITY-HOME  ***********/
+/***********  COLLECTION-HOME  **********/
 /****************************************/
-#community-home h2 {
+#community-home h2,
+#collection-home h2 {
   font-size: 35px;
   text-transform: uppercase;
   padding-bottom: 20px;
   color: #1b2437;
 }
-#community-home .inline-form {
+#community-home .inline-form,
+#collection-home .inline-form {
   display: inline-block;
 }
 .btn-store {
