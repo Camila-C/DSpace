@@ -267,60 +267,83 @@
           </h4>
           <a class="btn-show-more hidden-xs hidden-sm" href="<%= request.getContextPath() %>/handle/<%= collection.getHandle() %>/simple-search">VER TODOS ></a>
         </div>
-        <div class="submissions-list">
-        <%
-          if (submissions != null && submissions.count() > 0) {
-            int count = 0;
-            for (Item item : submissions.getRecentSubmissions()) {
-              //Título
-              String displayTitle = itemService.getMetadataFirstValue(item, "dc", "title", null, Item.ANY);
-              if (displayTitle == null) {
-                displayTitle = "Sin título";
+        <% 
+            if (show_items) {
+              BrowseInfo bi = (BrowseInfo) request.getAttribute("browse.info");
+              BrowseIndex bix = bi.getBrowseIndex();
+
+              // prepare the next and previous links
+              String linkBase = request.getContextPath() + "/handle/" + collection.getHandle();
+              
+              String next = linkBase;
+              String prev = linkBase;
+              
+              if (bi.hasNextPage()) {
+                  next = next + "?offset=" + bi.getNextOffset();
               }
-              //Resumen
-              String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
-              if (displayAbstract == null) {
-                displayAbstract = "Sin resumen";
+              
+              if (bi.hasPrevPage()) {
+                  prev = prev + "?offset=" + bi.getPrevOffset();
               }
-              //Tipo
-              String displayType = itemService.getMetadataFirstValue(item, "dc", "type", null, Item.ANY);
-              if (displayType == null) {
-                displayType = "Indefinido";
-              }
-              //Fecha de publicación
-              String displayDate = itemService.getMetadataFirstValue(item, "dc", "date", "accessioned", Item.ANY);
-              if (displayDate != null) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-                Date tmpDate = sdf.parse(displayDate);
-                SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM, yyyy");
-                displayDate = dateFormat.format(tmpDate);
-              }
+
+              String bi_name_key = "browse.menu." + bi.getSortOption().getName();
+              String so_name_key = "browse.order." + (bi.isAscending() ? "asc" : "desc");
         %>
-          <div class="col-lg-12 col-md-12 col-sm-12">
-            <a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>">
-              <div class="row group-submission">
-                <div class="type-group col-md-2">
-                  <div class="date"><%=displayDate%></div>
-                  <div class="line-short hidden-xs"></div>
-                  <div class="type"><%=displayType%></div>
-                </div>
-                <div class="title-group col-md-10">
-                  <div class="line-short visible-xs"></div>
-                  <h4><%=displayTitle%></h4>
-                  <p><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 270))%></p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <%
-                count++;
-                if (count > 5) {
-                  break;
-                }
-              }
-            }
-          %>
+        <%-- give us the top report on what we are looking at --%>
+        <fmt:message var="bi_name" key="<%= bi_name_key %>"/>
+        <fmt:message var="so_name" key="<%= so_name_key %>"/>
+        <div class="browse_range">
+          <fmt:message key="jsp.collection-home.content.range">
+            <fmt:param value="${bi_name}"/>
+            <fmt:param value="${so_name}"/>
+            <fmt:param value="<%= Integer.toString(bi.getStart()) %>"/>
+            <fmt:param value="<%= Integer.toString(bi.getFinish()) %>"/>
+            <fmt:param value="<%= Integer.toString(bi.getTotal()) %>"/>
+          </fmt:message>
         </div>
+
+        <%--  do the top previous and next page links --%>
+        <ul class="prev-next-links pager">
+        <%    if (bi.hasPrevPage()) { %>
+          <li class="previous"><a href="<%= prev %>"><fmt:message key="browse.full.prev"/></a></li>
+        <%    }
+              if (bi.hasNextPage()) {
+        %>
+          <li class="next"><a href="<%= next %>"><fmt:message key="browse.full.next"/></a></li>
+        <%    } %>
+        </ul>
+
+        <%-- output the results using the browselist tag --%>
+        <%    if (bix.isMetadataIndex()) { %>
+        <dspace:browselist browseInfo="<%= bi %>" emphcolumn="<%= bix.getMetadata() %>" />
+        <%    } else { %>
+        <dspace:browselist browseInfo="<%= bi %>" emphcolumn="<%= bix.getSortOption().getMetadata() %>" />
+        <%    } %>
+
+        <%-- give us the bottom report on what we are looking at --%>
+        <div class="browse_range">
+          <fmt:message key="jsp.collection-home.content.range">
+            <fmt:param value="${bi_name}"/>
+            <fmt:param value="${so_name}"/>
+            <fmt:param value="<%= Integer.toString(bi.getStart()) %>"/>
+            <fmt:param value="<%= Integer.toString(bi.getFinish()) %>"/>
+            <fmt:param value="<%= Integer.toString(bi.getTotal()) %>"/>
+          </fmt:message>
+        </div>
+
+        <%--  do the bottom previous and next page links --%>
+        <ul class="prev-next-links pager">
+        <%    if (bi.hasPrevPage()) { %>
+          <li class="previous"><a href="<%= prev %>"><fmt:message key="browse.full.prev"/></a></li>
+        <%    }
+              if (bi.hasNextPage()) {
+        %>
+          <li class="next"><a href="<%= next %>"><fmt:message key="browse.full.next"/></a></li>
+        <%    } %>
+        </ul>
+        <%
+            } // end of if (show_title)
+        %>
       </div>
     </div>
   </div>
