@@ -45,7 +45,7 @@
     }
 %>
 
-<nav class="navbar navbar-fixed-top">
+<nav id="navbar-admin" class="navbar">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -188,8 +188,3 @@
     </ul>
   </div>
 </nav>
-<div class="jumbotron text-center jumbotron-admin">
-  <div class="pattern"></div>
-  <h1><fmt:message key="jsp.layout.header-default.brand.heading" /></h1>
-  <p>Secci&oacute;n de Administraci&oacute;n</p>
-</div>
