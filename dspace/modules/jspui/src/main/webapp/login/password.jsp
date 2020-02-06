@@ -17,7 +17,7 @@
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
 <dspace:layout navbar="default" locbar="off" titlekey="jsp.login.password.title" nocache="true">
-  <section class="container pt-30">
+  <section class="container">
     <h2 class="text-center">
       <fmt:message key="jsp.login.password.heading"/>
       <%--

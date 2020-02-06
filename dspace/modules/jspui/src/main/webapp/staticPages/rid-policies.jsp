@@ -14,7 +14,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 	
 <dspace:layout title="Pol&iacute;ticas">
-	<div class="polices pt-30">
+	<div class="polices">
 		<h2 id="politicas-del-rid">
 			Pol&iacute;ticas del Repositorio Institucional Digital de la Universidad
 			Nacional de R&iacute;o Negro.

@@ -16,7 +16,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 	
 <dspace:layout title="Preguntas frecuentes">
-  <div class="row pt-30">
+  <div class="row">
     <div class="col-md-12">
       <div class="text-center">
         <h2>Preguntas frecuentes</h2>
