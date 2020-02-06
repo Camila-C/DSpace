@@ -98,7 +98,6 @@
       <form class="navbar-form navbar-right hidden-xs" role="search" method="get" action="<%= request.getContextPath() %>/simple-search">
         <div class="form-group">
           <input
-            id="tequery"
             type="text"
             class="form-control input-lg"
             maxlength=200
@@ -122,7 +121,6 @@
         <form class="navbar-form" role="search" method="get" action="<%= request.getContextPath() %>/simple-search">
           <div class="form-group">
             <input
-              id="tequery"
               type="text"
               class="form-control"
               maxlength=200

@@ -109,7 +109,6 @@
             size="50"
             placeholder="<fmt:message key='jsp.layout.header-default.form.search' />"
             name="query"
-            id="tequery"
             title="Buscar en RID-UNRN"
           >
           <div class="input-group-btn">

@@ -146,7 +146,6 @@
                 size="50"
                 placeholder="Busca registros dentro de esta coleccion"
                 name="query"
-                id="tequery"
                 title="Buscar en RID-UNRN"
               >
               <div class="input-group-btn">
