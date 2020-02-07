@@ -59,6 +59,8 @@
 			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css" type="text/css" />
 			<!-- Fontawesome 5.10.1 -->
 			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/fontawesome-free-5.10.1/css/all.min.css" type="text/css" />
+			<!-- Academicons 1.8.6 -->
+			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/academicons-1.8.6/css/academicons.min.css"/>
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
 			<%	if (!"NONE".equals(feedRef)) {
         		for (int i = 0; i < parts.size(); i+= 3) {
