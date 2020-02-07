@@ -113,6 +113,8 @@
     VersionHistoryService versionHistoryService = VersionServiceFactory.getInstance().getVersionHistoryService();
     VersionHistory history = (VersionHistory)request.getAttribute("versioning.history");
     List<Version> historyVersions = (List<Version>)request.getAttribute("versioning.historyversions");
+
+    String locationLink = request.getContextPath() + "/handle/" + handle;
 %>
 
 <dspace:layout title="<%= title %>">
@@ -134,17 +136,42 @@
         <code><%= preferredIdentifier %></code>
       </div>
       <div class="row">
-        <div class="col-sm-2 col-sm-offset-9">
-          <!-- Altmetrics Settings -->
-          <div class="altmetric-embed pull-right" data-badge-type="donut" data-badge-popover="left" data-handle="<%= handle %>" data-hide-no-mentions="true" style="display: inline;"></div>
-          <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
-        </div>
-        <div class="col-sm-1">
-          <!-- Scholar Google -->
-          <a class="pull-right" href="https://scholar.google.com.ar/scholar?hl=es&q=<%= title %>" target="_blank" alt="Google Académico">
-            <img src="<%= request.getContextPath() %>/image/scholar_google_icon.svg" height="64">
+        <div class="col-md-12 btn-social-group">
+          <!-- Linkedin -->
+          <a onclick="linkedin()" class="btn-social btn-linkedin" title="Compartir en LinkedIn">
+            <i class="fab fa-linkedin fa-2x"></i>
           </a>
+          <!-- Twitter -->
+          <a onclick="twitter()" class="btn-social btn-twitter" title="Compartir en Twitter">
+            <i class="fab fa-twitter fa-2x"></i>
+          </a>
+          <!-- Facebook -->
+          <a onclick="facebook()" class="btn-social btn-facebook" title="Compartir en Facebook">
+            <i class="fab fa-facebook-f fa-2x"></i>
+          </a>
+          <!-- Scholar Google -->
+          <a class="btn-social btn-google-scholar" href="https://scholar.google.com.ar/scholar?hl=es&q=<%= title %>" target="_blank" title="Ver en Google Académico">
+            <i class="ai ai-google-scholar ai-2x"></i>
+          </a>
+          <!-- Altmetrics Settings -->
+          <div class="btn-social altmetric-embed" data-link-target="_blank" data-badge-type="donut" data-badge-popover="left" data-handle="<%= handle %>" style="display: inline;"></div>
+          <script type="text/javascript" src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
         </div>
+        <script>
+          // Share windows
+          function share(url) {
+            window.open(url, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=400,width=800,height=400");
+          }
+          function twitter() {
+            share("https://twitter.com/intent/tweet?text=<%=title%>&url=https://rid.unrn.edu.ar<%=locationLink%>");
+          }
+          function linkedin() {
+            share("https://www.linkedin.com/shareArticle?mini=true&url=https://rid.unrn.edu.ar<%=locationLink%>&title=<%=title%>");
+          }
+          function facebook() {
+            share("https://www.facebook.com/sharer/sharer.php?u=https://rid.unrn.edu.ar<%=locationLink%>&t=<%=title%>");
+          }
+        </script>
       </div>
       <br>
   <%  // admin edit button
@@ -213,8 +240,6 @@
   <div class="row">
     <div class="col-sm-12">
     <%
-        String locationLink = request.getContextPath() + "/handle/" + handle;
-
         if (displayAll) {
           if (workspace_id != null) {
     %>
@@ -349,13 +374,13 @@
         <!-- <%= cc_rdf %> -->
   <%  } else { %>
         <div class="row">
-          <div class="col-sm-1">
-            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-              <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
-            </a>
-          </div>
-          <div class="col-sm-11">
-            <p>Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.</p>
+          <div class="col-sm-12">        
+            <p>
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
+              </a>
+              Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.
+            </p>
           </div>
         </div>        
   <%  } %>    
