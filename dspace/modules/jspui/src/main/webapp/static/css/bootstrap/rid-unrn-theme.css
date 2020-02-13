@@ -26,6 +26,13 @@ main#content {
 }
 /* FIN: BOTÓN BackToTop */
 
+/* INICIO: Imagenes */
+.lazyloaded {
+  opacity: 1;
+  transition: opacity .3s;
+}
+/* FIN: Imagenes */
+
 /* INICIO: BOTÓN UNRN */
 .btn-unrn {
   background-color: #fff;
@@ -62,6 +69,10 @@ main#content {
   font-size: 35px;
   text-transform: uppercase;
   padding-bottom: 20px;
+}
+#page-content h3 {
+  font-size: 30px;
+  padding-bottom: 10px;
 }
 /* FIN: TÍTULOS */
 
@@ -660,22 +671,26 @@ footer .box-logos .box-logo img {
 /****************************************/
 /*******        F A Q S       ***********/
 /****************************************/
-#accordion-faqs a:hover, #accordion-faqs a:focus{
+.before-accordion {
+  padding-bottom: 20px;
+  font-size: 16px;
+}
+.accordion-faqs a:hover, .accordion-faqs a:focus{
   text-decoration: none;
   outline: none;
 }
-#accordion-faqs .panel{
+.accordion-faqs .panel{
   border: none;
   box-shadow: none;
   border-radius: 0;
   margin-bottom: 15px;
 }
-#accordion-faqs .panel-heading{
+.accordion-faqs .panel-heading{
   padding: 0;
   border-radius:0;
   border: none;
 }
-#accordion-faqs .panel-title a{
+.accordion-faqs .panel-title a{
   display: block;
   padding: 14px 30px 14px 70px;
   font-size: 16px;
@@ -686,14 +701,14 @@ footer .box-logos .box-logo img {
   overflow: hidden;
   transition: all 0.5s ease 0s;
 }
-#accordion-faqs .panel-title a.collapsed{
+.accordion-faqs .panel-title a.collapsed{
   background: #f8f8f8;
   color: #1e4276;
 }
-#accordion-faqs .panel-title a.collapsed:hover{
+.accordion-faqs .panel-title a.collapsed:hover{
   color: #eb2141;
 }
-#accordion-faqs .panel-title a:before{
+.accordion-faqs .panel-title a:before{
   content: "";
   width: 55px;
   height: 100%;
@@ -704,10 +719,10 @@ footer .box-logos .box-logo img {
   transform: skewX(-25deg);
   transition: all 0.5s ease 0s;
 }
-#accordion-faqs .panel-title a.collapsed:hover:before{
+.accordion-faqs .panel-title a.collapsed:hover:before{
   background: #eb2141;
 }
-#accordion-faqs .panel-title a:after{
+.accordion-faqs .panel-title a:after{
   content: "\f106";
   font-family: "Font Awesome 5 Free";
   position: absolute;
@@ -716,15 +731,15 @@ footer .box-logos .box-logo img {
   color: #fff;
   transform: translateY(-50%);
 }
-#accordion-faqs .panel-title a.collapsed:after{
+.accordion-faqs .panel-title a.collapsed:after{
   color: #9f9f9f;
   content: "\f054";
   font-family: "Font Awesome 5 Free";
 }
-#accordion-faqs .panel-title a.collapsed:hover:after{
+.accordion-faqs .panel-title a.collapsed:hover:after{
   color: #fff;
 }
-#accordion-faqs .panel-body{
+.accordion-faqs .panel-body{
   font-size: 14px;
   line-height: 25px;
   padding: 20px 15px 20px 40px;
@@ -732,7 +747,7 @@ footer .box-logos .box-logo img {
   border: none;
   transition: all 0.5s ease 0s;
 }
-#accordion-faqs .panel-body:before{
+.accordion-faqs .panel-body:before{
   content: "";
   width: 5px;
   height: 40px;
@@ -741,7 +756,7 @@ footer .box-logos .box-logo img {
   top: 30px;
   left: 0;
 }
-#accordion-faqs .panel-body p{
+.accordion-faqs .panel-body p{
   margin-bottom: 0;
 }
 
