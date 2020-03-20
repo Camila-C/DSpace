@@ -17,6 +17,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.dspace.eperson.EPerson;
+import org.dspace.core.Utils;
 
 /**
  * <p>
@@ -47,7 +48,7 @@ public class SelectEPersonTag extends TagSupport
     private boolean multiple;
 
     /** Which eperson/epeople are initially in the list? */
-    private transient EPerson[] epeople;
+    private EPerson[] epeople;
 
     private static final long serialVersionUID = -7323789442034590853L;
 
@@ -122,7 +123,7 @@ public class SelectEPersonTag extends TagSupport
                 for (int i = 0; i < epeople.length; i++)
                 {
                     out.print("<option value=\"" + epeople[i].getID() + "\">");
-                    out.print(epeople[i].getFullName() + " ("
+                    out.print(Utils.addEntities(epeople[i].getFullName()) + " ("
                             + epeople[i].getEmail() + ")");
                     out.println("</option>");
                 }

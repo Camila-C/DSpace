@@ -9,8 +9,7 @@
 	Following Driver Guidelines 2.0:
 		- http://www.driver-support.eu/managers.html#guidelines
  -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:doc="http://www.lyncode.com/xoai">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:doc="http://www.lyncode.com/xoai">
 	<xsl:output indent="yes" method="xml" omit-xml-declaration="yes" />
 	
 	<xsl:template match="@*|node()">
@@ -36,7 +35,7 @@
 	</xsl:template>
 
 	<!-- Formatting dc.language.iso to ISO 639-3--> 
-	<xsl:template  match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='language']/doc:element[@name='iso']/doc:field[@name='value']/text()">	
+	<xsl:template  match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='language']/doc:element[@name='iso']/doc:element/doc:field/text()">	
 		<xsl:call-template name="snrd-language">
 			<xsl:with-param name="value" select="."/>
 		</xsl:call-template> 
@@ -88,33 +87,33 @@
 				</xsl:when>
 				<xsl:when test="$theValue = 'Tesis'">
 					<!-- Para cada tipo, busca los subtipos subtipo y los compara -->
-                    <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
-                        <xsl:choose>
-                            <xsl:when test=". = 'Tesis de grado'">
-                                bachelorThesis
-                            </xsl:when>
+					<xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
+						<xsl:choose>
+							<xsl:when test=". = 'Tesis de grado'">
+								bachelorThesis
+							</xsl:when>
 							<xsl:when test=". = 'Tesis de maestria'">
-                                masterThesis
-                            </xsl:when>
-                            <xsl:when test=". = 'Tesis de doctorado'">
-                                doctoralThesis
-                            </xsl:when>
-                        </xsl:choose>
-                    </xsl:for-each>
-                </xsl:when>
+								masterThesis
+							</xsl:when>
+							<xsl:when test=". = 'Tesis de doctorado'">
+								doctoralThesis
+							</xsl:when>
+						</xsl:choose>
+					</xsl:for-each>
+				</xsl:when>
 				<xsl:when test="$theValue = 'Trabajo final'">
 					<!-- Para cada tipo, busca los subtipos subtipo y los compara -->
-                    <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
-                        <xsl:choose>
-                            <xsl:when test=". = 'Trabajo final de grado'">
+          <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
+        	  <xsl:choose>
+              <xsl:when test=". = 'Trabajo final de grado'">
 								bachelorThesis
 							</xsl:when>
 							<xsl:when test=". = 'Trabajo final de posgrado'">
 								masterThesis
 							</xsl:when>
-                        </xsl:choose>
-                    </xsl:for-each>
-                </xsl:when>
+            </xsl:choose>
+          </xsl:for-each>
+        </xsl:when>
 				<xsl:when test="$theValue = 'Libro'">
 					book
 				</xsl:when>
@@ -141,7 +140,7 @@
 		<!-- Prefijo añadido desde las Directrices SNRD v.2015 -->
 		<xsl:variable name="openaireTypePrefix">info:eu-repo/semantics/</xsl:variable>
 		<doc:element name="type">
-			<doc:element name='openaire'>
+			<doc:element name="openaire">
 				<doc:field name="value"><xsl:value-of select="concat($openaireTypePrefix, normalize-space($finalValue))"/></doc:field>						
 			</doc:element>
 		</doc:element>
@@ -157,33 +156,33 @@
 				</xsl:when>
 				<xsl:when test="$theValue = 'Tesis'">
 					<!-- Para cada tipo, busca los subtipos subtipo y los compara -->
-                    <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
-                        <xsl:choose>
-                            <xsl:when test=". = 'Tesis de grado'">
-                                tesis de grado
-                            </xsl:when>
+          <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
+            <xsl:choose>
+              <xsl:when test=". = 'Tesis de grado'">
+                tesis de grado
+              </xsl:when>
 							<xsl:when test=". = 'Tesis de maestria'">
-                                tesis de maestría
-                            </xsl:when>
-                            <xsl:when test=". = 'Tesis de doctorado'">
-                                tesis doctoral
-                            </xsl:when>
-                        </xsl:choose>
-                    </xsl:for-each>
-                </xsl:when>
+                tesis de maestría
+              </xsl:when>
+              <xsl:when test=". = 'Tesis de doctorado'">
+                tesis doctoral
+              </xsl:when>
+            </xsl:choose>
+          </xsl:for-each>
+        </xsl:when>
 				<xsl:when test="$theValue = 'Trabajo final'">
 					<!-- Para cada tipo, busca los subtipos subtipo y los compara -->
-                    <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
-                        <xsl:choose>
-                            <xsl:when test=". = 'Trabajo final de grado'">
+          <xsl:for-each select="/doc:metadata/doc:element[@name='dc']/doc:element[@name='type'][./doc:element/doc:field/text()=$theValue]/doc:element[@name='subtype']/doc:element/doc:field[@name='value']">
+            <xsl:choose>
+              <xsl:when test=". = 'Trabajo final de grado'">
 								trabajo final de grado
 							</xsl:when>
 							<xsl:when test=". = 'Trabajo final de posgrado'">
 								tesis de maestría
 							</xsl:when>
-                        </xsl:choose>
-                    </xsl:for-each>
-                </xsl:when>
+            </xsl:choose>
+          </xsl:for-each>
+        </xsl:when>
 				<xsl:when test="$theValue = 'Libro'">
 					libro
 				</xsl:when>
@@ -210,7 +209,7 @@
 		<!-- Prefijo añadido desde las Directrices SNRD v.2015 -->
 		<xsl:variable name="snrdTypePrefix">info:ar-repo/semantics/</xsl:variable>
 		<doc:element name="type">
-			<doc:element name='snrd'>
+			<doc:element name="snrd">
 				<doc:field name="value"><xsl:value-of select="concat($snrdTypePrefix, normalize-space($finalValue))"/></doc:field>
 			</doc:element>
 		</doc:element>
@@ -221,19 +220,19 @@
 		<xsl:param name="value"/>
 		<xsl:variable name="valueLanguage">
 			<xsl:choose>
-				<xsl:when test="$value='es'">spa</xsl:when>
-				<xsl:when test="$value='en_US'">eng</xsl:when>
-				<xsl:when test="$value='en'">eng</xsl:when>
-				<xsl:when test="$value='de'">deu</xsl:when>
-				<xsl:when test="$value='pt'">por</xsl:when>
-				<xsl:when test="$value='fr'">fra</xsl:when>
-				<xsl:when test="$value='it'">ita</xsl:when>
-				<xsl:when test="$value='ja'">jpn</xsl:when>
-				<xsl:when test="$value='tr'">tur</xsl:when>
+				<xsl:when test="$value = 'es'">spa</xsl:when>
+				<xsl:when test="$value = 'en_US'">eng</xsl:when>
+				<xsl:when test="$value = 'en'">eng</xsl:when>
+				<xsl:when test="$value = 'de'">deu</xsl:when>
+				<xsl:when test="$value = 'pt'">por</xsl:when>
+				<xsl:when test="$value = 'fr'">fra</xsl:when>
+				<xsl:when test="$value = 'it'">ita</xsl:when>
+				<xsl:when test="$value = 'ja'">jpn</xsl:when>
+				<xsl:when test="$value = 'tr'">tur</xsl:when>
 				<xsl:otherwise>spa</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>		
-		<xsl:value-of select="normalize-space($valueLanguage)"/>	
+		<xsl:value-of select="normalize-space($valueLanguage)"/>
 	</xsl:template>
 	<!-- FIN: AUXILIARY TEMPLATES -->
 </xsl:stylesheet>

@@ -24,64 +24,56 @@
     boolean problem = (request.getParameter("feedback.problem") != null);
     String email = request.getParameter("email");
 
-    if (email == null || email.equals(""))
-    {
-        email = (String) request.getAttribute("authenticated.email");
+    if (email == null || email.equals("")) {
+      email = (String) request.getAttribute("authenticated.email");
     }
 
-    if (email == null)
-    {
-        email = "";
+    if (email == null) {
+      email = "";
     }
 
     String feedback = request.getParameter("feedback");
-    if (feedback == null)
-    {
-        feedback = "";
+    if (feedback == null) {
+      feedback = "";
     }
 
     String fromPage = request.getParameter("fromPage");
-    if (fromPage == null)
-    {
-		fromPage = "";
+    if (fromPage == null) {
+		  fromPage = "";
     }
 %>
 
 <dspace:layout titlekey="jsp.feedback.form.title">
-    <h1>Formulario de Contacto</h1>
-    <!--<h1><fmt:message key="jsp.feedback.form.title"/></h1> -->
-
-    <%-- <p>Thanks for taking the time to share your feedback about the
-    DSpace system. Your comments are appreciated!</p> --%>
-    <p><fmt:message key="jsp.feedback.form.text1"/></p>
-
-<%
-    if (problem)
-    {
-%>
-        <%-- <p><strong>Please fill out all of the information below.</strong></p> --%>
-        <p><strong><fmt:message key="jsp.feedback.form.text2"/></strong></p>
-<%
-    }
-%>
-    <form action="<%= request.getContextPath() %>/feedback" method="post">
-        <center>
-            <table>
-                <tr>
-                    <td class="submitFormLabel"><label for="temail"><fmt:message key="jsp.feedback.form.email"/></label></td>
-                    <td><input type="text" name="email" id="temail" size="50" value="<%=StringEscapeUtils.escapeHtml(email)%>" /></td>
-                </tr>
-                <tr>
-                    <td class="submitFormLabel"><label for="tfeedback"><fmt:message key="jsp.feedback.form.comment"/></label></td>
-                    <td><textarea name="feedback" id="tfeedback" rows="6" cols="50"><%=StringEscapeUtils.escapeHtml(feedback)%></textarea></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">
-                    <input type="submit" name="submit" value="<fmt:message key="jsp.feedback.form.send"/>" />
-                    </td>
-                </tr>
-            </table>
-        </center>
-    </form>
-
+  <section class="jumbotron bg-transparent">
+    <h2><fmt:message key="jsp.feedback.form.title"/></h2>
+    <p class="lead"><fmt:message key="jsp.feedback.form.text1"/></p>
+    <hr>
+    <%	if (problem) { %>
+      <div class="alert alert-danger">
+        <fmt:message key="jsp.feedback.form.problem"/>
+      </div>
+    <%	} %>
+    <div class="row">
+      <form method="post" action="<%= request.getContextPath() %>/feedback">
+        <div class="form-group col-md-6">
+          <label for="temail"><fmt:message key="jsp.feedback.form.email"/></label>
+          <input type="text" class="form-control" name="email" id="temail" size="50" value="<%=StringEscapeUtils.escapeHtml(email)%>">
+        </div>
+        <div class="form-group col-md-12">
+          <label for="tfeedback"><fmt:message key="jsp.feedback.form.comment"/></label>
+          <textarea class="form-control" name="feedback" id="tfeedback" rows="6" cols="50">
+            <%=StringEscapeUtils.escapeHtml(feedback)%>
+          </textarea>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="submit" class="btn btn-unrn-reverse" name="submit">
+            <fmt:message key="jsp.feedback.form.send"/>
+          </button>
+          <a class="btn btn-default" href="<%= request.getContextPath() %>/">
+            <fmt:message key="jsp.feedback.form.cancel"/>
+          </a>
+        </div>
+      </form>
+    </div>
+  </section> 
 </dspace:layout>

@@ -177,6 +177,14 @@
                 </xsl:attribute>
             </meta>
 
+            <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='ROBOTS'][not(@qualifier)]">
+                <meta name="ROBOTS">
+                    <xsl:attribute name="content">
+                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='ROBOTS']"/>
+                    </xsl:attribute>
+                </meta>
+            </xsl:if>
+
             <!-- Add stylesheets -->
 
             <!--TODO figure out a way to include these in the concat & minify-->
@@ -229,12 +237,12 @@
             <!-- The following javascript removes the default text of empty text areas when they are focused on or submitted -->
             <!-- There is also javascript to disable submitting a form when the 'enter' key is pressed. -->
             <script>
-                //Clear default text of emty text areas on focus
+                //Clear default text of empty text areas on focus
                 function tFocus(element)
                 {
                 if (element.value == '<i18n:text>xmlui.dri2xhtml.default.textarea.value</i18n:text>'){element.value='';}
                 }
-                //Clear default text of emty text areas on submit
+                //Clear default text of empty text areas on submit
                 function tSubmit(form)
                 {
                 var defaultedElements = document.getElementsByTagName("textarea");
@@ -299,7 +307,6 @@
                 <script type="text/x-mathjax-config">
                     MathJax.Hub.Config({
                       tex2jax: {
-                        inlineMath: [['$','$'], ['\\(','\\)']],
                         ignoreClass: "detail-field-data|detailtable|exception"
                       },
                       TeX: {
@@ -309,7 +316,7 @@
                       }
                     });
                 </script>
-                <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">&#160;</script>
+                <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">&#160;</script>
             </xsl:if>
 
         </head>
@@ -336,7 +343,7 @@
                         </button>
 
                         <a href="{$context-path}/" class="navbar-brand">
-                            <img src="{$theme-path}/images/DSpace-logo-line.svg" />
+                            <img src="{$theme-path}images/DSpace-logo-line.svg" />
                         </a>
 
 
@@ -695,7 +702,7 @@
                     <hr/>
                     <div class="col-xs-7 col-sm-8">
                         <div>
-                            <a href="http://www.dspace.org/" target="_blank">DSpace software</a> copyright&#160;&#169;&#160;2002-2015&#160; <a href="http://www.duraspace.org/" target="_blank">DuraSpace</a>
+                            <a href="http://www.dspace.org/" target="_blank">DSpace software</a> copyright&#160;&#169;&#160;2002-2016&#160; <a href="http://www.duraspace.org/" target="_blank">DuraSpace</a>
                         </div>
                         <div class="hidden-print">
                             <a>
@@ -721,8 +728,8 @@
                         <div class="pull-right">
                             <span class="theme-by">Theme by&#160;</span>
                             <br/>
-                            <a title="@mire NV" target="_blank" href="http://atmire.com">
-                                <img alt="@mire NV" src="{concat($theme-path, '/images/@mirelogo-small.png')}"/>
+                            <a title="Atmire NV" target="_blank" href="http://atmire.com">
+                                <img alt="Atmire NV" src="{concat($theme-path, 'images/atmire-logo-small.svg')}"/>
                             </a>
                         </div>
 
@@ -756,7 +763,7 @@
     <xsl:template match="dri:body">
         <div>
             <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='alert'][@qualifier='message']">
-                <div class="alert">
+                <div class="alert alert-warning">
                     <button type="button" class="close" data-dismiss="alert">&#215;</button>
                     <xsl:copy-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='alert'][@qualifier='message']/node()"/>
                 </div>
@@ -795,6 +802,13 @@
 
     <xsl:template name="addJavascript">
 
+        <script type="text/javascript"><xsl:text>
+                         if(typeof window.publication === 'undefined'){
+                            window.publication={};
+                          };
+                        window.publication.contextPath= '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/><xsl:text>';</xsl:text>
+            <xsl:text>window.publication.themePath= '</xsl:text><xsl:value-of select="$theme-path"/><xsl:text>';</xsl:text>
+        </script>
         <!--TODO concat & minify!-->
 
         <script>
@@ -815,7 +829,7 @@
             <script src="{$theme-path}{@src}">&#160;</script>
         </xsl:for-each>
 
-        <!-- Add javascipt specified in DRI -->
+        <!-- Add javascript specified in DRI -->
         <xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='javascript'][not(@qualifier)]">
             <script>
                 <xsl:attribute name="src">
@@ -855,22 +869,31 @@
             <xsl:call-template name="choiceLookupPopUpSetup"/>
         </xsl:if>
 
+        <xsl:call-template name="addJavascript-google-analytics" />
+    </xsl:template>
+
+    <xsl:template name="addJavascript-google-analytics">
         <!-- Add a google analytics script if the key is present -->
         <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']">
             <script><xsl:text>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-                  ga('create', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']"/><xsl:text>', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/><xsl:text>');
-                  ga('send', 'pageview');
-           </xsl:text></script>
+                ga('create', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']"/><xsl:text>', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/><xsl:text>');
+                ga('send', 'pageview');
+            </xsl:text></script>
         </xsl:if>
     </xsl:template>
 
-    <!--The Language Selection-->
+    <!--The Language Selection
+        Uses a page metadata curRequestURI which was introduced by in /xmlui-mirage2/src/main/webapp/themes/Mirage2/sitemap.xmap-->
     <xsl:template name="languageSelection">
+        <xsl:variable name="curRequestURI">
+            <xsl:value-of select="substring-after(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='curRequestURI'],/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI'])"/>
+        </xsl:variable>
+
         <xsl:if test="count(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='supportedLocale']) &gt; 1">
             <li id="ds-language-selection" class="dropdown">
                 <xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
@@ -894,8 +917,8 @@
                             </xsl:if>
                             <a>
                                 <xsl:attribute name="href">
-                                    <xsl:value-of select="$current-uri"/>
-                                    <xsl:text>?locale-attribute=</xsl:text>
+                                    <xsl:value-of select="$curRequestURI"/>
+                                    <xsl:call-template name="getLanguageURL"/>
                                     <xsl:value-of select="$locale"/>
                                 </xsl:attribute>
                                 <xsl:value-of
@@ -906,6 +929,35 @@
                 </ul>
             </li>
         </xsl:if>
+    </xsl:template>
+
+    <!-- Builds the Query String part of the language URL. If there already is an existing query string
+like: ?filtertype=subject&filter_relational_operator=equals&filter=keyword1 it appends the locale parameter with the ampersand (&) symbol -->
+    <xsl:template name="getLanguageURL">
+        <xsl:variable name="queryString" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='queryString']"/>
+        <xsl:choose>
+            <!-- There allready is a query string so append it and the language argument -->
+            <xsl:when test="$queryString != ''">
+                <xsl:text>?</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="contains($queryString, '&amp;locale-attribute')">
+                        <xsl:value-of select="substring-before($queryString, '&amp;locale-attribute')"/>
+                        <xsl:text>&amp;locale-attribute=</xsl:text>
+                    </xsl:when>
+                    <!-- the query string is only the locale-attribute so remove it to append the correct one -->
+                    <xsl:when test="starts-with($queryString, 'locale-attribute')">
+                        <xsl:text>locale-attribute=</xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="$queryString"/>
+                        <xsl:text>&amp;locale-attribute=</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:text>?locale-attribute=</xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
 </xsl:stylesheet>

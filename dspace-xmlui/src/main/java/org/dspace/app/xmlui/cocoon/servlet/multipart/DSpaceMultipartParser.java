@@ -188,8 +188,7 @@ public class DSpaceMultipartParser {
     private void parsePart(DSpaceTokenStream ts)
             throws IOException, MultipartException {
 
-        Hashtable headers = new Hashtable();
-        headers = readHeaders(ts);
+        Hashtable headers = readHeaders(ts);
         try {
             if (headers.containsKey("filename")) {
                 if (!"".equals(headers.get("filename"))) {
@@ -318,7 +317,7 @@ public class DSpaceMultipartParser {
             byte[] bytes = ((ByteArrayOutputStream) out).toByteArray();
             this.parts.put(name, new PartInMemory(headers, bytes));
         } else {
-            this.parts.put(name, new PartOnDisk(headers, file));
+            this.parts.put(name, new DSpacePartOnDisk(headers, file));
         }
     }
 

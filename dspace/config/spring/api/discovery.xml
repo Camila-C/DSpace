@@ -24,13 +24,15 @@
 
     <bean id="solrServiceResourceIndexPlugin" class="org.dspace.discovery.SolrServiceResourceRestrictionPlugin" scope="prototype"/>
     <bean id="SolrServiceSpellIndexingPlugin" class="org.dspace.discovery.SolrServiceSpellIndexingPlugin" scope="prototype"/>
+    <bean id="solrServiceMetadataBrowseIndexingPlugin" class="org.dspace.discovery.SolrServiceMetadataBrowseIndexingPlugin" scope="prototype"/>
 
     <alias name="solrServiceResourceIndexPlugin" alias="org.dspace.discovery.SolrServiceResourceRestrictionPlugin"/>
+    
+    <!-- Additional indexing plugin make filtering by has content in original bundle (like pdf's, images) posible via SOLR -->
+    <bean id="hasContentInOriginalBundle" class="org.dspace.discovery.SolrServiceContentInOriginalBundleFilterPlugin"/>
 
-    <!-- Additional indexing plugin to implement the browse system via SOLR -->
-    <bean id="solrBrowseIndexer" scope="prototype"
-          class="org.dspace.browse.SolrBrowseCreateDAO">
-    </bean>
+    <!-- Additional indexing plugin enables searching by filenames and by file descriptions for files in ORIGINAL bundle -->
+    <bean id="solrServiceFileInfoPlugin" class="org.dspace.discovery.SolrServiceFileInfoPlugin"/>
 
     <!--Bean that is used for mapping communities/collections to certain discovery configurations.-->
     <bean id="org.dspace.discovery.configuration.DiscoveryConfigurationService" class="org.dspace.discovery.configuration.DiscoveryConfigurationService">
@@ -95,9 +97,10 @@
         <!--Which sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
+                <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
-                <ref bean="searchFilterIssued" />
+		        <ref bean="searchFilterContentInOriginalBundle"/>
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -109,6 +112,9 @@
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
+		        <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterFileNameInOriginalBundle" />
+                <ref bean="searchFilterFileDescriptionInOriginalBundle" />
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -161,11 +167,14 @@
                             <property name="maxSize" value="250"/>
                             <property name="snippets" value="2"/>
                         </bean>
+                        <!-- By default, full text snippets are disabled, as snippets of embargoed/restricted bitstreams
+                             may appear in search results when the Item is public. See DS-3498
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="fulltext"/>
                             <property name="maxSize" value="250"/>
                             <property name="snippets" value="2"/>
                         </bean>
+                        -->
                     </list>
                 </property>
             </bean>
@@ -200,9 +209,10 @@
         <!--Which sidebar facets are to be displayed (same as defaultConfiguration above)-->
         <property name="sidebarFacets">
             <list>
+                <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
-                <ref bean="searchFilterIssued" />
+		        <!--<ref bean="searchFilterContentInOriginalBundle"/>-->
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -214,6 +224,9 @@
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
+		        <!--<ref bean="searchFilterContentInOriginalBundle"/>-->
+                <ref bean="searchFilterFileNameInOriginalBundle" />
+                <ref bean="searchFilterFileDescriptionInOriginalBundle" />
             </list>
         </property>
         <!--The sort filters for the discovery search (same as defaultConfiguration above)-->
@@ -256,11 +269,14 @@
                             <property name="maxSize" value="250"/>
                             <property name="snippets" value="2"/>
                         </bean>
+                        <!-- By default, full text snippets are disabled, as snippets of embargoed/restricted bitstreams
+                             may appear in search results when the Item is public. See DS-3498
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="fulltext"/>
                             <property name="maxSize" value="250"/>
                             <property name="snippets" value="2"/>
                         </bean>
+                        -->
                     </list>
                 </property>
             </bean>
@@ -379,18 +395,20 @@
             </list>
         </property>
         <property name="facetLimit" value="10"/>
-        <property name="sortOrder" value="COUNT"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
     </bean>
 
     <bean id="searchFilterSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
         <property name="indexFieldName" value="subject"/>
         <property name="metadataFields">
             <list>
-                <value>dc.subject.*</value>
+                <value>dc.subject.materia</value>
             </list>
         </property>
         <property name="facetLimit" value="10"/>
-        <property name="sortOrder" value="COUNT"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
         <property name="splitter" value="::"/>
     </bean>
 
@@ -402,7 +420,33 @@
             </list>
         </property>
         <property name="type" value="date"/>
-        <property name="sortOrder" value="VALUE"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+    </bean>
+    
+    <bean id="searchFilterContentInOriginalBundle" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="has_content_in_original_bundle"/>
+        <property name="metadataFields">
+            <list/>
+        </property>
+        <property name="facetLimit" value="2"/>
+        <property name="type" value="standard"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+    </bean>
+
+    <bean id="searchFilterFileNameInOriginalBundle" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="original_bundle_filenames"/>
+        <property name="metadataFields">
+            <list/>
+        </property>
+    </bean>
+
+    <bean id="searchFilterFileDescriptionInOriginalBundle" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="original_bundle_descriptions"/>
+        <property name="metadataFields">
+            <list/>
+        </property>
     </bean>
 
     <!--Sort properties-->
