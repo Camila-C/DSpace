@@ -724,7 +724,7 @@ footer .box-logos .box-logo img {
 }
 .accordion-faqs .panel-title a:after{
   content: "\f106";
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", serif;
   position: absolute;
   left: 10px;
   top: 50%;
@@ -734,7 +734,7 @@ footer .box-logos .box-logo img {
 .accordion-faqs .panel-title a.collapsed:after{
   color: #9f9f9f;
   content: "\f054";
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", serif;
 }
 .accordion-faqs .panel-title a.collapsed:hover:after{
   color: #fff;
@@ -787,11 +787,29 @@ footer .box-logos .box-logo img {
   font-weight: 900;
   right: 0;
   padding: 0 10px;
+  color: #eb2141;
 }
 #accordion-communities .panel-title a:first-child.collapsed:after {
   content: "\f067";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
+  color: #eb2141;
+}
+#accordion-communities .my-panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+#accordion-communities .my-panel-title a {
+  position: relative;
+  color: #1B2437;
+}
+#accordion-communities .my-panel-title a i {
+  padding-right: 10px;
+  color: #eb2141;
+}
+#accordion-communities .panel-heading {
+  color: #1B2437 !important;
 }
 
 /****************************************/
