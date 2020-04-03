@@ -16,18 +16,13 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 
-<%@ page import="java.util.List"%>
-<%@ page import="java.util.Enumeration"%>
-<%@ page import="org.dspace.app.webui.util.JSPManager" %>
-<%@ page import="org.dspace.core.ConfigurationManager" %>
-<%@ page import="org.dspace.app.util.Util" %>
-<%@ page import="javax.servlet.jsp.jstl.core.*" %>
-<%@ page import="javax.servlet.jsp.jstl.fmt.*" %>
+<%@ page import="org.dspace.app.util.Util"%>
+<%@ page import="org.dspace.core.ConfigurationManager"%>
+<%@ page import="java.util.List" %>
 
-<%
+    <%
     String title = (String) request.getAttribute("dspace.layout.title");
     String navbar = (String) request.getAttribute("dspace.layout.navbar");
-    boolean locbar = ((Boolean) request.getAttribute("dspace.layout.locbar")).booleanValue();
 
     String siteName = ConfigurationManager.getProperty("dspace.name");
     String feedRef = (String)request.getAttribute("dspace.layout.feedref");
@@ -39,9 +34,6 @@
     String extraHeadDataLast = (String)request.getAttribute("dspace.layout.head.last");
     String dsVersion = Util.getSourceVersion();
     String generator = dsVersion == null ? "DSpace" : "DSpace "+dsVersion;
-    String analyticsKey = ConfigurationManager.getProperty("jspui.google.analytics.key");
-
-    String currentPath = (String)request.getAttribute("javax.servlet.forward.request_uri");
 %>
 
 <!DOCTYPE html>
@@ -109,23 +101,12 @@
     <%  } else { %>
         <dspace:include page="/layout/navbar-minimal.jsp" />
     <%  } %>
-</header>
+    </header>
 
-<main id="content" role="main">
-  <%-- Location bar --%>
-  <%--
-  <%  if (locbar) { %>
-      <dspace:include page="/layout/location-bar.jsp" />                
-  <%  } %>
-  --%>
-
-  <%-- Page contents --%>
-  <%  if (currentPath != null && currentPath.equals("/jspui/")) { %>
-        <div id="page-content">
-  <%  } else { %>
-        <div id="page-content" class="container">
-  <%  } %>
-  <%  if (request.getAttribute("dspace.layout.sidebar") != null) { %>
-	      <div class="row">
-		      <div class="col-md-9">
-  <%  } %>
+    <main id="content" role="main">
+      <%-- Page contents --%>
+      <div id="page-content" class="container">
+      <%  if (request.getAttribute("dspace.layout.sidebar") != null) { %>
+              <div class="row">
+                  <div class="col-md-9">
+      <%  } %>

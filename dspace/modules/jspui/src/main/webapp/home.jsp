@@ -75,15 +75,15 @@
     ItemService itemService = ContentServiceFactory.getInstance().getItemService();
     CommunityService communityService = ContentServiceFactory.getInstance().getCommunityService();
 
-  /*
-   * Creo un ARRAY con los ids de las 4 comunidades importantes y sus iconos
-   * ID 4adc0bc2-6df7-4279-b737-b4f10a446a02: Tesis y Trabajos finales
-   * ID 77173674-579c-49f1-b0ea-5ee167782d62: Libros
-   * ID 17ec6901-d19f-4fb3-85e5-fef3757560d7: Artículos de revista
-   * ID beb34996-1e53-4868-8fec-4ac8b6223c3a: Congresos y jornadas
-   */
-
-  ArrayList<String> fourCommunities = new ArrayList<String>(Arrays.asList("4adc0bc2-6df7-4279-b737-b4f10a446a02", "77173674-579c-49f1-b0ea-5ee167782d62", "17ec6901-d19f-4fb3-85e5-fef3757560d7", "beb34996-1e53-4868-8fec-4ac8b6223c3a"));
+  // Creo un ARRAY con los nombres de las 4 comunidades importantes
+  ArrayList<String> fourCommunities = new ArrayList<String>(
+          Arrays.asList(
+                  "Tesis y Trabajos finales",
+                  "Libros",
+                  "Artículos de revista",
+                  "Congresos y jornadas"
+          )
+  );
 %>
 
 <%-- La propiedad navbar="off" permite acceder a la versión minimal de navbar (es decir, sin el input search en el header) --%>
@@ -140,21 +140,21 @@
         <div class="row row-equal">
         <%
             boolean showLogos = configurationService.getBooleanProperty("jspui.home-page.logos", true);
-            String id = "";
+            String name = "";
             for (Community com : communities) {
-              id = com.getID().toString();
-              //Pregunto si el ID se encuentra en las 4 comunidades mas importantes
-              if (fourCommunities.contains(id)) {
+              name = com.getName();
+              // Pregunto si el nombre se encuentra en las 4 comunidades mas importantes
+              if (fourCommunities.contains(name)) {
         %>
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <a href="<%= request.getContextPath() %>/handle/<%= com.getHandle() %>">
                   <div class="single-service">
                     <%  // FIXME: Buscar una forma mejor
-                        if ("4adc0bc2-6df7-4279-b737-b4f10a446a02".equals(id)) { %>
+                        if (name.equalsIgnoreCase("Tesis y Trabajos finales")) { %>
                           <i class="fas fa-user-graduate"></i>
-                    <%  } else if("77173674-579c-49f1-b0ea-5ee167782d62".equals(id)) { %>
+                    <%  } else if(name.equalsIgnoreCase("Libros")) { %>
                           <i class="fas fa-book"></i>
-                    <%  } else if("17ec6901-d19f-4fb3-85e5-fef3757560d7".equals(id)) { %>
+                    <%  } else if(name.equalsIgnoreCase("Artículos de revista")) { %>
                           <i class="fas fa-paste"></i>
                     <%  } else { %>
                           <i class="fab fa-react"></i>
@@ -205,22 +205,22 @@
       <%
         int count = 0;
         for (Item item : submissions.getRecentSubmissions()) {
-          //Título
+          // Título
           String displayTitle = itemService.getMetadataFirstValue(item, "dc", "title", null, Item.ANY);
           if (displayTitle == null) {
             displayTitle = "Sin título";
           }
-          //Resumen
+          // Resumen
           String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
           if (displayAbstract == null) {
             displayAbstract = "Sin resumen";
           }
-          //Tipo
+          // Tipo
           String displayType = itemService.getMetadataFirstValue(item, "dc", "type", null, Item.ANY);
           if (displayType == null) {
             displayType = "Indefinido";
           }
-          //Fecha de publicación
+          // Fecha de publicación
           String displayDate = itemService.getMetadataFirstValue(item, "dc", "date", "accessioned", Item.ANY);
           if (displayDate != null) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
