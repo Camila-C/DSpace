@@ -204,3 +204,11 @@ db.schema = public
 # Authentication by Password (encrypted in DSpace's database). See authentication-password.cfg for default configuration.
 # Enabled by default in authentication.cfg
 #plugin.sequence.org.dspace.authenticate.AuthenticationMethod = org.dspace.authenticate.PasswordAuthentication
+
+###########################
+# RECAPTCHA CONFIGURATION #
+###########################
+recaptcha.sitekey =
+recaptcha.secretkey =
+recaptcha.siteverify = https://www.google.com/recaptcha/api/siteverify
+recaptcha.enabled = false
