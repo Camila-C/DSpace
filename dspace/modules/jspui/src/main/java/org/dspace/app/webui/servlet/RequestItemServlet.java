@@ -44,6 +44,7 @@ import org.dspace.core.LogManager;
 import org.dspace.eperson.EPerson;
 import org.dspace.handle.factory.HandleServiceFactory;
 import org.dspace.handle.service.HandleService;
+import org.dspace.recaptcha.RecaptchaQuery;
 import org.dspace.services.factory.DSpaceServicesFactory;
 
 /**
@@ -100,7 +101,7 @@ public class RequestItemServlet extends DSpaceServlet
 	        case ENTER_FORM_PAGE:
 	            processForm(context, request, response);
 	            break;
-	
+
 	        case ENTER_TOKEN:
 	            processToken(context, request, response);
 	            break;
@@ -192,6 +193,10 @@ public class RequestItemServlet extends DSpaceServlet
         
         if (request.getParameter("submit") != null)
         {
+        	// Start Recaptcha
+			String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+			boolean verify = RecaptchaQuery.verify(gRecaptchaResponse);
+			// End Recaptcha
             String reqname = request.getParameter("reqname");
             String coment = request.getParameter("coment");
             if (coment == null || coment.equals(""))
@@ -199,8 +204,11 @@ public class RequestItemServlet extends DSpaceServlet
             boolean allfiles = "true".equals(request.getParameter("allfiles"));
             
             // Check all data is there
-            if (requesterEmail == null || requesterEmail.equals("") ||
-                reqname == null || reqname.equals("") || coment == null || coment.equals("")) 
+            if (requesterEmail == null || requesterEmail.equals("")
+					|| reqname == null || reqname.equals("")
+					|| coment == null || coment.equals("")
+					|| !verify
+			)
             {
                 request.setAttribute("handle",handle);
                 request.setAttribute("bitstream-id", bitstream_id);

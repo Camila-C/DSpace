@@ -23,6 +23,7 @@
 
 <%@ page import="java.util.*"%>
 <%@ page import="org.dspace.app.webui.servlet.*" %>
+<%@ page import="org.dspace.core.ConfigurationManager" %>
 
 <%
 	  request.setCharacterEncoding("UTF-8");
@@ -51,6 +52,10 @@
 
     UUID bitstream_id = (UUID) request.getAttribute("bitstream-id");
     boolean allfiles = (request.getAttribute("allfiles") != null);
+
+    // Recaptcha
+    boolean recaptchaEnabled = ConfigurationManager.getBooleanProperty("recaptcha.enabled");
+    String recpatchaSiteKey = ConfigurationManager.getProperty("recaptcha.sitekey");
 
 %>
 
@@ -103,6 +108,12 @@
           <label for="coment"><fmt:message key="jsp.request.item.request-form.coment"/></label>
           <textarea class="form-control" name="coment" rows="6" cols="46"><%= coment %></textarea>
         </div>
+        <% if(recaptchaEnabled) { %>
+        <div class="form-group col-md-12">
+          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+          <div class="g-recaptcha" data-sitekey="<%= recpatchaSiteKey %>"></div>
+        </div>
+        <% } %>
         <div class="form-group col-md-12">
           <button type="submit" class="btn btn-unrn-reverse" name="submit" value="true">
             <fmt:message key="jsp.request.item.request-form.go"/>
