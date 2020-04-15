@@ -12,15 +12,14 @@
 #
 Subject: Feedback Form Information
 
-Comments:
+Estimado/a administrador/a
 
-{6}
+El usuario cuyo dirección de email es {1}, escribió el siguiente comentario:
 
+"{6}"
 
-Date: {0}
-Email: {1}
-Logged In As: {2}
-Referring Page: {3}
-User Agent: {4}
-Session: {5}
-
+Fecha: {0}
+Logueado como: {2}
+A través de: {3}
+Navegador: {4}
+Sesión: {5}

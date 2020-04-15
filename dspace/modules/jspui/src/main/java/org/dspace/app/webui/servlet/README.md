@@ -34,7 +34,7 @@ if (request.getParameter("submit") != null)
 		// End Recaptcha
 ```
 
-Luego se agrega la validación `!verify` en el `if` del paso anterior
+Luego se agrega la validación `!verify` (del paso anterior) en el `if` de chequeo de la información
 
 ```jsp
 // Check all data is there
@@ -45,5 +45,40 @@ if (requesterEmail == null || requesterEmail.equals("")
 )
 {
   ...
+}
+```
+
+### FeedbackServlet
+
+#### Recaptcha
+Agrega código que verifica el recaptcha y la linea `!verify` en el `if` de chequeo de la información
+```jsp
+// Has the user just posted their feedback?
+if (request.getParameter("submit") != null)
+{
+    EmailValidator ev = EmailValidator.getInstance();
+    String feedback = request.getParameter("feedback");
+
+    // Start Recaptcha
+    String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+    boolean verify = RecaptchaQuery.verify(gRecaptchaResponse);
+    // End Recaptcha
+
+    // Check all data is there
+    if ((formEmail == null) || formEmail.equals("")
+            || (feedback == null) || feedback.equals("") || !ev.isValid(formEmail) || !verify)
+    {
+        request.setAttribute("email", formEmail);
+        request.setAttribute("feedback", feedback);
+        request.setAttribute("fromPage", fromPage);
+
+        log.info(LogManager.getHeader(context, "show_feedback_form",
+                "problem=true"));
+        request.setAttribute("feedback.problem", Boolean.TRUE);
+        JSPManager.showJSP(request, response, "/feedback/form.jsp");
+
+        return;
+    }
+    ...
 }
 ```
