@@ -107,7 +107,7 @@
 		<%	} %>
 		</header>
 
-		<main id="content" role="main">
+		<main id="content">
 		<%-- Page contents --%>
 		<%  if (currentPath != null && currentPath.equals("/index.jsp")) { %>
 			<div>

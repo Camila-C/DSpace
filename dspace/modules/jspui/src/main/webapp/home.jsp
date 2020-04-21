@@ -254,5 +254,5 @@
       %>
       </div>
     </div>
-  <section>
+  </section>
 </dspace:layout>

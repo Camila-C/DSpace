@@ -103,7 +103,7 @@
     <%  } %>
     </header>
 
-    <main id="content" role="main">
+    <main id="content">
       <%-- Page contents --%>
       <div id="page-content" class="container">
       <%  if (request.getAttribute("dspace.layout.sidebar") != null) { %>

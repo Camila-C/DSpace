@@ -37,27 +37,27 @@
       <div class="box-logos">
         <div class="box-logo">
           <a href="https://crai.unrn.edu.ar/" target="_blank">
-            <img src="<%= request.getContextPath() %>/image/footer/01_crai.svg">
+            <img src="<%= request.getContextPath() %>/image/footer/01_crai.svg" alt="CRAI">
           </a>
         </div>
         <div class="box-logo">
           <a href="https://www.unrn.edu.ar/" target="_blank">
-            <img src="<%= request.getContextPath() %>/image/footer/02_unrn_blanco.svg">
+            <img src="<%= request.getContextPath() %>/image/footer/02_unrn_blanco.svg" alt="UNRN">
           </a>
         </div>
         <div class="box-logo">
           <a href="http://editorial.unrn.edu.ar/" target="_blank">
-            <img src="<%= request.getContextPath() %>/image/footer/03_editorial.svg">
+            <img src="<%= request.getContextPath() %>/image/footer/03_editorial.svg" alt="Editorial UNRN">
           </a>
         </div>
         <div class="box-logo">
           <a href="http://www.unrn.tv/" target="_blank">
-            <img src="<%= request.getContextPath() %>/image/footer/04_red_medios.svg">
+            <img src="<%= request.getContextPath() %>/image/footer/04_red_medios.svg" alt="Red de Medios">
           </a>
         </div>
         <div class="box-logo">
           <a href="https://pemtic.unrn.edu.ar/" target="_blank">
-            <img src="<%= request.getContextPath() %>/image/footer/05_virtual.svg">
+            <img src="<%= request.getContextPath() %>/image/footer/05_virtual.svg" alt="UNRNVirtual">
           </a>
         </div>
       </div>
@@ -65,7 +65,7 @@
         <div class="row">
           <div class="col-sm-12 col-md-3">
             <a href="https://www.unrn.edu.ar" class="logo-pie" target="_blank">
-              <img src="<%= request.getContextPath() %>/image/footer/footer_logo_unrn.svg">
+              <img src="<%= request.getContextPath() %>/image/footer/footer_logo_unrn.svg" alt="UNRN">
             </a>
             <div class="info">
               <p>

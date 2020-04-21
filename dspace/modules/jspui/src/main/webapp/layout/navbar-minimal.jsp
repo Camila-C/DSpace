@@ -252,7 +252,11 @@
       </li>
       <%-- Botón ingresar --%>
       <%  if (user == null) { %>
-      <a class="btn btn-unrn navbar-btn" href="<%= request.getContextPath() %>/mydspace">Ingresar</a>
+      <li>
+        <p class="navbar-btn">
+          <a class="btn btn-unrn" href="<%= request.getContextPath() %>/mydspace">Ingresar</a>
+        </p>
+      </li>
       <%  } %>
     </ul>
   </div>

@@ -218,8 +218,8 @@ header .navbar .navbar-nav>.open>a:focus {
     background: #eb2141;
     color: #fff;
 }
-header .navbar ul > .btn-unrn,
-header .navbar ul > .btn-unrn-reverse {
+header .navbar ul li p > .btn-unrn,
+header .navbar ul li p > .btn-unrn-reverse {
   margin-left: 15px;
 }
 header .navbar-header {
