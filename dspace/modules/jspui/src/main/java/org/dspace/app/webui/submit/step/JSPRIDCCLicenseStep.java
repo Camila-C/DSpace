@@ -28,7 +28,7 @@ public class JSPRIDCCLicenseStep extends JSPStep {
     private static final String DISPLAY_JSP = "/submit/rid-license-step.jsp";
 
     /** JSP which displays information to be reviewed during 'verify step' * */
-    //private static final String REVIEW_JSP = "/submit/review-sample.jsp";
+    private static final String REVIEW_JSP = "/submit/review-rid-license-step.jsp";
 
     /** log4j logger */
     private static Logger log = Logger.getLogger(JSPCCLicenseStep.class);
@@ -159,6 +159,6 @@ public class JSPRIDCCLicenseStep extends JSPStep {
     public String getReviewJSP(Context context, HttpServletRequest request,
                                HttpServletResponse response, SubmissionInfo subInfo)
     {
-        return NO_JSP;
+        return REVIEW_JSP;
     }
 }
