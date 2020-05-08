@@ -94,7 +94,7 @@
 			<a id="type_license" target="_blank" href="https://creativecommons.org/share-your-work/public-domain/freeworks">
 				¡Esta es una Licencia de Cultura Libre!
 			</a>
-			<img id="seal" src="https://creativecommons.org/images/chooser/fc_approved_tiny.png" alt="seal" width="64" height="64">
+			<img id="seal" src="image/cc/fc_approved_tiny.png" alt="seal" width="64" height="64">
 		</div>
 		<!-- CommercialModal -->
 		<div class="modal fade" id="commercialModal" role="dialog">
@@ -212,7 +212,7 @@
 
 		function updateCcUrl() {
 			jQuery("#license_title_link")[0].innerHTML = "Atribución" + titleCom.name + titleAda.name + " 4.0 Internacional";
-			jQuery("#license_title_link")[0].href = "https://creativecommons.org/licenses/by" +
+			jQuery("#license_title_link")[0].href = "http://creativecommons.org/licenses/by" +
 							titleCom.url +
 							titleAda.url +
 							"/4.0/deed.es";
@@ -221,10 +221,10 @@
 		function updateTypeLicense(val) {
 			if (titleAda.url == "-nd" || titleCom.url == "-nc") {
 				jQuery("#type_license")[0].text = "Esta no es una Licencia de Cultura Libre.";
-				jQuery("#seal")[0].src = "https://creativecommons.org/images/chooser/fc_dubious.png";
+				jQuery("#seal")[0].src = "image/cc/fc_dubious.png";
 			} else {
 				jQuery("#type_license")[0].text = "¡Esta es una Licencia de Cultura Libre!";
-				jQuery("#seal")[0].src = "https://creativecommons.org/images/chooser/fc_approved_tiny.png";
+				jQuery("#seal")[0].src = "image/cc/fc_approved_tiny.png";
 			}
 		}
 	</script>
