@@ -132,23 +132,23 @@
             <div class="panel-body">
               <p>
                 La funci&oacute;n principal del sitio web de RID-UNRN es ofrecer una variedad de opciones de recuperaci&oacute;n de la informaci&oacute;n. 
-                El entorno web de funciona como un Â«buscadorÂ» proporcionando herramientas que facilitan la localizaci&oacute;n de las producciones 
+                El entorno web de funciona como un «buscador» proporcionando herramientas que facilitan la localizaci&oacute;n de las producciones 
                 cient&iacute;fico tecnol&oacute;gicas que all&iacute; se alojan (filtros, listados, b&uacute;squedas simples y combinadas).
               </p>
+              <h5><strong>B&uacute;squeda simple</strong></h5>
               <p>
-                <h5><strong>B&uacute;squeda simple</strong></h5>
                 Para realizar una b&uacute;squeda simple ingrese una palabra relacionada con lo que necesita recuperar en la caja de b&uacute;squeda de la 
                 p&aacute;gina principal del RID-URN. El sistema mostrar&aacute; una lista de aquellos registros que contengan la palabra buscada, 
                 independientemente de sus metadatos. Este tipo de b&uacute;squeda puede traer una gran cantidad de resultados no deseados o no pertinentes.
-              </p>              
+              </p>
+              <h5><strong>B&uacute;squeda avanzada: refinar los resultados</strong></h5>
               <p>
-                <h5><strong>B&uacute;squeda avanzada: refinar los resultados</strong></h5>
                 Luego de realizar una b&uacute;squeda simple, puede refinar dicha b&uacute;squeda a trav&eacute;s del filtro disponible en la barra lateral derecha de la 
                 pantalla. Puede combinar distintos criterios de b&uacute;squeda ya sea por Idioma, tipo de documento, fecha de publicaci&oacute;n, idioma, autor, 
                 disciplina, etc.
               </p>
+              <h5><strong>Explorar</strong></h5>
               <p>
-                <h5><strong>Explorar</strong></h5>
                 Puede localizar la producci&oacute;n navegando por la Lista de Autores, por &aacute;reas de conocimiento y disciplinas, por Comunidades o por 
                 Directores (&uacute;nicamente para tesis).
               </p>
@@ -187,26 +187,24 @@
           <div id="como-subir-un-documento" class="panel-collapse collapse">
             <div class="panel-body">
               <p>Pasos para subir un documento:</p>
-              <p>
-                <ul>
-                  <li>
-                    <span class="glyphicon glyphicon-user"></span>
-                    Debe <a href="http://rid.unrn.edu.ar/jspui/register">registrarse previamente al RID-UNRN</a>. Si cuenta con mail institucional, procure utilizarlo.
-                  </li>
-                  <li>
-                    <span class="glyphicon glyphicon-log-in"></span>
-                    Una vez registrado, deber&aacute; <a href="http://rid.unrn.edu.ar/jspui/password-login">iniciar sesi&oacute;n</a> y luego hace clic en el bot&oacute;n "Comenzar un nuevo env&iacute;o".
-                  </li>
-                  <li>
-                    <span class="glyphicon glyphicon-tasks"></span>
-                    El sistema lo guiar&aacute; por una serie de sencillos pasos donde podr&aacute; cargar el formulario y subir sus archivos.
-                  </li>
-                  <li>
-                    <span class="glyphicon glyphicon-send"></span>
-                    Una vez subido, el RID-UNRN verificar&aacute; su solicitud y le notificar&aacute; si el documento ya se encuentra disponible o, si fuera necesario, una solicitud de correcci&oacute;n.
-                  </li>
-                </ul>
-              </p>
+              <ul>
+                <li>
+                  <span class="glyphicon glyphicon-user"></span>
+                  Debe <a href="http://rid.unrn.edu.ar/jspui/register">registrarse previamente al RID-UNRN</a>. Si cuenta con mail institucional, procure utilizarlo.
+                </li>
+                <li>
+                  <span class="glyphicon glyphicon-log-in"></span>
+                  Una vez registrado, deber&aacute; <a href="http://rid.unrn.edu.ar/jspui/password-login">iniciar sesi&oacute;n</a> y luego hace clic en el bot&oacute;n "Comenzar un nuevo env&iacute;o".
+                </li>
+                <li>
+                  <span class="glyphicon glyphicon-tasks"></span>
+                  El sistema lo guiar&aacute; por una serie de sencillos pasos donde podr&aacute; cargar el formulario y subir sus archivos.
+                </li>
+                <li>
+                  <span class="glyphicon glyphicon-send"></span>
+                  Una vez subido, el RID-UNRN verificar&aacute; su solicitud y le notificar&aacute; si el documento ya se encuentra disponible o, si fuera necesario, una solicitud de correcci&oacute;n.
+                </li>
+              </ul>
               <p>
                 Para ver un tutorial detallado de este proceso, haga clic <a href="<%= request.getContextPath() %>/documents/instructivo-autoarchivo.pdf">aqu&iacute;</a>.
               </p>
@@ -332,7 +330,7 @@
               <p>
                 Es un enlace permanente, que permite que se puedan citar documentos del repositorio sin correr el riesgo de que 
                 el d&iacute;a de ma&ntilde;ana sea un link "roto" (por ejemplo, si cambiara la direcci&oacute;n web del repositorio). Es generado 
-                autom&aacute;ticamente por el repositorio cada vez que se carga un elemento nuevo, y redirige a la ubicaciÅ„ del documento 
+                autom&aacute;ticamente por el repositorio cada vez que se carga un elemento nuevo, y redirige a la ubicaci&oacute;n del documento
                 que describe.
               </p>
             </div>
@@ -340,6 +338,34 @@
         </div>
       </div>
     </div><!-- Fin accordion 2 -->
+    <div class="col-md-12 before-accordion">
+      <h3 id="sobre-el-circuito-de-ingesta">Sobre el circuito de ingesta</h3>
+      <p>
+        El RID-UNRN se sustenta en un modelo distribuido de trabajo donde existen dos v&iacute;as de dep&oacute;sito disponibles.
+      </p>
+      <h4><strong>Dep&oacute;sito delegado</strong></h4>
+      <p>
+        El autor presenta personalmente (o mediante correo electrónico) su obra en las &aacute;reas de ingesta disponibles, denominadas
+        Ventanillas Permanentes, junto con el formulario de registro y la cesi&oacute;n no exclusiva de derechos.
+        En algunos casos, el RID-UNRN podr&aacute; asignar un permiso especial a un representante de una Unidad Ejecutora o departamento
+        espec&iacute;fico (llamadas Estaciones) de la Universidad que asuma el compromiso de la carga de materiales generados.
+      </p>
+      <h4><strong>Dep&oacute;sito por autoarchivo</strong></h4>
+      <p>
+        Un autor registrado en el repositorio deposita su obra a partir de una serie de pasos que incluye la descripci&oacute;n
+        (tipolog&iacute;a, t&iacute;tulo, etc.), el archivo adjunto, la selecci&oacute;n de una licencia Creative Commons y
+        la aceptaci&oacute;n de la cesi&oacute;n no exclusiva de derechos. El dep&oacute;sito ser&aacute; revisado por el
+        personal t&eacute;cnico del RID-UNRN para verificar que cumple con los permisos necesarios para difundirse en acceso abierto.
+      </p>
+      <p>
+        <img class="img-responsive img-rounded center-block"
+             src="<%= request.getContextPath() %>/image/faqs/proceso-documental.jpg"
+             alt="Proceso documental"
+             width="900"
+             style="border: 1px solid #1e4276;"
+        >
+      </p>
+    </div>
     <div class="col-md-12 before-accordion">
       <h3 id="sobre-el-ciclo-de-produccion">Sobre el ciclo de publicaci&oacute;n</h3>
       <p>
@@ -381,6 +407,7 @@
     </div>
     <div class="col-md-12 before-accordion">
       <h3 id="sobre-la-normativa-vigente">Sobre la normativa vigente</h3>
+      <p>Consulta la normativa que define la creaci&oacute;n y gesti&oacute;n del RID-UNRN</p>
       <ul>
         <li>
           <a href="<%= request.getContextPath() %>/handle/20.500.12049/247">
@@ -447,29 +474,29 @@
           </div>
           <div id="ventajas-de-publicar" class="panel-collapse collapse">
             <div class="panel-body">
-              <p>
                 <h5><strong>Impacto y visibilidad</strong></h5>
-                De manera progresiva, ver&aacute; incrementado el impacto de sus producciones, aumentar&aacute;n las posibilidades de citaci&oacute;n 
-                bibliogr&aacute;fica en otros trabajos y podr&aacute; ser m&aacute;s referida su labor dado que un repositorio tiene mayor capacidad de 
-                recuperaci&oacute;n que otro tipo de sitio dado que se encuentra organizado utilizando est&aacute;ndares y protocolos que potencian 
-                la visibilidad de autores, t&iacute;tulos y tem&aacute;ticas.
-              </p>
-              <p>
+                <p>
+                  De manera progresiva, ver&aacute; incrementado el impacto de sus producciones, aumentar&aacute;n las posibilidades de citaci&oacute;n
+                  bibliogr&aacute;fica en otros trabajos y podr&aacute; ser m&aacute;s referida su labor dado que un repositorio tiene mayor capacidad de
+                  recuperaci&oacute;n que otro tipo de sitio dado que se encuentra organizado utilizando est&aacute;ndares y protocolos que potencian
+                  la visibilidad de autores, t&iacute;tulos y tem&aacute;ticas.
+                </p>
                 <h5><strong>Interacci&oacute;n y difusi&oacute;n</strong></h5>
-                Podr&aacute; relacionarse con otros investigadores generando un nuevo canal de contacto donde compartir conocimiento, 
-                experiencia y expandir as&iacute; su red de contactos y nuevas posibilidades de desarrollo editorial, acad&eacute;mico y cient&iacute;fico.
-              </p>
-              <p>
-                <h5><strong>Preservaci&oacute;n y resguardo centralizado</strong></h5>                
-                A mediano plazo podr&aacute; localizar gran parte de su producci&oacute;n cient&iacute;fica tecnol&oacute;gica de forma centralizada y preservada 
-                digitalmente.
-              </p>
-              <p>
-                <h5><strong>Innovaci&oacute;n y tendencias</strong></h5>                
-                La creaci&oacute;n de repositorios y entornos que alojan la producci&oacute;n acad&eacute;mica, cient&iacute;fica y tecnol&oacute;gica de distintas 
-                instituciones y organismos, son considerados de manera internacional, como las nuevas herramientas de difusi&oacute;n y 
-                preservaci&oacute;n del conocimiento.
-              </p>
+                <p>
+                  Podr&aacute; relacionarse con otros investigadores generando un nuevo canal de contacto donde compartir conocimiento,
+                  experiencia y expandir as&iacute; su red de contactos y nuevas posibilidades de desarrollo editorial, acad&eacute;mico y cient&iacute;fico.
+                </p>
+                <h5><strong>Preservaci&oacute;n y resguardo centralizado</strong></h5>
+                <p>
+                  A mediano plazo podr&aacute; localizar gran parte de su producci&oacute;n cient&iacute;fica tecnol&oacute;gica de forma centralizada y preservada
+                  digitalmente.
+                </p>
+                <h5><strong>Innovaci&oacute;n y tendencias</strong></h5>
+                <p>
+                  La creaci&oacute;n de repositorios y entornos que alojan la producci&oacute;n acad&eacute;mica, cient&iacute;fica y tecnol&oacute;gica de distintas
+                  instituciones y organismos, son considerados de manera internacional, como las nuevas herramientas de difusi&oacute;n y
+                  preservaci&oacute;n del conocimiento.
+                </p>
             </div>
           </div>
         </div>
@@ -612,7 +639,7 @@
               <ul>
                 <li>Bibliotecas de Sede</li>
                 <li>Secretar&iacute;as de Investigaci&oacute;n de Sede</li>
-                <li>Departamento de Biblioteca, Repositorio y Contenidos Digitales (BERCoD), en el Rectorado</p></li>
+                <li>Departamento de Biblioteca, Repositorio y Contenidos Digitales (BERCoD), en el Rectorado</li>
               </ul>
               <p>
                 Junto con el documento, en formato digital, el estudiante deber&aacute; completar 
@@ -740,12 +767,10 @@
                 <em>Super&iacute;ndice 1</em>: Universidad Nacional de R&iacute;o Negro. Denominaci&oacute;n completa de la Unidad Ejecutora, 
                 Escuela o Carrera de la UNRN. Asignatura (en caso de corresponder). R&iacute;o Negro, Argentina.
               </p>
-              <p>
-                <h5>Ejemplo:</h5>
-                <ol>
-                  <li>Universidad Nacional de R&iacute;o Negro. Laboratorio de Inform&aacute;tica Aplicada. R&iacute;o Negro, Argentina.</li>
-                </ol>
-              </p>
+              <h5>Ejemplo:</h5>
+              <ol>
+                <li>Universidad Nacional de R&iacute;o Negro. Laboratorio de Inform&aacute;tica Aplicada. R&iacute;o Negro, Argentina.</li>
+              </ol>
             </div>
           </div>
         </div>
@@ -774,13 +799,11 @@
                 <em>Super&iacute;ndice 2</em>: Nombre de la otra instituci&oacute;n, sigla (cuando correspondiere), sigla o denominaci&oacute;n de la Unidad Ejecutora. 
                 R&iacute;o Negro, Argentina. O como lo indique la instituci&oacute;n seg&uacute;n su normativa.
               </p>
-              <p>
-                <h5>Ejemplo:</h5>
-                <ol>
-                  <li>Universidad Nacional de R&iacute;o Negro. Instituto de Investigaci&oacute;n en Paleobiolog&iacute;a y Geolog&iacute;a. R&iacute;o Negro, Argentina.</li>
-                  <li>Consejo Nacional de Investigaciones Cient&iacute;ficas y T&eacute;cnicas, CONICET. Instituto de Investigaci&oacute;n en Paleobiolog&iacute;a y Geolog&iacute;a. R&iacute;o Negro. Argentina</li>
-                </ol>
-              </p>
+              <h5>Ejemplo:</h5>
+              <ol>
+                <li>Universidad Nacional de R&iacute;o Negro. Instituto de Investigaci&oacute;n en Paleobiolog&iacute;a y Geolog&iacute;a. R&iacute;o Negro, Argentina.</li>
+                <li>Consejo Nacional de Investigaciones Cient&iacute;ficas y T&eacute;cnicas, CONICET. Instituto de Investigaci&oacute;n en Paleobiolog&iacute;a y Geolog&iacute;a. R&iacute;o Negro. Argentina</li>
+              </ol>
             </div>
           </div>
         </div>
