@@ -69,8 +69,8 @@ public class JSPRIDCCLicenseStep extends JSPStep {
         List<MetadataValue> currentLicense = itemService.getMetadataByMetadataString(item, ccUri);
 
         String licenseUri;
-        String commercialOption = "yes";
-        String adaptationOption = "yes";
+        String commercialOption = "nc";
+        String adaptationOption = "sa";
 
         // Pregunto si la licencia actual es distinto de null
         if (currentLicense != null && currentLicense.size() > 0 && currentLicense.get(0) != null && currentLicense.get(0).getValue() != null) {
