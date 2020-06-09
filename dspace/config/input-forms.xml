@@ -214,8 +214,44 @@
 					<label>Tipo de material educativo</label>
 					<type-bind>Material educativo</type-bind>
 					<input-type value-pairs-name="tipos_material_educativo">dropdown</input-type>
-					<hint>Seleccione el tipo de material educativo a a cargar</hint>
+					<hint>Seleccione el tipo de material educativo a cargar</hint>
 					<required>Por favor seleccione el tipo de material educativo</required>
+				</field>
+				<!-- SUBTIPO PATENTES -->
+				<field>
+					<dc-schema>dc</dc-schema>
+					<dc-element>type</dc-element>
+					<dc-qualifier>subtype</dc-qualifier>
+					<repeatable>false</repeatable>
+					<label>Tipo de patente</label>
+					<type-bind>Patente</type-bind>
+					<input-type value-pairs-name="tipos_patente">dropdown</input-type>
+					<hint>Seleccione el tipo de patente a cargar</hint>
+					<required>Por favor seleccione el tipo de patente</required>
+				</field>
+				<!-- SUBTIPO RECENSION DE DOCUMENTO -->
+				<field>
+					<dc-schema>dc</dc-schema>
+					<dc-element>type</dc-element>
+					<dc-qualifier>subtype</dc-qualifier>
+					<repeatable>false</repeatable>
+					<label>Tipo de recensión de documento</label>
+					<type-bind>Recension de documento</type-bind>
+					<input-type value-pairs-name="tipos_recension">dropdown</input-type>
+					<hint>Seleccione el tipo de recensión de documento a cargar</hint>
+					<required>Por favor seleccione el tipo de recensión de documento</required>
+				</field>
+				<!-- SUBTIPO MATERIAL ARTISTICO -->
+				<field>
+					<dc-schema>dc</dc-schema>
+					<dc-element>type</dc-element>
+					<dc-qualifier>subtype</dc-qualifier>
+					<repeatable>false</repeatable>
+					<label>Tipo de material artístico</label>
+					<type-bind>Material artistico</type-bind>
+					<input-type value-pairs-name="tipos_material_artistico">dropdown</input-type>
+					<hint>Seleccione el tipo de material artístico a a cargar</hint>
+					<required>Por favor seleccione el tipo de material artístico</required>
 				</field>
 				<!-- REVISTA -->
 				<field>
@@ -896,8 +932,40 @@
 				<stored-value>Datos primarios</stored-value>
 			</pair>
 			<pair>
+				<displayed-value>Material Artístico</displayed-value>
+				<stored-value>Material artistico</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Proyecto de investigación</displayed-value>
+				<stored-value>Proyecto de investigacion</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Recensión de documento</displayed-value>
+				<stored-value>Recension de documento</stored-value>
+			</pair>
+			<pair>
 				<displayed-value>Material Educativo</displayed-value>
 				<stored-value>Material educativo</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Plano</displayed-value>
+				<stored-value>Plano</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Mapa</displayed-value>
+				<stored-value>Mapa</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Imagen satelital</displayed-value>
+				<stored-value>Imagen satelital</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Radiografía</displayed-value>
+				<stored-value>Radiografia</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Diapositiva de microscopio</displayed-value>
+				<stored-value>Diapositiva de microscopio</stored-value>
 			</pair>
 			<pair>
 				<displayed-value>Otro</displayed-value>
@@ -1018,6 +1086,78 @@
 			<pair>
 				<displayed-value>Producción de Estudiantes</displayed-value>
 				<stored-value>Produccion de estudiantes</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Otro</displayed-value>
+				<stored-value>Otro</stored-value>
+			</pair>
+		</value-pairs>
+
+		<!-- Subtipos de Patentes -->
+		<value-pairs value-pairs-name="tipos_patente" dc-term="subtype">
+			<pair>
+				<displayed-value>- Seleccione un subtipo -</displayed-value>
+				<stored-value/>
+			</pair>
+			<pair>
+				<displayed-value>Patente</displayed-value>
+				<stored-value>Patente</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Marca</displayed-value>
+				<stored-value>Marca</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Modelo industrial</displayed-value>
+				<stored-value>Modelo industrial</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Modelo de utilidad</displayed-value>
+				<stored-value>Modelo de utilidad</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Documento legal</displayed-value>
+				<stored-value>Documento legal</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Otro</displayed-value>
+				<stored-value>Otro</stored-value>
+			</pair>
+		</value-pairs>
+
+		<!-- Subtipos de Patentes -->
+		<value-pairs value-pairs-name="tipos_recension" dc-term="subtype">
+			<pair>
+				<displayed-value>- Seleccione un subtipo -</displayed-value>
+				<stored-value/>
+			</pair>
+			<pair>
+				<displayed-value>Reseña de artículo</displayed-value>
+				<stored-value>Reseña articulo</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Revisión literaria</displayed-value>
+				<stored-value>Revision literaria</stored-value>
+			</pair>
+		</value-pairs>
+
+		<!-- Subtipos de Matriales artístico -->
+		<value-pairs value-pairs-name="tipos_material_artistico" dc-term="subtype">
+			<pair>
+				<displayed-value>- Seleccione un subtipo -</displayed-value>
+				<stored-value/>
+			</pair>
+			<pair>
+				<displayed-value>Fotografía</displayed-value>
+				<stored-value>Fotografia</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Videograbación</displayed-value>
+				<stored-value>Videograbacion</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Película documental</displayed-value>
+				<stored-value>Pelicula documental</stored-value>
 			</pair>
 			<pair>
 				<displayed-value>Otro</displayed-value>
@@ -1162,34 +1302,6 @@
 			<pair>
 				<displayed-value>Otro</displayed-value>
 				<stored-value>other</stored-value>
-			</pair>
-		</value-pairs>
-
-		<!-- Licencias Creatives Commons -->
-		<value-pairs value-pairs-name="licencia" dc-term="rights">
-			<pair>
-				<displayed-value>CC BY-NC-SA 4.0 Internacional</displayed-value>
-				<stored-value>https://creativecommons.org/licenses/by-nc-sa/4.0/</stored-value>
-			</pair>
-			<pair>
-				<displayed-value>CC BY 4.0 Internacional</displayed-value>
-				<stored-value>https://creativecommons.org/licenses/by/4.0/</stored-value>
-			</pair>
-			<pair>
-				<displayed-value>CC BY-SA 4.0 Internacional</displayed-value>
-				<stored-value>https://creativecommons.org/licenses/by-sa/4.0/</stored-value>
-			</pair>
-			<pair>
-				<displayed-value>CC BY-ND 4.0 Internacional</displayed-value>
-				<stored-value>https://creativecommons.org/licenses/by-nd/4.0/</stored-value>
-			</pair>
-			<pair>
-				<displayed-value>CC BY-NC 4.0 Internacional</displayed-value>
-				<stored-value>https://creativecommons.org/licenses/by-nc/4.0/</stored-value>
-			</pair>
-			<pair>
-				<displayed-value>CC BY-NC-ND 4.0 Internacional</displayed-value>
-				<stored-value>https://creativecommons.org/licenses/by-nc-nd/4.0/</stored-value>
 			</pair>
 		</value-pairs>
 
