@@ -83,7 +83,7 @@
 					<repeatable>false</repeatable>
 					<label>Tipo de documento</label>
 					<input-type value-pairs-name="documentos">dropdown</input-type>
-					<hint>Seleccione el tipo de documento a cargar</hint>
+					<hint>Seleccionar el tipo de documento a cargar</hint>
 					<required>Por favor seleccione el tipo de documento</required>
 				</field>
 				<!-- TITULO -->
@@ -94,7 +94,7 @@
 					<repeatable>false</repeatable>
 					<label>Título o Nombre</label>
 					<input-type>onebox</input-type>
-					<hint>Ingrese el título, nombre o una descripción corta del elemento</hint>
+					<hint>Ingresar el título, nombre o una descripción corta del elemento</hint>
 					<required>Debe ingresar un título para el elemento</required>
 				</field>
 				<!-- TITULO ALTERNATIVO -->
@@ -105,7 +105,7 @@
 					<repeatable>true</repeatable>
 					<label>Título Alternativo</label>
 					<input-type>onebox</input-type>
-					<hint>Si el documento tiene título/s alternativos, por ejemplo traducciones, escríbalos aquí</hint>
+					<hint>Ingresar título/s alternativos (opcional)</hint>
 				</field>
 				<!-- // LENGUAJE -->
 				<field>
@@ -116,7 +116,7 @@
 					<label>Idioma</label>
 					<input-type value-pairs-name="common_iso_languages">dropdown</input-type>
 					<hint>
-						Sugerencia:Seleccione el idioma del contenido principal del elemento.
+						Seleccionar el idioma del contenido principal del elemento.
 						Si el idioma no aparece en la lista, seleccione 'Otro'.
 					</hint>
 					<required>Este campo es requerido</required>
@@ -141,7 +141,7 @@
 					<repeatable>true</repeatable>
 					<label>Autor</label>
 					<input-type>name</input-type>
-					<hint>Ingrese el/los nombre/s de autor/es del elemento</hint>
+					<hint>Ingresar el/los nombre/s de autor/es del elemento</hint>
 					<required>Debe ingresar al menos un Autor</required>
 				</field>
 				<!-- FILIACION -->
@@ -177,7 +177,7 @@
 					<label>Tipo de tesis</label>
 					<type-bind>Tesis</type-bind>
 					<input-type value-pairs-name="tipos_tesis">dropdown</input-type>
-					<hint>Seleccione el tipo de tesis a cargar</hint>
+					<hint>Seleccionar el tipo de tesis a cargar</hint>
 					<required>Por favor seleccione el tipo de tesis</required>
 				</field>
 				<!-- SUBTIPO TRABAJO FINAL -->
@@ -189,7 +189,7 @@
 					<label>Tipo de trabajo final</label>
 					<type-bind>Trabajo final</type-bind>
 					<input-type value-pairs-name="tipos_trabajo_final">dropdown</input-type>
-					<hint>Seleccione el tipo de trabajo final a cargar</hint>
+					<hint>Seleccionar el tipo de trabajo final a cargar</hint>
 					<required>Por favor seleccione el tipo de trabajo final</required>
 				</field>
 				<!-- SUBTIPO OBJETO DE CONFERENCIA -->
@@ -201,7 +201,7 @@
 					<label>Tipo de objeto de conferencia</label>
 					<type-bind>Objeto de conferencia</type-bind>
 					<input-type value-pairs-name="tipos_obj_conferencia">dropdown</input-type>
-					<hint>Seleccione el tipo de objeto de conferencia a cargar</hint>
+					<hint>Seleccionar el tipo de objeto de conferencia a cargar</hint>
 					<required>Por favor seleccione el tipo de objeto de conferencia</required>
 				</field>
 				<!-- SUBTIPO MATERIAL EDUCATIVO -->
@@ -213,7 +213,7 @@
 					<label>Tipo de material educativo</label>
 					<type-bind>Material educativo</type-bind>
 					<input-type value-pairs-name="tipos_material_educativo">dropdown</input-type>
-					<hint>Seleccione el tipo de material educativo a cargar</hint>
+					<hint>Seleccionar el tipo de material educativo a cargar</hint>
 					<required>Por favor seleccione el tipo de material educativo</required>
 				</field>
 				<!-- SUBTIPO PATENTES -->
@@ -225,7 +225,7 @@
 					<label>Tipo de patente</label>
 					<type-bind>Patente</type-bind>
 					<input-type value-pairs-name="tipos_patente">dropdown</input-type>
-					<hint>Seleccione el tipo de patente a cargar</hint>
+					<hint>Seleccionar el tipo de patente a cargar</hint>
 					<required>Por favor seleccione el tipo de patente</required>
 				</field>
 				<!-- SUBTIPO RECENSION DE DOCUMENTO -->
@@ -237,7 +237,7 @@
 					<label>Tipo de recensión de documento</label>
 					<type-bind>Recension de documento</type-bind>
 					<input-type value-pairs-name="tipos_recension">dropdown</input-type>
-					<hint>Seleccione el tipo de recensión de documento a cargar</hint>
+					<hint>Seleccionar el tipo de recensión de documento a cargar</hint>
 					<required>Por favor seleccione el tipo de recensión de documento</required>
 				</field>
 				<!-- SUBTIPO MATERIAL ARTISTICO -->
@@ -249,8 +249,19 @@
 					<label>Tipo de material artístico</label>
 					<type-bind>Material artistico</type-bind>
 					<input-type value-pairs-name="tipos_material_artistico">dropdown</input-type>
-					<hint>Seleccione el tipo de material artístico a a cargar</hint>
+					<hint>Seleccionar el tipo de material artístico a a cargar</hint>
 					<required>Por favor seleccione el tipo de material artístico</required>
+				</field>
+				<!-- COMPILADOR -->
+				<field>
+					<dc-schema>dc</dc-schema>
+					<dc-element>creator</dc-element>
+					<dc-qualifier>compiler</dc-qualifier>
+					<repeatable>true</repeatable>
+					<label>Compilador</label>
+					<type-bind>Libro, Parte de libro</type-bind>
+					<input-type>name</input-type>
+					<hint>Indicar el/los compilador/es del libro o parte de libro (opcional)</hint>
 				</field>
 				<!-- REVISTA -->
 				<field>
@@ -329,17 +340,6 @@
 					<input-type>onebox</input-type>
 					<hint>Indicar la editorial de la revista.</hint>
 				</field>
-				<!-- COMPILADOR -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>creator</dc-element>
-					<dc-qualifier>compiler</dc-qualifier>
-					<repeatable>false</repeatable>
-					<label>Compilador</label>
-					<type-bind>Libro</type-bind>
-					<input-type>onebox</input-type>
-					<hint>Indicar el compilador del libro (opcional, solo si corresponde).</hint>
-				</field>
 				<!-- PAGINAS -->
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -361,7 +361,7 @@
 					<type-bind>Articulo, Libro, Parte de libro, Tesis, Trabajo final, Objeto de conferencia, Patente, Documento de trabajo, Informe tecnico, Otro, Material artistico, Recension de documento</type-bind>
 					<input-type>date</input-type>
 					<hint>
-						Indique la fecha de la publicación, presentación o distribución pública. 
+						Indicar la fecha de la publicación, presentación o distribución pública.
 						Puede ignorar el campo "día" si no es aplicable.
 					</hint>
 					<required>Debe ingresar el año y mes de publicación</required>
@@ -375,7 +375,7 @@
 					<label>Fecha de toma del registro</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>date</input-type>
-					<hint>Indique la fecha de toma del registro. Puede ignorar el campo "día" si no es aplicable.</hint>
+					<hint>Indicar la fecha de toma del registro. Puede ignorar el campo "día" si no es aplicable.</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- LUGAR DE TOMA DE DATOS -->
@@ -387,7 +387,7 @@
 					<label>Lugar de toma de datos</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indique el lugar del cual se tomaron los datos.</hint>
+					<hint>Indicar el lugar del cual se tomaron los datos.</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- COBERTURA TEMPORAL -->
@@ -399,7 +399,7 @@
 					<label>Referencia temporal</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indique el período temporal que abarca el elemento.</hint>
+					<hint>Indicar el período temporal que abarca el elemento.</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- COBERTURA ESPACIAL -->
@@ -411,7 +411,7 @@
 					<label>Referencia geográfica</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indique el espacio geográfico que abarca el elemento.</hint>
+					<hint>Indicar el espacio geográfico que abarca el elemento.</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- LOCALIZACION ELECTRONICA -->
@@ -424,7 +424,7 @@
 					<label>Localización electrónica</label>
 					<type-bind>Objeto de conferencia, Otro, Documento de trabajo, Informe tecnico, Material educativo, Material artistico, Recension de documento</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Dirección donde se encuentra disponible el recurso (opcional). Puede ser un sitio web, repositorio, revista, etc.</hint>
+					<hint>Indicar la dirección donde se encuentra disponible el recurso (opcional). Puede ser un sitio web, repositorio, revista, etc.</hint>
 				</field>
 				<!-- PROYECTO MARCO -->
 				<field>
@@ -435,7 +435,7 @@
 					<label>Proyecto marco</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Ingrese el nombre del proyecto en el que se enmarcan los datos.</hint>
+					<hint>Ingresar el nombre del proyecto en el que se enmarcan los datos.</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- NOMBRE DEL EVENTO -->
@@ -447,7 +447,7 @@
 					<label>Nombre del Evento</label>
 					<type-bind>Objeto de conferencia, Documento de trabajo, Informe tecnico</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Si la edición tiene una web (pública o no) indicar su enlace en una ocurrencia separada.</hint>
+					<hint>Si la edición tiene una web (pública o no), indicar su enlace en una ocurrencia separada.</hint>
 				</field>
 				<!-- OTROS IDENTIFICADORES -->
 				<field>
@@ -489,7 +489,7 @@
 					<type-bind>Tesis, Trabajo final</type-bind>
 					<input-type>onebox</input-type>
 					<hint>
-						Introduzca la cita recomendada para este documento, siguiendo el formato APA: 
+						Introducir la cita recomendada para este documento, siguiendo el formato APA:
 						Autor. (Año). Título. Tesis de grado / Tesis de doctorado / Trabajo final de grado/ etc.
 						Universidad Nacional de Río Negro.
 					</hint>
@@ -504,7 +504,7 @@
 					<label>Cita</label>
 					<type-bind>Articulo, Libro, Parte de libro</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Introduzca la cita recomendada para este documento</hint>
+					<hint>Introducir la cita recomendada para este documento</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- DIRECTOR TESIS-->
@@ -516,7 +516,7 @@
 					<label>Director de tesis</label>
 					<type-bind>Tesis</type-bind>
 					<input-type>name</input-type>
-					<hint>Ingrese el nombre del director de tesis.</hint>
+					<hint>Ingresar el nombre del director de tesis.</hint>
 					<required>Debe registrar el director de tesis</required>
 				</field>
 				<!-- COLABORADOR TESIS-->
@@ -528,7 +528,7 @@
 					<label>Colaboradores de tesis</label>
 					<type-bind>Tesis</type-bind>
 					<input-type>name</input-type>
-					<hint>Ingrese el/los nombre/s de colaborador/es del elemento. Por ejemplo, codirector/a.</hint>
+					<hint>Ingresar el/los nombre/s de colaborador/es del elemento. Por ejemplo, codirector/a.</hint>
 				</field>
 				<!-- DIRECTOR TRABAJO FINAL-->
 				<field>
@@ -539,7 +539,7 @@
 					<label>Director de trabajo final </label>
 					<type-bind>Trabajo final</type-bind>
 					<input-type>name</input-type>
-					<hint>Ingrese el/los nombre/s del director del trabajo.</hint>
+					<hint>Ingresar el/los nombre/s del director del trabajo.</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- COLABORADOR TRABAJO FINAL-->
@@ -552,7 +552,7 @@
 					<type-bind>Trabajo final</type-bind>
 					<input-type>name</input-type>
 					<hint>
-						Ingrese el/los nombre/s de colaborador/es del trabajo. Por ejemplo, codirectores o tutores.
+						Ingresar el/los nombre/s de colaborador/es del trabajo. Por ejemplo, codirectores o tutores.
 					</hint>
 				</field>
 				<!-- REFERATO -->
@@ -564,7 +564,7 @@
 					<label>Con referato</label>
 					<type-bind>Articulo</type-bind>
 					<input-type value-pairs-name="boolean">dropdown</input-type>
-					<hint>Indique si el artículo cuenta o no con referato.</hint>
+					<hint>Indicar si el artículo cuenta o no con referato.</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- SOPORTE O MEDIO DE DIFUSIÓN -->
@@ -577,7 +577,7 @@
 					<type-bind>Articulo, Libro, Parte de libro</type-bind>
 					<input-type value-pairs-name="soportes_revistas">dropdown</input-type>
 					<hint>
-						Seleccione el/los soportes del documento. Puede seleccionar más de uno manteniendo presionada
+						Seleccionar el/los soportes del documento. Puede seleccionar más de uno manteniendo presionada
 						la tecla shift mientras hace clic en las opciones deseadas.
 					</hint>
 					<required>Este campo es requerido</required>
@@ -590,7 +590,7 @@
 					<repeatable>false</repeatable>
 					<label>Resumen</label>
 					<input-type>textarea</input-type>
-					<hint>Ingrese el resumen en español del elemento.</hint>
+					<hint>Ingresar el resumen en español del elemento.</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- ABSTRACT -->
@@ -602,7 +602,7 @@
 					<label>Abstract</label>
 					<type-bind>Articulo, Tesis, Trabajo final</type-bind>
 					<input-type>textarea</input-type>
-					<hint>Ingrese el resumen en inglés del elemento.</hint>
+					<hint>Ingresar el resumen en inglés del elemento.</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- // MATERIAS -->
@@ -613,7 +613,7 @@
 					<repeatable>true</repeatable>
 					<label>Materias</label>
 					<input-type>onebox</input-type>
-					<hint>Haga clic en "Seleccionar" para selecionar la/s materia/s asociadas al elemento</hint>
+					<hint>Hacer clic en "Seleccionar" para selecionar la/s materia/s asociadas al elemento</hint>
 					<required>Debe ingresar al menos una materia</required>
 					<vocabulary closed="true">bemincyt</vocabulary>
 				</field>
@@ -625,7 +625,7 @@
 					<repeatable>true</repeatable>
 					<label>Palabras Clave</label>
 					<input-type>onebox</input-type>
-					<hint>Ingrese cada palabra clave en un campo diferente. Se recomienda un mínimo de tres.</hint>
+					<hint>Ingresar cada palabra clave en un campo diferente. Se recomienda un mínimo de tres.</hint>
 					<required>Debe ingresar palabras claves</required>
 				</field>
 				<!-- NOTAS -->
@@ -638,7 +638,7 @@
 					<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Material educativo, Otro</type-bind>
 					<input-type>textarea</input-type>
 					<hint>
-						Ingrese toda otra aclaración que resulte pertinente para la mejor catalogación y recuperación de
+						Ingresar toda otra aclaración que resulte pertinente para la mejor catalogación y recuperación de
 						la obra. En este campo se puede indicar, por ejemplo, si la fecha de publicación indicada es
 						aproximada, si el documento no fue publicado aún y está en etapa de revisión o pre-publicación, etc.
 					</hint>
@@ -654,7 +654,7 @@
 					<input-type>textarea</input-type>
 					<hint>
 						Descripción general del conjunto de datos y de los datos que serán generados o recopilados.
-						Ingrese información relativa al origen; naturaleza; escalas y métricas utilizadas;
+						Ingresar información relativa al origen; naturaleza; escalas y métricas utilizadas;
 						usuarios potenciales; fechas o períodos relevantes, cobertura geográfica; metodología de
 						colecta o generación; procesamiento; información sobre si existen o no datos similares,
 						y lo que considere ampliar.
@@ -669,7 +669,7 @@
 					<label>Versión de la publicación</label>
 					<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Otro, Material artistico, Recension de documento</type-bind>
 					<input-type value-pairs-name="version">dropdown</input-type>
-					<hint>Seleccione la versión de la publicación.</hint>
+					<hint>Seleccionar la versión de la publicación.</hint>
 					<required>Debe seleccionar una ver</required>
 				</field>
 			</page>
@@ -687,7 +687,7 @@
 					<repeatable>false</repeatable>
 					<label>Tipo de normativa</label>
 					<input-type value-pairs-name="tipos_normativa">dropdown</input-type>
-					<hint>Seleccione el tipo de normativa</hint>
+					<hint>Seleccionar el tipo de normativa</hint>
 					<required>Debe seleccionar el tipo de normativa</required>
 				</field>
 				<!-- EMISOR -->
@@ -698,7 +698,7 @@
 					<repeatable>false</repeatable>
 					<label>Emisor</label>
 					<input-type value-pairs-name="emisores">dropdown</input-type>
-					<hint>Seleccione el órgano emisor del elemento</hint>
+					<hint>Seleccionar el órgano emisor del elemento</hint>
 					<required>Debe seleccionar el órgano emisor del elemento</required>
 				</field>
 				<!-- TITULO NORMATIVA -->
@@ -709,7 +709,7 @@
 					<repeatable>false</repeatable>
 					<label>Título</label>
 					<input-type>onebox</input-type>
-					<hint>Ingrese el título de la normativa</hint>
+					<hint>Ingresar el título de la normativa</hint>
 					<required>
 						Por favor ingrese un título. Si la normativa no lo posee, indicar la temática de forma general.
 						En caso de que inlcuya varias temáticas, indicar la del primer artículo, seguido de la
@@ -725,7 +725,7 @@
 					<label>Código</label>
 					<input-type>onebox</input-type>
 					<hint>
-						Ingrese el código de la normativa usando el formato adecuado (emisor - año - número - tipo)
+						Ingresar el código de la normativa usando el formato adecuado (emisor - año - número - tipo)
 					</hint>
 					<required>Debe ingresar un código de normativa</required>
 				</field>
@@ -738,7 +738,7 @@
 					<label>Fecha de emisión</label>
 					<input-type>date</input-type>
 					<hint>
-						Indique la fecha de la emisión de la normativa. Puede ignorar los campos de día y/o mes si
+						Indicar la fecha de la emisión de la normativa. Puede ignorar los campos de día y/o mes si
 						no son aplicables.
 					</hint>
 					<required>Debe ingresar al menos el año de emisión</required>
@@ -751,7 +751,7 @@
 					<repeatable>false</repeatable>
 					<label>Firmado digitalmente</label>
 					<input-type value-pairs-name="boolean">dropdown</input-type>
-					<hint>Indique si el documento contiene firma digital</hint>
+					<hint>Indicar si el documento contiene firma digital</hint>
 				</field>
 				<!-- EXPEDIENTE -->
 				<field>
@@ -761,7 +761,7 @@
 					<repeatable>false</repeatable>
 					<label>Número de Expediente</label>
 					<input-type>onebox</input-type>
-					<hint>Ingrese el número de expediente de la normativa (opcional)</hint>
+					<hint>Ingresar el número de expediente de la normativa (opcional)</hint>
 				</field>
 				<!-- DETALLE -->
 				<field>
@@ -770,7 +770,7 @@
 					<repeatable>false</repeatable>
 					<label>Detalle</label>
 					<input-type>textarea</input-type>
-					<hint>Ingrese una descripción para el elemento.</hint>
+					<hint>Ingresar una descripción para el elemento.</hint>
 				</field>
 				<!-- PALABRAS CLAVE -->
 				<field>
@@ -781,7 +781,7 @@
 					<label>Palabras clave</label>
 					<input-type>onebox</input-type>
 					<hint>
-						Ingrese palabras clave para la normativa. Ingresar al menos tres instancias de palabras clave.
+						Ingresar palabras clave para la normativa. Ingresar al menos tres instancias de palabras clave.
 					</hint>
 					<required>Este campo es requerido</required>
 				</field>
