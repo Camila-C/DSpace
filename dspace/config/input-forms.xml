@@ -106,7 +106,6 @@
 					<label>Título Alternativo</label>
 					<input-type>onebox</input-type>
 					<hint>Si el documento tiene título/s alternativos, por ejemplo traducciones, escríbalos aquí</hint>
-					<required/>
 				</field>
 				<!-- // LENGUAJE -->
 				<field>
@@ -120,7 +119,7 @@
 						Sugerencia:Seleccione el idioma del contenido principal del elemento.
 						Si el idioma no aparece en la lista, seleccione 'Otro'.
 					</hint>
-					<required/>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- LUGAR DE DESARROLLO -->
 				<!-- TODO: VALUE-PAIRS CON LUGARES NORMALIZADOS -->
@@ -280,7 +279,6 @@
 					<hint>
 						Ingresar el ISSN de la revista. En caso de existir un e-ISSN, ingresarlo en una ocurrencia separada.
 					</hint>
-					<required/>
 				</field>
 				<!-- ISBN -->
 				<field>
@@ -292,7 +290,6 @@
 					<type-bind>Libro, Parte de libro</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Ingresar el ISBN del libro. </hint>
-					<required/>
 				</field>
 				<!-- VOLUMEN -->
 				<field>
@@ -304,7 +301,6 @@
 					<type-bind>Articulo</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Ingresar el volumen de la revista.</hint>
-					<required/>
 				</field>
 				<!-- EDITOR -->
 				<!-- TODO: CARGAR AUTOMÁTICAMENTE EL METADATO, QUE NI FIGURE EL CAMPO ACÁ? -->
@@ -316,8 +312,12 @@
 					<label>Editor</label>
 					<type-bind>Tesis, Trabajo final</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Declarar la filiación institucional a la Universidad de forma normalizada, como Universidad Nacional de Río Negro, preferentemente se enumerarán las partes de la jerarquía de mayor a menor. En caso de poseer múltiples filiaciones se indicará cada una de ellas en instancias separadas.</hint>
-					<required/>
+					<hint>
+						Declarar la filiación institucional a la Universidad de forma normalizada, como
+						Universidad Nacional de Río Negro, preferentemente se enumerarán las partes de la jerarquía de
+						mayor a menor. En caso de poseer múltiples filiaciones se indicará cada una de ellas en
+						instancias separadas.
+					</hint>
 				</field>
 				<!-- EDITORIAL -->
 				<field>
@@ -328,7 +328,6 @@
 					<type-bind>Articulo, Libro, Parte de libro</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Indicar la editorial de la revista.</hint>
-					<required/>
 				</field>
 				<!-- COMPILADOR -->
 				<field>
@@ -340,7 +339,6 @@
 					<type-bind>Libro</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Indicar el compilador del libro (opcional, solo si corresponde).</hint>
-					<required/>
 				</field>
 				<!-- PAGINAS -->
 				<field>
@@ -352,7 +350,6 @@
 					<type-bind>Articulo, Parte de libro</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Indicar el rango de páginas del documento. Ejemplo (usar este formato): p. 17-22.</hint>
-					<required/>
 				</field>
 				<!-- FECHA PUBLICACION -->
 				<field>
@@ -361,7 +358,7 @@
 					<dc-qualifier>issued</dc-qualifier>
 					<repeatable>false</repeatable>
 					<label>Fecha de publicación o presentación</label>
-					<type-bind>Articulo, Libro, Parte de libro, Tesis, Trabajo final, Objeto de conferencia, Patente, Documento de trabajo, Informe tecnico, Otro</type-bind>
+					<type-bind>Articulo, Libro, Parte de libro, Tesis, Trabajo final, Objeto de conferencia, Patente, Documento de trabajo, Informe tecnico, Otro, Material artistico, Recension de documento</type-bind>
 					<input-type>date</input-type>
 					<hint>
 						Indique la fecha de la publicación, presentación o distribución pública. 
@@ -379,7 +376,7 @@
 					<type-bind>Datos primarios</type-bind>
 					<input-type>date</input-type>
 					<hint>Indique la fecha de toma del registro. Puede ignorar el campo "día" si no es aplicable.</hint>
-					<required/>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- LUGAR DE TOMA DE DATOS -->
 				<field>
@@ -390,8 +387,8 @@
 					<label>Lugar de toma de datos</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indique el lugar del cual se tomaron los datos. </hint>
-					<required/>
+					<hint>Indique el lugar del cual se tomaron los datos.</hint>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- COBERTURA TEMPORAL -->
 				<field>
@@ -402,8 +399,8 @@
 					<label>Referencia temporal</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indique el período temporal que abarca el elemento. </hint>
-					<required/>
+					<hint>Indique el período temporal que abarca el elemento.</hint>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- COBERTURA ESPACIAL -->
 				<field>
@@ -414,8 +411,8 @@
 					<label>Referencia geográfica</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indique el espacio geográfico que abarca el elemento. </hint>
-					<required/>
+					<hint>Indique el espacio geográfico que abarca el elemento.</hint>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- LOCALIZACION ELECTRONICA -->
 				<!-- TODO DECIDIR METADATO -->
@@ -425,10 +422,9 @@
 					<dc-qualifier>uri</dc-qualifier>
 					<repeatable>true</repeatable>
 					<label>Localización electrónica</label>
-					<type-bind>Objeto de conferencia, Otro, Documento de trabajo, Informe tecnico, Material educativo</type-bind>
+					<type-bind>Objeto de conferencia, Otro, Documento de trabajo, Informe tecnico, Material educativo, Material artistico, Recension de documento</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Dirección donde se encuentra disponible el recurso (opcional). Puede ser un sitio web, repositorio, revista, etc.</hint>
-					<required/>
 				</field>
 				<!-- PROYECTO MARCO -->
 				<field>
@@ -440,7 +436,7 @@
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Ingrese el nombre del proyecto en el que se enmarcan los datos.</hint>
-					<required/>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- NOMBRE DEL EVENTO -->
 				<field>
@@ -452,7 +448,6 @@
 					<type-bind>Objeto de conferencia, Documento de trabajo, Informe tecnico</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Si la edición tiene una web (pública o no) indicar su enlace en una ocurrencia separada.</hint>
-					<required/>
 				</field>
 				<!-- OTROS IDENTIFICADORES -->
 				<field>
@@ -461,13 +456,13 @@
 					<dc-qualifier/>
 					<repeatable>true</repeatable>
 					<label>Otros identificadores</label>
-					<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Patente, Documento de trabajo, Informe tecnico, Datos primarios, Otro</type-bind>
+					<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Patente, Documento de trabajo, Informe tecnico, Datos primarios, Otro, Material artistico, Recension de documento</type-bind>
 					<input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
 					<hint>
-						La primer instancia del recurso debe incluir una URL estable que dirija directamente al recurso. En las instancias posteriores se registrarán, si el artículo los posee, números de identificación o códigos asociados con él. 
-						Introduzca los tipos y los números o códigos reales.
+						La primer instancia del recurso debe incluir una URL estable que dirija directamente al recurso.
+						En las instancias posteriores se registrarán, si el artículo los posee, números de
+						identificación o códigos asociados con él. Introduzca los tipos y los números o códigos reales.
 					</hint>
-					<required/>
 				</field>
 				<!-- IDENTIFICADOR -->
 				<field>
@@ -478,8 +473,10 @@
 					<label>Identificador</label>
 					<type-bind>Tesis, Trabajo final</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Registrar, si el documento los posee, números de identificación o códigos asociados con él. Introduzca los tipos y los números o códigos reales. Esto incluye el número de acta.</hint>
-					<required/>
+					<hint>
+						Registrar, si el documento los posee, números de identificación o códigos asociados con él.
+						Introduzca los tipos y los números o códigos reales. Esto incluye el número de acta.
+					</hint>
 				</field>
 				<!-- CITA (TESIS)-->
 				<!-- TODO: GENERAR A PARTIR DE LOS METADATOS DE FORMA AUTOMÁTICA -->
@@ -493,7 +490,8 @@
 					<input-type>onebox</input-type>
 					<hint>
 						Introduzca la cita recomendada para este documento, siguiendo el formato APA: 
-						Autor. (Año). Título. Tesis de grado / Tesis de doctorado / Trabajo final de grado/ etc. Universidad Nacional de Río Negro.
+						Autor. (Año). Título. Tesis de grado / Tesis de doctorado / Trabajo final de grado/ etc.
+						Universidad Nacional de Río Negro.
 					</hint>
 					<required>Por favor complete el campo con la cita del elemento en el formato solicitado.</required>
 				</field>
@@ -507,7 +505,7 @@
 					<type-bind>Articulo, Libro, Parte de libro</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Introduzca la cita recomendada para este documento</hint>
-					<required/>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- DIRECTOR TESIS-->
 				<field>
@@ -531,7 +529,6 @@
 					<type-bind>Tesis</type-bind>
 					<input-type>name</input-type>
 					<hint>Ingrese el/los nombre/s de colaborador/es del elemento. Por ejemplo, codirector/a.</hint>
-					<required/>
 				</field>
 				<!-- DIRECTOR TRABAJO FINAL-->
 				<field>
@@ -543,7 +540,7 @@
 					<type-bind>Trabajo final</type-bind>
 					<input-type>name</input-type>
 					<hint>Ingrese el/los nombre/s del director del trabajo.</hint>
-					<required/>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- COLABORADOR TRABAJO FINAL-->
 				<field>
@@ -554,8 +551,9 @@
 					<label>Colaboradores de trabajo final </label>
 					<type-bind>Trabajo final</type-bind>
 					<input-type>name</input-type>
-					<hint>Ingrese el/los nombre/s de colaborador/es del trabajo. Por ejemplo, codirectores o tutores.</hint>
-					<required/>
+					<hint>
+						Ingrese el/los nombre/s de colaborador/es del trabajo. Por ejemplo, codirectores o tutores.
+					</hint>
 				</field>
 				<!-- REFERATO -->
 				<field>
@@ -567,7 +565,7 @@
 					<type-bind>Articulo</type-bind>
 					<input-type value-pairs-name="boolean">dropdown</input-type>
 					<hint>Indique si el artículo cuenta o no con referato.</hint>
-					<required/>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- SOPORTE O MEDIO DE DIFUSIÓN -->
 				<field>
@@ -578,8 +576,11 @@
 					<label>Soporte o medio de difusión</label>
 					<type-bind>Articulo, Libro, Parte de libro</type-bind>
 					<input-type value-pairs-name="soportes_revistas">dropdown</input-type>
-					<hint>Seleccione el/los soportes del documento. Puede seleccionar más de uno manteniendo presionada la tecla shift mientras hace clic en las opciones deseadas.</hint>
-					<required/>
+					<hint>
+						Seleccione el/los soportes del documento. Puede seleccionar más de uno manteniendo presionada
+						la tecla shift mientras hace clic en las opciones deseadas.
+					</hint>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- // RESUMEN -->
 				<field>
@@ -590,7 +591,7 @@
 					<label>Resumen</label>
 					<input-type>textarea</input-type>
 					<hint>Ingrese el resumen en español del elemento.</hint>
-					<required>Debe ingresar un resumen del documento</required>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- ABSTRACT -->
 				<field>
@@ -602,7 +603,7 @@
 					<type-bind>Articulo, Tesis, Trabajo final</type-bind>
 					<input-type>textarea</input-type>
 					<hint>Ingrese el resumen en inglés del elemento.</hint>
-					<required/>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- // MATERIAS -->
 				<field>
@@ -613,8 +614,8 @@
 					<label>Materias</label>
 					<input-type>onebox</input-type>
 					<hint>Haga clic en "Seleccionar" para selecionar la/s materia/s asociadas al elemento</hint>
-					<required/>
-					<vocabulary>bemincyt</vocabulary>
+					<required>Debe ingresar al menos una materia</required>
+					<vocabulary closed="true">bemincyt</vocabulary>
 				</field>
 				<!-- // PALABRAS CLAVE -->
 				<field>
@@ -624,7 +625,7 @@
 					<repeatable>true</repeatable>
 					<label>Palabras Clave</label>
 					<input-type>onebox</input-type>
-					<hint>Ingrese palabras clave o frases apropiadas de acuerdo al tema del documento. Se recomienda un mínimo de tres.</hint>
+					<hint>Ingrese cada palabra clave en un campo diferente. Se recomienda un mínimo de tres.</hint>
 					<required>Debe ingresar palabras claves</required>
 				</field>
 				<!-- NOTAS -->
@@ -637,8 +638,9 @@
 					<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Material educativo, Otro</type-bind>
 					<input-type>textarea</input-type>
 					<hint>
-						Ingrese toda otra aclaración que resulte pertinente para la mejor catalogación y recuperación de la obra.
-						En este campo se puede indicar, por ejemplo, si la fecha de publicación indicada es aproximada, si el documento no fue publicado aún y está en etapa de revisión o pre-publicación, etc.
+						Ingrese toda otra aclaración que resulte pertinente para la mejor catalogación y recuperación de
+						la obra. En este campo se puede indicar, por ejemplo, si la fecha de publicación indicada es
+						aproximada, si el documento no fue publicado aún y está en etapa de revisión o pre-publicación, etc.
 					</hint>
 				</field>
 				<!-- NOTAS - DATOS PRIMARIOS-->
@@ -665,10 +667,10 @@
 					<dc-qualifier>version</dc-qualifier>
 					<repeatable>false</repeatable>
 					<label>Versión de la publicación</label>
-					<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Otro</type-bind>
+					<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Otro, Material artistico, Recension de documento</type-bind>
 					<input-type value-pairs-name="version">dropdown</input-type>
 					<hint>Seleccione la versión de la publicación.</hint>
-					<required/>
+					<required>Debe seleccionar una ver</required>
 				</field>
 			</page>
 		</form>
@@ -760,18 +762,15 @@
 					<label>Número de Expediente</label>
 					<input-type>onebox</input-type>
 					<hint>Ingrese el número de expediente de la normativa (opcional)</hint>
-					<required/>
 				</field>
 				<!-- DETALLE -->
 				<field>
 					<dc-schema>dc</dc-schema>
 					<dc-element>description</dc-element>
-					<dc-qualifier/>
 					<repeatable>false</repeatable>
 					<label>Detalle</label>
 					<input-type>textarea</input-type>
 					<hint>Ingrese una descripción para el elemento.</hint>
-					<required/>
 				</field>
 				<!-- PALABRAS CLAVE -->
 				<field>
@@ -784,7 +783,7 @@
 					<hint>
 						Ingrese palabras clave para la normativa. Ingresar al menos tres instancias de palabras clave.
 					</hint>
-					<required/>
+					<required>Este campo es requerido</required>
 				</field>
 				<!-- ACCIONES: DEROGAR, ABROGAR, SUSTITUIR, INCORPORAR -->
 				<field>
@@ -795,7 +794,6 @@
 					<label>Deroga a</label>
 					<input-type>onebox</input-type>
 					<hint>Indicar el enlace permanente de la(s) normativa(s) derogada(s) por la presente.</hint>
-					<required/>
 				</field>
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -805,7 +803,6 @@
 					<label>Es derogada por</label>
 					<input-type>onebox</input-type>
 					<hint>Indicar el enlace permanente de la(s) normativa(s) que deroga(n) a la presente.</hint>
-					<required/>
 				</field>
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -815,7 +812,6 @@
 					<label>Abroga a</label>
 					<input-type>onebox</input-type>
 					<hint>Indicar el enlace permanente de la(s) normativa(s) abrogada(s) por la presente.</hint>
-					<required/>
 				</field>
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -825,7 +821,6 @@
 					<label>Es abrogada por</label>
 					<input-type>onebox</input-type>
 					<hint>Indicar el enlace permanente de la(s) normativa(s) que abroga(n) a la presente.</hint>
-					<required/>
 				</field>
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -835,7 +830,6 @@
 					<label>Sustituye a</label>
 					<input-type>onebox</input-type>
 					<hint>Indicar el enlace permanente de la(s) normativa(s) sustituida(s) por la presente.</hint>
-					<required/>
 				</field>
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -845,7 +839,6 @@
 					<label>Es sustituida por</label>
 					<input-type>onebox</input-type>
 					<hint>Indicar el enlace permanente de la(s) normativa(s) que sustituye(n) a la presente.</hint>
-					<required/>
 				</field>
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -855,7 +848,6 @@
 					<label>Incorpora a</label>
 					<input-type>onebox</input-type>
 					<hint>Indicar el enlace permanente de la(s) normativa(s) ampliada(s) por la presente.</hint>
-					<required/>
 				</field>
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -865,7 +857,6 @@
 					<label>Es incorporada por</label>
 					<input-type>onebox</input-type>
 					<hint>Indicar el enlace permanente de la(s) normativa(s) que amplía(n) a la presente.</hint>
-					<required/>
 				</field>
 			</page>
 		</form>
