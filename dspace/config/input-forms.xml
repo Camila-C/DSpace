@@ -130,7 +130,10 @@
 					<repeatable>true</repeatable>
 					<label>Lugar de Desarrollo</label>
 					<input-type>onebox</input-type>
-					<hint>Indicar la institución, el departamento y/o la unidad en la cual se desarrolló el trabajo.</hint>
+					<hint>
+						Indicar la institución, el departamento y/o la unidad en la cual se desarrolló el trabajo de
+						forma normalizada. Ej: Universidad Nacional de Río Negro
+					</hint>
 					<required>Debe ingresar un Lugar de Desarrollo. Ej: Universidad Nacional de Río Negro</required>
 				</field>
 				<!-- AUTOR -->
@@ -259,9 +262,9 @@
 					<dc-qualifier>compiler</dc-qualifier>
 					<repeatable>true</repeatable>
 					<label>Compilador</label>
-					<type-bind>Libro, Parte de libro</type-bind>
+					<type-bind>Libro</type-bind>
 					<input-type>name</input-type>
-					<hint>Indicar el/los compilador/es del libro o parte de libro (opcional)</hint>
+					<hint>Indicar el/los compilador/es del libro (opcional)</hint>
 				</field>
 				<!-- REVISTA -->
 				<field>
@@ -424,7 +427,10 @@
 					<label>Localización electrónica</label>
 					<type-bind>Objeto de conferencia, Otro, Documento de trabajo, Informe tecnico, Material educativo, Material artistico, Recension de documento</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indicar la dirección donde se encuentra disponible el recurso (opcional). Puede ser un sitio web, repositorio, revista, etc.</hint>
+					<hint>
+						Indicar la dirección donde se encuentra disponible el recurso (opcional). Puede ser un sitio
+						web, repositorio, revista, etc.
+					</hint>
 				</field>
 				<!-- PROYECTO MARCO -->
 				<field>
