@@ -52,6 +52,20 @@
     <name-map collection-handle="20.500.12049/302" submission-name="digesto" /> <!-- SICADYTT -->
     <name-map collection-handle="20.500.12049/303" submission-name="digesto" /> <!-- SPYGE -->
     <name-map collection-handle="20.500.12049/300" submission-name="digesto" /> <!-- Vicerrectorales -->
+
+    <!-- 5- Resoluciones Consejo de Sede -->
+    <!-- 4.1- Sede Alto Valle y Valle Medio -->
+    <name-map collection-handle="20.500.12049/5312" submission-name="digesto" /> <!-- SDEYVE -->
+    <name-map collection-handle="20.500.12049/5313" submission-name="digesto" /> <!-- SICADYTT -->
+    <name-map collection-handle="20.500.12049/5314" submission-name="digesto" /> <!-- SPYGE -->
+    <!-- 4.2- Sede Andina -->
+    <name-map collection-handle="20.500.12049/5309" submission-name="digesto" /> <!-- SDEYVE -->
+    <name-map collection-handle="20.500.12049/5310" submission-name="digesto" /> <!-- SICADYTT -->
+    <name-map collection-handle="20.500.12049/5311" submission-name="digesto" /> <!-- SPYGE -->
+    <!-- 4.3 Sede Atlantica -->
+    <name-map collection-handle="20.500.12049/5306" submission-name="digesto" /> <!-- SDEYVE -->
+    <name-map collection-handle="20.500.12049/5307" submission-name="digesto" /> <!-- SICADYTT -->
+    <name-map collection-handle="20.500.12049/5308" submission-name="digesto" /> <!-- SPYGE -->
   </submission-map>
 
   <!-- The 'step-definitions' allows you to define steps which you may wish -->

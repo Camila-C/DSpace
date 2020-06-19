@@ -55,6 +55,20 @@
 		<name-map collection-handle="20.500.12049/302" form-name="digesto" /> <!-- SICADYTT -->
 		<name-map collection-handle="20.500.12049/303" form-name="digesto" /> <!-- SPYGE -->
 		<name-map collection-handle="20.500.12049/300" form-name="digesto" /> <!-- Vicerrectorales -->
+
+		<!-- 5- Resoluciones Consejo de Sede -->
+		<!-- 4.1- Sede Alto Valle y Valle Medio -->
+		<name-map collection-handle="20.500.12049/5312" form-name="digesto" /> <!-- SDEYVE -->
+		<name-map collection-handle="20.500.12049/5313" form-name="digesto" /> <!-- SICADYTT -->
+		<name-map collection-handle="20.500.12049/5314" form-name="digesto" /> <!-- SPYGE -->
+		<!-- 4.2- Sede Andina -->
+		<name-map collection-handle="20.500.12049/5309" form-name="digesto" /> <!-- SDEYVE -->
+		<name-map collection-handle="20.500.12049/5310" form-name="digesto" /> <!-- SICADYTT -->
+		<name-map collection-handle="20.500.12049/5311" form-name="digesto" /> <!-- SPYGE -->
+		<!-- 4.3 Sede Atlantica -->
+		<name-map collection-handle="20.500.12049/5306" form-name="digesto" /> <!-- SDEYVE -->
+		<name-map collection-handle="20.500.12049/5307" form-name="digesto" /> <!-- SICADYTT -->
+		<name-map collection-handle="20.500.12049/5308" form-name="digesto" /> <!-- SPYGE -->
 	</form-map>
 
 	<!-- The form-definitions map lays out the detailed definition of all the -->
@@ -1245,12 +1259,96 @@
 				<stored-value>Sede Atlántica (A)</stored-value>
 			</pair>
 			<pair>
+				<displayed-value>Consejo de Docencia, Extensión y Vida Estudiantil de Sede Atlántica (AD) (2018-actualidad)</displayed-value>
+				<stored-value>Consejo de Docencia, Extensión y Vida Estudiantil de Sede Atlántica (AD)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Docencia, Extensión y Vida Estudiantil de Sede Atlántica (AD) (2011-2017)</displayed-value>
+				<stored-value>Consejo Directivo de Docencia, Extensión y Vida Estudiantil de Sede Atlántica (AD)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo de Programación y Gestión Estratégica de Sede Atlántica (AP) (2018-actualidad)</displayed-value>
+				<stored-value>Consejo de Programación y Gestión Estratégica de Sede Atlántica (AP)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Programación y Gestión Estratégica de la Sede Atlántica (AP) (2011-2017)</displayed-value>
+				<stored-value>Consejo Directivo de Programación y Gestión Estratégica de la Sede Atlántica (AP)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Atlántica (AI) (2018-actualidad)</displayed-value>
+				<stored-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Atlántica (AI)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Atlántica (AI) (2014-2017)</displayed-value>
+				<stored-value>Consejo Directivo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Atlántica (AI)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Investigación, Desarrollo y Transferencia de Tecnología de Sede Atlántica (AI) (2011-2013)</displayed-value>
+				<stored-value>Consejo de Investigación, Desarrollo y Transferencia de Tecnología de Sede Atlántica (AI)</stored-value>
+			</pair>
+			<pair>
 				<displayed-value>Sede Andina (B)</displayed-value>
 				<stored-value>Sede Andina (B)</stored-value>
 			</pair>
 			<pair>
+				<displayed-value>Consejo de Docencia, Extensión y Vida Estudiantil de Sede Andina (BD) (2018-actualidad)</displayed-value>
+				<stored-value>Consejo de Docencia, Extensión y Vida Estudiantil de Sede Andina (BD)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Docencia, Extensión y Vida Estudiantil de Sede Andina (BD) (2011-2017)</displayed-value>
+				<stored-value>Consejo Directivo de Docencia, Extensión y Vida Estudiantil de Sede Andina (BD)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo de Programación y Gestión Estratégica de Sede Andina (BP) (2018-actualidad)</displayed-value>
+				<stored-value>Consejo de Programación y Gestión Estratégica de Sede Andina (BP)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Programación y Gestión Estratégica de Sede Andina (BP) (2011-2017)</displayed-value>
+				<stored-value>Consejo Directivo de Programación y Gestión Estratégica de Sede Andina (BP)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Andina (BI) (2018-actualidad)</displayed-value>
+				<stored-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Andina (BI)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Andina (BI) (2014-2017)</displayed-value>
+				<stored-value>Consejo Directivo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Andina (BI)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Investigación, Desarrollo y Transferencia de Tecnología de Sede Andina (BI) (2011-2013)</displayed-value>
+				<stored-value>Consejo Directivo de Investigación, Desarrollo y Transferencia de Tecnología de Sede Andina (BI)</stored-value>
+			</pair>
+			<pair>
 				<displayed-value>Sede Alto Valle y Valle Medio (C)</displayed-value>
 				<stored-value>Sede Alto Valle y Valle Medio (C)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo de Docencia, Extensión y Vida Estudiantil de Sede Alto Valle y Valle Medio (CD) (2018-actualidad)</displayed-value>
+				<stored-value>Consejo de Docencia, Extensión y Vida Estudiantil de Sede Alto Valle y Valle Medio (CD)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Docencia, Extensión y Vida Estudiantil de Sede Alto Valle y Valle Medio (CD) (2011-2018)</displayed-value>
+				<stored-value>Consejo Directivo de Docencia, Extensión y Vida Estudiantil de Sede Alto Valle y Valle Medio (CD)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo de Programación y Gestión Estratégica de Sede Alto Valle y Valle Medio (CP) (2018-actualidad)</displayed-value>
+				<stored-value>Consejo de Programación y Gestión Estratégica de Sede Alto Valle y Valle Medio (CP)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Programación y Gestión Estratégica de Sede Alto Valle y Valle Medio (CP) (2011-2017)</displayed-value>
+				<stored-value>Consejo Directivo de Programación y Gestión Estratégica de Sede Alto Valle y Valle Medio (CP)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Alto Valle y Valle Medio (CI) (2018-actualidad)</displayed-value>
+				<stored-value>Consejo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Alto Valle y Valle Medio (CI)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Alto Valle y Valle Medio (CI) (2014-2017)</displayed-value>
+				<stored-value>Consejo Directivo de Investigación, Creación Artística, Desarrollo y Transferencia de Tecnología de Sede Alto Valle y Valle Medio (CI)</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Consejo Directivo de Investigación, Desarrollo y Transferencia de Tecnología de Sede Alto Valle y Valle Medio (CI) (2011-2013)</displayed-value>
+				<stored-value>Consejo Directivo de Investigación, Desarrollo y Transferencia de Tecnología de Sede Alto Valle y Valle Medio (CI)</stored-value>
 			</pair>
 		</value-pairs>
 
