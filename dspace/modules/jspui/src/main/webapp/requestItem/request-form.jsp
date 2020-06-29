@@ -69,6 +69,9 @@
       <div class="alert alert-info">
         <fmt:message key="jsp.request.item.request-form.info3"/>
       </div>
+      <div class="alert alert-warning">
+        <fmt:message key="jsp.request.item.request-form.info4"/>
+      </div>
     </p>
     <hr>
     <%	if (problem) { %>

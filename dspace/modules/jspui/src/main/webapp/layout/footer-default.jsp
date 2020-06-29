@@ -111,7 +111,7 @@
       <div class="container">
         <div class="row">
           <div class="col col-sm-6 col-xs-12">
-            <p class="copyright-text">&copy; <strong>2019 UNRN.</strong> Todos los derechos reservados.</p>
+            <p class="copyright-text">&copy; <strong>2020 UNRN.</strong> Todos los derechos reservados.</p>
           </div>
           <div class="col col-sm-6 hidden-xs">
             <p class="copyright-text pull-right">&copy; Desarrollo Digital.

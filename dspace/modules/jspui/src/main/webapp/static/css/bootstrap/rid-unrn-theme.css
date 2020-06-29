@@ -16,6 +16,11 @@ main#content {
   padding-bottom: 60px;
 }
 
+#page-content .jumbotron {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 /* INICIO: BOTÓN BackToTop */
 .back-to-top {
   cursor: pointer;
