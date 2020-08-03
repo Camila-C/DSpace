@@ -1376,7 +1376,7 @@
 
         <jsp:include page="/submit/progressbar.jsp"></jsp:include>
 
-    <h1><fmt:message key="jsp.submit.edit-metadata.heading"/>
+    <h2><fmt:message key="jsp.submit.edit-metadata.heading"/>
 <%
      //figure out which help page to display
      if (pageNum <= 1)
@@ -1392,7 +1392,7 @@
 <%
      }
 %>
-    </h1>
+    </h2>
 
 <%
      //figure out which help page to display
