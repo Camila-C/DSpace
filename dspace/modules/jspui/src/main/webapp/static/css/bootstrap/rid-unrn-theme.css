@@ -12,7 +12,7 @@ main#content {
   padding-bottom: 0px;
 }
 #page-content {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 60px;
 }
 
@@ -20,6 +20,19 @@ main#content {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+
+/* INICIO: TÍTULOS */
+#page-content h2,
+#page-content h3 {
+  color: #1b2437;
+}
+#page-content h2 {
+  padding-bottom: 20px;
+}
+#page-content h3 {
+  padding-bottom: 10px;
+}
+/* FIN: TÍTULOS */
 
 /* INICIO: BOTÓN BackToTop */
 .back-to-top {
@@ -64,22 +77,6 @@ main#content {
   border-color: #eb2141;
 }
 /* FIN: BOTÓN UNRN */
-
-/* INICIO: TÍTULOS */
-#page-content h2,
-#page-content h3 {
-  color: #1b2437;
-}
-#page-content h2 {
-  font-size: 35px;
-  text-transform: uppercase;
-  padding-bottom: 20px;
-}
-#page-content h3 {
-  font-size: 30px;
-  padding-bottom: 10px;
-}
-/* FIN: TÍTULOS */
 
 /* INICIO: SELECCIÓN DE TEXTO */
 ::-moz-selection {
@@ -902,8 +899,6 @@ footer .box-logos .box-logo img {
 /****************************************/
 #community-home h2,
 #collection-home h2 {
-  font-size: 35px;
-  text-transform: uppercase;
   padding-bottom: 20px;
   color: #1b2437;
 }

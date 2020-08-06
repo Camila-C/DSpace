@@ -616,7 +616,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion-faqs" href="#como-subir-mi-tesis">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion-faqs3" href="#como-subir-mi-tesis">
                 Soy estudiante, &iquest;c&oacute;mo puedo subir mi tesis, tesina o trabajo final de carrera al RID-UNRN?
               </a>
             </h4>

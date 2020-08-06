@@ -108,6 +108,9 @@
             <fmt:message key="jsp.community-home.display-statistics"/>
           </a>
         </h2>
+        <% if (StringUtils.isNotBlank(intro)) { %>
+          <p><%= intro %></p>
+        <% } %>
       </div>
       <!-- Buscador de la comunidad -->
       <div class="col-md-12">
