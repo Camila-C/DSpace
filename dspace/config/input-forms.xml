@@ -174,9 +174,9 @@
 					<input-type>onebox</input-type>
 					<hint>
 						Registrar la filiación institucional de cada uno de los autores del documento utilizando
-						ocurrencias separadas (Si el autor tiene mas de una filiación colocarlo en otra ocurrencia).
+						ocurrencias separadas (Si el autor posee mas de una filiación, colocarlo en otra ocurrencia).
 						Utilizar el prefijo "Fil:" seguido del apellido y nombre completo, la institución
-						en forma de jerarquía, la provincia y el país de origen. Ejemplo: Fil: Perez, Juan. Universidad
+						en forma de jerarquía, la provincia y el país de origen. Ejemplo: Fil: Garcia, Juan Pablo. Universidad
 						Nacional de Río Negro. Laboratorio de Informática Aplicada. Río Negro, Argentina.
 					</hint>
 					<required>Debe ingresar las filaciones correspondientes</required>
