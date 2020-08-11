@@ -201,7 +201,6 @@
 
 
      <Filters>
-    
     	<Filter id="snrdFilter">
     		<Definition>
     			<And>
@@ -463,18 +462,15 @@
 					<string>Libro</string>
 					<string>Parte de libro</string>	
 					<string>Objeto de conferencia</string>
-					<string>Acta</string>
-					<string>Resumen</string>
-					<string>Documento de ponencia</string>
-					<string>Presentacion de ponencia</string>
-					<string>Audio de ponencia</string>
-					<string>Video de ponencia</string>
-					<string>Poster de ponencia</string>
-					<string>Patente</string>
 					<string>Documento de trabajo</string>
 					<string>Informe tecnico</string>
 					<string>Datos primarios</string>
-					<string>Otro</string>
+					<string>Proyecto de investigacion</string>
+                    <string>Plano</string>
+                    <string>Mapa</string>
+                    <string>Imagen satelital</string>
+                    <string>Radiografia</string>
+                    <string>Diapositiva de microscopio</string>
 				</list>
 			</Configuration>	
 		</CustomCondition>
@@ -487,11 +483,26 @@
 				<string name="field">dc.type.subtype</string>
 				<string name="operator">equal</string>
 				<list name="values">
+                    <!-- Tesis -->
 					<string>Tesis de grado</string>
                     <string>Tesis de maestria</string>
                     <string>Tesis de doctorado</string>
+                    <!-- Trabajos finales -->
 					<string>Trabajo final de grado</string>
                     <string>Trabajo final de posgrado</string>
+                    <!-- Patente -->
+                    <string>Patente</string>
+                    <string>Marca</string>
+                    <string>Modelo industrial</string>
+                    <string>Modelo de utilidad</string>
+                    <string>Documento legal</string>
+                    <!-- Material artistico -->
+                    <string>Fotografia</string>
+                    <string>Videograbacion</string>
+                    <string>Pelicula documental</string>
+                    <!-- Recension de documento -->
+                    <string>Reseña articulo</string>
+                    <string>Revision literaria</string>
 				</list>
 			</Configuration>	
 		</CustomCondition>
