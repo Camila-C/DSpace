@@ -356,7 +356,7 @@
 					<label>Editorial</label>
 					<type-bind>Articulo, Libro, Parte de libro</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indicar la editorial de la revista.</hint>
+					<hint>Indicar la editorial de la publicación.</hint>
 				</field>
 				<!-- PAGINAS -->
 				<field>
@@ -499,7 +499,7 @@
 						Introduzca los tipos y los números o códigos reales. Esto incluye el número de acta.
 					</hint>
 				</field>
-				<!-- CITA (TESIS)-->
+				<!-- CITA -->
 				<!-- TODO: GENERAR A PARTIR DE LOS METADATOS DE FORMA AUTOMÁTICA -->
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -507,7 +507,7 @@
 					<dc-qualifier>citation</dc-qualifier>
 					<repeatable>false</repeatable>
 					<label>Cita</label>
-					<type-bind>Tesis, Trabajo final</type-bind>
+					<type-bind>Tesis, Trabajo final, Articulo, Libro, Parte de libro</type-bind>
 					<input-type>onebox</input-type>
 					<hint>
 						Introducir la cita recomendada para este documento, siguiendo el formato APA:
@@ -515,18 +515,6 @@
 						Universidad Nacional de Río Negro.
 					</hint>
 					<required>Por favor complete el campo con la cita del elemento en el formato solicitado.</required>
-				</field>
-				<!-- CITA -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>identifier</dc-element>
-					<dc-qualifier>citation</dc-qualifier>
-					<repeatable>false</repeatable>
-					<label>Cita</label>
-					<type-bind>Articulo, Libro, Parte de libro</type-bind>
-					<input-type>onebox</input-type>
-					<hint>Introducir la cita recomendada para este documento</hint>
-					<required>Este campo es requerido</required>
 				</field>
 				<!-- DIRECTOR TESIS-->
 				<field>
@@ -1131,10 +1119,6 @@
 				<displayed-value>Documento legal</displayed-value>
 				<stored-value>Documento legal</stored-value>
 			</pair>
-			<pair>
-				<displayed-value>Otro</displayed-value>
-				<stored-value>Otro</stored-value>
-			</pair>
 		</value-pairs>
 
 		<!-- Subtipos de Patentes -->
@@ -1170,10 +1154,6 @@
 			<pair>
 				<displayed-value>Película documental</displayed-value>
 				<stored-value>Pelicula documental</stored-value>
-			</pair>
-			<pair>
-				<displayed-value>Otro</displayed-value>
-				<stored-value>Otro</stored-value>
 			</pair>
 		</value-pairs>
 
