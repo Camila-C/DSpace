@@ -17,7 +17,6 @@
     <Contexts>
         <!--
             SNRD referencia acerca de los elementos que componen las directrices:
-
             - http://repositoriosdigitales.mincyt.gob.ar/files/Directrices_SNRD_2015.pdf
         -->
 		<Context baseurl="snrd" name="snrd context">
@@ -25,8 +24,7 @@
     		<Filter ref="snrdFilter"/> 
     		<Set ref="snrdSet"/>
     		<Format ref="oaidc"/>
-    		<Format ref="xoai"/> 
-    		
+    		<Format ref="xoai"/>
     		<Description>
     			This context complies with SNRD rules.
     		</Description>
@@ -190,12 +188,21 @@
     <Transformers>
         <Transformer id="driverTransformer">
             <XSLT>transformers/driver.xsl</XSLT>
+            <Description>
+                This transformer complies with Driver Context
+            </Description>
         </Transformer>
         <Transformer id="openaireTransformer">
             <XSLT>transformers/openaire.xsl</XSLT>
+            <Description>
+                This transformer complies with OpenAIRE Context
+            </Description>
         </Transformer>
         <Transformer id="snrdTransformer">
             <XSLT>transformers/snrd.xsl</XSLT>
+            <Description>
+                This transformer complies with SNRD Context
+            </Description>
         </Transformer>
     </Transformers>
 
