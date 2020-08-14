@@ -69,13 +69,25 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='issued']/doc:element/doc:field[@name='value']">
 				<dc:date><xsl:value-of select="." /></dc:date>
 			</xsl:for-each>
-			<!-- Mapeo provisorio (parche) para dc.descriptor.filation del SNRD -->
-			<!-- FIXME: Eliminar cuando la informaciòn este completa -->
-			<xsl:if test="not(doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='filiation'])">
-				<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='author']/doc:element/doc:field[@name='value']">
-					<dc:description><xsl:value-of select="concat('Fil: ', ., '. Universidad Nacional de Río Negro; Argentina')" /></dc:description>
-				</xsl:for-each>
-			</xsl:if>
+			<!-- dc.descriptor.filation -->
+			<!-- Pregunta si el campo de filiation existe -->
+			<xsl:choose>
+				<!-- Si no existe, agrego un campo filiation de la UNRN para cada autor -->
+				<xsl:when test="not(doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='filiation'])">
+					<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='author']/doc:element/doc:field[@name='value']">
+						<dc:description><xsl:value-of select="concat('Fil: ', ., '. Universidad Nacional de Río Negro. Río Negro, Argentina')" /></dc:description>
+					</xsl:for-each>
+				</xsl:when>
+				<!-- Si existe, para cada campo filiation pregunto si NO tiene el prefijo Fil -->
+				<xsl:otherwise>
+					<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='filiation']/doc:element/doc:field[@name='value']">
+						<xsl:if test="not(contains(., 'Fil:'))">
+							<!-- Si no lo tiene, lo agrego -->
+							<dc:description><xsl:value-of select="concat('Fil: ', .)" /></dc:description>
+						</xsl:if>
+					</xsl:for-each>
+				</xsl:otherwise>
+			</xsl:choose>
 			<!-- FIN: modificaciones UNRN -->
 
 			<!-- dc.title -->
