@@ -17,7 +17,6 @@
     <Contexts>
         <!--
             SNRD referencia acerca de los elementos que componen las directrices:
-
             - http://repositoriosdigitales.mincyt.gob.ar/files/Directrices_SNRD_2015.pdf
         -->
 		<Context baseurl="snrd" name="snrd context">
@@ -25,8 +24,7 @@
     		<Filter ref="snrdFilter"/> 
     		<Set ref="snrdSet"/>
     		<Format ref="oaidc"/>
-    		<Format ref="xoai"/> 
-    		
+    		<Format ref="xoai"/>
     		<Description>
     			This context complies with SNRD rules.
     		</Description>
@@ -190,18 +188,26 @@
     <Transformers>
         <Transformer id="driverTransformer">
             <XSLT>transformers/driver.xsl</XSLT>
+            <Description>
+                This transformer complies with Driver Context
+            </Description>
         </Transformer>
         <Transformer id="openaireTransformer">
             <XSLT>transformers/openaire.xsl</XSLT>
+            <Description>
+                This transformer complies with OpenAIRE Context
+            </Description>
         </Transformer>
         <Transformer id="snrdTransformer">
             <XSLT>transformers/snrd.xsl</XSLT>
+            <Description>
+                This transformer complies with SNRD Context
+            </Description>
         </Transformer>
     </Transformers>
 
 
      <Filters>
-    
     	<Filter id="snrdFilter">
     		<Definition>
     			<And>
@@ -463,18 +469,15 @@
 					<string>Libro</string>
 					<string>Parte de libro</string>	
 					<string>Objeto de conferencia</string>
-					<string>Acta</string>
-					<string>Resumen</string>
-					<string>Documento de ponencia</string>
-					<string>Presentacion de ponencia</string>
-					<string>Audio de ponencia</string>
-					<string>Video de ponencia</string>
-					<string>Poster de ponencia</string>
-					<string>Patente</string>
 					<string>Documento de trabajo</string>
 					<string>Informe tecnico</string>
 					<string>Datos primarios</string>
-					<string>Otro</string>
+					<string>Proyecto de investigacion</string>
+                    <string>Plano</string>
+                    <string>Mapa</string>
+                    <string>Imagen satelital</string>
+                    <string>Radiografia</string>
+                    <string>Diapositiva de microscopio</string>
 				</list>
 			</Configuration>	
 		</CustomCondition>
@@ -487,11 +490,26 @@
 				<string name="field">dc.type.subtype</string>
 				<string name="operator">equal</string>
 				<list name="values">
+                    <!-- Tesis -->
 					<string>Tesis de grado</string>
                     <string>Tesis de maestria</string>
                     <string>Tesis de doctorado</string>
+                    <!-- Trabajos finales -->
 					<string>Trabajo final de grado</string>
                     <string>Trabajo final de posgrado</string>
+                    <!-- Patente -->
+                    <string>Patente</string>
+                    <string>Marca</string>
+                    <string>Modelo industrial</string>
+                    <string>Modelo de utilidad</string>
+                    <string>Documento legal</string>
+                    <!-- Material artistico -->
+                    <string>Fotografia</string>
+                    <string>Videograbacion</string>
+                    <string>Pelicula documental</string>
+                    <!-- Recension de documento -->
+                    <string>Reseña articulo</string>
+                    <string>Revision literaria</string>
 				</list>
 			</Configuration>	
 		</CustomCondition>
