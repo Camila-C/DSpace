@@ -275,7 +275,7 @@
 					<dc-element>creator</dc-element>
 					<dc-qualifier>compiler</dc-qualifier>
 					<repeatable>true</repeatable>
-					<label>Compilador</label>
+					<label>Compilador/es</label>
 					<type-bind>Libro</type-bind>
 					<input-type>name</input-type>
 					<hint>Indicar el/los compilador/es del libro (opcional)</hint>
