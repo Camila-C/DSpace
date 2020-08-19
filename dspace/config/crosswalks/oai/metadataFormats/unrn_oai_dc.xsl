@@ -81,10 +81,15 @@
 				<!-- Si existe, para cada campo filiation pregunto si NO tiene el prefijo Fil -->
 				<xsl:otherwise>
 					<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='filiation']/doc:element/doc:field[@name='value']">
-						<xsl:if test="not(contains(., 'Fil:'))">
-							<!-- Si no lo tiene, lo agrego -->
-							<dc:description><xsl:value-of select="concat('Fil: ', .)" /></dc:description>
-						</xsl:if>
+						<xsl:choose>
+							<xsl:when test="not(contains(., 'Fil:'))">
+								<!-- Si no lo tiene, lo agrego -->
+								<dc:description><xsl:value-of select="concat('Fil: ', .)" /></dc:description>
+							</xsl:when>
+							<xsl:otherwise>
+								<dc:description><xsl:value-of select="." /></dc:description>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:for-each>
 				</xsl:otherwise>
 			</xsl:choose>
@@ -126,8 +131,8 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element/doc:field[@name='value']">
 				<dc:description><xsl:value-of select="." /></dc:description>
 			</xsl:for-each>
-			<!-- dc.description.* (not provenance)-->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name!='provenance']/doc:element/doc:field[@name='value']">
+			<!-- dc.description.* (not provenance) and (not filiation)-->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name!='provenance' and @name!='filiation']/doc:element/doc:field[@name='value']">
 				<dc:description><xsl:value-of select="." /></dc:description>
 			</xsl:for-each>
             <!-- dc.identifier -->
