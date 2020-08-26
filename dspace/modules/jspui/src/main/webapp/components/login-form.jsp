@@ -18,7 +18,7 @@
     <label for="tlogin_email" class="control-label">
       <fmt:message key="jsp.components.login-form.email"/>
     </label>
-    <input type="text" class="form-control" name="login_email" id="tlogin_email" tabindex="1" placeholder="example@gmail.com">
+    <input type="text" class="form-control" name="login_email" id="tlogin_email" tabindex="1">
     <span class="help-block"></span>
   </div>
   <div class="form-group">
@@ -33,7 +33,7 @@
       <fmt:message key="jsp.components.login-form.forgot"/>
     </a>
   </div>
-  <button type="submit" class="btn btn-success btn-block" name="login_submit" tabindex="3">
+  <button type="submit" class="btn btn-unrn-reverse" name="login_submit" tabindex="3">
     <fmt:message key="jsp.components.login-form.login"/>
   </button>
 </form>
