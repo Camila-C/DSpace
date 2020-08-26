@@ -53,7 +53,7 @@ main#content {
 
 /* INICIO: BOTÓN UNRN */
 .btn-unrn {
-  background-color: #fff;
+  background-color: transparent;
   color: #eb2141;
   border-color: #eb2141;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
@@ -173,6 +173,11 @@ a.btn-social,
   filter: brightness(120%);
 }
 /* FIN: BOTÓN SOCIAL */
+
+/* TEXT UNRN */
+.text-unrn {
+  color: #eb2141;
+}
 
 /****************************************/
 /*******      H E A D E R   *************/
