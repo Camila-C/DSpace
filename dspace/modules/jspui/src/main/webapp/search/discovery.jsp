@@ -592,7 +592,7 @@
 					String fkey = "jsp.search.facet.refine."+f;
 	%>
 		<div id="facet_<%= f %>">
-			<h3><fmt:message key="<%= fkey %>" /></h3>
+			<h4><fmt:message key="<%= fkey %>" /></h4>
 			<ul class="list-group">
 			<%
 					int idx = 1;
