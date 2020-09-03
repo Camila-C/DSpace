@@ -306,12 +306,16 @@ header .container > .navbar-header {
 }
 /* Jumbotron Home */
 section#home .jumbotron {
-  background-image: url("../../../image/header/fondo2.jpg");
-  background-position: 50% 0px;
-  background-color: rgba(0, 0, 0, 0.51);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image:
+          linear-gradient(rgba(27, 36, 55, 0.4), rgba(27, 36, 55, 0.4)), url("../../../image/header/rid-background.jpg");
+  background-position: 50% 0;
   background-size: cover;
-  padding: 100px 25px;
+  padding: 48px 25px;
   margin-bottom: 0;
+  height: 500px;
 }
 section#home .jumbotron h2{
   text-shadow: 0 2px 2px rgba(189,189,189,0.5);

@@ -15,47 +15,32 @@
   -    recent.submissions - RecetSubmissions
   --%>
 
-<%@ page import="org.dspace.core.factory.CoreServiceFactory"%>
-<%@ page import="org.dspace.core.service.NewsService"%>
-<%@ page import="org.dspace.content.service.CommunityService"%>
+<%@ page import="org.apache.commons.lang.StringUtils"%>
+<%@ page import="org.dspace.app.webui.components.RecentSubmissions"%>
+<%@ page import="org.dspace.app.webui.util.UIUtil"%>
+<%@ page import="org.dspace.browse.ItemCounter"%>
+<%@ page import="org.dspace.content.Community"%>
+<%@ page import="org.dspace.content.Item"%>
 <%@ page import="org.dspace.content.factory.ContentServiceFactory"%>
-<%@ page import="org.dspace.content.service.ItemService"%>
-<%@ page import="org.dspace.core.Utils"%>
-<%@ page import="org.dspace.content.Bitstream"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
-<%@ page import="java.io.File" %>
-<%@ page import="java.util.Enumeration"%>
-<%@ page import="java.util.Locale"%>
-<%@ page import="java.util.List"%>
-<%@ page import="javax.servlet.jsp.jstl.core.*" %>
-<%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
-<%@ page import="org.apache.commons.lang.StringUtils" %>
-<%@ page import="org.dspace.core.I18nUtil" %>
-<%@ page import="org.dspace.app.webui.util.UIUtil" %>
-<%@ page import="org.dspace.app.webui.components.RecentSubmissions" %>
-<%@ page import="org.dspace.content.Community" %>
-<%@ page import="org.dspace.browse.ItemCounter" %>
-<%@ page import="org.dspace.content.Item" %>
-<%@ page import="org.dspace.services.ConfigurationService" %>
+<%@ page import="org.dspace.content.service.CommunityService" %>
+<%@ page import="org.dspace.content.service.ItemService"%>
+<%@ page import="org.dspace.core.Utils"%>
+<%@ page import="org.dspace.services.ConfigurationService"%>
 <%@ page import="org.dspace.services.factory.DSpaceServicesFactory" %>
-
+<%@ page import="javax.servlet.jsp.jstl.core.Config" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.Arrays"%>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.util.*" %>
 
 <%
     List<Community> communities = (List<Community>) request.getAttribute("communities");
 
     Locale sessionLocale = UIUtil.getSessionLocale(request);
     Config.set(request.getSession(), Config.FMT_LOCALE, sessionLocale);
-    // NewsService newsService = CoreServiceFactory.getInstance().getNewsService();
-    // String topNews = newsService.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-top.html"));
-    // String sideNews = newsService.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-side.html"));
 
     ConfigurationService configurationService = DSpaceServicesFactory.getInstance().getConfigurationService();
     
@@ -88,11 +73,6 @@
 
 <%-- La propiedad navbar="off" permite acceder a la versión minimal de navbar (es decir, sin el input search en el header) --%>
 <dspace:layout navbar="off" locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
-  <%--
-    <div class="jumbotron">
-      <%= topNews %>
-    </div> 
-  --%>
   <!-- INICIO -->
   <section id="home">
     <div class="jumbotron text-center">
@@ -139,7 +119,6 @@
         </div>
         <div class="row row-equal">
         <%
-            boolean showLogos = configurationService.getBooleanProperty("jspui.home-page.logos", true);
             String name = "";
             for (Community com : communities) {
               name = com.getName();
@@ -197,7 +176,9 @@
               ENV&Iacute;OS/
               <span>RECIENTES</span>
             </h3>
-            <%--<a class="btn-show-more hidden-xs hidden-sm" href="">VER TODOS ></a>--%>
+            <a class="btn-show-more hidden-xs hidden-sm" href="<%= request.getContextPath() %>/simple-search">
+              VER TODOS >
+            </a>
           </div>
         </div>
       </div>
@@ -211,9 +192,9 @@
             displayTitle = "Sin título";
           }
           // Resumen
-          String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
-          if (displayAbstract == null) {
-            displayAbstract = "Sin resumen";
+          String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "resumen", Item.ANY);
+          if (displayAbstract == null || displayAbstract.equals("-")) {
+            displayAbstract = "Sin resumen en español";
           }
           // Tipo
           String displayType = itemService.getMetadataFirstValue(item, "dc", "type", null, Item.ANY);
@@ -240,7 +221,7 @@
               <div class="title-group col-md-10">
                 <div class="line-short visible-xs"></div>
                 <h4><%=displayTitle%></h4>
-                <p><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 270))%></p>
+                <p><%= Utils.addEntities(StringUtils.abbreviate(displayAbstract, 270))%></p>
               </div>
             </div>
           </a>
