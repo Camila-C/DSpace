@@ -41,20 +41,22 @@
 <!DOCTYPE html>
 	<html lang="es">
     <head>
-		<title><%= siteName %>: <%= title %></title>
-		<meta charset="UTF-8">
-		<meta name="Generator" content="<%= generator %>" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="<%= request.getContextPath() %>/favicon.ico" type="image/x-icon"/>
+			<title><%= siteName %>: <%= title %></title>
+			<meta charset="UTF-8">
+			<meta name="Generator" content="<%= generator %>" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="shortcut icon" href="<%= request.getContextPath() %>/favicon.ico" type="image/x-icon"/>
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/jquery-ui-1.10.3.custom/redmond/jquery-ui-1.10.3.custom.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" />
-		<!-- Tema del RID -->
-		<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css" type="text/css" />
-		<!-- Fontawesome 5.10.1 -->
-		<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/fontawesome-free-5.10.1/css/all.min.css" type="text/css" />
-		<!-- Academicons 1.8.6 -->
-		<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/academicons-1.8.6/css/academicons.min.css"/>
+			<!-- Tema del RID -->
+			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css" type="text/css" />
+			<!-- Fontawesome 5.10.1 -->
+			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/fontawesome-free-5.10.1/css/all.min.css" type="text/css" />
+			<!-- Academicons 1.8.6 -->
+			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/academicons-1.8.6/css/academicons.min.css"/>
+			<!-- My Flaticons -->
+			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/myFlaticons/flaticon.css"/>
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
 		<%	if (!"NONE".equals(feedRef)) {
 				for (int i = 0; i < parts.size(); i+= 3) {
@@ -76,14 +78,14 @@
 				if (extraHeadData != null) { %>
 					<%= extraHeadData %>
 		<%  } %>
-		<script src="<%= request.getContextPath() %>/static/js/jquery/jquery-1.10.2.min.js"></script>
-		<script src="<%= request.getContextPath() %>/static/js/jquery/jquery-ui-1.10.3.custom.min.js"></script>
-		<script src="<%= request.getContextPath() %>/static/js/bootstrap/bootstrap.min.js"></script>
-		<script src="<%= request.getContextPath() %>/static/js/holder.js"></script>
-		<script src="<%= request.getContextPath() %>/utils.js"></script>
-		<script src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
-		<script src="<%= request.getContextPath() %>/static/js/rid-unrn-theme.js"> </script>
-		<dspace:include page="/layout/google-analytics-snippet.jsp" />
+			<script src="<%= request.getContextPath() %>/static/js/jquery/jquery-1.10.2.min.js"></script>
+			<script src="<%= request.getContextPath() %>/static/js/jquery/jquery-ui-1.10.3.custom.min.js"></script>
+			<script src="<%= request.getContextPath() %>/static/js/bootstrap/bootstrap.min.js"></script>
+			<script src="<%= request.getContextPath() %>/static/js/holder.js"></script>
+			<script src="<%= request.getContextPath() %>/utils.js"></script>
+			<script src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
+			<script src="<%= request.getContextPath() %>/static/js/rid-unrn-theme.js"> </script>
+			<dspace:include page="/layout/google-analytics-snippet.jsp" />
 
 		<%  if (extraHeadDataLast != null) { %>
 					<%= extraHeadDataLast %>

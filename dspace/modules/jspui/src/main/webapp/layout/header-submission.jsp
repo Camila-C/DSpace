@@ -53,6 +53,8 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/fontawesome-free-5.10.1/css/all.min.css" type="text/css" />
     <!-- Academicons 1.8.6 -->
 		<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/academicons-1.8.6/css/academicons.min.css"/>
+    <!-- My Flaticons -->
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/myFlaticons/flaticon.css"/>
     <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
     <%
         if (!"NONE".equals(feedRef)) {
