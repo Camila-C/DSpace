@@ -240,9 +240,10 @@ header .navbar-header .navbar-text {
 }
 header .navbar-collapse {
   border-top: 1px solid #eaeaea !important;
+  background-color: #1b2437;
 }
 header .nav > li > a {
-  color: #eb2141;
+  color: #ffffff;
   font-weight: 500;
   text-transform: uppercase;
 }
