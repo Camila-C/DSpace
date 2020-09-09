@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 03/09/2020 17:03
+  	Creation date: 09/09/2020 12:37
   	*/
 
 @font-face {
@@ -30,12 +30,10 @@ font-style: normal;
 margin-left: 20px;
 }
 
-.flaticon-instagram:before { content: "\f100"; }
-.flaticon-facebook:before { content: "\f101"; }
-.flaticon-gorjeo:before { content: "\f102"; }
-.flaticon-linkedin:before { content: "\f103"; }
-.flaticon-youtube:before { content: "\f104"; }
-.flaticon-libro:before { content: "\f105"; }
-.flaticon-investigacion:before { content: "\f106"; }
-.flaticon-presentacion:before { content: "\f107"; }
-.flaticon-sitio-web:before { content: "\f108"; }
+.flaticon-libro:before { content: "\f100"; }
+.flaticon-investigacion:before { content: "\f101"; }
+.flaticon-presentacion:before { content: "\f102"; }
+.flaticon-sitio-web:before { content: "\f103"; }
+.flaticon-ley:before { content: "\f104"; }
+.flaticon-analitica:before { content: "\f105"; }
+.flaticon-navegador:before { content: "\f106"; }

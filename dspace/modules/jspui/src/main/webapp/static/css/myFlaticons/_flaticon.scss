@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 03/09/2020 17:03
+    Creation date: 09/09/2020 12:37
     */
 
     @font-face {
@@ -37,22 +37,18 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-instagram:before { content: "\f100"; }
-.flaticon-facebook:before { content: "\f101"; }
-.flaticon-gorjeo:before { content: "\f102"; }
-.flaticon-linkedin:before { content: "\f103"; }
-.flaticon-youtube:before { content: "\f104"; }
-.flaticon-libro:before { content: "\f105"; }
-.flaticon-investigacion:before { content: "\f106"; }
-.flaticon-presentacion:before { content: "\f107"; }
-.flaticon-sitio-web:before { content: "\f108"; }
+    .flaticon-libro:before { content: "\f100"; }
+.flaticon-investigacion:before { content: "\f101"; }
+.flaticon-presentacion:before { content: "\f102"; }
+.flaticon-sitio-web:before { content: "\f103"; }
+.flaticon-ley:before { content: "\f104"; }
+.flaticon-analitica:before { content: "\f105"; }
+.flaticon-navegador:before { content: "\f106"; }
     
-    $font-Flaticon-instagram: "\f100";
-    $font-Flaticon-facebook: "\f101";
-    $font-Flaticon-gorjeo: "\f102";
-    $font-Flaticon-linkedin: "\f103";
-    $font-Flaticon-youtube: "\f104";
-    $font-Flaticon-libro: "\f105";
-    $font-Flaticon-investigacion: "\f106";
-    $font-Flaticon-presentacion: "\f107";
-    $font-Flaticon-sitio-web: "\f108";
+    $font-Flaticon-libro: "\f100";
+    $font-Flaticon-investigacion: "\f101";
+    $font-Flaticon-presentacion: "\f102";
+    $font-Flaticon-sitio-web: "\f103";
+    $font-Flaticon-ley: "\f104";
+    $font-Flaticon-analitica: "\f105";
+    $font-Flaticon-navegador: "\f106";
