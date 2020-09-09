@@ -240,7 +240,7 @@ header .navbar ul li p > .btn-unrn-reverse {
 }
 header .navbar-header {
   width: 100%;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 header .navbar-header .navbar-text {
   font-size: 17px;
@@ -321,8 +321,8 @@ header .container > .navbar-header {
 footer {
   flex-shrink: 0;
   background-color: #1b2437;
-  padding-top: 0px !important;
-  padding: 90px 0 20px 0;
+  padding-top: 0 !important;
+  padding-bottom: 20px;
   font-size: 15px;
   line-height: 24px;
   color: #ffffff;
@@ -338,7 +338,7 @@ footer h6 {
   color: #767c87;
   font-size: 14px;
   text-transform: uppercase;
-  margin: 30px 0px 15px 0px;
+  margin: 30px 0 15px 0;
   padding-bottom: 9px;
   border-bottom: 1px solid #323a4b;
   letter-spacing: 3px;
@@ -390,7 +390,7 @@ footer .box-logos {
   margin-bottom: 90px;
   background-color: #182031;
   text-align: center;
-  padding: 28px 0px;
+  padding: 28px 0;
 }
 footer .box-logos .box-logo {
   display: inline-block;
@@ -463,78 +463,6 @@ section#home .jumbotron p {
   color: #fff;
 }
 /* FIN: JUMBOTRON HOME */
-
-/* INICIO: COMUNIDADES */
-#four-communities .row-equal a {
-  display: block;
-  text-decoration: none;
-  color: #000;
-  height: 100%;
-  padding: 10px 0;
-}
-.section-title {
-  padding-bottom: 10px;
-}
-.section-title p {
-	color: #777;
-	font-size: 16px;
-}
-.section-title h4 {
-	font-size: 40px;
-	position: relative;
-	padding-bottom: 20px;
-	margin-bottom: 20px;
-	font-weight: 600;
-}
-.section-title h4:before {
-	position: absolute;
-	content: "";
-	width: 60px;
-	height: 2px;
-	background-color: #ff3636;
-	bottom: 0;
-	left: 50%;
-	margin-left: -30px;
-}
-.section-title h4:after {
-	position: absolute;
-  content: "";
-	background-color: #eb2141;
-	width: 10px;
-	height: 10px;
-	bottom: -4px;
-	left: 50%;
-	margin-left: -5px;
-	border-radius: 50%;
-}
-.single-service {
-  border: 1px solid #eee;
-	padding: 30px 10px;
-  height: 100%;
-	position: relative;
-	text-align: center;
-}
-.single-service i.fas, .single-service i.fab {
-  width: 60px;
-  height: 60px;
-  background-color: #eb2141;
-  font-size: 25px;
-  color: #fff;
-  line-height: 60px;
-  text-align:center;
-  margin-bottom:20px;
-  -webkit-transition: .4s;
-	transition: .4s;
-}
-.single-service:hover i.fas, .single-service:hover i.fab {
-	border-radius: 50%;
-}
-.single-service h4 {
-	font-size: 22px;
-	margin-bottom: 10px;
-	font-weight: 500;
-}
-/* FIN: COMUNIDADES */
 
 /* INICIO: PARALLAX */
 .bgimg-1 {
@@ -664,7 +592,7 @@ section#home .jumbotron p {
 .submissions-list .group-submission .type-group .date {
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 .submissions-list .line-short {
@@ -676,7 +604,7 @@ section#home .jumbotron p {
 .submissions-list .group-submission .type-group .type {
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   color: #EB1F3F;
   text-transform: uppercase;
 }
@@ -837,7 +765,7 @@ section#home .jumbotron p {
 }
 #accordion-communities .panel-title a:first-child:after {
   content: "\f068";
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   right: 0;
   padding: 0 10px;
@@ -845,7 +773,7 @@ section#home .jumbotron p {
 }
 #accordion-communities .panel-title a:first-child.collapsed:after {
   content: "\f067";
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   color: #eb2141;
 }
