@@ -9,7 +9,7 @@ body {
 }
 main#content {
   flex: 1 0 auto;
-  padding-bottom: 0px;
+  padding-bottom: 0;
 }
 #page-content {
   padding-top: 20px;
@@ -17,10 +17,13 @@ main#content {
 }
 
 #page-content .jumbotron {
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
+/****************************************/
+/************* H E L P E R S ************/
+/****************************************/
 /* INICIO: TÍTULOS */
 #page-content h2,
 #page-content h3 {
@@ -60,7 +63,6 @@ main#content {
 }
 .btn-unrn:hover {
   background-color: #eb2141;
-  text-shadow: 0 1px 0 #fff;
   color: #fff;
   border-color: #eb2141;
 }
@@ -72,7 +74,6 @@ main#content {
 }
 .btn-unrn-reverse:hover {
   background-color: #fff;
-  text-shadow: 0 1px 0 #eb2141;
   color: #eb2141;
   border-color: #eb2141;
 }
@@ -179,6 +180,14 @@ a.btn-social,
   color: #eb2141;
 }
 
+/* BREADCRUMS */
+.main-breadcrumb {
+  background-color: #1b2437;
+}
+.main-breadcrumb .breadcrumb {
+  background-color: transparent;
+}
+
 /****************************************/
 /*******      H E A D E R   *************/
 /****************************************/
@@ -231,7 +240,7 @@ header .navbar ul li p > .btn-unrn-reverse {
 }
 header .navbar-header {
   width: 100%;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 header .navbar-header .navbar-text {
   font-size: 17px;
@@ -240,9 +249,10 @@ header .navbar-header .navbar-text {
 }
 header .navbar-collapse {
   border-top: 1px solid #eaeaea !important;
+  background-color: #1b2437;
 }
 header .nav > li > a {
-  color: #eb2141;
+  color: #ffffff;
   font-weight: 500;
   text-transform: uppercase;
 }
@@ -304,34 +314,6 @@ header .container > .navbar-header {
     margin: 9px 0
   }
 }
-/* Jumbotron Home */
-section#home .jumbotron {
-  background-image: url("../../../image/header/fondo2.jpg");
-  background-position: 50% 0px;
-  background-color: rgba(0, 0, 0, 0.51);
-  background-size: cover;
-  padding: 100px 25px;
-  margin-bottom: 0;
-}
-section#home .jumbotron h2{
-  text-shadow: 0 2px 2px rgba(189,189,189,0.5);
-  font-size: 50px;
-  margin-top: 0;
-  color: #fff;
-}
-section#home .jumbotron form {
-  padding-top: 20px;
-}
-section#home .jumbotron p {
-  color: #fff;
-}
-/* Breadcrums */
-.main-breadcrumb {
-  background-color: #1b2437;
-}
-.main-breadcrumb .breadcrumb {
-  background-color: transparent;
-}
 
 /****************************************/
 /*******      F O T T E R     ***********/
@@ -339,8 +321,8 @@ section#home .jumbotron p {
 footer {
   flex-shrink: 0;
   background-color: #1b2437;
-  padding-top: 0px !important;
-  padding: 90px 0 20px 0;
+  padding-top: 0 !important;
+  padding-bottom: 20px;
   font-size: 15px;
   line-height: 24px;
   color: #ffffff;
@@ -356,7 +338,7 @@ footer h6 {
   color: #767c87;
   font-size: 14px;
   text-transform: uppercase;
-  margin: 30px 0px 15px 0px;
+  margin: 30px 0 15px 0;
   padding-bottom: 9px;
   border-bottom: 1px solid #323a4b;
   letter-spacing: 3px;
@@ -408,7 +390,7 @@ footer .box-logos {
   margin-bottom: 90px;
   background-color: #182031;
   text-align: center;
-  padding: 28px 0px;
+  padding: 28px 0;
 }
 footer .box-logos .box-logo {
   display: inline-block;
@@ -422,7 +404,6 @@ footer .box-logos .box-logo a {
 footer .box-logos .box-logo img {
    width: 90%;
 }
-/*** FIN FOOTER ***/
 
 /****************************************/
 /*******        H O M E       ***********/
@@ -456,77 +437,32 @@ footer .box-logos .box-logo img {
 }
 /* FIN: HELPERS */
 
-/* INICIO: COMUNIDADES */
-#four-communities .row-equal a {
-  display: block;
-  text-decoration: none;
-  color: #000;
-  height: 100%;
-  padding: 10px 0px;
+/* INICIO: JUMBOTRON HOME */
+section#home .jumbotron {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image:
+          linear-gradient(rgba(27, 36, 55, 0.4), rgba(27, 36, 55, 0.4)), url("../../../image/header/rid-background.jpg");
+  background-position: 50% 0;
+  background-size: cover;
+  padding: 48px 25px;
+  margin-bottom: 0;
+  height: 500px;
 }
-.section-title {
-  margin-bottom: 60px;
-}
-.section-title p {
-	color: #777;
-	font-size: 16px;
-}
-.section-title h4 {
-	font-size: 40px;
-	position: relative;
-	padding-bottom: 20px;
-	margin-bottom: 20px;
-	font-weight: 600;
-}
-.section-title h4:before {
-	position: absolute;
-	content: "";
-	width: 60px;
-	height: 2px;
-	background-color: #ff3636;
-	bottom: 0;
-	left: 50%;
-	margin-left: -30px;
-}
-.section-title h4:after {
-	position: absolute;
-  content: "";
-	background-color: #eb2141;
-	width: 10px;
-	height: 10px;
-	bottom: -4px;
-	left: 50%;
-	margin-left: -5px;
-	border-radius: 50%;
-}
-.single-service {
-  border: 1px solid #eee;
-	padding: 30px 10px;
-  height: 100%;
-	position: relative;
-	text-align: center;
-}
-.single-service i.fas, .single-service i.fab {
-  width: 60px;
-  height: 60px;
-  background-color: #eb2141;
-  font-size: 25px;
+section#home .jumbotron h2{
+  text-shadow: 0 2px 2px rgba(189,189,189,0.5);
+  font-size: 50px;
+  margin-top: 0;
   color: #fff;
-  line-height: 60px;
-  text-align:center;
-  margin-bottom:20px;
-  -webkit-transition: .4s;
-	transition: .4s;
 }
-.single-service:hover i.fas, .single-service:hover i.fab {
-	border-radius: 50%;
+section#home .jumbotron form {
+  padding-top: 20px;
 }
-.single-service h4 {
-	font-size: 22px;
-	margin-bottom: 10px;
-	font-weight: 500;
+section#home .jumbotron p {
+  color: #fff;
 }
-/* FIN: COMUNIDADES */
+/* FIN: JUMBOTRON HOME */
 
 /* INICIO: PARALLAX */
 .bgimg-1 {
@@ -586,7 +522,7 @@ footer .box-logos .box-logo img {
     background-attachment: fixed;
   }
   .caption {
-    padding: 20px 0px;
+    padding: 20px 0;
   }
   .caption h1 {
     font-size: 50px;
@@ -630,7 +566,6 @@ footer .box-logos .box-logo img {
   margin-top: 45px;
   display: block;
 }
-/*Listado de envios recientes*/
 .submissions-list a {
   color: inherit;
   text-decoration: none !important;
@@ -642,7 +577,7 @@ footer .box-logos .box-logo img {
   line-height: 23px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 0px;
+  margin-top: 0;
   font-weight: bold;
 }
 .submissions-list p {
@@ -657,7 +592,7 @@ footer .box-logos .box-logo img {
 .submissions-list .group-submission .type-group .date {
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 .submissions-list .line-short {
@@ -669,11 +604,51 @@ footer .box-logos .box-logo img {
 .submissions-list .group-submission .type-group .type {
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   color: #EB1F3F;
   text-transform: uppercase;
 }
 /* FIN: ENVIOS RECIENTES */
+
+/* INICIO: COMUNIDADES PRINCIPALES */
+.communities-section .bg-darken {
+  background: #1b2437 !important;
+}
+.communities-section .bg-primary {
+  background: #eb2141 !important;
+}
+.communities-section .no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.communities-section .services {
+  padding: 48px 24px 48px 24px;
+}
+.communities-section a {
+  text-decoration: none;
+}
+.communities-section .services .services-body {
+  color: #fff;
+  margin-top: 10px;
+  padding: 5px;
+}
+.communities-section .services .services-body h3 {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.5;
+}
+.communities-section .services .services-body p {
+  font-size: 16px;
+}
+.communities-section .services [class^="flaticon-"]:before,
+.communities-section .services [class*=" flaticon-"]:before,
+.communities-section .services [class^="flaticon-"]:after,
+.communities-section .services [class*=" flaticon-"]:after {
+  font-size: 50px;
+  margin-left: 0;
+  color: #ffffff;
+}
+/* FIN: COMUNIDADES PRINCIPALES */
 
 /****************************************/
 /*******        F A Q S       ***********/
@@ -790,7 +765,7 @@ footer .box-logos .box-logo img {
 }
 #accordion-communities .panel-title a:first-child:after {
   content: "\f068";
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   right: 0;
   padding: 0 10px;
@@ -798,7 +773,7 @@ footer .box-logos .box-logo img {
 }
 #accordion-communities .panel-title a:first-child.collapsed:after {
   content: "\f067";
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   color: #eb2141;
 }
@@ -882,7 +857,7 @@ footer .box-logos .box-logo img {
 }
 .tagsinput .tag input[type="text"] {
   background-color: transparent;
-  border-width: 0px;
+  border-width: 0;
   padding: 0;
 }
 .tagsinput .tag button {
@@ -964,4 +939,72 @@ footer .box-logos .box-logo img {
   font-size: 30px;
   font-weight: 700;
   color: #000 !important;
+}
+
+.area-section {
+  padding: 0;
+}
+.area-section p {
+  font-size: 18px;
+  margin: 0 0 16px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #666666;
+}
+.area-section .img {
+  display: flex;
+  background-image: url("https://www.unrn.edu.ar/images/noticia/banner_1338.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left center;
+  filter: grayscale(100%);
+}
+.area-section .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.area-section .area-text {
+  padding: 48px 32px 48px 15px;
+}
+.area-section .area-text h2 {
+  margin-bottom: 1.5rem !important;
+  font-size: 40px;
+}
+.area-section .area-text .row {
+  margin-top: 3rem !important;
+}
+.area-section .area-body {
+  display: flex;
+  margin-bottom: 30px;
+}
+.area-section .area-body .icon {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 80px;
+  height: 80px;
+  background: #eb2141;
+  border-radius: 50%;
+  margin-top: 1rem !important;
+}
+.area-section .area-body .icon [class^="flaticon-"]:before,
+.area-section .area-body .icon [class*=" flaticon-"]:before,
+.area-section .area-body .icon [class^="flaticon-"]:after,
+.area-section .area-body .icon [class*=" flaticon-"]:after {
+  font-size: 35px;
+  margin-left: 0;
+  color: #ffffff;
+}
+.area-section .area-body .text {
+  width: calc(100% - 80px);
+  padding-left: 1rem !important;
+}
+.area-section .area-text [class*='col-'] a {
+  text-decoration: none;
+  color: #333333;
+}
+.area-section .area-text [class*='col-'] a:hover {
+  color: #eb2141;
 }

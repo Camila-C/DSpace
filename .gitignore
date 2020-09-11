@@ -17,6 +17,9 @@ tags
 .idea/
 overlays/
 
+## Ignore project files created by VSCode
+.vscode/
+
 ## Ignore project files created by NetBeans
 nbproject/private/
 build/

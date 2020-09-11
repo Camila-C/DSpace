@@ -15,47 +15,27 @@
   -    recent.submissions - RecetSubmissions
   --%>
 
-<%@ page import="org.dspace.core.factory.CoreServiceFactory"%>
-<%@ page import="org.dspace.core.service.NewsService"%>
-<%@ page import="org.dspace.content.service.CommunityService"%>
+<%@ page import="org.apache.commons.lang.StringUtils"%>
+<%@ page import="org.dspace.app.webui.components.RecentSubmissions"%>
+<%@ page import="org.dspace.app.webui.util.UIUtil"%>
+<%@ page import="org.dspace.content.Item"%>
 <%@ page import="org.dspace.content.factory.ContentServiceFactory"%>
-<%@ page import="org.dspace.content.service.ItemService"%>
-<%@ page import="org.dspace.core.Utils"%>
-<%@ page import="org.dspace.content.Bitstream"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
-<%@ page import="java.io.File" %>
-<%@ page import="java.util.Enumeration"%>
-<%@ page import="java.util.Locale"%>
-<%@ page import="java.util.List"%>
-<%@ page import="javax.servlet.jsp.jstl.core.*" %>
-<%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
-<%@ page import="org.apache.commons.lang.StringUtils" %>
-<%@ page import="org.dspace.core.I18nUtil" %>
-<%@ page import="org.dspace.app.webui.util.UIUtil" %>
-<%@ page import="org.dspace.app.webui.components.RecentSubmissions" %>
-<%@ page import="org.dspace.content.Community" %>
-<%@ page import="org.dspace.browse.ItemCounter" %>
-<%@ page import="org.dspace.content.Item" %>
-<%@ page import="org.dspace.services.ConfigurationService" %>
+<%@ page import="org.dspace.content.service.ItemService"%>
+<%@ page import="org.dspace.core.Utils"%>
+<%@ page import="org.dspace.services.ConfigurationService"%>
 <%@ page import="org.dspace.services.factory.DSpaceServicesFactory" %>
-
+<%@ page import="javax.servlet.jsp.jstl.core.Config" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.Arrays"%>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.util.*" %>
 
 <%
-    List<Community> communities = (List<Community>) request.getAttribute("communities");
-
     Locale sessionLocale = UIUtil.getSessionLocale(request);
     Config.set(request.getSession(), Config.FMT_LOCALE, sessionLocale);
-    // NewsService newsService = CoreServiceFactory.getInstance().getNewsService();
-    // String topNews = newsService.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-top.html"));
-    // String sideNews = newsService.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-side.html"));
 
     ConfigurationService configurationService = DSpaceServicesFactory.getInstance().getConfigurationService();
     
@@ -68,35 +48,16 @@
         String allFormats = StringUtils.join(formats, ",");
         feedData = "ALL:" + allFormats;
     }
-    
-    ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
-
+  
     RecentSubmissions submissions = (RecentSubmissions) request.getAttribute("recent.submissions");
     ItemService itemService = ContentServiceFactory.getInstance().getItemService();
-    CommunityService communityService = ContentServiceFactory.getInstance().getCommunityService();
-
-  // Creo un ARRAY con los nombres de las 4 comunidades importantes
-  ArrayList<String> fourCommunities = new ArrayList<String>(
-          Arrays.asList(
-                  "Tesis y Trabajos finales",
-                  "Libros",
-                  "Artículos de revista",
-                  "Congresos y jornadas"
-          )
-  );
 %>
 
 <%-- La propiedad navbar="off" permite acceder a la versión minimal de navbar (es decir, sin el input search en el header) --%>
 <dspace:layout navbar="off" locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
-  <%--
-    <div class="jumbotron">
-      <%= topNews %>
-    </div> 
-  --%>
   <!-- INICIO -->
   <section id="home">
     <div class="jumbotron text-center">
-      <div class="pattern"></div>
       <h2><fmt:message key="jsp.layout.header-default.brand.heading" /></h2>
       <p class="container"><fmt:message key="jsp.layout.header-default.brand.heading2" /></p>
       <%-- Search Box --%>
@@ -121,61 +82,134 @@
       </form>
     </div>
   </section>
-  <!-- COMUNIDADES -->
-  <section class="pt-100 pb-100" id="four-communities">
-    <% if (communities != null && communities.size() != 0) { %>
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-8 mx-auto text-center">
-            <div class="section-title">
-              <h4><fmt:message key="jsp.home.com1"/></h4>
+  <!-- Nuevas Comunidades -->
+  <section class="communities-section">
+    <div class="row row-equal no-gutters">
+      <div class="col-md-3 col-sm-6 col-xs-12 bg-primary">
+        <a href="<%= request.getContextPath() %>/handle/20.500.12049/49">
+          <div class="services text-center">
+            <div class="icon">
+              <span class="flaticon-investigacion"></span>
+            </div>
+            <div class="services-body">
+              <h3>Articulos de Revista</h3>
               <p>
-                <fmt:message key="jsp.home.com2">
-                  <fmt:param><%= request.getContextPath() %>/community-list</fmt:param>
-                </fmt:message>
+                Colecci&oacute;n que contiene art&iacute;culos cient&iacute;ficos y m&aacute;s producci&oacute;n cient&iacute;fico-t&eacute;cnica, tanto de
+                investigadores como de becarios de la Universidad Nacional de R&iacute;o Negro y de otras instituciones.
               </p>
             </div>
           </div>
-        </div>
-        <div class="row row-equal">
-        <%
-            boolean showLogos = configurationService.getBooleanProperty("jspui.home-page.logos", true);
-            String name = "";
-            for (Community com : communities) {
-              name = com.getName();
-              // Pregunto si el nombre se encuentra en las 4 comunidades mas importantes
-              if (fourCommunities.contains(name)) {
-        %>
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <a href="<%= request.getContextPath() %>/handle/<%= com.getHandle() %>">
-                  <div class="single-service">
-                    <%  // FIXME: Buscar una forma mejor
-                        if (name.equalsIgnoreCase("Tesis y Trabajos finales")) { %>
-                          <i class="fas fa-user-graduate"></i>
-                    <%  } else if(name.equalsIgnoreCase("Libros")) { %>
-                          <i class="fas fa-book"></i>
-                    <%  } else if(name.equalsIgnoreCase("Artículos de revista")) { %>
-                          <i class="fas fa-paste"></i>
-                    <%  } else { %>
-                          <i class="fab fa-react"></i>
-                    <%  } %>
-                    <h4>
-                      <%= com.getName() %>
-                      <% if (configurationService.getBooleanProperty("webui.strengths.show")) { %>
-                        <br><span class="badge"><%= ic.getCount(com) %></span>
-                      <% } %>
-                    </h4>
-                    <p><%= communityService.getMetadata(com, "short_description") %></p>
-                  </div>
-                </a>
-              </div>
-        <%
-              }
-            } 
-        %>
-        </div>
+        </a>
       </div>
-    <% } %>
+      <div class="col-md-3 col-sm-6 col-xs-12 bg-darken">
+        <a href="<%= request.getContextPath() %>/handle/20.500.12049/50">
+          <div class="services text-center">
+            <div class="icon">
+              <span class="flaticon-presentacion"></span>
+            </div>
+            <div class="services-body">
+              <h3>Congresos y Jornadas</h3>
+              <p>
+                Descubr&iacute; todo documento y material publicado en congresos, jornadas, conferencias, etc. brindadas
+                por la Universidad Nacional de R&iacute;o Negro u otras filiaciones institucionales.
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12 bg-primary">
+        <a href="<%= request.getContextPath() %>/handle/20.500.12049/13">
+          <div class="services text-center">
+            <div class="icon">
+              <span class="flaticon-libro"></span>
+            </div>
+            <div class="services-body">
+              <h3>Libros</h3>
+              <p>
+                Encontr&aacute; libros y partes de libros, editados por otras filiaciones, y material aportado por el
+                CELEI (Centro de Estudios Latinoamericanos de Educaci&oacute;n Inclusiva) en formato digital.
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12 bg-darken">
+        <a href="<%= request.getContextPath() %>/handle/20.500.12049/3">
+          <div class="services text-center">
+            <div class="icon">
+              <span class="flaticon-sitio-web"></span>
+            </div>
+            <div class="services-body">
+              <h3>Tesis y trabajos finales</h3>
+              <p>
+                Naveg&aacute; por tesis, tesinas y trabajos finales de carrera de grado, maestr&iacute;a, doctorales
+                y post-doctorados de las distintas sedes de la Universidad Nacional de R&iacute;o Negro, as&iacute;
+                c&oacute;mo tambi&eacute;n de otras filiaciones.
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Areas de la UNRN -->
+  <section class="area-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 area-text">
+          <h2>&Aacute;reas dentro del RID</h2>
+          <p>
+            Distintas &aacute;reas o departamentos, que componen la estructura de la Universidad Nacional de R&iacute;o
+            Negro, son considerados espacios de producci&oacute;n y centros concentradores de contenido.
+          </p>
+          <div class="row">
+            <div class="col-md-12">
+              <a href="<%= request.getContextPath() %>/handle/20.500.12049/54">
+                <div class="area-body">
+                  <div class="icon"><span class="flaticon-navegador"></span></div>
+                  <div class="text">
+                    <h3>Editorial UNRN</h3>
+                    <p>
+                      Sello creado para editar, publicar y promover obras concebidas en el &aacute;mbito
+                      acad&eacute;mico
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-12">
+              <a href="<%= request.getContextPath() %>/handle/20.500.12049/237">
+                <div class="area-body">
+                  <div class="icon"><span class="flaticon-ley"></span></div>
+                  <div class="text">
+                    <h3>Digesto UNRN</h3>
+                    <p>Colecci&oacute;n ordenada y sistematizada de las normas de la Universidad</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-12">
+              <a href="<%= request.getContextPath() %>/handle/20.500.12049/5453">
+                <div class="area-body">
+                  <div class="icon"><span class="flaticon-analitica"></span></div>
+                  <div class="text">
+                    <h3>OAC</h3>
+                    <p>
+                      La Oficina de Aseguramiento de la Calidad participa del an&aacute;lisis del funcionamiento de la
+                      Universidad
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <p>
+            Puede consultar todas las comunidades y colecciones haciendo clic
+            <a href="<%= request.getContextPath() %>/community-list">aqu&iacute;</a></p>
+        </div>
+        <div class="col-md-5 img"></div>
+      </div>
+    </div>
   </section>
   <section id="authors">
     <div class="bgimg-1">
@@ -197,7 +231,9 @@
               ENV&Iacute;OS/
               <span>RECIENTES</span>
             </h3>
-            <%--<a class="btn-show-more hidden-xs hidden-sm" href="">VER TODOS ></a>--%>
+            <a class="btn-show-more hidden-xs hidden-sm" href="<%= request.getContextPath() %>/simple-search">
+              VER TODOS >
+            </a>
           </div>
         </div>
       </div>
@@ -211,9 +247,9 @@
             displayTitle = "Sin título";
           }
           // Resumen
-          String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
-          if (displayAbstract == null) {
-            displayAbstract = "Sin resumen";
+          String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "resumen", Item.ANY);
+          if (displayAbstract == null || displayAbstract.equals("-")) {
+            displayAbstract = "Sin resumen en español";
           }
           // Tipo
           String displayType = itemService.getMetadataFirstValue(item, "dc", "type", null, Item.ANY);
@@ -240,7 +276,7 @@
               <div class="title-group col-md-10">
                 <div class="line-short visible-xs"></div>
                 <h4><%=displayTitle%></h4>
-                <p><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 270))%></p>
+                <p><%= Utils.addEntities(StringUtils.abbreviate(displayAbstract, 270))%></p>
               </div>
             </div>
           </a>

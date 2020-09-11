@@ -33,7 +33,7 @@
       <div class="col-md-6 right-side">
         <h3>Reg&iacute;strese ahora <span class="text-unrn">GRATIS!!</span></h3>
         <ul class="list-unstyled" style="line-height: 2">
-          <li><span class="fas fa-check text-unrn"></span> Constribuya con sus propios trabajos</li>
+          <li><span class="fas fa-check text-unrn"></span> Contribuya con sus propios trabajos</li>
           <li><span class="fas fa-check text-unrn"></span> Obtenga visibilidad y estabilidad</li>
           <li><span class="fas fa-check text-unrn"></span> Incremente el impacto de sus trabajos a trav&eacute;s de Altmetrics y Google Acad&eacute;mico</li>
           <li><span class="fas fa-check text-unrn"></span> Int&eacute;grese en redes de investigaci&oacute;n nacional e internacional</li>

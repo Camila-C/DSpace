@@ -2,9 +2,12 @@
 
 ## Reglas de los mensajes de commits
 
-- Use la conjugación presente ("Agrega característica", no "Agregó característica"). Antes de escribír, piense que "El commit agrega" o "El commit corrige").
+- Use la conjugación presente, como por ejemplo "Agrega característica" y no "Agregó característica".
+Antes de escribir, piense que "El commit agrega" o "El commit corrige".
 - Limite el título del commit a 72 caracteres o menos.
-- Referencie Issues y Merge Requests (MR), también conocidos como Pull Requests (PR) siempre que sea necesario. Por ejemplo, cuando un commit corrige un bug de una issue, o cuando una nueva característica está relacionada a otra, desarrollada en otra rama.
+- Referencie Issues y Merge Requests (MR), también conocidos como Pull Requests (PR) siempre que sea necesario. 
+Por ejemplo, cuando un commit corrige un bug de una issue, o cuando una nueva característica está relacionada otra, 
+desarrollada en otra rama.
 - Inicie el título del commit con un emoji que lo describa:
   - ✨ cuando se genere una nueva versión.
   - 🎨 cuando se mejora el formato o la estructura del código.
@@ -25,7 +28,8 @@
 
 ## Idioma
 
-- Todo el código debe estar escrito en inglés. Esto quiere decir que los nombres de variables, functiones, componentes, métodos, etc. deben estar en inglés.
+- Todo el código debe estar escrito en inglés. Esto quiere decir que los nombres de variables, funciones, componentes, 
+métodos, etc. deben estar en inglés.
 - Todos los comentarios deben estar en español.
 - El contenido de la aplicación, como los textos, debe estar en castellano, por supuesto.
 
