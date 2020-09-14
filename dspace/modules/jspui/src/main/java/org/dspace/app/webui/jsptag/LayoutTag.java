@@ -7,9 +7,12 @@
  */
 package org.dspace.app.webui.jsptag;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+import org.dspace.app.webui.servlet.FeedServlet;
+import org.dspace.content.Collection;
+import org.dspace.content.Community;
+import org.dspace.core.ConfigurationManager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -19,13 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.jstl.fmt.LocaleSupport;
 import javax.servlet.jsp.tagext.BodyTagSupport;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
-import org.dspace.app.webui.servlet.FeedServlet;
-import org.dspace.content.Collection;
-import org.dspace.content.Community;
-import org.dspace.core.ConfigurationManager;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Tag for HTML page layout ("skin").
@@ -84,6 +83,9 @@ public class LayoutTag extends BodyTagSupport
 
     /** title */
     private String title;
+
+    /** subtitle: utilizado solo para añadir un jumbotron en el header */
+    private String subtitle;
 
     /** title key (from message dictionary) */
     private String titleKey;
@@ -268,6 +270,13 @@ public class LayoutTag extends BodyTagSupport
             request.setAttribute("dspace.layout.title", "NO TITLE");
         }
 
+        // Set subtitle
+        if (subtitle != null) {
+            request.setAttribute("dspace.layout.subtitle", subtitle);
+        } else {
+            request.setAttribute("dspace.layout.subtitle", "off");
+        }
+
         // Set feedData if present
         if (feedData != null && ! "NONE".equals(feedData))
         {
@@ -414,6 +423,7 @@ public class LayoutTag extends BodyTagSupport
 
         style = null;
         title = null;
+        subtitle = null;
         sidebar = null;
         navbar = null;
         locbar = null;
@@ -443,6 +453,22 @@ public class LayoutTag extends BodyTagSupport
     public void setTitle(String v)
     {
         this.title = v;
+    }
+
+    /**
+     * @return Returns the subtitle.
+     */
+    public String getSubtitle()
+    {
+        return subtitle;
+    }
+
+    /**
+     * @param subtitle The subtitle to set.
+     */
+    public void setSubtitle(String subtitle)
+    {
+        this.subtitle = subtitle;
     }
 
     /**
