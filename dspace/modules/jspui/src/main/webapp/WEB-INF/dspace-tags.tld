@@ -64,6 +64,11 @@
       <rtexprvalue>true</rtexprvalue>
     </attribute>
     <attribute>
+      <name>subtitle</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
       <name>titlekey</name>
       <required>false</required>
       <rtexprvalue>true</rtexprvalue>
