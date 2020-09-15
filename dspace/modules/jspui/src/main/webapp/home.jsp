@@ -57,7 +57,7 @@
 <dspace:layout navbar="off" locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
   <!-- INICIO -->
   <section id="home">
-    <div class="jumbotron text-center">
+    <div class="jumbotron j-rid text-center">
       <h2><fmt:message key="jsp.layout.header-default.brand.heading" /></h2>
       <p class="container"><fmt:message key="jsp.layout.header-default.brand.heading2" /></p>
       <%-- Search Box --%>

@@ -12,7 +12,7 @@ main#content {
   padding-bottom: 0;
 }
 #page-content {
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 60px;
 }
 
@@ -438,7 +438,7 @@ footer .box-logos .box-logo img {
 /* FIN: HELPERS */
 
 /* INICIO: JUMBOTRON HOME */
-section#home .jumbotron {
+.jumbotron.j-rid {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -448,18 +448,21 @@ section#home .jumbotron {
   background-size: cover;
   padding: 48px 25px;
   margin-bottom: 0;
-  height: 500px;
+  height: 200px;
 }
-section#home .jumbotron h2{
+section#home .jumbotron.j-rid {
+  height: 500px !important;
+}
+.jumbotron.j-rid h2{
   text-shadow: 0 2px 2px rgba(189,189,189,0.5);
   font-size: 50px;
   margin-top: 0;
   color: #fff;
 }
-section#home .jumbotron form {
+.jumbotron.j-rid form {
   padding-top: 20px;
 }
-section#home .jumbotron p {
+.jumbotron.j-rid p {
   color: #fff;
 }
 /* FIN: JUMBOTRON HOME */
@@ -953,7 +956,7 @@ section#home .jumbotron p {
 }
 .area-section .img {
   display: flex;
-  background-image: url("https://www.unrn.edu.ar/images/noticia/banner_1338.jpg");
+  background-image: url("../../../image/home/planta_piloto.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: left center;
