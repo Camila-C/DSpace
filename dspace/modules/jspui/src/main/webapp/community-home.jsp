@@ -72,9 +72,7 @@
   // Put the metadata values into guaranteed non-null variables
   String name = comServ.getMetadata(community, "name");
   String intro = comServ.getMetadata(community, "introductory_text");
-  String copyright = comServ.getMetadata(community, "copyright_text");
   String sidebar = comServ.getMetadata(community, "side_bar_text");
-  Bitstream logo = community.getLogo();
   
   ConfigurationService configurationService = DSpaceServicesFactory.getInstance().getConfigurationService();
   
@@ -92,28 +90,25 @@
 
 <%-- La propiedad navbar="off" permite acceder a la versión minimal de navbar (es decir, sin el input search en el header) --%>
 <%@page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
-<dspace:layout navbar="off" title="<%= name %>" feedData="<%= feedData %>">
+<dspace:layout navbar="off" title="<%= name %>" subtitle="Página de inicio de la comunidad" feedData="<%= feedData %>">
   <div id="community-home">
     <div class="row">
       <!-- TITULO -->
       <div class="col-md-12">
-        <h2>
-          <%= name %>
-          <%  if(configurationService.getBooleanProperty("webui.strengths.show")) { %>
-                [<%= ic.getCount(community) %>]
-          <%  } %>
-          <br>
-          <small><fmt:message key="jsp.community-home.heading1"/></small>
-          <a class="statisticsLink btn btn-info" href="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/statistics">
-            <fmt:message key="jsp.community-home.display-statistics"/>
-          </a>
-        </h2>
         <% if (StringUtils.isNotBlank(intro)) { %>
-          <p><%= intro %></p>
+          <p style="font-size: 16px;"><%= intro %></p>
         <% } %>
       </div>
       <!-- Buscador de la comunidad -->
       <div class="col-md-12">
+        <%  if(configurationService.getBooleanProperty("webui.strengths.show")) { %>
+        <h3>
+          Busca en un total de <%= ic.getCount(community) %> registros
+          <a class="statisticsLink" href="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/statistics">
+            <fmt:message key="jsp.community-home.display-statistics"/>
+          </a>
+        </h3>
+        <%  } %>
         <div class="well">
           <form method="get" action="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/simple-search">
             <div class="input-group input-group-lg">
@@ -189,7 +184,7 @@
 	              <%= subcommunities.get(j).getName() %>
               </a>
               <%  if (configurationService.getBooleanProperty("webui.strengths.show")) { %>
-                [<%= ic.getCount(subcommunities.get(j)) %>]
+              <span class="badge badge-unrn"><%= ic.getCount(subcommunities.get(j)) %></span>
               <%  }
                   if (remove_button) {
               %>
@@ -234,7 +229,7 @@
 	              <%= collections.get(i).getName() %>
               </a>
               <%  if (configurationService.getBooleanProperty("webui.strengths.show")) { %>
-                [<%= ic.getCount(collections.get(i)) %>]
+              <span class="badge badge-unrn"><%= ic.getCount(collections.get(i)) %></span>
               <%  }
                   if (remove_button) {
               %>
@@ -312,9 +307,9 @@
               displayTitle = "Sin título";
             }
             //Resumen
-            String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
-            if (displayAbstract == null) {
-              displayAbstract = "Sin resumen";
+            String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "resumen", Item.ANY);
+            if (displayAbstract == null || displayAbstract.equals("-")) {
+              displayAbstract = "Sin resumen en español";
             }
             //Tipo
             String displayType = itemService.getMetadataFirstValue(item, "dc", "type", null, Item.ANY);
@@ -341,7 +336,7 @@
                 <div class="title-group col-md-10">
                   <div class="line-short visible-xs"></div>
                   <h4><%=displayTitle%></h4>
-                  <p><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 270))%></p>
+                  <p><%= Utils.addEntities(StringUtils.abbreviate(displayAbstract, 270))%></p>
                 </div>
               </div>
             </a>

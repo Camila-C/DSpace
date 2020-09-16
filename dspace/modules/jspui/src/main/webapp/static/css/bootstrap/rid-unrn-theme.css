@@ -11,19 +11,22 @@ main#content {
   flex: 1 0 auto;
   padding-bottom: 0;
 }
-#page-content {
-  padding-top: 30px;
-  padding-bottom: 60px;
-}
-
-#page-content .jumbotron {
-  padding-top: 0;
-  padding-bottom: 0;
-}
 
 /****************************************/
 /************* H E L P E R S ************/
 /****************************************/
+#page-content {
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+#page-content .jumbotron {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.badge.badge-unrn {
+  background-color: #eb2141;
+}
+
 /* INICIO: TÍTULOS */
 #page-content h2,
 #page-content h3 {
@@ -959,7 +962,7 @@ section#home .jumbotron.j-rid {
   background-image: url("../../../image/home/planta_piloto.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: 8% center;
   filter: grayscale(100%);
 }
 .area-section .row {
