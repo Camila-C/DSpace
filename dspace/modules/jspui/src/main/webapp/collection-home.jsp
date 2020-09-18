@@ -78,19 +78,10 @@
     if (intro == null) {
         intro = "";
     }
-    String copyright = collectionService.getMetadata(collection, "copyright_text");
-    if (copyright == null) {
-        copyright = "";
-    }
     String sidebar = collectionService.getMetadata(collection, "side_bar_text");
     if(sidebar == null) {
         sidebar = "";
     }
-
-    String communityName = collectionService.getMetadata(collection, "name");
-    String communityLink = "/handle/" + community.getHandle();
-
-    Bitstream logo = collection.getLogo();
     
     ConfigurationService configurationService = DSpaceServicesFactory.getInstance().getConfigurationService();
     
@@ -114,28 +105,25 @@
 <%@ page import="org.dspace.content.factory.ContentServiceFactory" %>
 <%@ page import="org.dspace.content.service.CollectionService" %>
 <%@ page import="org.dspace.content.service.ItemService" %>
-<dspace:layout navbar="off" title="<%= name %>" feedData="<%= feedData %>">
+<dspace:layout navbar="off" title="<%= name %>" subtitle="Página de inicio de la colección" feedData="<%= feedData %>">
   <div id="collection-home">
     <div class="row">
       <!-- TITULO -->
       <div class="col-md-12">
-        <h2>
-          <%= name %>
-          <%  if(configurationService.getBooleanProperty("webui.strengths.show")) { %>
-            [<%= ic.getCount(collection) %>]
-          <%  } %>
-          <br>
-          <small><fmt:message key="jsp.collection-home.heading1"/></small>
-            <a class="statisticsLink btn btn-info" href="<%= request.getContextPath() %>/handle/<%= collection.getHandle() %>/statistics">
-              <fmt:message key="jsp.collection-home.display-statistics"/>
-            </a>
-        </h2>
         <% if (StringUtils.isNotBlank(intro)) { %>
-          <p><%= intro %></p>
+        <p style="font-size: 16px;"><%= intro %></p>
         <% } %>
       </div>
       <!-- Buscador de la comunidad -->
       <div class="col-md-12">
+        <%  if(configurationService.getBooleanProperty("webui.strengths.show")) { %>
+        <h3>
+          Busca en un total de <%= ic.getCount(community) %> registros
+          <a class="statisticsLink" href="<%= request.getContextPath() %>/handle/<%= collection.getHandle() %>/statistics">
+            <fmt:message key="jsp.collection-home.display-statistics"/>
+          </a>
+        </h3>
+        <%  } %>
         <div class="well">
           <form method="get" action="<%= request.getContextPath() %>/handle/<%= collection.getHandle() %>/simple-search">
             <div class="input-group input-group-lg">

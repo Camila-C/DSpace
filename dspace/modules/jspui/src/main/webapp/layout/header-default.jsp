@@ -22,6 +22,7 @@
 
 		<%
 	String title = (String) request.getAttribute("dspace.layout.title");
+	String subtitle = (String) request.getAttribute("dspace.layout.subtitle");
 	String navbar = (String) request.getAttribute("dspace.layout.navbar");
 
 	String siteName = ConfigurationManager.getProperty("dspace.name");
@@ -108,6 +109,19 @@
         	<dspace:include page="/layout/navbar-minimal.jsp" />
 		<%	} %>
 		</header>
+
+		<%  if (!subtitle.equals("off")) { %>
+		<section>
+			<div class="jumbotron j-rid text-center">
+				<div class="container">
+					<h2><%=title%></h2>
+					<%  if (!subtitle.equals("on")) { %>
+					<p><%=subtitle%></p>
+					<%  } %>
+				</div>
+			</div>
+		</section>
+		<%  } %>
 
 		<main id="content">
 		<%-- Page contents --%>
