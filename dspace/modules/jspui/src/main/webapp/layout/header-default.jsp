@@ -113,10 +113,12 @@
 		<%  if (!subtitle.equals("off")) { %>
 		<section>
 			<div class="jumbotron j-rid text-center">
-				<h2><%=title%></h2>
-				<%  if (!subtitle.equals("on")) { %>
-				<p class="container"><%=subtitle%></p>
-				<%  } %>
+				<div class="container">
+					<h2><%=title%></h2>
+					<%  if (!subtitle.equals("on")) { %>
+					<p><%=subtitle%></p>
+					<%  } %>
+				</div>
 			</div>
 		</section>
 		<%  } %>
