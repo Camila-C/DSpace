@@ -51,7 +51,7 @@
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" />
 			<!-- Tema del RID -->
-			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css" type="text/css" />
+			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css?v=1" type="text/css" />
 			<!-- Fontawesome 5.10.1 -->
 			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/fontawesome-free-5.10.1/css/all.min.css" type="text/css" />
 			<!-- Academicons 1.8.6 -->
