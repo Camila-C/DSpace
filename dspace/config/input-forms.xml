@@ -375,7 +375,7 @@
 					<dc-qualifier>issued</dc-qualifier>
 					<repeatable>false</repeatable>
 					<label>Fecha de publicación o presentación</label>
-					<type-bind>Articulo, Libro, Parte de libro, Tesis, Trabajo final, Objeto de conferencia, Patente, Documento de trabajo, Informe tecnico, Otro, Material artistico, Recension de documento</type-bind>
+					<type-bind>Articulo, Libro, Parte de libro, Tesis, Trabajo final, Objeto de conferencia, Patente, Documento de trabajo, Informe tecnico, Otro, Material artistico, Recension de documento, Proyecto de investigacion</type-bind>
 					<input-type>date</input-type>
 					<hint>
 						Indicar la fecha de la publicación, presentación o distribución pública.
