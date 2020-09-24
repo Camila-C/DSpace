@@ -105,7 +105,7 @@
 <%@ page import="org.dspace.content.factory.ContentServiceFactory" %>
 <%@ page import="org.dspace.content.service.CollectionService" %>
 <%@ page import="org.dspace.content.service.ItemService" %>
-<dspace:layout navbar="off" title="<%= name %>" subtitle="Página de inicio de la colección" feedData="<%= feedData %>">
+<dspace:layout locbar="commLink" navbar="off" title="<%= name %>" subtitle="on" feedData="<%= feedData %>">
   <div id="collection-home">
     <div class="row">
       <!-- TITULO -->
@@ -118,7 +118,7 @@
       <div class="col-md-12">
         <%  if(configurationService.getBooleanProperty("webui.strengths.show")) { %>
         <h3>
-          Busca en un total de <%= ic.getCount(community) %> registros
+          Busca en un total de <%= ic.getCount(collection) %> registros
           <a class="statisticsLink" href="<%= request.getContextPath() %>/handle/<%= collection.getHandle() %>/statistics">
             <fmt:message key="jsp.collection-home.display-statistics"/>
           </a>

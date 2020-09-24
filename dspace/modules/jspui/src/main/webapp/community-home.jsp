@@ -90,7 +90,7 @@
 
 <%-- La propiedad navbar="off" permite acceder a la versión minimal de navbar (es decir, sin el input search en el header) --%>
 <%@page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
-<dspace:layout navbar="off" title="<%= name %>" subtitle="Página de inicio de la comunidad" feedData="<%= feedData %>">
+<dspace:layout locbar="commLink" navbar="off" title="<%= name %>" subtitle="on" feedData="<%= feedData %>">
   <div id="community-home">
     <div class="row">
       <!-- TITULO -->
