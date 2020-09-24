@@ -184,11 +184,21 @@ a.btn-social,
 }
 
 /* BREADCRUMS */
-.main-breadcrumb {
-  background-color: #1b2437;
+.j-rid .breadcrumbs {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
-.main-breadcrumb .breadcrumb {
-  background-color: transparent;
+
+.j-rid .breadcrumbs span {
+  color: #fff;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-right: 0.5rem;
+}
+
+.j-rid .breadcrumbs span a {
+  color: #fff;
+  text-decoration: none;
 }
 
 /****************************************/

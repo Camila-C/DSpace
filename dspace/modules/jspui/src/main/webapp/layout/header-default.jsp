@@ -24,6 +24,7 @@
 	String title = (String) request.getAttribute("dspace.layout.title");
 	String subtitle = (String) request.getAttribute("dspace.layout.subtitle");
 	String navbar = (String) request.getAttribute("dspace.layout.navbar");
+	boolean locbar = ((Boolean) request.getAttribute("dspace.layout.locbar")).booleanValue();
 
 	String siteName = ConfigurationManager.getProperty("dspace.name");
 	String feedRef = (String)request.getAttribute("dspace.layout.feedref");
@@ -51,7 +52,7 @@
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" />
 			<!-- Tema del RID -->
-			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css?v=1" type="text/css" />
+			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/rid-unrn-theme.css?v=2" type="text/css" />
 			<!-- Fontawesome 5.10.1 -->
 			<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/fontawesome-free-5.10.1/css/all.min.css" type="text/css" />
 			<!-- Academicons 1.8.6 -->
@@ -118,6 +119,10 @@
 					<%  if (!subtitle.equals("on")) { %>
 					<p><%=subtitle%></p>
 					<%  } %>
+					<%-- Location bar --%>
+					<%	if (locbar) { %>
+						<dspace:include page="/layout/location-bar.jsp" />
+					<%	} %>
 				</div>
 			</div>
 		</section>
