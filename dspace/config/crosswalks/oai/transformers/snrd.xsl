@@ -135,13 +135,13 @@
 				<xsl:when test="$theValue = 'Datos primarios'">
 					other
 				</xsl:when>
-				<xsl:when test="$theValue = 'Proyecto de investigación'">
+				<xsl:when test="$theValue = 'Proyecto de investigacion'">
 					other
 				</xsl:when>
 				<xsl:when test="$theValue = 'Recensión de documento'">
 					review
 				</xsl:when>
-				<xsl:when test="$theValue = 'Material Artístico'">
+				<xsl:when test="$theValue = 'Material artistico'">
 					other
 				</xsl:when>
 				<xsl:when test="$theValue = 'Plano'">
