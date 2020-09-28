@@ -25,35 +25,26 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.List" %>
 
-<div class="main-breadcrumb">
-  <ol class="container breadcrumb">
+<p class="breadcrumbs">
   <%
       List parentTitles = (List) request.getAttribute("dspace.layout.parenttitles");
       List parentLinks = (List) request.getAttribute("dspace.layout.parentlinks");
+      String title = (String) request.getAttribute("dspace.layout.title");
 
       for (int i = 0; i < parentTitles.size(); i++) {
         String s = (String) parentTitles.get(i);
         String u = (String) parentLinks.get(i);
 
-        if (u.equals("")) {
-          if (i == parentTitles.size()) {
   %>
-            <li class="breadcrumb-item active"><%= s %></li>
-  <%           
-          } else {
-  %>
-            <li class="breadcrumb-item"><%= s %></li>
-  <%			}
-        } else {
-  %>
-          <li class="breadcrumb-item">
-            <a href="<%= request.getContextPath() %><%= u %>">
-              <%= s %>
-            </a>
-          </li>
+    <span>
+      <a href="<%= request.getContextPath() %><%= u %>">
+        <%= s %> <i class="fas fa-angle-right"></i>
+      </a>
+    </span>
   <%
-        }
-      }
+    }
   %>
-  </ol>
-</div>
+  <span>
+      <%= title %>
+  </span>
+</p>

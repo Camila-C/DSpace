@@ -375,7 +375,19 @@
 					<dc-qualifier>issued</dc-qualifier>
 					<repeatable>false</repeatable>
 					<label>Fecha de publicación o presentación</label>
-					<type-bind>Articulo, Libro, Parte de libro, Tesis, Trabajo final, Objeto de conferencia, Patente, Documento de trabajo, Informe tecnico, Otro, Material artistico, Recension de documento</type-bind>
+					<type-bind>
+						Articulo,
+						Libro, Parte de libro,
+						Tesis, Trabajo final,
+						Objeto de conferencia,
+						Patente,
+						Documento de trabajo,
+						Informe tecnico,
+						Otro,
+						Material artistico,
+						Recension de documento,
+						Proyecto de investigacion
+					</type-bind>
 					<input-type>date</input-type>
 					<hint>
 						Indicar la fecha de la publicación, presentación o distribución pública.
@@ -439,7 +451,15 @@
 					<dc-qualifier>uri</dc-qualifier>
 					<repeatable>true</repeatable>
 					<label>Localización electrónica</label>
-					<type-bind>Objeto de conferencia, Otro, Documento de trabajo, Informe tecnico, Material educativo, Material artistico, Recension de documento</type-bind>
+					<type-bind>
+						Objeto de conferencia,
+						Otro,
+						Documento de trabajo,
+						Informe tecnico,
+						Material educativo,
+						Material artistico,
+						Recension de documento
+					</type-bind>
 					<input-type>onebox</input-type>
 					<hint>
 						Indicar la dirección donde se encuentra disponible el recurso (opcional). Puede ser un sitio
@@ -476,7 +496,18 @@
 					<dc-qualifier/>
 					<repeatable>true</repeatable>
 					<label>Otros identificadores</label>
-					<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Patente, Documento de trabajo, Informe tecnico, Datos primarios, Otro, Material artistico, Recension de documento</type-bind>
+					<type-bind>
+						Articulo,
+						Libro, Parte de libro,
+						Objeto de conferencia,
+						Patente,
+						Documento de trabajo,
+						Informe tecnico,
+						Datos primarios,
+						Otro,
+						Material artistico,
+						Recension de documento
+					</type-bind>
 					<input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
 					<hint>
 						La primer instancia del recurso debe incluir una URL estable que dirija directamente al recurso.
@@ -643,7 +674,18 @@
 					<dc-qualifier/>
 					<repeatable>false</repeatable>
 					<label>Notas</label>
-					<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Material educativo, Otro</type-bind>
+					<type-bind>
+						Articulo,
+						Libro, Parte de libro,
+						Objeto de conferencia,
+						Tesis, Trabajo final,
+						Patente,
+						Documento de trabajo,
+						Informe tecnico,
+						Material educativo,
+						Proyecto de investigacion,
+						Otro
+					</type-bind>
 					<input-type>textarea</input-type>
 					<hint>
 						Ingresar toda otra aclaración que resulte pertinente para la mejor catalogación y recuperación de
@@ -675,7 +717,6 @@
 					<dc-qualifier>version</dc-qualifier>
 					<repeatable>false</repeatable>
 					<label>Versión de la publicación</label>
-					<type-bind>Articulo, Libro, Parte de libro, Objeto de conferencia, Tesis, Trabajo final, Patente, Documento de trabajo, Informe tecnico, Otro, Material artistico, Recension de documento</type-bind>
 					<input-type value-pairs-name="version">dropdown</input-type>
 					<hint>Seleccionar la versión de la publicación.</hint>
 					<required>Debe seleccionar una ver</required>
