@@ -93,6 +93,10 @@
 					</xsl:for-each>
 				</xsl:otherwise>
 			</xsl:choose>
+			<!-- dc.relation.relatedProject -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='relation']/doc:element[@name='relatedProject']/doc:element/doc:field[@name='value']">
+				<dc:relation><xsl:value-of select="concat('info:eu-repo/grantAgreement/', .)" /></dc:relation>
+			</xsl:for-each>
 			<!-- FIN: modificaciones UNRN -->
 
 			<!-- dc.title -->
@@ -155,8 +159,8 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='relation']/doc:element/doc:field[@name='value']">
 				<dc:relation><xsl:value-of select="." /></dc:relation>
 			</xsl:for-each>
-			<!-- dc.relation.* -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='relation']/doc:element/doc:element/doc:field[@name='value']">
+			<!-- dc.relation.* (not relatedProject) -->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='relation']/doc:element[@name!='relatedProject']/doc:element/doc:field[@name='value']">
 				<dc:relation><xsl:value-of select="." /></dc:relation>
 			</xsl:for-each>
 			<!-- dc.coverage -->

@@ -500,9 +500,9 @@
 					<input-type>onebox</input-type>
 					<hint>
 						Ingresar datos del proyecto. Debe tener la siguiente estructura "OrganismoFinanciador/
-						ProgramadeFinanciamiento/CódigodeProyecto/Jurisdicción".
-						Ejemplo con un PI-UNRN: "UNRN/PI-UNRN/40-C-581/AR. Provincia de Río Negro. Viedma"
-						Ejemplo con un PICTO: "ANPCyT/PICTO/2010-0132/AR. Ciudad Autónoma de Buenos Aires"
+						ProgramadeFinanciamiento/CódigodeProyecto/Jurisdicción/NombreDelProyecto".
+						Ejemplo con un PI-UNRN: "UNRN/PI-UNRN/40-C-581/AR. Provincia de Río Negro. Viedma/La relación con el saber de los-as ingresantes a carreas de Ciencias Aplicadas de la UNRN"
+						Ejemplo con un PICTO: "ANPCyT/PICTO/2010-0132/AR. Ciudad Autónoma de Buenos Aires/Red COES de Repositorios de Acceso Abierto"
 					</hint>
 					<required>Este campo es requerido</required>
 				</field>
