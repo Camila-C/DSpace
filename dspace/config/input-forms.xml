@@ -428,7 +428,11 @@
 					<label>Referencia temporal</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indicar el período temporal que abarca el elemento.</hint>
+					<hint>
+						Indicar el período de tiempo específico que abarca el elemento. Si es posible, se debe indicar
+						el comienzo y el fin del intervalo de tiempo, de la siguiente manera: "AñoComienzo-AñoFin"
+						(por ejemplo, 2016-2019)
+					</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- COBERTURA ESPACIAL -->
@@ -440,8 +444,26 @@
 					<label>Referencia geográfica</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indicar el espacio geográfico que abarca el elemento.</hint>
+					<hint>
+						Indicar el espacio geográfico que abarca el elemento.
+						Si se trata de un país, se debe indicar el código correspondiente (por ejemplo, 'ARG', 'BRA' o 'USA').
+						Si se trata de un área se debe indicar por su nombre, por ejemplo 'Patagonia Argentina',
+						'Viedma', 'Parque Nacional Nahuel Huapi', etc.
+					</hint>
 					<required>Este campo es requerido</required>
+				</field>
+				<!-- Clasificación FORD por áreas de investigación y desarrollo -->
+				<field>
+					<dc-schema>dc</dc-schema>
+					<dc-element>subject</dc-element>
+					<dc-qualifier>ford</dc-qualifier>
+					<repeatable>true</repeatable>
+					<label>Clasificación FORD</label>
+					<type-bind>Datos primarios</type-bind>
+					<input-type>onebox</input-type>
+					<hint>
+						Clasificación del documento por áreas de investigación y desarrollo (FORD por su sigla en inglés)
+					</hint>
 				</field>
 				<!-- LOCALIZACION ELECTRONICA -->
 				<!-- TODO DECIDIR METADATO -->
@@ -458,7 +480,8 @@
 						Informe tecnico,
 						Material educativo,
 						Material artistico,
-						Recension de documento
+						Recension de documento,
+						Datos primarios
 					</type-bind>
 					<input-type>onebox</input-type>
 					<hint>
@@ -470,12 +493,17 @@
 				<field>
 					<dc-schema>dc</dc-schema>
 					<dc-element>relation</dc-element>
-					<dc-qualifier>ispartof</dc-qualifier>
+					<dc-qualifier>relatedProject</dc-qualifier>
 					<repeatable>false</repeatable>
 					<label>Proyecto marco</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Ingresar el nombre del proyecto en el que se enmarcan los datos.</hint>
+					<hint>
+						Ingresar datos del proyecto. Debe tener la siguiente estructura "OrganismoFinanciador/
+						ProgramadeFinanciamiento/CódigodeProyecto/Jurisdicción/NombreDelProyecto".
+						Ejemplo con un PI-UNRN: "UNRN/PI-UNRN/40-C-581/AR. Provincia de Río Negro. Viedma/La relación con el saber de los-as ingresantes a carreas de Ciencias Aplicadas de la UNRN"
+						Ejemplo con un PICTO: "ANPCyT/PICTO/2010-0132/AR. Ciudad Autónoma de Buenos Aires/Red COES de Repositorios de Acceso Abierto"
+					</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- NOMBRE DEL EVENTO -->
