@@ -428,7 +428,11 @@
 					<label>Referencia temporal</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indicar el período temporal que abarca el elemento.</hint>
+					<hint>
+						Indicar el período de tiempo específico que abarca el elemento. Si es posible, se debe indicar
+						el comienzo y el fin del intervalo de tiempo, de la siguiente manera: "AñoComienzo-AñoFin"
+						(por ejemplo, 2016-2019)
+					</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- COBERTURA ESPACIAL -->
@@ -440,7 +444,12 @@
 					<label>Referencia geográfica</label>
 					<type-bind>Datos primarios</type-bind>
 					<input-type>onebox</input-type>
-					<hint>Indicar el espacio geográfico que abarca el elemento.</hint>
+					<hint>
+						Indicar el espacio geográfico que abarca el elemento.
+						Si se trata de un país, se debe indicar el código correspondiente (por ejemplo, 'ARG', 'BRA' o 'USA').
+						Si se trata de un área se debe indicar por su nombre, por ejemplo 'Patagonia Argentina',
+						'Viedma', 'Parque Nacional Nahuel Huapi', etc.
+					</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- Clasificación FORD por áreas de investigación y desarrollo -->
