@@ -443,6 +443,19 @@
 					<hint>Indicar el espacio geográfico que abarca el elemento.</hint>
 					<required>Este campo es requerido</required>
 				</field>
+				<!-- Clasificación FORD por áreas de investigación y desarrollo -->
+				<field>
+					<dc-schema>dc</dc-schema>
+					<dc-element>subject</dc-element>
+					<dc-qualifier>ford</dc-qualifier>
+					<repeatable>true</repeatable>
+					<label>Clasificación FORD</label>
+					<type-bind>Datos primarios</type-bind>
+					<input-type>onebox</input-type>
+					<hint>
+						Clasificación del documento por áreas de investigación y desarrollo (FORD por su sigla en inglés)
+					</hint>
+				</field>
 				<!-- LOCALIZACION ELECTRONICA -->
 				<!-- TODO DECIDIR METADATO -->
 				<field>
