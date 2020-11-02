@@ -330,23 +330,6 @@
 					<input-type>onebox</input-type>
 					<hint>Ingresar el volumen de la revista.</hint>
 				</field>
-				<!-- EDITOR -->
-				<!-- TODO: CARGAR AUTOMÁTICAMENTE EL METADATO, QUE NI FIGURE EL CAMPO ACÁ? -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>contributor</dc-element>
-					<dc-qualifier>editor</dc-qualifier>
-					<repeatable>false</repeatable>
-					<label>Editor</label>
-					<type-bind>Tesis, Trabajo final</type-bind>
-					<input-type>onebox</input-type>
-					<hint>
-						Declarar la filiación institucional a la Universidad de forma normalizada, como
-						Universidad Nacional de Río Negro, preferentemente se enumerarán las partes de la jerarquía de
-						mayor a menor. En caso de poseer múltiples filiaciones se indicará cada una de ellas en
-						instancias separadas.
-					</hint>
-				</field>
 				<!-- EDITORIAL -->
 				<field>
 					<dc-schema>dc</dc-schema>
