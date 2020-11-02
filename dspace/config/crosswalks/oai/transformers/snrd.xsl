@@ -318,6 +318,7 @@
 				<xsl:when test="$value = 'fr'">fra</xsl:when>
 				<xsl:when test="$value = 'it'">ita</xsl:when>
 				<xsl:when test="$value = 'ja'">jpn</xsl:when>
+				<xsl:when test="$value = 'zh'">zho</xsl:when>
 				<xsl:when test="$value = 'tr'">tur</xsl:when>
 				<xsl:otherwise>spa</xsl:otherwise>
 			</xsl:choose>
