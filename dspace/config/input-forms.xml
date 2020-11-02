@@ -574,53 +574,27 @@
 					</hint>
 					<required>Por favor complete el campo con la cita del elemento en el formato solicitado.</required>
 				</field>
-				<!-- DIRECTOR TESIS-->
+				<!-- DIRECTOR TESIS O TRABAJO FINAL -->
 				<field>
 					<dc-schema>dc</dc-schema>
 					<dc-element>contributor</dc-element>
 					<dc-qualifier>advisor</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Director de tesis</label>
-					<type-bind>Tesis</type-bind>
+					<label>Director/a</label>
+					<type-bind>Tesis, Trabajo final</type-bind>
 					<input-type>name</input-type>
-					<hint>Ingresar el nombre del director de tesis.</hint>
-					<required>Debe registrar el director de tesis</required>
-				</field>
-				<!-- COLABORADOR TESIS-->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>contributor</dc-element>
-					<dc-qualifier/>
-					<repeatable>true</repeatable>
-					<label>Colaboradores de tesis</label>
-					<type-bind>Tesis</type-bind>
-					<input-type>name</input-type>
-					<hint>Ingresar el/los nombre/s de colaborador/es del elemento. Por ejemplo, codirector/a.</hint>
-				</field>
-				<!-- DIRECTOR TRABAJO FINAL-->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>contributor</dc-element>
-					<dc-qualifier>advisor</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Director de trabajo final </label>
-					<type-bind>Trabajo final</type-bind>
-					<input-type>name</input-type>
-					<hint>Ingresar el/los nombre/s del director del trabajo.</hint>
+					<hint>Ingresar el nombre del director/a de tesis o trabajo final</hint>
 					<required>Este campo es requerido</required>
 				</field>
-				<!-- COLABORADOR TRABAJO FINAL-->
+				<!-- COLABORADOR TESIS O TRABAJO FINAL -->
 				<field>
 					<dc-schema>dc</dc-schema>
 					<dc-element>contributor</dc-element>
 					<dc-qualifier/>
 					<repeatable>true</repeatable>
-					<label>Colaboradores de trabajo final </label>
-					<type-bind>Trabajo final</type-bind>
+					<label>Otros colaboradores</label>
+					<type-bind>Tesis, Trabajo final</type-bind>
 					<input-type>name</input-type>
-					<hint>
-						Ingresar el/los nombre/s de colaborador/es del trabajo. Por ejemplo, codirectores o tutores.
-					</hint>
+					<hint>Ingresar el/los nombre/s de colaborador/es de la tesis o trabajo final</hint>
 				</field>
 				<!-- REFERATO -->
 				<field>
