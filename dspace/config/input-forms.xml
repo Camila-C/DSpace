@@ -1476,12 +1476,12 @@
 				<stored-value>es</stored-value>
 			</pair>
 			<pair>
-				<displayed-value>Inglés (Estados Unidos)</displayed-value>
-				<stored-value>en_US</stored-value>
-			</pair>
-			<pair>
 				<displayed-value>Inglés</displayed-value>
 				<stored-value>en</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Portugués</displayed-value>
+				<stored-value>pt</stored-value>
 			</pair>
 			<pair>
 				<displayed-value>Alemán</displayed-value>
@@ -1510,10 +1510,6 @@
 			<pair>
 				<displayed-value>Otro</displayed-value>
 				<stored-value>other</stored-value>
-			</pair>
-			<pair>
-				<displayed-value>N/A</displayed-value>
-				<stored-value/>
 			</pair>
 		</value-pairs>
 	</form-value-pairs>
