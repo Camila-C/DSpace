@@ -567,21 +567,6 @@
 					<hint>Indicar si el artículo cuenta o no con referato.</hint>
 					<required>Este campo es requerido</required>
 				</field>
-				<!-- SOPORTE O MEDIO DE DIFUSIÓN -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>format</dc-element>
-					<dc-qualifier>medium</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Soporte o medio de difusión</label>
-					<type-bind>Articulo, Libro, Parte de libro</type-bind>
-					<input-type value-pairs-name="soportes_revistas">dropdown</input-type>
-					<hint>
-						Seleccionar el/los soportes del documento. Puede seleccionar más de uno manteniendo presionada
-						la tecla shift mientras hace clic en las opciones deseadas.
-					</hint>
-					<required>Este campo es requerido</required>
-				</field>
 				<!-- // RESUMEN -->
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -1155,18 +1140,6 @@
 			<pair>
 				<displayed-value>Película documental</displayed-value>
 				<stored-value>Pelicula documental</stored-value>
-			</pair>
-		</value-pairs>
-
-		<!-- Soporte de REVISTAS -->
-		<value-pairs value-pairs-name="soportes_revistas" dc-term="format">
-			<pair>
-				<displayed-value>Impreso</displayed-value>
-				<stored-value>impreso</stored-value>
-			</pair>
-			<pair>
-				<displayed-value>Electrónico y/o Digital</displayed-value>
-				<stored-value>digital</stored-value>
 			</pair>
 		</value-pairs>
 
