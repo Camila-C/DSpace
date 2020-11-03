@@ -435,28 +435,16 @@
 						Clasificación del documento por áreas de investigación y desarrollo (FORD por su sigla en inglés)
 					</hint>
 				</field>
-				<!-- LOCALIZACION ELECTRONICA -->
-				<!-- TODO DECIDIR METADATO -->
+				<!-- LOCALIZACIÓN ELECTRONICA -->
 				<field>
 					<dc-schema>dc</dc-schema>
 					<dc-element>relation</dc-element>
 					<dc-qualifier>uri</dc-qualifier>
 					<repeatable>true</repeatable>
-					<label>Localización electrónica</label>
-					<type-bind>
-						Objeto de conferencia,
-						Otro,
-						Documento de trabajo,
-						Informe tecnico,
-						Material educativo,
-						Material artistico,
-						Recension de documento,
-						Datos primarios
-					</type-bind>
+					<label>Enlace de la publicación o recurso</label>
 					<input-type>onebox</input-type>
 					<hint>
-						Indicar la dirección donde se encuentra disponible el recurso (opcional). Puede ser un sitio
-						web, repositorio, revista, etc.
+						Indicar el enlace de la revista, evento o sitio web en general dónde está publicado el recurso.
 					</hint>
 				</field>
 				<!-- PROYECTO MARCO -->
@@ -497,9 +485,7 @@
 					</type-bind>
 					<input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
 					<hint>
-						La primer instancia del recurso debe incluir una URL estable que dirija directamente al recurso.
-						En las instancias posteriores se registrarán, si el artículo los posee, números de
-						identificación o códigos asociados con él. Introduzca los tipos y los números o códigos reales.
+						Indicar si el recurso posee otros identificadores.
 					</hint>
 				</field>
 				<!-- IDENTIFICADOR -->
