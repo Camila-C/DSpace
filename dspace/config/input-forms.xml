@@ -1326,10 +1326,6 @@
 		<!-- Identificadores -->
 		<value-pairs value-pairs-name="common_identifiers" dc-term="identifier">
 			<pair>
-				<displayed-value>URI</displayed-value>
-				<stored-value>uri</stored-value>
-			</pair>
-			<pair>
 				<displayed-value>ISBN</displayed-value>
 				<stored-value>isbn</stored-value>
 			</pair>
