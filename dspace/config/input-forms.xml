@@ -280,20 +280,19 @@
 					<input-type>name</input-type>
 					<hint>Indicar el/los compilador/es del libro (opcional)</hint>
 				</field>
-				<!-- REVISTA -->
+				<!-- REVISTA O EVENTO -->
 				<field>
 					<dc-schema>dc</dc-schema>
 					<dc-element>relation</dc-element>
 					<dc-qualifier>journalTitle</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Revista</label>
-					<type-bind>Articulo</type-bind>
+					<label>Revista o Evento</label>
+					<type-bind>Articulo, Objeto de conferencia</type-bind>
 					<input-type>onebox</input-type>
 					<hint>
-						Ingresar el título de la revista. En caso de que la misma esté digitalizada,
-						incluir su URL en una ocurrencia separada.
+						Para objetos de conferencia: Nombre evento en la que este item fue presentado.
+						Para artículos: Titulo de la revista en la que este item fue publicado.
 					</hint>
-					<required>Debe ingresar el título de la revista</required>
+					<required>Debe ingresar el título de la revista o  nombre del evento</required>
 				</field>
 				<!-- ISSN -->
 				<field>
@@ -476,17 +475,6 @@
 						Ejemplo con un PICTO: "ANPCyT/PICTO/2010-0132/AR. Ciudad Autónoma de Buenos Aires/Red COES de Repositorios de Acceso Abierto"
 					</hint>
 					<required>Este campo es requerido</required>
-				</field>
-				<!-- NOMBRE DEL EVENTO -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>relation</dc-element>
-					<dc-qualifier>ispartof</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Nombre del Evento</label>
-					<type-bind>Objeto de conferencia, Documento de trabajo, Informe tecnico</type-bind>
-					<input-type>onebox</input-type>
-					<hint>Si la edición tiene una web (pública o no), indicar su enlace en una ocurrencia separada.</hint>
 				</field>
 				<!-- OTROS IDENTIFICADORES -->
 				<field>
