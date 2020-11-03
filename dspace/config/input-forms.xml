@@ -390,18 +390,6 @@
 					<hint>Indicar la fecha de toma del registro. Puede ignorar el campo "día" si no es aplicable.</hint>
 					<required>Este campo es requerido</required>
 				</field>
-				<!-- LUGAR DE TOMA DE DATOS -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>origin</dc-element>
-					<dc-qualifier>lugarRegistro</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Lugar de toma de datos</label>
-					<type-bind>Datos primarios</type-bind>
-					<input-type>onebox</input-type>
-					<hint>Indicar el lugar del cual se tomaron los datos.</hint>
-					<required>Este campo es requerido</required>
-				</field>
 				<!-- COBERTURA TEMPORAL -->
 				<field>
 					<dc-schema>dc</dc-schema>
