@@ -18,6 +18,7 @@ import org.dspace.authorize.AuthorizeException;
 import org.dspace.authorize.ResourcePolicy;
 import org.dspace.authorize.factory.AuthorizeServiceFactory;
 import org.dspace.authorize.service.AuthorizeService;
+import org.dspace.authorize.service.ResourcePolicyService;
 import org.dspace.content.*;
 import org.dspace.content.authority.Choices;
 import org.dspace.content.factory.ContentServiceFactory;
@@ -27,6 +28,7 @@ import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.dspace.core.Utils;
+import org.dspace.eperson.Group;
 import org.dspace.xoai.data.DSpaceItem;
 
 import java.io.ByteArrayOutputStream;
@@ -36,7 +38,6 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 /**
  *
@@ -58,6 +59,11 @@ public class ItemUtils
 
     private static final AuthorizeService authorizeService
             = AuthorizeServiceFactory.getInstance().getAuthorizeService();
+
+    private static final ResourcePolicyService resourcePolicyService =
+            AuthorizeServiceFactory.getInstance().getResourcePolicyService();
+
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     private static Element getElement(List<Element> list, String name)
     {
@@ -234,6 +240,11 @@ public class ItemUtils
                     String oname = bit.getSource();
                     String name = bit.getName();
                     String description = bit.getDescription();
+                    String embargo =
+                            ItemUtils.getAccessRightsValue(
+                                    context,
+                                    authorizeService.getPoliciesActionFilter(context, bit, Constants.READ)
+                            );
 
                     if (name != null)
                         bitstream.getField().add(
@@ -257,32 +268,8 @@ public class ItemUtils
                     bitstream.getField().add(
                             createValue("sid", bit.getSequenceID()
                                     + ""));
-                    List<ResourcePolicy> polices = authorizeService.getPolicies(context, bit);
-                    String embargo = "forever";
-                    Date minDate = null;
-                    Date today = new Date();
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    sdf.setTimeZone(TimeZone.getTimeZone("ZULU"));
-                    for (ResourcePolicy policy : polices){
-                        if (
-                                policy.getGroup() == null ||
-                                        !(org.dspace.eperson.Group.ANONYMOUS.equals(policy.getGroup().getName())) ||
-                                        (policy.getEndDate() != null && policy.getEndDate().before(today))
-                        ){
-                            continue;
-                        }
-                        if (policy.getStartDate() == null || policy.getStartDate().before(today)){
-                            embargo = null;
-                            break;
-                        }
-                        else if (minDate == null || policy.getStartDate().before(minDate)){
-                            minDate = policy.getStartDate();
-                            embargo = sdf.format(policy.getStartDate());
-                        }
-                    };
-                    if (embargo != null)
-                        bitstream.getField().add(
-                                createValue("embargo", embargo));
+                    bitstream.getField().add(
+                            createValue("embargo", embargo));
                 }
             }
         }
@@ -352,5 +339,64 @@ public class ItemUtils
         }
 
         return metadata;
+    }
+
+    /**
+     * Method to return a default value text to identify access rights:
+     * 'open access','embargoed access','restricted access','metadata only access'
+     *
+     * NOTE: embargoed access contains also embargo end date in the form "embargoed access|||yyyy-MM-dd"
+     *
+     * @param context contexto
+     * @param rps Resource Policy List
+     * @return String
+     */
+    public static String getAccessRightsValue(Context context, List<ResourcePolicy> rps) throws SQLException {
+        Date now = new Date();
+        String accessRightsValue = "metadataOnlyAccess";
+
+        if (rps != null) {
+            for (ResourcePolicy rp : rps) {
+                // Pregunto si la Resource Policy (RP) tiene algún grupo asignado
+                if (rp.getGroup() != null) {
+                    // Pregunto si el grupo asignado es Anonymous
+                    if (Group.ANONYMOUS.equals(rp.getGroup().getName())) {
+                        /*
+                          La fecha de inicio de la RP indica el comienzo del embargo, mientras que la fecha de fin
+                          indica el fin del embargo).
+                          isDateValid retorna true si fecha de inicio de la RP comenzó y aún no expiró (o sí no se han
+                          establecido fechas)
+                         */
+                        if (resourcePolicyService.isDateValid(rp)) {
+                            // Es de acceso abierto
+                            accessRightsValue = "openAccess";
+                        } else {
+                            // Pregunta si la fecha de inicio de embargo es mayor a la fecha actual
+                            if (rp.getStartDate() != null && rp.getStartDate().after(now)) {
+                                // Devuelvo la fecha de embargo
+                                accessRightsValue = sdf.format(rp.getStartDate());
+                            }
+                        }
+                    } else {
+                        // Ya que Anonymous no tiene acceso, pregunto si el grupo de la RP es distinto a Admin
+                        if (!Group.ADMIN.equals(rp.getGroup().getName())) {
+                            // Si el grupo no es Admin, pregunto si isDateValid es correcto
+                            if (resourcePolicyService.isDateValid(rp)) {
+                                // Es de acceso restringido (sólo algunos grupos tienen acceso, Anonymous no)
+                                accessRightsValue = "restrictedAccess";
+                            } else {
+                                // Si la fecha de inicio de embargo es nula o es mayor a la fecha actual
+                                if (rp.getStartDate() == null || rp.getStartDate().after(now)) {
+                                    // Devuelve la fecha de embargo
+                                    accessRightsValue = sdf.format(rp.getStartDate());
+                                }
+                            }
+                        }
+                    }
+                }
+                context.uncacheEntity(rp);
+            }
+        }
+        return accessRightsValue;
     }
 }
