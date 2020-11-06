@@ -441,7 +441,7 @@
 					<dc-element>relation</dc-element>
 					<dc-qualifier>uri</dc-qualifier>
 					<repeatable>true</repeatable>
-					<label>Enlace de la publicación o recurso</label>
+					<label>Enlace dónde se aloja el recurso</label>
 					<input-type>onebox</input-type>
 					<hint>
 						Indicar el enlace de la revista, evento o sitio web en general dónde está publicado el recurso.
@@ -485,7 +485,7 @@
 					</type-bind>
 					<input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
 					<hint>
-						Indicar si el recurso posee otros identificadores.
+						Indicar si el recurso posee otros identificadores y/o enlaces.
 					</hint>
 				</field>
 				<!-- IDENTIFICADOR -->
