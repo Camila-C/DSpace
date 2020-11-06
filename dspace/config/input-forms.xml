@@ -280,20 +280,19 @@
 					<input-type>name</input-type>
 					<hint>Indicar el/los compilador/es del libro (opcional)</hint>
 				</field>
-				<!-- REVISTA -->
+				<!-- REVISTA O EVENTO -->
 				<field>
 					<dc-schema>dc</dc-schema>
 					<dc-element>relation</dc-element>
 					<dc-qualifier>journalTitle</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Revista</label>
-					<type-bind>Articulo</type-bind>
+					<label>Revista o Evento</label>
+					<type-bind>Articulo, Objeto de conferencia</type-bind>
 					<input-type>onebox</input-type>
 					<hint>
-						Ingresar el título de la revista. En caso de que la misma esté digitalizada,
-						incluir su URL en una ocurrencia separada.
+						Para objetos de conferencia: Nombre evento en la que este item fue presentado.
+						Para artículos: Titulo de la revista en la que este item fue publicado.
 					</hint>
-					<required>Debe ingresar el título de la revista</required>
+					<required>Debe ingresar el título de la revista o  nombre del evento</required>
 				</field>
 				<!-- ISSN -->
 				<field>
@@ -329,23 +328,6 @@
 					<type-bind>Articulo</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Ingresar el volumen de la revista.</hint>
-				</field>
-				<!-- EDITOR -->
-				<!-- TODO: CARGAR AUTOMÁTICAMENTE EL METADATO, QUE NI FIGURE EL CAMPO ACÁ? -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>contributor</dc-element>
-					<dc-qualifier>editor</dc-qualifier>
-					<repeatable>false</repeatable>
-					<label>Editor</label>
-					<type-bind>Tesis, Trabajo final</type-bind>
-					<input-type>onebox</input-type>
-					<hint>
-						Declarar la filiación institucional a la Universidad de forma normalizada, como
-						Universidad Nacional de Río Negro, preferentemente se enumerarán las partes de la jerarquía de
-						mayor a menor. En caso de poseer múltiples filiaciones se indicará cada una de ellas en
-						instancias separadas.
-					</hint>
 				</field>
 				<!-- EDITORIAL -->
 				<field>
@@ -407,18 +389,6 @@
 					<hint>Indicar la fecha de toma del registro. Puede ignorar el campo "día" si no es aplicable.</hint>
 					<required>Este campo es requerido</required>
 				</field>
-				<!-- LUGAR DE TOMA DE DATOS -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>origin</dc-element>
-					<dc-qualifier>lugarRegistro</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Lugar de toma de datos</label>
-					<type-bind>Datos primarios</type-bind>
-					<input-type>onebox</input-type>
-					<hint>Indicar el lugar del cual se tomaron los datos.</hint>
-					<required>Este campo es requerido</required>
-				</field>
 				<!-- COBERTURA TEMPORAL -->
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -465,28 +435,16 @@
 						Clasificación del documento por áreas de investigación y desarrollo (FORD por su sigla en inglés)
 					</hint>
 				</field>
-				<!-- LOCALIZACION ELECTRONICA -->
-				<!-- TODO DECIDIR METADATO -->
+				<!-- LOCALIZACIÓN ELECTRONICA -->
 				<field>
 					<dc-schema>dc</dc-schema>
 					<dc-element>relation</dc-element>
 					<dc-qualifier>uri</dc-qualifier>
 					<repeatable>true</repeatable>
-					<label>Localización electrónica</label>
-					<type-bind>
-						Objeto de conferencia,
-						Otro,
-						Documento de trabajo,
-						Informe tecnico,
-						Material educativo,
-						Material artistico,
-						Recension de documento,
-						Datos primarios
-					</type-bind>
+					<label>Enlace dónde se aloja el recurso</label>
 					<input-type>onebox</input-type>
 					<hint>
-						Indicar la dirección donde se encuentra disponible el recurso (opcional). Puede ser un sitio
-						web, repositorio, revista, etc.
+						Indicar el enlace de la revista, evento o sitio web en general dónde está publicado el recurso.
 					</hint>
 				</field>
 				<!-- PROYECTO MARCO -->
@@ -505,17 +463,6 @@
 						Ejemplo con un PICTO: "ANPCyT/PICTO/2010-0132/AR. Ciudad Autónoma de Buenos Aires/Red COES de Repositorios de Acceso Abierto"
 					</hint>
 					<required>Este campo es requerido</required>
-				</field>
-				<!-- NOMBRE DEL EVENTO -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>relation</dc-element>
-					<dc-qualifier>ispartof</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Nombre del Evento</label>
-					<type-bind>Objeto de conferencia, Documento de trabajo, Informe tecnico</type-bind>
-					<input-type>onebox</input-type>
-					<hint>Si la edición tiene una web (pública o no), indicar su enlace en una ocurrencia separada.</hint>
 				</field>
 				<!-- OTROS IDENTIFICADORES -->
 				<field>
@@ -538,9 +485,7 @@
 					</type-bind>
 					<input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
 					<hint>
-						La primer instancia del recurso debe incluir una URL estable que dirija directamente al recurso.
-						En las instancias posteriores se registrarán, si el artículo los posee, números de
-						identificación o códigos asociados con él. Introduzca los tipos y los números o códigos reales.
+						Indicar si el recurso posee otros identificadores y/o enlaces.
 					</hint>
 				</field>
 				<!-- IDENTIFICADOR -->
@@ -574,53 +519,27 @@
 					</hint>
 					<required>Por favor complete el campo con la cita del elemento en el formato solicitado.</required>
 				</field>
-				<!-- DIRECTOR TESIS-->
+				<!-- DIRECTOR TESIS O TRABAJO FINAL -->
 				<field>
 					<dc-schema>dc</dc-schema>
 					<dc-element>contributor</dc-element>
 					<dc-qualifier>advisor</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Director de tesis</label>
-					<type-bind>Tesis</type-bind>
+					<label>Director/a</label>
+					<type-bind>Tesis, Trabajo final</type-bind>
 					<input-type>name</input-type>
-					<hint>Ingresar el nombre del director de tesis.</hint>
-					<required>Debe registrar el director de tesis</required>
-				</field>
-				<!-- COLABORADOR TESIS-->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>contributor</dc-element>
-					<dc-qualifier/>
-					<repeatable>true</repeatable>
-					<label>Colaboradores de tesis</label>
-					<type-bind>Tesis</type-bind>
-					<input-type>name</input-type>
-					<hint>Ingresar el/los nombre/s de colaborador/es del elemento. Por ejemplo, codirector/a.</hint>
-				</field>
-				<!-- DIRECTOR TRABAJO FINAL-->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>contributor</dc-element>
-					<dc-qualifier>advisor</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Director de trabajo final </label>
-					<type-bind>Trabajo final</type-bind>
-					<input-type>name</input-type>
-					<hint>Ingresar el/los nombre/s del director del trabajo.</hint>
+					<hint>Ingresar el nombre del director/a de tesis o trabajo final</hint>
 					<required>Este campo es requerido</required>
 				</field>
-				<!-- COLABORADOR TRABAJO FINAL-->
+				<!-- COLABORADOR TESIS O TRABAJO FINAL -->
 				<field>
 					<dc-schema>dc</dc-schema>
 					<dc-element>contributor</dc-element>
 					<dc-qualifier/>
 					<repeatable>true</repeatable>
-					<label>Colaboradores de trabajo final </label>
-					<type-bind>Trabajo final</type-bind>
+					<label>Otros colaboradores</label>
+					<type-bind>Tesis, Trabajo final</type-bind>
 					<input-type>name</input-type>
-					<hint>
-						Ingresar el/los nombre/s de colaborador/es del trabajo. Por ejemplo, codirectores o tutores.
-					</hint>
+					<hint>Ingresar el/los nombre/s de colaborador/es de la tesis o trabajo final</hint>
 				</field>
 				<!-- REFERATO -->
 				<field>
@@ -632,21 +551,6 @@
 					<type-bind>Articulo</type-bind>
 					<input-type value-pairs-name="boolean">dropdown</input-type>
 					<hint>Indicar si el artículo cuenta o no con referato.</hint>
-					<required>Este campo es requerido</required>
-				</field>
-				<!-- SOPORTE O MEDIO DE DIFUSIÓN -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>format</dc-element>
-					<dc-qualifier>medium</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Soporte o medio de difusión</label>
-					<type-bind>Articulo, Libro, Parte de libro</type-bind>
-					<input-type value-pairs-name="soportes_revistas">dropdown</input-type>
-					<hint>
-						Seleccionar el/los soportes del documento. Puede seleccionar más de uno manteniendo presionada
-						la tecla shift mientras hace clic en las opciones deseadas.
-					</hint>
 					<required>Este campo es requerido</required>
 				</field>
 				<!-- // RESUMEN -->
@@ -1225,18 +1129,6 @@
 			</pair>
 		</value-pairs>
 
-		<!-- Soporte de REVISTAS -->
-		<value-pairs value-pairs-name="soportes_revistas" dc-term="format">
-			<pair>
-				<displayed-value>Impreso</displayed-value>
-				<stored-value>impreso</stored-value>
-			</pair>
-			<pair>
-				<displayed-value>Electrónico y/o Digital</displayed-value>
-				<stored-value>digital</stored-value>
-			</pair>
-		</value-pairs>
-
 		<!-- Valores Booleanos -->
 		<value-pairs value-pairs-name="boolean" dc-term="">
 			<pair>
@@ -1420,10 +1312,6 @@
 		<!-- Identificadores -->
 		<value-pairs value-pairs-name="common_identifiers" dc-term="identifier">
 			<pair>
-				<displayed-value>URI</displayed-value>
-				<stored-value>uri</stored-value>
-			</pair>
-			<pair>
 				<displayed-value>ISBN</displayed-value>
 				<stored-value>isbn</stored-value>
 			</pair>
@@ -1476,12 +1364,12 @@
 				<stored-value>es</stored-value>
 			</pair>
 			<pair>
-				<displayed-value>Inglés (Estados Unidos)</displayed-value>
-				<stored-value>en_US</stored-value>
-			</pair>
-			<pair>
 				<displayed-value>Inglés</displayed-value>
 				<stored-value>en</stored-value>
+			</pair>
+			<pair>
+				<displayed-value>Portugués</displayed-value>
+				<stored-value>pt</stored-value>
 			</pair>
 			<pair>
 				<displayed-value>Alemán</displayed-value>
@@ -1510,10 +1398,6 @@
 			<pair>
 				<displayed-value>Otro</displayed-value>
 				<stored-value>other</stored-value>
-			</pair>
-			<pair>
-				<displayed-value>N/A</displayed-value>
-				<stored-value/>
 			</pair>
 		</value-pairs>
 	</form-value-pairs>

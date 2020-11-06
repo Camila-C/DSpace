@@ -33,27 +33,34 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='version']/doc:field[@name='value']">
 				<dc:type><xsl:value-of select="." /></dc:type>
 			</xsl:for-each>
+			<!-- Guardo los bitstreams en una variable (para el formato y embargo) -->
+			<xsl:variable name="bitstreams" select="doc:metadata/doc:element[@name='bundles']/doc:element[@name='bundle' and doc:field[@name='name' and text()='ORIGINAL']]/doc:element[@name='bitstreams']/doc:element[@name='bitstream']"/>
 			<!-- mimetype (format) De esta forma obtenemos el formato directo del archivo -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='bundles']/doc:element[@name='bundle' and doc:field[@name='name' and text()='ORIGINAL']]/doc:element[@name='bitstreams']/doc:element[@name='bitstream']/doc:field[@name='format']">
-				<dc:format><xsl:value-of select="." /></dc:format>
+			<xsl:variable name="format" select="$bitstreams/doc:field[@name='format']"/>
+			<xsl:for-each select="$format">
+				<dc:format><xsl:value-of select="text()" /></dc:format>
 			</xsl:for-each>
 			<!--dc.rights.* = rights -->
-			<xsl:variable name="bitstreams" select="doc:metadata/doc:element[@name='bundles']/doc:element[@name='bundle'][./doc:field/text()='ORIGINAL']/doc:element[@name='bitstreams']/doc:element[@name='bitstream']"/>
 			<xsl:variable name="embargoed" select="$bitstreams/doc:field[@name='embargo']"/>
 			<xsl:choose>
-				<xsl:when test="count($bitstreams) = 0 or count($embargoed[text() = 'forever']) = count($bitstreams) ">
+				<!-- Es de acceso cerrado si la cantidad de archivos es igual a cero, o igual a las veces que que la RP devuelve metadataOnlyAccess -->
+				<xsl:when test="count($bitstreams) = 0 or count($embargoed[text() = 'metadataOnlyAccess']) = count($bitstreams) ">
 					<dc:rights>info:eu-repo/semantics/closedAccess</dc:rights>
 				</xsl:when>
-				<xsl:when test="count($embargoed) = 0">
+				<xsl:when test="$embargoed[text() = 'openAccess']">
 					<dc:rights>info:eu-repo/semantics/openAccess</dc:rights>
 				</xsl:when>
-				<xsl:when test="count($embargoed[text() = 'forever']) &gt; 0">
+				<!-- Es restringido si el grupo de la RP es distinto a Anonymous y al Admin -->
+				<xsl:when test="$embargoed[text() = 'restrictedAccess']">
 					<dc:rights>info:eu-repo/semantics/restrictedAccess</dc:rights>
 				</xsl:when>
 				<xsl:otherwise>
-					<!-- Es un embargoedAccess si o si -->
+					<!-- Si llega acá significa que es una fecha (de embargo) -->
+					<!-- Este método no funciona si el registro tiene más de un documento y sólo uno de ellos embargado -->
 					<xsl:for-each select="$embargoed">
+						<!-- Ordena los documentos por nombre del archivo -->
 						<xsl:sort select="text()" />
+						<!-- Sólo selecciona embargado si el archivo es el principal o de posición 1 en el listado -->
 						<xsl:if test="position() = 1">
 							<!-- Guarda la fecha de embargo en dc.date -->
 							<dc:date><xsl:value-of select="concat('info:eu-repo/date/embargoEnd/',text())"/></dc:date>
@@ -69,8 +76,8 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='issued']/doc:element/doc:field[@name='value']">
 				<dc:date><xsl:value-of select="." /></dc:date>
 			</xsl:for-each>
-			<!-- dc.descriptor.filation -->
-			<!-- Pregunta si el campo de filiation existe -->
+			<!-- dc.descriptor.filiation -->
+			<!-- Pregunta si el campo de filiación existe -->
 			<xsl:choose>
 				<!-- Si no existe, agrego un campo filiation de la UNRN para cada autor -->
 				<xsl:when test="not(doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='filiation'])">
