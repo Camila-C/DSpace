@@ -285,7 +285,7 @@
 					<dc-schema>dc</dc-schema>
 					<dc-element>relation</dc-element>
 					<dc-qualifier>journalTitle</dc-qualifier>
-					<label>Revista o Evento</label>
+					<label>Evento o Revista</label>
 					<type-bind>Articulo, Objeto de conferencia</type-bind>
 					<input-type>onebox</input-type>
 					<hint>
@@ -293,6 +293,30 @@
 						Para artículos: Titulo de la revista en la que este item fue publicado.
 					</hint>
 					<required>Debe ingresar el título de la revista o  nombre del evento</required>
+				</field>
+				<!-- LOCALIZACIÓN ELECTRONICA DEL EVENTO O REVISTA -->
+				<field>
+					<dc-schema>dc</dc-schema>
+					<dc-element>relation</dc-element>
+					<dc-qualifier>uri</dc-qualifier>
+					<repeatable>false</repeatable>
+					<label>Enlace del evento o revista</label>
+					<type-bind>Articulo, Objeto de conferencia</type-bind>
+					<input-type>onebox</input-type>
+					<hint>
+						Indicar la URL de la revista, evento o sitio web en general dónde está publicado el recurso.
+						Ej: https://www.springerprofessional.de/computer-science-cacic-2017/15415004
+					</hint>
+				</field>
+				<!-- EDITORIAL -->
+				<field>
+					<dc-schema>dc</dc-schema>
+					<dc-element>publisher</dc-element>
+					<repeatable>false</repeatable>
+					<label>Editorial</label>
+					<type-bind>Articulo, Libro, Parte de libro</type-bind>
+					<input-type>onebox</input-type>
+					<hint>Indicar la editorial de la publicación.</hint>
 				</field>
 				<!-- ISSN -->
 				<field>
@@ -328,16 +352,6 @@
 					<type-bind>Articulo</type-bind>
 					<input-type>onebox</input-type>
 					<hint>Ingresar el volumen de la revista.</hint>
-				</field>
-				<!-- EDITORIAL -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>publisher</dc-element>
-					<repeatable>false</repeatable>
-					<label>Editorial</label>
-					<type-bind>Articulo, Libro, Parte de libro</type-bind>
-					<input-type>onebox</input-type>
-					<hint>Indicar la editorial de la publicación.</hint>
 				</field>
 				<!-- PAGINAS -->
 				<field>
@@ -435,18 +449,6 @@
 						Clasificación del documento por áreas de investigación y desarrollo (FORD por su sigla en inglés)
 					</hint>
 				</field>
-				<!-- LOCALIZACIÓN ELECTRONICA -->
-				<field>
-					<dc-schema>dc</dc-schema>
-					<dc-element>relation</dc-element>
-					<dc-qualifier>uri</dc-qualifier>
-					<repeatable>true</repeatable>
-					<label>Enlace dónde se aloja el recurso</label>
-					<input-type>onebox</input-type>
-					<hint>
-						Indicar el enlace de la revista, evento o sitio web en general dónde está publicado el recurso.
-					</hint>
-				</field>
 				<!-- PROYECTO MARCO -->
 				<field>
 					<dc-schema>dc</dc-schema>
@@ -463,6 +465,18 @@
 						Ejemplo con un PICTO: "ANPCyT/PICTO/2010-0132/AR. Ciudad Autónoma de Buenos Aires/Red COES de Repositorios de Acceso Abierto"
 					</hint>
 					<required>Este campo es requerido</required>
+				</field>
+				<!-- Otro Identificador inmediato del recurso -->
+				<field>
+					<dc-schema>dc</dc-schema>
+					<dc-element>identifier</dc-element>
+					<dc-qualifier>other</dc-qualifier>
+					<repeatable>true</repeatable>
+					<label>Enlace externo de la publicación</label>
+					<input-type>onebox</input-type>
+					<hint>
+						Indicar si el recurso se encuentra en otra URL
+					</hint>
 				</field>
 				<!-- OTROS IDENTIFICADORES -->
 				<field>
