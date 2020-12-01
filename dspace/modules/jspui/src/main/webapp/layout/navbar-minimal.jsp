@@ -125,6 +125,13 @@
           Inicio
         </a>
       </li>
+      <%-- Colección COVID19 --%>
+      <li>
+        <a href="<%= request.getContextPath() %>/handle/20.500.12049/5071">
+          <span class="label label-success">Nuevo</span>
+          Covid-19
+        </a>
+      </li>
       <%-- Listar --%>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
