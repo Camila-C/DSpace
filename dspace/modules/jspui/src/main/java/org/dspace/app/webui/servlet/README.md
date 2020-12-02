@@ -82,3 +82,8 @@ if (request.getParameter("submit") != null)
     ...
 }
 ```
+
+### RIDStatisticsServlet
+
+Es una página estática del RID-UNRN que contiene las estadísticas del repositorio.
+Los gráficos son embebidos de DataWrapper
