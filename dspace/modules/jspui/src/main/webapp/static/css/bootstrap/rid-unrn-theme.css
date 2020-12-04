@@ -426,10 +426,13 @@ footer .box-logos .box-logo img {
   padding-top: 30px;
 }
 .pt-100 {
-	padding-top: 100px;
+  padding-top: 100px;
 }
 .pb-100 {
-	padding-bottom: 100px;
+  padding-bottom: 100px;
+}
+.mb-30 {
+  margin-bottom: 30px;
 }
 .bg-grey-light {
   background-color: #f6f6f6;

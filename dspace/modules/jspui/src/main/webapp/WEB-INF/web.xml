@@ -453,7 +453,7 @@
     <servlet-class>org.dspace.app.webui.servlet.SearchResultLogServlet</servlet-class>
   </servlet>
 
-  <!-- pÃ¡ginas estÃ¡ticas -->
+  <!-- páginas estáticas -->
 
   <servlet>
     <servlet-name>faqs</servlet-name>
@@ -463,6 +463,11 @@
   <servlet>
     <servlet-name>rid-policies</servlet-name>
     <servlet-class>org.dspace.app.webui.servlet.RIDPoliciesServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>rid-statistics</servlet-name>
+    <servlet-class>org.dspace.app.webui.servlet.RIDStatisticsServlet</servlet-class>
   </servlet>
 
   <!-- shibbolized dspace -->
@@ -823,7 +828,7 @@
     <url-pattern>/request-item</url-pattern>
   </servlet-mapping>
 
-  <!-- PÃ¡ginas estÃ¡ticas -->
+  <!-- Páginas estáticas -->
   <servlet-mapping>
     <servlet-name>faqs</servlet-name>
     <url-pattern>/faqs</url-pattern>
@@ -832,6 +837,11 @@
   <servlet-mapping>
     <servlet-name>rid-policies</servlet-name>
     <url-pattern>/rid-policies</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>rid-statistics</servlet-name>
+    <url-pattern>/rid-statistics</url-pattern>
   </servlet-mapping>
   
   <!-- Icon MIME type -->

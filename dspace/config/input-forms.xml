@@ -269,6 +269,20 @@
 					<hint>Seleccionar el tipo de material artístico a a cargar</hint>
 					<required>Por favor seleccione el tipo de material artístico</required>
 				</field>
+				<!-- CODIGO DEL PROYECTO -->
+				<field>
+					<dc-schema>dc</dc-schema>
+					<dc-element>identifier</dc-element>
+					<dc-qualifier/>
+					<repeatable>false</repeatable>
+					<label>Código de proyecto</label>
+					<type-bind>Proyecto de investigacion</type-bind>
+					<input-type>onebox</input-type>
+					<hint>
+						Ingresar el código del proyecto de investigación. Ej: 40-C-450, PICTO 2010-0132, etc.
+					</hint>
+					<required>Debe ingresar el código del proyecto de investigación</required>
+				</field>
 				<!-- COMPILADOR -->
 				<field>
 					<dc-schema>dc</dc-schema>

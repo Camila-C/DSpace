@@ -125,6 +125,13 @@
           Inicio
         </a>
       </li>
+      <%-- Colección COVID19 --%>
+      <li>
+        <a href="<%= request.getContextPath() %>/handle/20.500.12049/5071">
+          <span class="label label-success">Nuevo</span>
+          Covid-19
+        </a>
+      </li>
       <%-- Listar --%>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -164,6 +171,13 @@
       </li>
       <%-- Políticas del RID-UNRN --%>
       <li><a href="<%= request.getContextPath() %>/rid-policies">Pol&iacute;ticas</a></li>
+      <%-- Estadísticas del RID-UNRN --%>
+      <li>
+        <a href="<%= request.getContextPath() %>/rid-statistics">
+          <span class="label label-success">Nuevo</span>
+          Estad&iacute;sticas
+        </a>
+      </li>
       <%--
         <li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") %>"><fmt:message key="jsp.layout.navbar-default.help"/></dspace:popup></li>
       --%>
